@@ -1,0 +1,633 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Drawer-->
+    <string name="open_drawer">open drawer left</string>
+    <string name="close_drawer">close drawer left</string>
+    <string name="nv_home">@string/common_home</string>
+    <string name="nv_notify">@string/common_alert</string>
+    <string name="nv_online_alarm">@string/common_online_alarm</string>
+    <string name="nv_list_block">Danh sách chặn</string>
+    <string name="nv_setting_account">@string/common_setting_account</string>
+    <string name="nv_setting_notify">Thiết lập thông báo</string>
+
+    <!--Menu main-->
+    <string name="menu_top">@string/common_home</string>
+    <string name="menu_friends">@string/common_friends</string>
+    <string name="menu_live_stream">Live Stream</string>
+    <string name="menu_message">@string/common_message</string>
+    <string name="menu_profile">Cá nhân</string>
+    <string name="menu_notify">@string/common_alert</string>
+    <string name="menu_search">@string/common_search</string>
+
+    <!-- Log In -->
+    <string name="login_with_facebook">Đăng nhập bằng Facebook</string>
+    <string name="account_locked_user">Tài khoản này đã bị khóa. Hãy liên hệ với người quản trị</string>
+
+    <!--Register-->
+    <string name="invalid_birthday">Ngày sinh không hợp lệ</string>
+
+    <!-- Purchase point -->
+    <string name="billing_unavaiable">Không thể sử dụng thanh toán</string>
+    <string name="purchase_already_perform">Giao dịch đã hoàn thành</string>
+
+    <!-- Error -->
+    <string name="add_friends_sms_error">Gửi SMS thất bại</string>
+    <string name="add_friends_email_error">Gửi email thất bại</string>
+    <string name="msg_common_server_unknown_error">Lỗi không xác định. Hãy thử lại sau</string>
+    <string name="msg_common_server_data_format">Dữ liệu không đúng,vui lòng liên hệ admin</string>
+    <string name="error_age_min_bigger_max">Vui lòng chọn một độ tuổi nhỏ hơn giá trị tối đa</string>
+    <string name="title_error_user_age">Lỗi tuổi</string>
+    <string name="msg_common_can_not_connect_to_server">Không thể kết nối được đến máy chủ</string>
+    <string name="msg_common_no_connection">Mạng không ổn định</string>
+    <string name="msg_common_no_data">Không có dữ liệu</string>
+    <string name="msg_common_unknown_error">Lỗi không xác định</string>
+    <string name="msg_common_parse_json_error">Lỗi phân tích JSON</string>
+    <string name="msg_common_phone_not_found">Không tìm thấy số điện thoại</string>
+    <string name="msg_common_phone_has_already">Số điện thoại này đã được đăng ký trước</string>
+    <string name="msg_common_email_not_found">Không tìm thấy địa chỉ email</string>
+    <string name="msg_common_email_has_already">Địa chỉ email này đã từng được đăng ký từ trước</string>
+    <string name="msg_common_invalid_username">Tên người dùng không hợp lệ</string>
+    <string name="msg_common_invalid_email">Địa chỉ email không hợp lệ</string>
+    <string name="msg_common_invalid_token">Token không hợp lệ</string>
+    <string name="msg_common_invalid_password">Mật khẩu không hợp lệ</string>
+    <string name="msg_common_password_is_incorrect">Mật khẩu bị sai</string>
+    <string name="msg_common_send_email_fail">Gửi email thất bại</string>
+    <string name="msg_common_incorrect_code">Mã xác thực sai</string>
+    <string name="msg_common_data_format_wrong">Định dạng dữ liệu không hợp lệ</string>
+    <string name="msg_common_error_authen_chatserver">Không thể kết nối được với máy chủ trò chuyện</string>
+    <string name="no_internet">Không có kết nối mạng</string>
+    <string name="no_storage_card">Không có thẻ tín dụng</string>
+    <string name="not_enough_space">Không đủ dung lượng</string>
+    <string name="action_is_not_performed">Thao tác không hợp lệ</string>
+    <string name="application_version_invalid">Vì phiên bản mới nhất đã có nên hãy nâng cấp</string>
+    <string name="do_you_want_close_app">Bạn có muốn đóng ứng dụng không?</string>
+    <string name="do_you_want_close_live_stream">Bạn có muốn dừng phát trực tiếp không?</string>
+    <string name="view_error">
+        <![CDATA[<b>Đã phát sinh lỗi vui lòng liên hệ ban quản trị với thông tin sau:</b><br/><font color=#e02730>%1$s</font>]]>
+    </string>
+    <string name="view_error_2">
+       Đã phát sinh lỗi vui lòng liên hệ ban quản trị
+    </string>
+
+    <!-- Not enough point -->
+    <string name="not_enough_point_title">Bạn đang bị thiếu xu</string>
+
+    <string name="need_update_app">Hãy nâng cấp ứng dụng từ Google Play thành phiên bản mới nhất</string>
+
+    <!-- who check you out -->
+    <string name="must_unlock_to_view">Cần mở khóa để xem màn hình này</string>
+    <string name="dirty_word_alert_content">(\"%1$s\") là từ không thể dùng. Hãy nhập từ khác</string>
+
+    <string name="user_deactive">Không trực tuyến</string>
+
+    <string name="dialog_confirm_report_user_content">Cảm ơn bạn đã báo cáo, chúng tôi sẽ sớm kiểm tra người dùng này</string>
+    <string name="dialog_confirm_report_user_title">Báo cáo người dùng</string>
+
+    <string name="hint_email">@string/common_email_address</string>
+    <string name="hint_password">@string/common_password</string>
+    <string name="remember_login">Lưu mật khẩu</string>
+    <string name="forgot_password"><u>Bạn quên mật khẩu</u></string>
+    <string name="other_login_option">Đăng nhập bằng cách khác</string>
+    <string name="btn_facebook">Facebook</string>
+    <string name="login_facebook_fail">Đăng nhập với facebook không thành công</string>
+    <string name="login_facebook_cancel">Hủy đăng nhập với facebook</string>
+    <string name="hint_date_of_birth">Ngày sinh</string>
+    <string name="hint_confirm_password">Nhập lại mật khẩu</string>
+    <string name="other_signup_option">Đăng ký khác</string>
+    <string name="hint_recovery_email">Xin hãy nhập email đã dùng khi đăng ký</string>
+    <string name="recovery_password">Gửi</string>
+    <string name="msg_recovery_password">Mật khẩu mới đã được gửi về email của bạn</string>
+
+    <!--Time-->
+    <string name="time_hour_ago">giờ trước</string>
+    <string name="time_minute_ago">phút trước</string>
+
+    <!--TimeLine-->
+    <string name="menu_new_feed_all">@string/common_all</string>
+    <string name="menu_new_feed_favorite">@string/common_favorite</string>
+
+    <string name="timeline_like">%1$s yêu thích</string>
+    <string name="timeline_comment">%1$s bình luận</string>
+    <string name="timeline_share">%1$s chia sẻ</string>
+    <string name="timeline_audio_share" formatted="false">%1$s đã mời bạn cùng nghe</string>
+    <string name="noti_tag_buzz" >%1$s đã gắn thẻ bạn trong 1 bài viết</string>
+    <string name="item_buzz_list_owner_received_a_gift">%1$s có món quà</string>
+    <string name="year_hour_ago">năm trước</string>
+    <string name="timeline_time_location">%1$s • %2$s</string>
+    <string name="timeline_time_on">Trực tiếp %1$s</string>
+    <string name="timeline_time_off">Kết thúc %1$s</string>
+
+    <string name="timeline_time_and">\u0020và\u0020</string>
+    <string name="timeline_time_with">\u0020cùng với\u0020</string>
+    <string name="timeline_time_share_audio"><![CDATA[&#032;đã chia sẻ <font color=#000000>audio</font> của&#032;]]></string>
+    <string name="timeline_time_share_video"><![CDATA[&#032;đã chia sẻ <font color=#000000>video</font> của&#032;]]></string>
+    <string name="timeline_time_live_stream_off">\u0020đã phát trực tiếp</string>
+    <string name="timeline_time_live_stream_on">\u0020đang phát trực tiếp</string>
+    <string name="timeline_time_other">%1$s người khác</string>
+    <string name="timeline_time_view">%1$s lượt xem</string>
+
+    <string name="tab_timeline">Dòng thời gian</string>
+    <string name="tab_album">Album của</string>
+    <string name="tab_album_me">Album của tôi</string>
+    <string name="tab_video_audio">Video/Audio</string>
+    <string name="timeline_post_status_preparing_data">Đang chuẩn bị dữ liệu</string>
+    <string name="timeline_post_status_progress">Đang chuẩn bị dữ liệu</string>
+    <string name="timeline_post_status_posting_status">Chuẩn bị dữ liệu thành công\nĐang đăng trạng thái</string>
+
+    <!--Poic_sharehare-->
+    <string name="share_facebook">chia sẻ facebook</string>
+    <string name="share_wall">chia sẻ lên tường</string>
+    <string name="share_instagram">chia sẻ instagram</string>
+    <string name="load_end">Tải dữ liệu kết thúc</string>
+    <string name="fragment_friends_favorited_search">Tìm kiếm</string>
+    <string name="forgot_password_title">Cài đặt lại mật khẩu</string>
+    <string name="hint_auth_code">Mã xác thực</string>
+    <string name="hint_new_pwd">Nhập mật khẩu mới</string>
+    <string name="hint_new_confirm_pwd">Xác nhập lại mật khẩu mới</string>
+    <string name="change_password">Thay đổi mật khẩu</string>
+    <string name="change_password_title">Cài đặt lại mật khẩu</string>
+    <string name="delete_message">Xóa chọn</string>
+    <string name="delete_all_message">Xóa tất cả</string>
+    <string name="read_all_message">Xem toàn bộ</string>
+    <string name="delete_all_message_confirm">Bạn có muốn xóa hết tin nhắn hiện tại không?</string>
+    <string name="mark_all_mesage_as_read_confirm">Bạn có muốn đánh dấu tất cả là đã đọc không?</string>
+    <string name="delete_item_message_confirm">Bạn có muốn xóa tin nhắn này không?</string>
+    <string name="comment_entry_hint">Viết một bình luận</string>
+    <string name="sub_comment_entry_hint">Trả lời một bình luận</string>
+    <string name="title_activity_search_setting">Cài đặt tìm kiếm</string>
+
+    <!--Favorite-->
+    <string name="title_fragment_favorite_me">@string/common_favorited</string>
+    <string name="title_fragment_me_favorite">@string/common_favorite</string>
+
+    <!--SearchSetting-->
+    <string name="title_activity_search_result">Kết quả tìm kiếm</string>
+    <string name="title_dialog_set_range_age">Tìm kiếm trong độ tuổi</string>
+    <string name="title_fragment_area">@string/common_area</string>
+    <string name="title_dialog_search_avatar">Ảnh đại diện</string>
+    <string name="title_dialog_search_body">Hình thể</string>
+    <string name="title_dialog_search_sort_oder">Thứ tự sắp xếp</string>
+    <string name="search_result_un_favorited">Bỏ yêu thích thành công</string>
+    <string name="search_result_favorited">Thích thành công!</string>
+    <string name="search_result_add_favorite_fail">User đã bị block không thể thêm vào danh sách yêu thích</string>
+    <string name="search_result_add_favorite_user_not_found">Người dùng không tồn tại</string>
+    <string name="title_search_by_name">Tìm kiếm theo tên</string>
+    <string name="title_search_setting_layout">Đối tượng tìm kiếm</string>
+    <string name="act_search_setting_age">@string/common_age</string>
+    <string name="act_search_setting_regions">@string/common_area</string>
+    <string name="act_search_setting_gender">@string/common_gender</string>
+    <string name="act_search_setting_login_24">Đăng nhập trong 24 giờ</string>
+    <string name="act_search_setting_sort_order">Thứ tự sắp xếp</string>
+    <string name="act_search_setting_sort_body_type">Hình thể</string>
+    <string name="act_search_setting_avatar">Ảnh đại diện</string>
+    <string name="act_search_setting_not_interacted">Người dùng chưa tương tác</string>
+    <string name="act_search_by_name">Tìm kiếm theo tên</string>
+    <string name="act_search_button">@string/common_search</string>
+
+    <string name="signup_age_confirm">Tôi xác nhận mình trên 14 tuổi</string>
+    <string name="signup_term_confirm">Tôi đã đọc và đồng ý các điều kiện <b>Thỏa thuận sử dụng</b></string>
+    <string name="email_invalid">Email không hợp lệ</string>
+    <string name="password_invalid">Mật khẩu phải nhiều hơn 6 ký tự</string>
+    <string name="date_of_birth_invalid">Chưa nhập ngày sinh</string>
+    <string name="gender_invalid">Chưa chọn giới tính</string>
+    <string name="confirm_password_invalid">Mật khẩu không khớp</string>
+    <string name="login_email_fail">Đăng nhập thất bại</string>
+    <string name="buzz_item_not_found">Không tìm thấy bài viết này</string>
+    <string name="comment_item_not_found">Không tìm thấy comment này</string>
+    <string name="comment_item_image_not_found">Không tìm thấy ảnh này</string>
+    <string name="user_not_found">Không tìm thấy user này</string>
+
+    <string name="add_friends_title">Thêm bạn bè</string>
+    <string name="sub_comment_number">%1$s trả lời bình luận</string>
+    <string name="edit_profile_label_favourite">Sở thích</string>
+    <string name="password_length_must_than">Mật khẩu không đúng quy định</string>
+    <string name="email_length_must_than">Email không đúng quy định</string>
+
+    <!-- block and deactive -->
+    <string name="login_locked_user">Tài khoản bị khóa</string>
+    <string name="dialog_user_deactive">Không thể truy cập người dùng này tại thời điểm này. Vui lòng thử lại</string>
+    <string name="user_block">Người dùng này đã chặn bạn, không thể truy cập</string>
+    <string name="email_not_found">Email  không tồn tại, vui lòng thử lại.</string>
+    <string name="acc_not_found">Tài khoản này không tồn tại, vui lòng đăng ký tài khoản mới hoặc đăng nhập tài khoản khác.</string>
+    <string name="auth_code_empty">Mã xác nhận trống</string>
+    <string name="see_more">Xem thêm</string>
+    <string name="see_Less">Thu gọn</string>
+    <string name="timeline_delete_comment_success">Đã xóa nhận xét.</string>
+    <string name="sub_comment_title">Trả lời bình luận</string>
+    <string name="sign_description">Bạn cần đăng nhập trước khi sử dụng những tính năng này</string>
+    <string name="auto_login_email_not_found">Không tìm thấy email,xin vui lòng liên hệ ban quản trị.!</string>
+    <string name="auto_login_password_not_found">Không tìm thấy password,xin vui lòng liên hệ ban quản trị.!</string>
+    <string name="title_post_status">Đăng bài</string>
+    <string name="server_lock_user">Tài khoản của bạn đã bị khóa vui lòng liên hệ ban quản trị.!</string>
+
+    <string name="tag_friends_txt"><![CDATA[- Với <b><font color=#365899>%1$s</font></b> và <b><font color=#365899>%2$s người khác</font></b>]]></string>
+    <string name="tag_friend_txt"><![CDATA[ - Với <b><font color=#365899>%1$s</font></b>]]></string>
+    <string name="tag_friend_blank">Chưa có người nào được Tag.</string>
+
+
+    <string name="member_other">%1$s người khác</string>
+
+    <string name="what_are_you_thinking">Bạn đang nghĩ gì?</string>
+    <string name="public_status">Mọi người</string>
+    <string name="only_friends_status">@string/common_friends</string>
+
+    <!--UPload multiple file -->
+    <string name="read_file">This app needs access to your file storage so that it can read photos.</string>
+
+    <!--sign up-->
+    <string name="check_confirm_age_term">Vui lòng đồng ý các điều khoản</string>
+    <string name="signup_cancel_facebook">Hủy bỏ đăng nhập với facebook</string>
+    <string name="signup_error_facebook">Đăng nhập với facebook thất bại</string>
+
+    <!--edit profile-->
+    <string name="title_job">Nghề nghiệp</string>
+    <string name="title_favourite">Sở thích</string>
+    <string name="edit_profile_label_gender">Giới tính <b><font color='red'>*</font></b></string>
+    <string name="edit_profile_title">Chỉnh sửa thông tin cá nhân</string>
+    <string name="edit_profile_label_name">Tên <b><font color='red'>*</font></b></string>
+    <string name="edit_profile_label_require">(<b><font color='red'>*</font></b>) Bắt buộc</string>
+    <string name="edit_profile_label_email">Email <b><font color='red'>*</font></b></string>
+    <string name="edit_profile_label_date_of_birth">Ngày sinh (<b><font color='red'>*</font></b>)</string>
+    <string name="edit_profile_label_identify_no">CMND/Hộ chiếu <b><font color='red'>*</font></b></string>
+    <string name="edit_profile_label_phone">Số điện thoại</string>
+    <string name="edit_profile_label_job">Nghề nghiệp</string>
+    <string name="edit_profile_label_zone">Khu vực <b><font color='red'>*</font></b></string>
+    <string name="edit_profile_label_body_type">Hình thể</string>
+    <string name="edit_profile_label_message">Tin nhắn</string>
+    <string name="upload_avatar_fail">Upload avatar thất bại.</string>
+    <string name="edit_profile_empty_birthday">Vui lòng nhập ngày sinh</string>
+    <string name="edit_profile_label_info">Giới thiệu</string>
+    <string name="edit_profile_name">Tên</string>
+    <string name="edit_profile_birthday">Ngày sinh</string>
+    <string name="edit_profile_gender">Giới tính</string>
+    <string name="edit_profile_zone">Khu vực</string>
+    <string name="edit_profile_age">tuổi</string>
+
+    <!--Conversation Message-->
+    <string name="sent_a_photo">Bạn vừa gửi một hình ảnh</string>
+    <string name="sent_a_video">Bạn vừa gửi một video</string>
+    <string name="sent_a_audio">Bạn vừa gửi một audio</string>
+    <string name="sent_a_file">Bạn đã gửi 1 file</string>
+    <string name="receive_a_file">Bạn đã nhận 1 file</string>
+
+    <string name="send_gift_price_not_free">{0,choice,0#0pt|1#1pt|1&lt;{0}pts}</string>
+    <string name="gift_message_display_send">Đã gửi 1 quà</string>
+    <string name="gift_message_display_receiver">Đã nhận 1 quà</string>
+    <string name="chat_item_share_a_location">Đã chia sẻ một vị trí</string>
+    <string name="sticker_sent">Đã gửi 1 sticker</string>
+    <string name="sticker_receiver">Đã nhận 1 sticker</string>
+    <string name="voip_action_video_voice_end_new">Thời gian %1$s</string>
+    <string name="voip_action_video_voice_end_no_answer">Không trả lời</string>
+    <string name="voip_action_video_voice_end_busy">Cuộc gọi bị nhỡ</string>
+    <string name="voip_action_video_voice_start">Cuộc gọi bắt đầu</string>
+    <string name="message_video_call_response">%s đã yêu cầu cuộc gọi</string>
+    <string name="introduce">Giới thiệu</string>
+    <string name="messager">Nhắn tin</string>
+
+    <string name="delete_conversation_failure">Đã có lỗi xảy ra, vui lòng thử lại!</string>
+    <string name="delete_all_conversation_success">Đã xóa tất cả các tin nhắn!</string>
+    <string name="edit_profile_empty_name">Vui lòng nhập họ tên</string>
+    <string name="edit_profile_empty_identify_no">CMND/Hộ chiếu rỗng</string>
+    <string name="edit_profile_empty_zone">Vui lòng chọn khu vực</string>
+    <string name="edit_profile_empty_email">Vui lòng nhập email</string>
+
+
+    <!-- Notification list -->
+    <string name="application_notification_title">Thông báo</string>
+    <string name="checkout_lock_notification">Ai đó đang kiểm tra bạn</string>
+    <string name="checkout_unlock_notification">%1$s đang kiểm tra bạn</string>
+    <string name="favorite_lock_notification">Ai đó đã đăng ký thích bạn</string>
+    <string name="favorite_unlock_notification">%1$s đã đăng ký thích bạn</string>
+    <string name="buzz_liked_to_notification">%1$s thích bài đăng của bạn</string>
+    <string name="buzz_also_liked_notification">%1$s cũng thích thông báo của %2$s</string>
+    <string name="buzz_responded_to_notification">%1$s bình luận bài đăng của bạn</string>
+    <string name="buzz_like_to_notification">%1$s thích bài đăng của bạn</string>
+    <string name="buzz_news_to_notification">Nhận được tin mới</string>
+    <string name="reply_comment_responded_to_notification">%1$s phản hồi bình luận của bạn</string>
+    <string name="buzz_also_responded_to_notification">%1$s cũng bình luận thông báo của %2$s</string>
+    <string name="unlocked_backstage_notification">%1$s đã mở khóa ảnh bí mật của bạn. Bạn nhận được %2$sxu</string>
+    <string name="unlocked_backstage_notification_no_point">%1$s đã mở khóa ảnh bí mật của bạn. </string>
+    <string name="friend_notification">%1$s đã đăng ký Tiamo. Bạn được nhận %2$sxu nhờ giới thiệu bạn bà</string>
+    <string name="friend_notification_no_point">%1$s đã trở thành bạn bè trên Tiamo</string>
+    <string name="came_online_notification">%1$s đang trực tuyến</string>
+    <string name="came_online_notification_bottom">%1$s đang trực tuyến</string>
+    <string name="earned_point_notification">Thưởng đăng nhập</string>
+    <string name="noti_new_chat_msg_text">%1$s đã nhắn tin cho bạn.</string>
+    <string name="noti_new_chat_msg_text_from_friend">Bạn có tin nhắn mới.</string>
+    <string name="congratulation_notification">Xin chúc mừng. Bạn đã đạt được vị trí %1$s ở "đấu giá"</string>
+    <string name="come_notification">Đang trực tuyến</string>
+    <string name="trouble_notification">Vấn đề</string>
+    <string name="new_notification">Thông báo từ:  </string>
+    <string name="saving_preferences">Môi trường lưu &#8230;</string>
+    <string name="buzz_created_notification">%1$s đã cập nhật dòng thời gian</string>
+    <string name="free_page_notification">Thông báo chiến dịch tốt nhất cho bạn từ văn phòng của Tiamo</string>
+    <string name="denied_backstage">Ảnh của bạn đã bị từ chối</string>
+    <string name="approve_image_buzz">Bài đăng của bạn đã được phê duyệt</string>
+    <string name="denied_image_buzz">Bài đăng của bạn không được phê duyệt</string>
+    <string name="approve_text_buzz"> Bài đăng của bạn đã được phê duyệt</string>
+    <string name="denied_text_buzz">Bài đăng của bạn không được phê duyệt</string>
+    <string name="approve_comment">Bình luận của bạn đã được phê duyệt</string>
+    <string name="denied_comment">Bình luận của bạn không được phê duyệt</string>
+    <string name="approve_sub_comment">Phản hồi của bạn đã được phê duyệt</string>
+    <string name="denied_sub_comment">Phản hồi của bạn không được phê duyệt</string>
+    <string name="approve_user_info">Thay đổi hồ sơ cá nhân đã được phê duyệt</string>
+    <string name="apart_of_user_info">Một phần thay đổi hồ sơ cá nhân đã được phê duyệt</string>
+    <string name="denied_user_info">Thay đổi hồ sơ cá nhân không được phê duyệt</string>
+    <string name="image_approved">Bài đăng của bạn đã được phê duyệt</string>
+    <string name="request_call">Bạn đã nhận yêu cầu bật cuộc gọi từ %s♪</string>
+    <string name="edit_profile">Sửa thông tin cá nhân</string>
+    <string name="logout_success">Đăng xuất thành công</string>
+    <string name="noti_share_live_stream">%1$s đã chia sẻ video trực tuyến của bạn.</string>
+    <string name="noti_share_audio">%1$s đã chia sẻ audio của bạn.</string>
+
+    <!--Notification Online-->
+    <string name="title_activity_online_notification">Danh sách trực tuyến</string>
+    <string name="online_notification_button_change">Thay đổi</string>
+
+    <!-- Post status -->
+    <string name="validate_post_status_param">Hãy nhập nội dung bạn muốn chia sẻ</string>
+    <string name="validate_post_status_comment_limit">Nội dung quá dài, tối đa %d ký tự.</string>
+    <string name="post_status_successful">Bài của bạn đã được đăng thành công!</string>
+    <string name="post_status_failed">Có lỗi phát sinh, đăng bài không thành công!</string>
+    <string name="take_photo_option">Chụp ảnh</string>
+    <string name="take_video_option">Quay Video</string>
+    <string name="take_audio_option">Ghi âm</string>
+    <string name="preparing_content">Đang chuẩn bị dữ liệu</string>
+    <string name="uploading_content">Đang chia sẻ bài viết của bạn</string>
+    <string name="upload_status">Cập nhật dòng thời gian</string>
+    <string name="post_status">Đang đăng bài viết lên dòng thời gian vui lòng đợi &#8230;</string>
+    <string name="upload_status_progress">Đang đăng bài</string>
+    <string name="upload_status_error">Thất bại</string>
+    <string name="upload_status_success">Thành công</string>
+    <string name="upload_album_waiting">Đang tạo album, xin vui lòng đợi&#8230;</string>
+    <string name="uploading">Đang tải lên, xin vui lòng đợi&#8230;</string>
+    <string name="uploading_pending">Đang có album tải lên, xin vui lòng đợi hoàn thành&#8230;</string>
+    <string name="max_image_size_up_load_album">Album chỉ có thể có tối đa %1$d ảnh</string>
+    <string name="max_image_size_up_load">Chỉ có thể tải lên tối đa %1$d ảnh</string>
+
+    <!--WebView-->
+    <string name="settings_terms_of_service">Điều khoản dịch vụ</string>
+    <string name="settings_terms_of_service_terms_of_service">Điều khoản dịch vụ</string>
+    <string name="settings_terms_of_service_privacy_policy">Chính sách bảo mật</string>
+    <string name="title_age_verification">Đăng ký hồ sơ cá nhân</string>
+    <string name="information">Tin tức</string>
+    <string name="message_end_app">Có đóng ứng dụng không？</string>
+
+    <string name="request_access_permission_agreed">Bạn đã đồng ý cho phép sử dụng quyền</string>
+    <string name="request_access_permission_denied">Bạn đã không đồng ý sử dụng quyền</string>
+    <string name="nv_logout">Đăng xuất</string>
+
+    <!--ImageDetail-->
+    <string name="delete_image">Xóa ảnh</string>
+    <string name="delete_audio">Xóa audio</string>
+    <string name="delete_video">Xóa video</string>
+    <string name="delete_album">Xóa album</string>
+    <string name="save_image">Lưu ảnh</string>
+    <string name="save_audio">Lưu audio</string>
+    <string name="save_video">Lưu video</string>
+
+    <!-- tag friend -->
+    <string name="tag_friend_title">Gắn thẻ bạn bè</string>
+    <string name="go_to_google_play">Nâng cấp phiên bản</string>
+    <string name="search_setting_not_found">Không tìm thấy ai phù hợp với tìm kiếm bạn bè. Hãy thay đổi cài đặt tìm kiếm</string>
+    <string name="dialog_confirm_block_user_content">Bạn có muốn chặn người dùng này không?</string>
+    <string name="dialog_confirm_block_user_title">Chặn người dùng</string>
+
+    <!-- Manage online alert -->
+    <string name="fragment_manage_online_alert_title">@string/common_online_alarm</string>
+    <string name="fragment_manage_online_alert_text_user">Mỗi khi %1$s đang trực tuyến có thể nhận được thông báo</string>
+    <string name="fragment_manage_online_alert_text_description">Sẽ nhận được thông báo</string>
+    <string name="fragment_manage_online_alert_check_box">Cho phép nhận thông báo</string>
+    <string name="fragment_manage_online_alert_check_box_description">Khi đóng ứng dụng có trường hợp chậm hoặc không thể nhận thông báo</string>
+    <string name="fragment_manage_online_alert_text_title1">Tần suất thông báo</string>
+    <string name="fragment_manage_online_alert_text_title2">Cần thông báo như nào?</string>
+    <string name="fragment_manage_online_alert_confirm_title">Thông báo trực tuyến</string>
+    <string name="fragment_manage_online_alert_confirm_content_never">Không thông báo khi %1$s trực tuyến</string>
+    <string name="fragment_manage_online_alert_confirm_content_other">Thông báo mỗi khi %2$s trực tuyến</string>
+    <string name="online_alert_enabled">Thông báo trực tuyến được kích hoạt</string>
+    <string name="fragment_manage_online_alert_noti_never_alert_me">Không thông báo</string>
+    <string name="fragment_manage_online_alert_noti_every_time">Luôn luôn</string>
+
+    <string name="fragment_manage_online_alert_noti_max_ten">Tối đa 10 lần trong ngày</string>
+    <string name="fragment_manage_online_alert_noti_max_five">Tối đa 5 lần trong ngày</string>
+    <string name="fragment_manage_online_alert_noti_max_once_perday">Tối đa 1 lần <t></t>rong ngày</string>
+    <string name="not_approved_buzz">Đang chờ kiểm duyệt</string>
+    <string name="not_access_denied">Bạn không có quyền truy cập</string>
+    <string name="not_account_has_changed">Thông tin tài khoản của bạn đã được đổi từ một thiết bị khác. Vui lòng đăng nhập lại.!</string>
+    <string name="not_account_has_changed_title">Bạn cần đăng nhập để sử dụng tính năng này</string>
+
+    <!--Block-->
+    <string name="act_block_title">Danh sách người dùng bị chặn</string>
+    <string name="act_block_failure">Lỗi, hãy thử lại sau!</string>
+    <string name="act_un_block_failure">Lỗi, hãy thử lại sau!</string>
+
+    <!-- privacy option -->
+    <string name="choose_privacy_title">Chọn quyền riêng tư</string>
+    <string name="public_privacy">Mọi người</string>
+    <string name="friend_privacy">@string/common_friends</string>
+    <string name="onlyme_privacy">Chỉ mình tôi</string>
+
+    <!--Account Setting-->
+    <string name="account_setting_toolbar_title">Thiết lập tài khoản</string>
+    <string name="account_setting_enter_password"> Mật khẩu hiện tại không được trống!</string>
+    <string name="account_setting_password_incorrect">Mật khẩu hiện tại bị sai!</string>
+    <string name="account_setting_new_email_invalid">Email mới trống hoặc không đúng định dạng</string>
+    <string name="account_setting_new_password">Mật khẩu mới chưa giống nhau</string>
+    <string name="account_setting_password_or_newpass_not_valid">Mật khẩu hoặc Xác nhận Mật khẩu đang để trắng hoặc không hợp lệ</string>
+    <string name="account_setting_change_email_success">Thay đổi email thành công</string>
+    <string name="account_setting_change_password_success">Thay đổi mật khẩu thành công</string>
+    <string name="account_setting_change_email_failure">Đã có lỗi xảy ra, vui lòng thử lại!</string>
+    <string name="account_setting_change_email_exist">Email mới đã tồn tại, vui lòng chọn một email khác!</string>
+    <string name="account_setting_old_pass_wrong">Mật khẩu cũ bị sai!</string>
+    <string name="account_setting_email">Bạn vui lòng nhập địa chỉ hòm thư mới để xác nhận thay đổi</string>
+    <string name="account_setting_pass">Bạn vui lòng nhập mật khẩu mới</string>
+    <string name="account_setting_confirm_pass">Bạn vui lòng xác nhận mật khẩu</string>
+    <string name="account_setting_confirm_success">Thiết lập tài khoản thành công</string>
+
+    <!--notification setting activity-->
+    <string name="notification_setting_toolbar_title">Thiết lập thông báo</string>
+    <string name="notification_setting_vibrate">Rung</string>
+    <string name="notification_setting_bell">Chuông</string>
+    <string name="notification_setting_notification_from_app">Thông báo từ ứng dụng</string>
+    <string name="notification_setting_notification_fav">Thông báo yêu thích</string>
+    <string name="notification_setting_notification_msg">Thông báo tin nhắn</string>
+    <string name="notification_setting_title_dialog">Thông báo tin nhắn</string>
+    <string name="change_email_or_change_password">Bạn muốn thay đổi email hay password! Hãy điền thông tin vào trường tương ứng</string>
+    <string name="notification_setting_title">Nhận tin nhắn</string>
+    <string name="notification_setting_all">Tất cả</string>
+    <string name="notification_setting_no_one">Không ai</string>
+    <string name="notification_setting_only_favorite">Chỉ&#8230;thích</string>
+    <string name="notification_setting_only_favorite_2">Chỉ nhận những người yêu thích</string>
+
+    <!--MediaDetailActivity-->
+    <string name="report_image_failure">Có lỗi xảy ra vui lòng thử lại</string>
+    <string name="title_dialog_report_success">Báo cáo thành công</string>
+    <string name="content_dialog_report_success">Cảm ơn bạn đã báo cáo, chúng tôi sẽ sớm xem xét báo cáo của bạn.</string>
+    <string name="save_image_success">Lưu thành công</string>
+    <string name="save_image_failure">Chưa được lưu, xin vui lòng thử lại</string>
+    <string name="delete_image_success">Xóa thành công</string>
+    <string name="delete_image_failure">Ảnh chưa được xóa</string>
+    <string name="start_download">Bắt đầu tải về&#8230;</string>
+    <string name="end_download">Tải về thành công</string>
+    <string name="download_error">Tải bị lỗi</string>
+    <string name="report_media">Nội dung báo cáo</string>
+    <string name="confirm_delete_title">Xác nhận xóa</string>
+    <string name="confirm_download">Xác nhận lưu</string>
+    <string name="confirm_delete_image">Bạn có chắc chắn muốn xóa ảnh này không?</string>
+    <string name="confirm_delete_video">Bạn có chắc chắn muốn xóa video này không?</string>
+    <string name="confirm_delete_audio">Bạn có chắc chắn muốn xóa audio này không?</string>
+    <string name="confirm_download_content">Bạn có chắc chắn muốn lưu không?</string>
+
+    <!--Upload setting -->
+    <string name="upload_setting_maximum_audio_size">Dung lượng audio quá lớn so với %dMB cho phép</string>
+    <string name="upload_setting_maximum_image_size">Dung lượng video quá lớn so với %dMB cho phép</string>
+    <string name="upload_setting_maximum_video_size">Dung lượng hình ảnh quá lớn so với %dMB cho phép</string>
+    <string name="upload_setting_maximum_total_size">Vượt quá dung lượng tối đa %dMB cho phép</string>
+    <string name="upload_setting_maximum_image_total_file">Số lượng hình ảnh tối đa cho phép %d</string>
+    <string name="upload_setting_maximum_video_total_file">Số lượng video tối đa cho phép %d</string>
+    <string name="upload_setting_maximum_audio_total_file">Số lượng audio tối đa cho phép %d</string>
+    <string name="upload_setting_maximum_total_file">Tổng số lượng tệp tối đa cho phép %d</string>
+    <string name="are_not_login">Bạn chưa đăng nhập</string>
+    <string name="live_stream">TRỰC TIẾP</string>
+    <string name="noti_live_stream">Video live stream đang được đăng lên</string>
+    <string name="noti_livestream_from_favourist">%1$s đang phát livestream</string>
+    <string name="noti_tag_livestream_from_favourist">%1$s mời bạn xem livestream</string>
+
+    <!--Gift -->
+    <string name="gift_title">Quà tặng</string>
+    <string name="gift_header">Hãy tặng quà cho người đã giúp đỡ hoặc người yêu thích</string>
+    <string name="dialog_confirm_send_gift">Xác nhận quà tặng</string>
+    <string name="dialog_confirm_send_gift_content">Có gửi món quà %1$s tới %2$s hay không?</string>
+    <string name="common_send_gift_ok">Đồng ý</string>
+    <string name="chat_massage_send_gift">Bạn đã gửi món quà đến %1$s</string>
+    <string name="chat_massage_receiver_gift">%1$s đã gửi món quà đến bạn</string>
+    <string name="choose_each_area">Tìm kiếm tỉnh - thành phố</string>
+    <string name="choose_all">Toàn bộ các tỉnh - thành phố</string>
+    <string name="areas_select_all">Chọn tất cả cùng lúc</string>
+    <string name="areas_delete_all">Xóa chọn</string>
+
+    <!--Đánh giá-->
+    <string name="evaluate">Đánh giá</string>
+    <string name="evaluate_gentle"># Gently</string>
+    <string name="evaluate_funny"># Funny</string>
+    <string name="evaluate_sweet"># Sweet</string>
+    <string name="evaluate_powerful"># Powerful</string>
+    <string name="evaluate_friendly"># Friendly</string>
+    <string name="evaluate_warm"># Warm</string>
+    <string name="evaluate_tough"># Tough</string>
+    <string name="evaluate_sexy"># Sexy</string>
+    <string name="evaluate_cool"># Cool</string>
+    <string name="evaluate_soft"># Soft</string>
+
+    <!-- Live Stream -->
+    <string name="live_stream_button_create_live_stream">Bắt đầu phát trực tiếp</string>
+    <string name="live_stream_text_live_stream">Trực tiếp</string>
+    <string name="live_stream_button_cancel">Kết thúc</string>
+    <string name="live_streamed_total_time">Trực tiếp %s</string>
+    <string name="live_stream_total_user_joined_number">999</string>
+    <string name="live_stream_what_your_mind">Bạn muốn chia sẻ điều gì?</string>
+    <string name="create_description">Thêm mô tả&#8230;</string>
+    <string name="not_tag_friends_stream"><![CDATA[<b><font color=#ffffff>%1$s</font></b>]]></string>
+    <string name="tag_friends_live_stream"><![CDATA[<b><font color=#ffffff>%1$s</font></b> <font color=#aeaeae>đang cùng với</font> <b><font color=#ffffff>%2$s</font></b> <font color=#aeaeae>và</font> <b><font color=#ffffff>%3$s người khác</font></b>]]></string>
+    <string name="tag_friend_live_stream"><![CDATA[<b><font color=#ffffff>%1$s</font></b> <font color=#aeaeae>đang cùng với</font> <b><font color=#ffffff>%2$s</font></b>]]></string>
+    <string name="live_stream_status_start">Bắt đầu Live Stream</string>
+    <string name="live_stream_status_close"><![CDATA[<b><font color=#ad1f26>Kết nối thất bại</font></b>]]></string>
+    <string name="share_live_stream_success">Chia sẻ video live stream thành công</string>
+    <string name="share_live_stream_fail">Chia sẻ video live stream thất bại</string>
+
+    <string name="pref_speakerphone_key">speakerphone_preference</string>
+    <string name="pref_speakerphone_title">Speakerphone.</string>
+    <string name="pref_speakerphone_dlg">Speakerphone.</string>
+    <string name="pref_speakerphone_default">auto</string>
+
+    <!--My Album-->
+    <string name="create_new_album">Tạo album mới</string>
+    <string name="activity_my_album_toolbar_title">Album của tôi</string>
+    <string name="get_albums_failure">Đã có lỗi xảy ra</string>
+    <string name="update_my_album_success">Update album thành công</string>
+    <string name="update_my_album_failure">Update album không thành công, vui lòng thử lại sau!</string>
+
+    <!--Create Album-->
+    <string name="activity_create_album_toolbar_title">Tạo album mới</string>
+    <string name="edit_enter_album_name">Nhập tên cho album</string>
+    <string name="edit_enter_album_description">Nhập mô tả cho album</string>
+    <string name="enter_title">Bạn vui lòng nhập tên album</string>
+    <string name="choose_image">Bạn vui lòng chọn ảnh để đăng lên album</string>
+    <string name="create_album_success">Album của bạn đã được tạo</string>
+    <string name="create_album_failure">Tạo album bị lỗi</string>
+    <string name="title_much_length">Tên album không được dài quá 30 kí tự</string>
+    <string name="desc_much_length">Mô tả album không được dài quá 512 kí tự</string>
+
+
+    <!--My Album Detail-->
+    <string name="activity_my_album_detail_toolbar_title">Album của tôi</string>
+    <string name="cant_add_more_to_album">Không thể thêm ảnh vào album này, vui lòng thử lại sau</string>
+    <string name="title_menu_edit">Sửa album</string>
+    <string name="title_menu_delete">@string/delete_image</string>
+    <string name="load_image_album_failure">Có lỗi xảy ra khi tải ảnh, vui lòng thử lại sau</string>
+    <string name="update_album_success">Cập nhật album thành công</string>
+    <string name="update_album_failure">Album chưa được cập nhật</string>
+    <string name="edit_description_activity">Sửa mô tả của album</string>
+    <string name="view_description_activity">Mô tả của album</string>
+    <string name="confirm_delete_album">Bạn có chắc chắn muốn xóa album này không?</string>
+    <string name="title_delete_album">@string/delete_album</string>
+    <string name="delete_album_success">Xóa thành công</string>
+
+    <!--Video-Audio-->
+    <string name="activity_video_audio_title_toolbar">Video/Audio</string>
+
+    <!--Timeline User Tab-->
+    <string name="activity_timeline_user_tab_title_toolbar">Dòng thời gian</string>
+
+    <string name="uploading_image">Đang tải ảnh lên server</string>
+    <string name="upload_success">Cập nhật ảnh đại diện thành công</string>
+    <string name="upload_fail">Cập nhật ảnh đại diện không thành công</string>
+
+    <!--Chat-->
+    <string name="would_you_like_to_send_video">Bạn có muốn gửi video không?</string>
+    <string name="would_you_like_to_send_image">Bạn có muốn gửi ảnh không?</string>
+    <string name="save_file">Bạn đã lưu file thành công</string>
+    <string name="delete_file">Bạn đã xóa file thành công</string>
+    <string name="video_time_90">Độ dài video có thể lên đến 90 giây.</string>
+    <string name="video_time_90_false"> Video của bạn có độ dài lớn hơn 90 giây.</string>
+
+    <string name="do_you_want_remove_comment">Bạn có muốn xóa bình luận không?</string>
+    <string name="start_live_stream">Live Stream</string>
+    <string name="auto_login">Hết phiên đăng nhập</string>
+    <string name="auto_login_content">Hết phiên đăng nhập, bạn có muốn tự động đăng nhập lại không?</string>
+    <string name="share_media_error">Không thể chia sẻ bài viết.</string>
+    <string name="message_error_title">Tin nhắn chưa được gửi</string>
+    <string name="delete_message_error">Xóa tin nhắn</string>
+
+    <string name="email_subject">Your subject</string>
+    <string name="email_content">Email message goes here</string>
+    <string name="share_media_success">Chia sẻ thành công</string>
+    <string name="live_stream_close">Video trực tiếp đã kết thúc</string>
+
+    <string name="do_you_want_keep_buzz">Bạn có muốn giữ tin không?</string>
+    <string name="do_you_want_remove_buzz">Bạn có muốn xóa bài đăng này không?</string>
+    <string name="do_you_want_remove_video">Bạn có muốn xóa video không?</string>
+
+    <string name="buzz_item_delete_success">Bài viết đã được xóa thành công</string>
+    <string name="list_tag_friends">Danh sách được gắn thẻ</string>
+
+    <string name="request_permission_again">Bạn có muốn cấp quyền sử dụng không?</string>
+    <string name="request_permission_open_setting">Bạn phải cấp quyền ghi âm, đọc ghi tập tin, bạn có muốn mở cài đặt không?</string>
+    <string name="request_permission_open_setting_granted_all">Bạn đã cấp quyền thành công</string>
+    <string name="request_permission_open_setting_denied">Bạn chưa cấp đầy đủ các quyền</string>
+
+    <string name="audio_type">file âm thanh</string>
+    <string name="video_type">@string/common_video</string>
+    <string name="image_type">@string/common_image</string>
+
+    <string name="validate_comment_limit">Bình luận không được vượt quá %1$s ký tự</string>
+    <string name="live_stream_pause">Video trực truyến đã tạm dừng!</string>
+
+    <string name="file_not_found">Không tìm thấy tệp tin này</string>
+    <string name="banned_word_error">%1$s là ký tự không được nhập</string>
+
+    <string name="update_profile">Bạn chưa hoàn thành xong đăng ký, bạn có muốn tiếp tục hoàn thành việc đăng ký không?</string>
+    <string name="_0">0</string>
+
+</resources>
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* Copyright (C) 2009-2012 Mike Novak <michael.novakjr@gmail.com>
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dip"
+    android:gravity="center"
+    android:orientation="horizontal"
+    tools:context=".NumberPickerDialog" >
+
+        <com.michaelnovakjr.numberpicker.NumberPicker
+            android:id="@+id/num_picker_one"
+            android:layout_width="@dimen/dilog_picker_width"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_unit_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:typeface="sans"
+            android:text="@string/apostrophes" />
+
+        <com.michaelnovakjr.numberpicker.NumberPicker
+            android:id="@+id/num_picker_two"
+            android:layout_width="@dimen/dilog_picker_width"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_unit_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:typeface="sans"
+            android:text="@string/apostrophes_double"
+            android:visibility="gone" />
+
+        <com.michaelnovakjr.numberpicker.NumberPicker
+            android:id="@+id/num_picker_three"
+            android:layout_width="@dimen/dilog_picker_width"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_unit_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:typeface="sans"
+            android:text="@string/apostrophes_double"
+            android:visibility="gone" />
+
+</LinearLayout>

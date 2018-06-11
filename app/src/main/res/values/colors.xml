@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--transparent-->
+    <!--100% — FF-->
+    <!--95% — F2-->
+    <!--90% — E6-->
+    <!--85% — D9-->
+    <!--80% — CC-->
+    <!--75% — BF-->
+    <!--70% — B3-->
+    <!--65% — A6-->
+    <!--60% — 99-->
+    <!--55% — 8C-->
+    <!--50% — 80-->
+    <!--45% — 73-->
+    <!--40% — 66-->
+    <!--35% — 59-->
+    <!--30% — 4D-->
+    <!--25% — 40-->
+    <!--20% — 33-->
+    <!--15% — 26-->
+    <!--10% — 1A-->
+    <!--5% — 0D-->
+    <!--0% — 00-->
+    <color name="colorDeepPurple">@color/default_app</color>
+    <color name="colorPrimary">@color/default_app</color>
+    <color name="colorPrimaryDark">#ad1f26</color>
+    <color name="colorAccent">#01a093</color>
+    <color name="colorAccent_button">#1aa99d</color>
+    <color name="faded_app_color" tools:keep="@color/faded_app_color">@color/default_app</color>
+    <color name="white">#ffffff</color>
+    <color name="white_50">#80EBF2F2</color>
+    <color name="gray_30" tools:keep="@color/gray_30">#4DEBF2F2</color>
+    <color name="border_white_40">#66ffffff</color>
+    <color name="background_app">#F7F1F1</color>
+    <color name="item_list_color">@color/white</color>
+    <color name="color_indicator">@color/white</color>
+    <color name="default_app">#e02730</color>
+    <color name="default_app_50">#8Ce02730</color>
+    <color name="drawer_left_color">@color/colorPrimary</color>
+    <color name="drawer_left_header_color">@color/default_app</color>
+    <color name="approve">#59e02730</color>
+    <color name="navigation_bar_color">#000000</color>
+    <color name="tab_layout_bot">#212121</color>
+    <color name="alpha_back">#66000000</color>
+    <color name="alpha_gray">#5c848484</color>
+    <color name="alpha_gray_15">#26848484</color>
+    <color name="alpha_white_15">#26EBF2F2</color>
+    <color name="board">#fdfdfe</color>
+    <color name="link_color">#365899</color>
+    <color name="colorCursor">@color/dividers_text_color</color>
+    <!--activity post status-->
+    <color name="activity_post_color_action">@color/white</color>
+    <color name="bg_rel_suggest_friend">#f2f2f2</color>
+    <color name="blue_transparent">#500F</color>
+
+    <color name="color_header_dialog">#d83f6e</color>
+    <color name="textColor">#dd000000</color>
+    <color name="textColorSecondary">#89000000</color>
+    <color name="secondary_text_hint">#80ffffff</color>
+
+    <color name="primary_text_color">#D9000000</color>
+    <color name="secondary_text_color">#8C000000</color>
+    <color name="hint_text_color">#59000000</color>
+    <color name="disabled_text_color">#59000000</color>
+    <color name="dividers_text_color">#26000000</color>
+
+    <color name="colorWhiteTransparent">#8dffffff</color>
+    <color name="colorGray">#aeaeae</color>
+    <color name="colorGrayDark">#979292</color>
+    <color name="colorGrayDark_50">#80979292</color>
+    <color name="colorGrayLight">#EBF2F2</color>
+    <color name="green">#5eed37</color>
+    <color name="orange">#ff9216</color>
+    <color name="black">#000000</color>
+    <color name="gray">#A5A2A0</color>
+    <color name="gray_80">#80A5A2A0</color>
+    <color name="default_image_loading">#80aeaeae</color>
+    <color name="color_red">#e02730</color>
+    <color name="color_red_80">#CCe02730</color>
+
+    <color name="line_color">#26000000</color>
+    <color name="line_color1">#14000000</color>
+    <color name="scrim">#42000000</color>
+    <color name="scrim_white">#40ffffff</color>
+    <color name="scrim_white_50">#80ffffff</color>
+    <color name="scrim_color_default_app">#4211b7b7</color>
+    <color name="border_color_avatar">#99b7b7b7</color>
+
+    <color name="color_edittext_background">#80000000</color>
+    <color name="default_text_color">#C0E0DF</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="privacy_bg_selected_color">@color/white</color>
+    <color name="privacy_bg_option_color">@color/white</color>
+    <color name="privacy_divider_color">#59000000</color>
+
+    <!--color_đánh giá-->
+    <color name="color_gently">#1e1c55</color>
+    <color name="color_funny">#cf2e91</color>
+    <color name="color_sweet">#054942</color>
+    <color name="color_pơwerful">#f6ea03</color>
+    <color name="color_friendly">#2bbeef</color>
+    <color name="color_warm">@color/orange</color>
+    <color name="color_tough">#231f20</color>
+    <color name="color_sexy">@color/color_red</color>
+    <color name="color_cool">@color/com_facebook_blue</color>
+    <color name="color_soft">@color/green</color>
+
+    <!--chat-->
+    <color name="emoji_background">#eceff1</color>
+    <color name="emoji_icons">#61000000</color>
+    <color name="emoji_divider">#1f000000</color>
+    <color name="emoji_txt">#000000</color>
+    <color name="emoji_bg">#FFFFFF</color>
+    <color name="emoji_line">#0edf77</color>
+
+    <!-- Live stream -->
+    <color name="background_transparent_20">#33000000</color>
+    <color name="background_transparent_55">#55000000</color>
+    <color name="background_transparent_60">#99000000</color>
+    <color name="background_transparent_70">#B3000000</color>
+    <color name="privacy_mode_live_stream_white_color">#EFEAEA</color>
+    <color name="config_info_live_stream_white_color">#404040</color>
+</resources>

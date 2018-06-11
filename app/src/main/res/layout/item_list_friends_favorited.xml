@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/spacing_1_8dp">
+
+    <ImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="@dimen/message_item_avatar_size"
+        android:layout_height="@dimen/message_item_avatar_size"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_0_4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_avatar_circle_male_border"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_0_4dp"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:text=""
+        android:textColor="@color/secondary_text_color"
+        android:textColorHint="@color/secondary_text_color"
+        android:textSize="12sp"
+        app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+    <TextView
+        android:id="@+id/txt_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:drawablePadding="@dimen/spacing_0_4dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="@dimen/sp_12"
+        app:layout_constraintRight_toLeftOf="@+id/imv_menu_more"
+        app:layout_constraintRight_toRightOf="@+id/txt_age"
+        app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+    <TextView
+        android:id="@+id/txt_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/dp_4"
+        android:drawablePadding="@dimen/spacing_0_4dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+        app:layout_constraintTop_toBottomOf="@+id/txt_age" />
+
+
+    <ImageView
+        android:id="@+id/imv_menu_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_2_16dp"
+        android:scaleType="fitCenter"
+        android:tint="@color/secondary_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more_vert" />
+
+</android.support.constraint.ConstraintLayout>
+

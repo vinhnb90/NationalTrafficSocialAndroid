@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_new_feed"
+        android:icon="@drawable/ic_menu_timeline"
+        android:title="@string/menu_top" />
+
+    <item
+        android:id="@+id/action_explore"
+        android:icon="@drawable/ic_menu_people"
+        android:title="@string/menu_friends" />
+
+    <item
+        android:id="@+id/action_people"
+        android:icon="@drawable/ic_menu_live_stream"
+        android:title="@string/menu_live_stream" />
+
+    <item
+        android:id="@+id/action_event"
+        android:icon="@drawable/ic_menu_message"
+        android:title="@string/menu_message" />
+
+    <item
+        android:id="@+id/action_store"
+        android:icon="@drawable/ic_menu_notify"
+        android:title="@string/menu_notify" />
+
+</menu>

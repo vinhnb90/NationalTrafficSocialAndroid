@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_chip_drawable"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/item_autocomplete_tag_friend_icon"
+        android:layout_width="@dimen/chip_icon_size"
+        android:layout_height="@dimen/chip_icon_size"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/height_divider_1dp"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_avatar_circle_female" />
+
+    <com.vn.ntsc.widget.views.tokenautocomplete.TokenTextView
+        android:id="@+id/item_autocomplete_tag_friend_token_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_0_2dp"
+        android:layout_marginRight="@dimen/spacing_0_2dp"
+        android:layout_toEndOf="@id/item_autocomplete_tag_friend_icon"
+        android:textColor="@color/white" />
+
+</RelativeLayout>

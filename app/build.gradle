@@ -1,0 +1,420 @@
+apply plugin: 'com.android.application'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["compileSdkVersion"]
+    defaultConfig {
+        multiDexEnabled true
+        applicationId globalConfiguration["applicationId"]
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["compileSdkVersion"]
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("../travisutils/release.jks")
+            storePassword "gvn123456"
+            keyAlias "traffic"
+            keyPassword "gvn123456"
+        }
+
+        dev {
+            storeFile file("../travisutils/dev.jks")
+            storePassword "gvn12345"
+            keyAlias "traffic"
+            keyPassword "gvn12345"
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+
+        pub {
+            versionCode globalConfiguration["versionCode"]
+            versionName globalConfiguration["versionName"]
+
+            signingConfig signingConfigs.release
+        }
+
+        preview {
+            versionCode globalConfiguration["versionCode_peview"]
+            versionName globalConfiguration["versionName_peview"]
+
+            signingConfig signingConfigs.dev
+        }
+
+        dev {
+            versionCode globalConfiguration["versionCode_peview"]
+            versionName globalConfiguration["versionName_peview"]
+
+            signingConfig signingConfigs.dev
+        }
+    }
+
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            useProguard true
+            //Be aware that code shrinking slows down the build time, so you should avoid using it on your debug build if possible. However, it's important that you do enable code shrinking on your final APK used for testing, because it might introduce bugs if you do not sufficiently
+            shrinkResources true
+            zipAlignEnabled true
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "boolean", "reportCrashlytics", "true"
+
+            //App
+            resValue "string", "app_name", globalConfiguration["appName"]
+        }
+
+        staging {
+            debuggable true
+            applicationIdSuffix ".staging"
+            buildConfigField "boolean", "reportCrashlytics", "true"
+
+            //App
+            resValue "string", "app_name", globalConfiguration["appNamePreview"]
+
+            matchingFallbacks = ['release', 'debug']
+        }
+
+        debug {
+            debuggable true
+            applicationIdSuffix ".develop"
+            buildConfigField "boolean", "reportCrashlytics", "true"
+            //App
+            resValue "string", "app_name", globalConfiguration["appNameDebug"]
+        }
+
+        applicationVariants.all { variant ->
+            defaultConfiguringTimeOut(variant)
+
+            def hasVersionPreview = false  /* If the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview */
+            def hasReplaceApkNameUseFormatDatetime = 0 /* If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty */
+
+            if (variant.productFlavors[0].name.equals("dev")) {
+                hasVersionPreview = true
+                hasReplaceApkNameUseFormatDatetime = 1
+            } else if (variant.productFlavors[0].name.equals("preview")) {
+                hasVersionPreview = true
+                hasReplaceApkNameUseFormatDatetime = 2
+            }
+
+            if (variant.buildType.name.equals("release")) {
+                productDomain(variant)
+                renameApkFile(variant,
+                        hasVersionPreview /* If the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview */,
+                        hasReplaceApkNameUseFormatDatetime /* If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty */)
+            } else if (variant.buildType.name.equals("staging")) {
+                stagingIP(variant)
+                renameApkFile(variant,
+                        hasVersionPreview /* If the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview */,
+                        hasReplaceApkNameUseFormatDatetime /* If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty */)
+            } else {
+                localIP(variant)
+                renameApkFile(variant,
+                        hasVersionPreview /* If the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview */,
+                        hasReplaceApkNameUseFormatDatetime /* If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty */)
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    aaptOptions {
+        additionalParameters "--no-version-vectors"
+    }
+
+    //Repackaging
+    packagingOptions {
+        // removed because of conflict in creating package
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+        // unused files, removed to minimize APK file
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/DEPENDENCIES.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/README.txt'
+        exclude '.readme'
+        exclude 'org/apache/http/version.properties'
+        exclude 'templates/release-notes.vm'
+    }
+
+    lintOptions {
+        // set to true to have all release builds run lint on issues with severity=fatal
+        // and abort the build (controlled by abortOnError above) if fatal issues are found
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+        // if true, only report errors
+        ignoreWarnings true
+        // if true, treat all warnings as errors
+        warningsAsErrors false
+        //disable logging tag can be at most 23 characters
+        disable 'LongLogTag', 'MissingTranslation', 'ExtraTranslation', 'RestrictedApi'
+    }
+
+    dexOptions {
+        //javaMaxHeapSize "1536M" Sets the -JXmx* value when calling dx. Format should follow the 1536M pattern.
+        javaMaxHeapSize "4g"
+        jumboMode = true //Enable jumbo mode in dx (--force-jumbo).
+        preDexLibraries = false
+        //Whether to pre-dex libraries. This can improve incremental builds, but clean builds may be slower.
+        //incremental true Whether to enable the incremental mode for dx. This has many limitations and may not work. Use carefully.
+    }
+}
+
+dependencies {
+    def d = rootProject.ext.libraryDependencies
+    def td = rootProject.ext.libraryTestDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name: 'libwebrtc', ext: 'aar')
+
+    implementation project(':library_ui')
+    api project(':library_mediapicker')
+    api project(':library_socket')
+
+    //leak canary
+    releaseImplementation d.leakcanaryNoOp
+    stagingImplementation d.leakcanaryNoOp
+    debugImplementation d.leakcanary
+
+    //noinspection GradleCompatible
+    implementation d.appcompatV4
+    implementation d.appcompatV7
+    implementation d.recyclerview
+    implementation d.cardview
+    implementation d.design
+    implementation d.constraint
+    implementation d.vector
+
+    // butter knife
+    implementation d.butterknife
+    annotationProcessor d.butterknifeCompiler
+
+    // dagger
+    implementation d.dagger
+    annotationProcessor d.daggerCompiler
+
+    //Network
+    implementation d.retrofit2
+    implementation d.converterGson
+
+    //OkHTTP
+    implementation d.okhttp3
+    implementation d.loggingInterceptor
+
+    //Rx
+    implementation d.adapterRxjava2
+    implementation d.rxjava2
+    implementation d.rxandroid2
+
+    //Google
+    implementation d.firebaseMessaging
+    implementation d.firebaseCore
+    implementation d.firebaseCrash
+    implementation d.exoplayer
+    implementation d.servicesVision
+
+    //Images
+    implementation d.glide
+    implementation d.glideOkhttp3Integration
+    annotationProcessor d.glideCompiler
+
+    implementation d.gpuimage
+
+    // facebook SDK only login (reduce apk size)
+    implementation d.facebook
+
+    // Shortcut Badge Count
+    // https://github.com/leolin310148/ShortcutBadger
+    implementation d.shortcutBadger
+
+    //Multi dex
+    implementation d.multidex
+
+    // ui test
+    testImplementation td.junit
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+/**
+ *
+ * @param hasReplaceApkNameUseFormatDatetime If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty
+ * @return String
+ */
+static def getTime(hasReplaceApkNameUseFormatDatetime) {
+    if (hasReplaceApkNameUseFormatDatetime == 0) {
+        return new Date().format("ddMMMMyyyy-HH'h'mm'm'ss's'", TimeZone.getTimeZone("Asia/Ho_Chi_Minh"))
+    } else if (hasReplaceApkNameUseFormatDatetime == 1) {
+        return new Date().format("ddMMMMyyyy", TimeZone.getTimeZone("Asia/Ho_Chi_Minh"))
+    } else {
+        return ""
+    }
+}
+
+/**
+ * @param isPreview if the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview
+ * @return String
+ */
+def getProjectDetail(isPreview) {
+    if (isPreview) {
+        return "Ver_${rootProject.ext.versionName_peview}_Build${rootProject.ext.versionCode_peview}"
+    } else {
+        return "Ver_${rootProject.ext.versionName}_Build${rootProject.ext.versionCode}"
+    }
+}
+
+/**
+ *
+ * @param variant
+ * @param isPreview If the value false replace apk name to use versionCode then not  versionCode_peview
+ * @param hasReplaceApkNameUseFormatDatetime If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty
+ * @return
+ */
+def renameApkFile(variant, isPreview, hasReplaceApkNameUseFormatDatetime) {
+    variant.outputs.all {
+        def project = "nationaltraffic"
+        def buildType = variant.variantData.variantConfiguration.buildType.name
+        def time = getTime(hasReplaceApkNameUseFormatDatetime)
+
+        if (time.equals("")) {
+            outputFileName = "${project}_${getProjectDetail(isPreview)}_${buildType}.apk"
+        } else {
+            outputFileName = "${project}_${getProjectDetail(isPreview)}_${time}_${buildType}.apk"
+        }
+    }
+}
+
+def productDomain(variant) {
+    def serverConfiguration = rootProject.ext.productDomain
+    def serverStreamConfiguration = rootProject.ext.productStream
+    //Server config
+    variant.buildConfigField "String", "SERVER_URL", serverConfiguration.server
+    //Media server
+    variant.buildConfigField "String", "MEDIA_SERVER", serverConfiguration.serverMedia
+    variant.buildConfigField "String", "SERVER_MEDIA_URL", serverConfiguration.serverMediaUrl
+    //Chat server
+    variant.buildConfigField "String", "CHAT_SERVER_IP", serverConfiguration.serverChat
+    variant.buildConfigField "int", "CHAT_SERVER_PORT", serverConfiguration.postChat
+    variant.buildConfigField "String", "STICKER_URL", serverConfiguration.stickerUrl
+    //TODO Live stream server info config.
+    variant.buildConfigField "String", "SERVER_STREAM_URL", serverStreamConfiguration.serverStream
+    // Media Server Live Stream
+    variant.buildConfigField "String", "MEDIA_WS_URL", serverStreamConfiguration.mediaWsUrl
+    // STUN Server Live Stream
+    variant.buildConfigField "String", "STUN_URL", serverStreamConfiguration.serverStun
+    // TURN Server Live Stream
+    variant.buildConfigField "String", "TURN_URL", serverStreamConfiguration.serverTurn
+    //TURN username
+    variant.buildConfigField "String", "USERNAME", serverStreamConfiguration.userName
+    //TURN password
+    variant.buildConfigField "String", "CREDENTIAL", serverStreamConfiguration.credential
+
+}
+
+def stagingIP(variant) {
+    def serverConfiguration = rootProject.ext.stagingDomain
+    def serverStreamConfiguration = rootProject.ext.stagingStream
+    //Server config
+    variant.buildConfigField "String", "SERVER_URL", serverConfiguration.server
+    //Media server
+    variant.buildConfigField "String", "MEDIA_SERVER", serverConfiguration.serverMedia
+    variant.buildConfigField "String", "SERVER_MEDIA_URL", serverConfiguration.serverMediaUrl
+    //Chat server
+    variant.buildConfigField "String", "CHAT_SERVER_IP", serverConfiguration.serverChat
+    variant.buildConfigField "int", "CHAT_SERVER_PORT", serverConfiguration.postChat
+    variant.buildConfigField "String", "STICKER_URL", serverConfiguration.stickerUrl
+    //TODO Live stream server info config.
+    variant.buildConfigField "String", "SERVER_STREAM_URL", serverStreamConfiguration.serverStream
+    // Media Server Live Stream
+    variant.buildConfigField "String", "MEDIA_WS_URL", serverStreamConfiguration.mediaWsUrl
+    // STUN Server Live Stream
+    variant.buildConfigField "String", "STUN_URL", serverStreamConfiguration.serverStun
+    // TURN Server Live Stream
+    variant.buildConfigField "String", "TURN_URL", serverStreamConfiguration.serverTurn
+    //TURN username
+    variant.buildConfigField "String", "USERNAME", serverStreamConfiguration.userName
+    //TURN password
+    variant.buildConfigField "String", "CREDENTIAL", serverStreamConfiguration.credential
+}
+
+def localIP(variant) {
+    def serverConfiguration = rootProject.ext.localDomain
+    def serverStreamConfiguration = rootProject.ext.localStream
+    //Server config
+    variant.buildConfigField "String", "SERVER_URL", serverConfiguration.server
+    //Media server
+    variant.buildConfigField "String", "MEDIA_SERVER", serverConfiguration.serverMedia
+    variant.buildConfigField "String", "SERVER_MEDIA_URL", serverConfiguration.serverMediaUrl
+    //Chat server
+    variant.buildConfigField "String", "CHAT_SERVER_IP", serverConfiguration.serverChat
+    variant.buildConfigField "int", "CHAT_SERVER_PORT", serverConfiguration.postChat
+    variant.buildConfigField "String", "STICKER_URL", serverConfiguration.stickerUrl
+    //TODO Live stream server info config.
+    variant.buildConfigField "String", "SERVER_STREAM_URL", serverStreamConfiguration.serverStream
+    // Media Server Live Stream
+    variant.buildConfigField "String", "MEDIA_WS_URL", serverStreamConfiguration.mediaWsUrl
+    // STUN Server Live Stream
+    variant.buildConfigField "String", "STUN_URL", serverStreamConfiguration.serverStun
+    // TURN Server Live Stream
+    variant.buildConfigField "String", "TURN_URL", serverStreamConfiguration.serverTurn
+    //TURN username
+    variant.buildConfigField "String", "USERNAME", serverStreamConfiguration.userName
+    //TURN password
+    variant.buildConfigField "String", "CREDENTIAL", serverStreamConfiguration.credential
+}
+
+static def defaultConfiguringTimeOut(variant) {
+    //Connect time out to server in SECONDS.
+    variant.buildConfigField "int", "TIMEOUT_CONNECT", "10"
+    //Read stream on server timeout in SECONDS.
+    variant.buildConfigField "int", "TIMEOUT_READ", "20"
+    //Write time out to server in SECONDS.
+    variant.buildConfigField "int", "TIMEOUT_WRITE", "20"
+
+    //TODO Connect time out to server in SECONDS.
+    variant.buildConfigField "int", "POST_STT_CONNECT_TIMEOUT", "60"
+    //TODO Read stream on server timeout in SECONDS.
+    variant.buildConfigField "int", "POST_STT_READ_TIMEOUT", "180"
+    //TODO Write time out to server in SECONDS.
+    variant.buildConfigField "int", "POST_STT_WRITE_TIMEOUT", "1800"
+}
+
+// ADD THIS AT THE BOTTOM
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/item_multi_buzz_5">
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/spacing_0_2dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@color/default_image_loading"
+        app:layout_constraintBottom_toTopOf="@+id/item_timeline_image_view_3"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/item_timeline_image_view_2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_image_view_2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@color/default_image_loading"
+        app:layout_constraintBottom_toTopOf="@+id/item_timeline_image_view_4"
+        app:layout_constraintLeft_toRightOf="@+id/item_timeline_image_view"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_image_view_3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_0_2dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@color/default_image_loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view"
+        app:layout_constraintTop_toBottomOf="@+id/item_timeline_image_view" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_image_view_4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_0_2dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@color/default_image_loading"
+        app:layout_constraintBottom_toTopOf="@+id/item_timeline_image_view_5"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view_2"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view_2"
+        app:layout_constraintTop_toBottomOf="@+id/item_timeline_image_view_2" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_image_view_5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/spacing_0_2dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@color/default_image_loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view_4"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view_4"
+        app:layout_constraintTop_toBottomOf="@+id/item_timeline_image_view_4" />
+
+    <!--Video play -->
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video"
+        android:layout_width="@dimen/timeline_play_video_size_3"
+        android:layout_height="@dimen/timeline_play_video_size_3"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_video_play_btn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/item_timeline_image_view"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view"
+        app:layout_constraintTop_toTopOf="@+id/item_timeline_image_view" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video_2"
+        android:layout_width="@dimen/timeline_play_video_size_3"
+        android:layout_height="@dimen/timeline_play_video_size_3"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_video_play_btn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/item_timeline_image_view_2"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view_2"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view_2"
+        app:layout_constraintTop_toTopOf="@+id/item_timeline_image_view_2" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video_3"
+        android:layout_width="@dimen/timeline_play_video_size_3"
+        android:layout_height="@dimen/timeline_play_video_size_3"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_video_play_btn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/item_timeline_image_view_3"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view_3"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view_3"
+        app:layout_constraintTop_toTopOf="@+id/item_timeline_image_view_3" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video_4"
+        android:layout_width="@dimen/timeline_play_video_size_3"
+        android:layout_height="@dimen/timeline_play_video_size_3"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_video_play_btn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/item_timeline_image_view_4"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view_4"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view_4"
+        app:layout_constraintTop_toTopOf="@+id/item_timeline_image_view_4" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video_5"
+        android:layout_width="@dimen/timeline_play_video_size_3"
+        android:layout_height="@dimen/timeline_play_video_size_3"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_video_play_btn"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/item_timeline_image_view_5"
+        app:layout_constraintLeft_toLeftOf="@+id/item_timeline_image_view_5"
+        app:layout_constraintRight_toRightOf="@+id/item_timeline_image_view_5"
+        app:layout_constraintTop_toTopOf="@+id/item_timeline_image_view_5" />
+</merge>

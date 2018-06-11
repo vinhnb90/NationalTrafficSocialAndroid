@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_live_stream_header_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/background_transparent_55"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/layout_live_stream_header_close"
+            android:layout_width="@dimen/icon_live_stream_header"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_1_8dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <ImageView
+            android:id="@+id/layout_live_stream_header_font_back_camera"
+            android:layout_width="@dimen/icon_live_stream_header"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_1_8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_font_back_camera" />
+
+        <LinearLayout
+            android:id="@+id/layout_live_stream_header_layout_time_video"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/layout_live_stream_header_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_0_2dp"
+                android:background="@drawable/bg_red_text_radius"
+                android:text="@string/live_streamed_total_time"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_3_14sp"
+                android:textStyle="bold" />
+
+            <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                android:id="@+id/layout_live_stream_header_view_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing_0_2dp"
+                android:background="@drawable/bg_gray_text_radius"
+                android:drawablePadding="@dimen/spacing_0_2dp"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_3_14sp"
+                android:textStyle="bold"
+                app:drawableCompatLeft="@drawable/ic_eye_white_16dp" />
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</merge>

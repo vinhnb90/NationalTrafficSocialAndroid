@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:background="@drawable/bg_round_white"
+        android:gravity="center">
+
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_search"/>
+
+        <TextView
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_0_4dp"
+            android:layout_toRightOf="@+id/icon_search"
+            android:drawablePadding="@dimen/spacing_0_4dp"
+            android:gravity="center"
+            android:hint="@string/fragment_friends_favorited_search"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="@dimen/text_4_medium_16sp"/>
+
+    </RelativeLayout>
+</LinearLayout>
+

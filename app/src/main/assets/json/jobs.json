@@ -1,0 +1,162 @@
+﻿{
+    "male": [
+      {
+        "value": 1,
+        "name": "Nhân viên công ty"
+      },
+      {
+        "value": 2,
+        "name": "Người quản lý"
+      },
+      {
+        "value": 3,
+        "name": "Giám đốc kinh doanh"
+      },
+      {
+        "value": 4,
+        "name": "Bán thời gian"
+      },
+      {
+        "value": 5,
+        "name": "Học sinh"
+      },
+      {
+        "value": 6,
+        "name": "Công nghiệp dịch vụ"
+      },
+      {
+        "value": 7,
+        "name": "Kỹ sư"
+      },
+      {
+        "value": 8,
+        "name": "Xây dựng"
+      },
+      {
+        "value": 9,
+        "name": "Vận tải"
+      },
+      {
+        "value": 10,
+        "name": "Tài chính"
+      },
+      {
+        "value": 11,
+        "name": "Bất động sản"
+      },
+      {
+        "value": 12,
+        "name": "Pháp luật"
+      },
+      {
+        "value": 13,
+        "name": "IT"
+      },
+      {
+        "value": 14,
+        "name": "Y tế"
+      },
+      {
+        "value": 15,
+        "name": "Giáo dục"
+      },
+      {
+        "value": 16,
+        "name": "Phúc lợi"
+      },
+      {
+        "value": 17,
+        "name": "Trang phục"
+      },
+      {
+        "value": 18,
+        "name": "Giải trí truyền thông"
+      },
+      {
+        "value": 19,
+        "name": "Nghệ thuật"
+      },
+      {
+        "value": 20,
+        "name": "Thất nghiệp"
+      },
+      {
+        "value": 21,
+        "name": "Khác"
+      },
+      {
+        "value": 22,
+        "name": "Bí mật"
+      }
+    ],
+    "female": [
+      {
+        "value": 1,
+        "name": "Điều hành công ty"
+      },
+      {
+        "value": 2,
+        "name": "Học sinh"
+      },
+      {
+        "value": 3,
+        "name": "OL"
+      },
+      {
+        "value": 4,
+        "name": "Bán thời gian"
+      },
+      {
+        "value": 5,
+        "name": "Y tá"
+      },
+      {
+        "value": 6,
+        "name": "Trông trẻ"
+      },
+      {
+        "value": 7,
+        "name": "Nhân viên bán hàng"
+      },
+      {
+        "value": 8,
+        "name": "Người mẫu"
+      },
+      {
+        "value": 9,
+        "name": "Giáo viên"
+      },
+      {
+        "value": 10,
+        "name": "Giúp việc"
+      },
+      {
+        "value": 11,
+        "name": "Nội trợ"
+      },
+      {
+        "value": 12,
+        "name": "Thực phẩm"
+      },
+      {
+        "value": 13,
+        "name": "Trang phục"
+      },
+      {
+        "value": 14,
+        "name": "Thẩm mỹ"
+      },
+      {
+        "value": 15,
+        "name": "Nữ tiếp viên"
+      },
+      {
+        "value": 16,
+        "name": "Bí mật"
+      },
+      {
+        "value": 17,
+        "name": "Khác"
+      }
+    ]
+}

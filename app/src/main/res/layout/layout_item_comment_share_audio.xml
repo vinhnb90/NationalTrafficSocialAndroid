@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <include layout="@layout/layout_item_timeline_header" />
+
+    <include layout="@layout/layout_item_comment_description" />
+
+    <include layout="@layout/item_buzz_share_audio" />
+
+    <include layout="@layout/layout_item_timeline_detail_footer" />
+
+    <include layout="@layout/layout_item_timeline_approve_buzz" />
+
+</android.support.constraint.ConstraintLayout>

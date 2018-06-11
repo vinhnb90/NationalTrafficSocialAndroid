@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["compileSdkVersion"]
+    defaultConfig {
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["compileSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def d = rootProject.ext.libraryDependencies
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    implementation d.appcompatV4
+    implementation d.appcompatV7
+    implementation d.recyclerview
+    implementation d.cardview
+    implementation d.design
+    implementation d.percent
+    implementation d.vector
+    implementation d.constraint
+
+    // butter knife
+    implementation d.butterknife
+    annotationProcessor d.butterknifeCompiler
+}

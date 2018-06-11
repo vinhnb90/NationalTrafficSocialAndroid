@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nv_header_main_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_side_nav_bar"
+    android:gravity="bottom"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <com.vn.ntsc.widget.views.images.ScalingImageView
+        android:id="@+id/nv_header_main_banner"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/nv_header_main_scrim"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/scrim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.vn.ntsc.widget.views.images.CircleImageView
+        android:id="@+id/nv_header_main_avatar"
+        android:layout_width="@dimen/nv_avatarSize"
+        android:layout_height="@dimen/nv_avatarSize"
+        android:layout_marginLeft="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_7_56dp"
+        android:src="@drawable/ic_avatar_circle_male_border"
+        app:border_color="@color/white"
+        app:border_width="@dimen/border_width_live_stream"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/nv_header_main_action"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_2_16dp"
+        android:layout_marginLeft="@dimen/spacing_2_16dp"
+        android:layout_marginRight="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nv_header_main_avatar">
+
+        <LinearLayout
+            android:id="@+id/nv_header_main_layout_view_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/nv_header_main_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/nv_header_main_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nv_header_main_layout_action_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|left"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <TextView
+                android:id="@+id/nv_header_main_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_1_8dp"
+                android:text="@string/common_login"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/" />
+
+            <TextView
+                android:id="@+id/nv_header_main_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_1_8dp"
+                android:text="@string/common_sign_up"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

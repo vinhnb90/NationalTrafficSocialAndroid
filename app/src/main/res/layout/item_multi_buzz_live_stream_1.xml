@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_content"
+    android:layout_width="0dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_1_8dp"
+    app:layout_constraintTop_toBottomOf="@+id/item_timeline_header_more">
+
+    <include layout="@layout/inc_multi_image_1" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video"
+        android:layout_width="@dimen/timeline_play_video_size"
+        android:layout_height="@dimen/timeline_play_video_size"
+        android:src="@drawable/ic_video_play_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/layout_timeline_live_stream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_red_text_radius_50"
+            android:text="@string/live_stream"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_2_12sp" />
+
+        <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:layout_toEndOf="@+id/title_time"
+            android:background="@drawable/bg_gray_text_radius_50"
+            android:drawablePadding="@dimen/spacing_0_2dp"
+            android:text="0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_2_12sp"
+            app:drawableCompatLeft="@drawable/ic_visibility_white_14dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

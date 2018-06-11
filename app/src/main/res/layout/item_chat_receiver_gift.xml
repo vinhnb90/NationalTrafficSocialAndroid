@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_1_6dp"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_1_6dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/avatar"
+        style="@style/AvatarChatStyle"
+        android:src="@drawable/ic_avatar_circle_male_border" />
+
+    <RelativeLayout
+        android:layout_width="@dimen/size_item_message"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@+id/avatar"
+        android:background="@drawable/ic_bubble">
+
+        <LinearLayout
+            android:id="@+id/layout_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_receiver_gift"
+                android:layout_width="@dimen/item_ticker_chat_size"
+                android:layout_height="@dimen/item_ticker_chat_size"
+                android:layout_gravity="left|center"
+                android:src="@color/default_image_loading" />
+
+            <TextView
+                android:id="@+id/text_receiver_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/spacing_1_8dp"
+                android:text="@string/chat_massage_receiver_gift" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_time_gift_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout_center"
+            android:text="hello" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

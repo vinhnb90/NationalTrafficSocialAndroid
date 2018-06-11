@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_content"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_1_8dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/item_timeline_header_more">
+
+    <include layout="@layout/inc_multi_image_1" />
+
+    <com.vn.ntsc.widget.views.images.RecyclingImageView
+        android:id="@+id/item_timeline_play_video"
+        android:layout_width="@dimen/timeline_play_video_size"
+        android:layout_height="@dimen/timeline_play_video_size"
+        android:src="@drawable/ic_video_play_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

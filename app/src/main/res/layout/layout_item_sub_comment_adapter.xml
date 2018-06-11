@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_marginTop="@dimen/spacing_0_2dp"
+        android:id="@+id/layout_item_sub_comment_adapter_avatar"
+        android:layout_width="@dimen/avatar_sub_comment"
+        android:layout_height="@dimen/avatar_sub_comment"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:src="@drawable/ic_avatar_circle_male_border"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/layout_item_sub_comment_adapter_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/layout_item_comment_adapter_remove"
+        app:layout_constraintLeft_toRightOf="@+id/layout_item_sub_comment_adapter_avatar">
+
+        <TextView
+            android:id="@+id/layout_item_sub_comment_adapter_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_3_14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/layout_item_sub_comment_adapter_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:layout_marginTop="@dimen/spacing_1_8dp"
+            android:layout_toEndOf="@+id/layout_item_sub_comment_adapter_user_name"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textSize="@dimen/text_2_12sp" />
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/layout_item_comment_adapter_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_4"
+        android:padding="@dimen/spacing_1_8dp"
+        android:src="@drawable/ic_buzz_delete"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/layout_item_sub_comment_adapter_comment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="false"
+        android:text="@string/app_name"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintLeft_toRightOf="@+id/layout_item_sub_comment_adapter_avatar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_sub_comment_adapter_header" />
+
+</android.support.constraint.ConstraintLayout>

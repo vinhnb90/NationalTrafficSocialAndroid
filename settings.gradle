@@ -1,0 +1,5 @@
+include ':app', ':library_ui',':library_mediapicker',':library_socket'
+project(':app').projectDir = new File('app')
+project(':library_ui').projectDir = new File('thirdParty/libui')
+project(':library_mediapicker').projectDir = new File('thirdParty/MediaPicker')
+project(':library_socket').projectDir = new File('thirdParty/socket')

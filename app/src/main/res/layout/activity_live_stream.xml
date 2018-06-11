@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".ui.livestream.LiveStreamActivity">
+
+    <com.vn.ntsc.widget.views.livestream.PercentFrameLayout
+        android:id="@+id/activity_live_stream_local_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/activity_live_stream_local_video_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.vn.ntsc.widget.views.livestream.PercentFrameLayout>
+
+    <com.vn.ntsc.widget.views.livestream.PercentFrameLayout
+        android:id="@+id/activity_live_stream_remote_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/activity_live_stream_remote_video_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </com.vn.ntsc.widget.views.livestream.PercentFrameLayout>
+
+    <com.vn.ntsc.widget.views.images.ScalingImageView
+        android:id="@+id/activity_live_stream_live_stream_status_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/activity_live_stream_live_stream_status_pause"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scrim"
+        android:gravity="center"
+        android:text="@string/live_stream_pause"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_4_medium_16sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/activity_live_stream_layout_live_stream_close"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_1_8dp"
+                android:gravity="center"
+                android:text="@string/live_stream_close"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/do_you_want_keep_buzz" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:layout_marginBottom="@dimen/spacing_1_8dp"
+                android:layout_marginTop="@dimen/spacing_1_8dp"
+                android:background="@color/line_color" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/activity_live_stream_delete_buzz"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_1_8dp"
+                    android:background="@drawable/bg_border_gray_background_white"
+                    android:gravity="center">
+                    <!---->
+                    <ImageView
+                        android:layout_width="@dimen/live_bottom_size"
+                        android:layout_height="@dimen/live_bottom_size"
+                        android:layout_marginBottom="@dimen/spacing_0_2dp"
+                        android:layout_marginLeft="@dimen/spacing_0_4dp"
+                        android:layout_marginRight="@dimen/spacing_0_4dp"
+                        android:layout_marginTop="@dimen/spacing_0_2dp"
+                        app:srcCompat="@drawable/ic_live_stream_remove" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/spacing_0_4dp"
+                        android:text="@string/common_remove" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/activity_live_stream_post_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_1_8dp"
+                    android:background="@drawable/bg_border_background_red"
+                    android:gravity="center">
+                    <!---->
+                    <ImageView
+                        android:layout_width="@dimen/live_bottom_size"
+                        android:layout_height="@dimen/live_bottom_size"
+                        android:layout_marginBottom="@dimen/spacing_0_2dp"
+                        android:layout_marginLeft="@dimen/spacing_0_4dp"
+                        android:layout_marginRight="@dimen/spacing_0_4dp"
+                        android:layout_marginTop="@dimen/spacing_0_2dp"
+                        android:src="@drawable/ic_live_stream_save" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/spacing_0_4dp"
+                        android:text="@string/common_post"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

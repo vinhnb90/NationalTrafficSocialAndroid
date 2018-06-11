@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_send_message"
+        android:title="Nhắn tin"/>
+    <item
+        android:id="@+id/action_un_favorite"
+        android:title="Bỏ yêu thích"/>
+    <item
+        android:id="@+id/action_cancel"
+        android:title="Hủy"/>
+</menu>

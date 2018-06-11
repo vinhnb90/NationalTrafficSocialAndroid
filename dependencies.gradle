@@ -1,0 +1,167 @@
+ext {
+
+    applicationId = 'com.vn.ntsc'
+    minSdkVersion = 17
+    compileSdkVersion = 27
+
+    // -------- Flavors app -------------/
+    appName = "Giao thông quốc gia"
+    appNamePreview = "Staging Giao thông quốc gia"
+    appNameDebug = "Local Giao thông quốc gia"
+
+    versionCode = 1
+    versionName = '1.0'
+
+    versionCode_peview = 63
+    versionName_peview = '1.0'
+
+    //------------- library -------------//
+    //Google service
+    SUPPORT_LIBRARY_GOOGLE_SERVICE = '11.6.0'
+    SUPPORT_LIBRARY_SERVICE = '9.8.0'
+
+    //support
+    SUPPORT_LIBRARY_VERSION = '27.1.1'
+    LIBRARY_CONSTRAINT_LAYOUT = '1.0.2'
+
+    LIBRARY_MULTIDEX = '1.0.1'
+
+    //Dagger
+    LIBRARY_DAGGER = '2.10'
+    LIBRARY_BUTTER_KNIFE = '8.8.1'
+
+    //retrofit & okHttp
+    LIBRARY_RETROFIT = '2.3.0'
+    LIBRARY_RETROFIT_ADAPTER = '2.3.0'
+    LIBRARY_OKHTTP = '3.9.0'
+    LIBRARY_OKHTTP_INTERCEPTOR = '3.9.0'
+
+    LIBRARY_RX_ANDROID = '2.0.1'
+    LIBRARY_RX_JAVA = '2.1.3'
+
+    LIBRARY_GLIDE = '4.7.1'
+
+    LIBRARY_LEAK_CANARY = '1.5.4'
+
+    EXO_PLAYER_VERSION = 'r2.5.4'
+
+    //Testing
+    jUnitVersion = '4.12'
+    mockitoVersion = '2.17.0'
+
+    libraryDependencies = [
+            //leak canary
+            leakcanaryNoOp         : "com.squareup.leakcanary:leakcanary-android-no-op:$LIBRARY_LEAK_CANARY",
+            leakcanary             : "com.squareup.leakcanary:leakcanary-android:$LIBRARY_LEAK_CANARY",
+            //Android
+            appcompatV7            : "com.android.support:appcompat-v7:$SUPPORT_LIBRARY_VERSION",
+            appcompatV4            : "com.android.support:support-v4:$SUPPORT_LIBRARY_VERSION",
+            recyclerview           : "com.android.support:recyclerview-v7:$SUPPORT_LIBRARY_VERSION",
+            cardview               : "com.android.support:cardview-v7:$SUPPORT_LIBRARY_VERSION",
+            design                 : "com.android.support:design:$SUPPORT_LIBRARY_VERSION",
+            percent                : "com.android.support:percent:$SUPPORT_LIBRARY_VERSION",
+            constraint             : "com.android.support.constraint:constraint-layout:$LIBRARY_CONSTRAINT_LAYOUT",
+            vector                 : "com.android.support:support-vector-drawable:$LIBRARY_CONSTRAINT_LAYOUT",
+            //dagger
+            dagger                 : "com.google.dagger:dagger:$LIBRARY_DAGGER",
+            daggerCompiler         : "com.google.dagger:dagger-compiler:$LIBRARY_DAGGER",
+            // butter knife
+            butterknife            : "com.jakewharton:butterknife:$LIBRARY_BUTTER_KNIFE",
+            butterknifeCompiler    : "com.jakewharton:butterknife-compiler:$LIBRARY_BUTTER_KNIFE",
+            //Network
+            retrofit2              : "com.squareup.retrofit2:retrofit:$LIBRARY_RETROFIT",
+            converterGson          : "com.squareup.retrofit2:converter-gson:$LIBRARY_RETROFIT",
+            //OkHTTP
+            okhttp3                : "com.squareup.okhttp3:okhttp:$LIBRARY_OKHTTP",
+            loggingInterceptor     : "com.squareup.okhttp3:logging-interceptor:$LIBRARY_OKHTTP_INTERCEPTOR",
+            //Rx
+            adapterRxjava2         : "com.squareup.retrofit2:adapter-rxjava2:$LIBRARY_RETROFIT_ADAPTER",
+            rxjava2                : "io.reactivex.rxjava2:rxjava:$LIBRARY_RX_JAVA",
+            rxandroid2             : "io.reactivex.rxjava2:rxandroid:$LIBRARY_RX_ANDROID",
+            //Google
+            firebaseMessaging      : "com.google.firebase:firebase-messaging:$SUPPORT_LIBRARY_GOOGLE_SERVICE",
+            firebaseCore           : "com.google.firebase:firebase-core:$SUPPORT_LIBRARY_GOOGLE_SERVICE",
+            firebaseCrash          : "com.google.firebase:firebase-crash:$SUPPORT_LIBRARY_GOOGLE_SERVICE",
+            exoplayer              : "com.google.android.exoplayer:exoplayer:$EXO_PLAYER_VERSION",
+            servicesVision         : "com.google.android.gms:play-services-vision:$SUPPORT_LIBRARY_GOOGLE_SERVICE",
+            //Images
+            glide                  : "com.github.bumptech.glide:glide:$LIBRARY_GLIDE",
+            glideOkhttp3Integration: "com.github.bumptech.glide:okhttp3-integration:$LIBRARY_GLIDE",
+            glideCompiler          : "com.github.bumptech.glide:glide:$LIBRARY_GLIDE",
+            gpuimage               : 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1',
+            // facebook SDK only login (reduce apk size)
+            facebook               : 'com.facebook.android:facebook-login:4.27.0',
+            // Shortcut Badge Count
+            // https://github.com/leolin310148/ShortcutBadger
+            shortcutBadger         : 'me.leolin:ShortcutBadger:1.1.19@aar',
+            multidex               : "com.android.support:multidex:$LIBRARY_MULTIDEX"
+    ]
+
+    libraryTestDependencies = [
+            junit  : "junit:junit:$jUnitVersion",
+            mockito: "org.mockito:mockito-core:$mockitoVersion"
+    ]
+
+    //------------------------------------------------------------------//
+    //-------------------------------PRODUCT----------------------------//
+    //------------------------------------------------------------------//
+    productDomain = [
+            server        : '"http://gvn.xgg.jp:9119"',
+            serverMedia   : '"http://gvn.xgg.jp:9117/"',
+            serverMediaUrl: '"http://gvn.xgg.jp:81/"',
+            serverChat    : '"gvn.xgg.jp"',
+            postChat      : "8025",
+            stickerUrl    : '"http://gvn.xgg.jp:81/sticker/sticker/"'
+    ]
+
+    productStream = [
+            serverStream: '"http://gvn.xgg.jp:28000/"',
+            mediaWsUrl  : '"wss://gvn.xgg.jp:58001/"',
+            serverStun  : '"stun:gvn.xgg.jp:3478"',
+            serverTurn  : '"turn:gvn.xgg.jp:3478?transport=udp"',
+            userName    : '"iceuser"',
+            credential  : '"R4dKd7G7"'
+    ]
+
+    //------------------------------------------------------------------//
+    //-------------------------------STAGING----------------------------//
+    //------------------------------------------------------------------//
+    stagingDomain = [
+            server        : '"http://gvn.xgg.jp:9119"',
+            serverMedia   : '"http://gvn.xgg.jp:9117/"',
+            serverMediaUrl: '"http://gvn.xgg.jp:81/"',
+            serverChat    : '"gvn.xgg.jp"',
+            postChat      : "8025",
+            stickerUrl    : '"http://gvn.xgg.jp:81/sticker/sticker/"'
+    ]
+
+    stagingStream = [
+            serverStream: '"http://gvn.xgg.jp:28000/"',
+            mediaWsUrl  : '"wss://gvn.xgg.jp:58001/"',
+            serverStun  : '"stun:gvn.xgg.jp:3478"',
+            serverTurn  : '"turn:gvn.xgg.jp:3478?transport=udp"',
+            userName    : '"iceuser"',
+            credential  : '"R4dKd7G7"'
+    ]
+
+    //------------------------------------------------------------------//
+    //------------------------------LOCAL-------------------------------//
+    //------------------------------------------------------------------//
+    localDomain = [
+            server        : '"http://10.64.100.22:9119"',
+            serverMedia   : '"http://10.64.100.22:9117/"',
+            serverMediaUrl: '"http://10.64.100.22:81/"',
+            serverChat    : '"10.64.100.22"',
+            postChat      : "8025",
+            stickerUrl    : '"http://10.64.100.22:81/sticker/sticker/"'
+    ]
+
+    localStream = [
+            serverStream: '"http://10.64.100.24:8000/"',
+            mediaWsUrl  : '"wss://10.64.100.24:58000/"',
+            serverStun  : '"stun:10.64.100.24:3478"',
+            serverTurn  : '"turn:10.64.100.24:3478?transport=udp"',
+            userName    : '"iceuser"',
+            credential  : '"R4dKd7G7"'
+    ]
+}

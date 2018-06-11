@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NumberPickerInputTextStyle" parent="@android:style/TextAppearance.Large.Inverse">
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+
+    <style name="NumberPickerUpButton" parent="@android:style/Widget.ImageButton">
+        <item name="android:background">@drawable/numberpicker_up_btn</item>
+        <item name="android:paddingTop">22dip</item>
+        <item name="android:paddingBottom">22dip</item>
+    </style>
+
+    <style name="NumberPickerDownButton" parent="@android:style/Widget.ImageButton">
+        <item name="android:background">@drawable/numberpicker_down_btn</item>
+        <item name="android:paddingTop">22dip</item>
+        <item name="android:paddingBottom">22dip</item>
+    </style>
+
+    <style name="NumberPickerInputText" parent="@android:style/Widget.EditText">
+        <item name="android:textAppearance">@style/NumberPickerInputTextStyle</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/numberpicker_input</item>
+    </style>
+
+    <style name="LoadingIndicatorView">
+        <item name="minWidth">48dip</item>
+        <item name="maxWidth">48dip</item>
+        <item name="minHeight">48dip</item>
+        <item name="maxHeight">48dip</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
+
+    <style name="LoadingIndicatorView.Large">
+        <item name="minWidth">76dip</item>
+        <item name="maxWidth">76dip</item>
+        <item name="minHeight">76dip</item>
+        <item name="maxHeight">76dip</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
+
+    <style name="LoadingIndicatorView.Small">
+        <item name="minWidth">24dip</item>
+        <item name="maxWidth">24dip</item>
+        <item name="minHeight">24dip</item>
+        <item name="maxHeight">24dip</item>
+        <item name="indicatorName">BallPulseIndicator</item>
+    </style>
+
+    <style name="MaterialDialogs_Title">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">26dp</item>
+        <item name="android:layout_marginRight">26dp</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/md_styled_text_title</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="MaterialDialogs_TitleHeader">
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="MaterialDialogs_Description">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">26dp</item>
+        <item name="android:layout_marginRight">26dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
+        <item name="android:textSize">@dimen/md_styled_text_description</item>
+        <item name="android:alpha">0.6</item>
+    </style>
+
+    <style name="MaterialDialogs_Divider">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:background">@android:color/darker_gray</item>
+        <item name="android:alpha">0.3</item>
+    </style>
+
+    <style name="DialogMaterials_DialogAnimationNormal">
+        <item name="android:windowEnterAnimation">@anim/md_styled_slide_up_normal</item>
+        <item name="android:windowExitAnimation">@anim/md_styled_slide_down_normal</item>
+    </style>
+
+    <style name="DialogMaterials_DialogAnimationFast">
+        <item name="android:windowEnterAnimation">@anim/md_styled_slide_up_fast</item>
+        <item name="android:windowExitAnimation">@anim/md_styled_slide_down_fast</item>
+    </style>
+
+    <style name="DialogMaterials_DialogAnimationSlow">
+        <item name="android:windowEnterAnimation">@anim/md_styled_slide_up_slow</item>
+        <item name="android:windowExitAnimation">@anim/md_styled_slide_down_slow</item>
+    </style>
+
+    <style name="Dialog_SingleChoice">
+        <item name="colorAccent">@color/colorButtonDialog</item>
+    </style>
+
+    <style name="LiveStreamDialogAlert">
+        <item name="colorAccent">@color/default_app</item>
+        <item name="android:textSize">@dimen/text_3_14sp</item>
+    </style>
+</resources>

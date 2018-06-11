@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menuLeftTitle">
+        <item>Trang chủ</item>
+        <item>Thông báo</item>
+        <item>Thông báo trực tuyến</item>
+        <item>Thiết lập tài khoản</item>
+        <item>Thiết lập thông báo</item>
+        <item>Danh sách chặn</item>
+        <item>Hưỡng dẫn</item>
+        <item>Đăng xuất</item>
+        <item>Đăng nhập</item>
+    </string-array>
+
+    <integer-array name="menuLeftIcon">
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+        <item>@drawable/ic_public</item>
+    </integer-array>
+</resources>

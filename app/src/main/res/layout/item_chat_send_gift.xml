@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_1_6dp"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_1_6dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_gift"
+        android:layout_width="@dimen/size_item_message"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_bubble_me">
+
+        <LinearLayout
+            android:id="@+id/layout_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/view_send_gift"
+                android:layout_width="@dimen/item_ticker_chat_size"
+                android:layout_height="@dimen/item_ticker_chat_size"
+                android:layout_gravity="left|center"
+                android:src="@drawable/ic_avatar_circle_male_border" />
+
+            <TextView
+                android:id="@+id/text_send_gift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="@dimen/spacing_1_8dp"
+                android:text="@string/chat_massage_send_gift" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_time_gift_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/layout_center"
+            android:text="helo" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_status_send_gift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/layout_gift"
+        android:layout_marginTop="@dimen/spacing_0_4dp"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:text="@string/common_seen" />
+</RelativeLayout>

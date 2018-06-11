@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_1_8dp">
+
+    <ImageView
+        android:id="@+id/item_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:lines="1"
+        android:text=""
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/item_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.326" />
+
+    <TextView
+        android:id="@+id/item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/item_title"
+        android:layout_below="@+id/item_title"
+        android:lines="1"
+        android:text=""
+        android:textColor="@color/textColorSecondary"
+        android:textSize="@dimen/spacing_1_8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/item_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_title" />
+
+</android.support.constraint.ConstraintLayout>

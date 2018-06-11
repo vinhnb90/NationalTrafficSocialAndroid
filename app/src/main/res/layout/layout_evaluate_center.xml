@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <com.nankai.designlayout.BorderView
+        android:id="@+id/tv_powerful"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_1_6dp"
+        android:padding="@dimen/spacing_1_8dp"
+        fancy:fb_borderColor="@color/color_pơwerful"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/transparent"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="3dp"
+        fancy:fb_text="@string/evaluate_powerful"
+        fancy:fb_textColor="@color/color_pơwerful"
+        fancy:fb_textSize="@dimen/text_3_14sp" />
+
+
+    <com.nankai.designlayout.BorderView
+        android:id="@+id/tv_friendly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_1_6dp"
+        android:padding="@dimen/spacing_1_8dp"
+        fancy:fb_borderColor="@color/color_friendly"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/transparent"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="3dp"
+        fancy:fb_text="@string/evaluate_friendly"
+        fancy:fb_textColor="@color/color_friendly"
+        fancy:fb_textSize="@dimen/text_3_14sp" />
+
+    <com.nankai.designlayout.BorderView
+        android:id="@+id/tv_warm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_1_6dp"
+        android:padding="@dimen/spacing_1_8dp"
+        fancy:fb_borderColor="@color/color_warm"
+        fancy:fb_borderWidth="1dp"
+        fancy:fb_defaultColor="@color/transparent"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="3dp"
+        fancy:fb_text="@string/evaluate_warm"
+        fancy:fb_textColor="@color/color_warm"
+        fancy:fb_textSize="@dimen/text_3_14sp" />
+
+
+</LinearLayout>

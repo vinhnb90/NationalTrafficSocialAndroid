@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/spacing_2_16dp"
+    android:paddingBottom="@dimen/spacing_0_4dp"
+    android:paddingTop="@dimen/spacing_2_16dp">
+
+    <ImageView
+        android:id="@+id/menu_left_icon"
+        android:layout_width="@dimen/menu_left_icon_size"
+        android:layout_height="@dimen/menu_left_icon_size"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/menu_left_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_1_8dp"
+        android:text="@string/app_name"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/menu_left_icon"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/menu_left_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/bottom_navigation_notification_height"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:background="@drawable/notification_background"
+        android:elevation="@dimen/bottom_navigation_notification_elevation"
+        android:gravity="center"
+        android:minWidth="@dimen/bottom_navigation_notification_width"
+        android:paddingLeft="@dimen/bottom_navigation_notification_padding"
+        android:paddingRight="@dimen/bottom_navigation_notification_padding"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/bottom_navigation_notification_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

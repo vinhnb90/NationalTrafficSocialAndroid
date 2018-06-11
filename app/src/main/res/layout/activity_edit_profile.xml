@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_left="@string/common_cancel"
+        app:text_right="@string/common_save"
+        app:text_title="@string/edit_profile_title"
+        app:type_button_right="text" />
+
+    <ScrollView
+        android:id="@+id/activity_edit_profile_scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true"
+        android:focusable="true">
+
+        <com.vn.ntsc.widget.views.ToggleEditModeRelativeLayout
+            android:id="@+id/activity_edit_profile_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/edit_profile_field_margin">
+
+            <FrameLayout
+                android:id="@+id/activity_edit_profile_cover_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+
+                <ImageView
+                    android:id="@+id/activity_edit_profile_cover_photo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_profile_cover_photo"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="centerCrop"
+                    android:src="@color/gray" />
+
+                <ImageView
+                    android:id="@+id/activity_edit_profile_avatar"
+                    android:layout_width="@dimen/edit_profile_avatar"
+                    android:layout_height="@dimen/edit_profile_avatar"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/ic_avatar_circle_male_border" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/activity_edit_profile_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_edit_profile_cover_container"
+                android:layout_marginStart="@dimen/edit_profile_field_margin"
+                android:layout_marginTop="@dimen/edit_profile_field_margin"
+                android:text="@string/edit_profile_label_require"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_name_label"
+                style="@style/profile.top"
+                android:layout_below="@+id/activity_edit_profile_label"
+                android:layout_marginTop="@dimen/spacing_1_8dp">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_name" />
+
+                <EditText
+                    android:id="@+id/activity_edit_profile_ed_name"
+                    style="@style/profile_field"
+                    android:hint="@string/edit_profile_label_name"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_email_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_name_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_email" />
+
+                <EditText
+                    android:id="@+id/activity_edit_profile_ed_email"
+                    style="@style/profile_field"
+                    android:hint="@string/common_enter_email"
+                    android:inputType="textEmailAddress" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_date_of_birthday_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_email_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_date_of_birth" />
+
+
+                <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                    android:id="@+id/activity_edit_profile_date_of_birthday"
+                    style="@style/profile_field"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:hint="@string/hint_date_of_birth"
+                    app:drawableCompatRight="@drawable/ic_arrow_drop_down_black_48dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_gender_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_date_of_birthday_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_gender" />
+
+                <RadioGroup
+                    android:id="@+id/activity_edit_profile_gender"
+                    style="@style/profile_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/activity_edit_profile_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_1_8dp"
+                        android:layout_marginTop="@dimen/spacing_1_8dp"
+                        android:checked="false"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/common_man"
+                        android:textColor="@color/black" />
+
+                    <RadioButton
+                        android:id="@+id/activity_edit_profile_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing_1_8dp"
+                        android:layout_marginTop="@dimen/spacing_1_8dp"
+                        android:checked="false"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:text="@string/common_woman"
+                        android:textColor="@color/black" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_identify_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_gender_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_identify_no" />
+
+                <EditText
+                    android:id="@+id/activity_edit_profile_identify_no"
+                    style="@style/profile_field"
+                    android:hint="@string/edit_profile_label_identify_no"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_phone_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_identify_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_phone" />
+
+                <EditText
+                    android:id="@+id/activity_edit_profile_phone_no"
+                    style="@style/profile_field"
+                    android:hint="@string/edit_profile_label_phone"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_job_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_phone_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:text="@string/edit_profile_label_job" />
+
+                <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                    android:id="@+id/activity_edit_profile_job"
+                    style="@style/profile_field"
+                    android:hint="@string/edit_profile_label_job"
+                    android:inputType="text"
+                    app:drawableCompatRight="@drawable/ic_arrow_drop_down_black_48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_zone_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_job_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/edit_profile_label_zone" />
+
+                <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                    android:id="@+id/activity_edit_profile_zone"
+                    style="@style/profile_field"
+                    android:hint="@string/edit_profile_label_zone"
+                    app:drawableCompatRight="@drawable/ic_arrow_drop_down_black_48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_hobby_label"
+                style="@style/profile.mid"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_edit_profile_zone_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/edit_profile_label_favourite" />
+
+                <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                    android:id="@+id/activity_edit_profile_hobby"
+                    style="@style/profile_field"
+                    android:ellipsize="end"
+                    android:hint="@string/edit_profile_label_favourite"
+                    android:maxLines="2"
+                    app:drawableCompatRight="@drawable/ic_arrow_drop_down_black_48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_body_type_label"
+                style="@style/profile.mid"
+                android:layout_below="@+id/activity_edit_profile_hobby_label">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/edit_profile_label_body_type" />
+
+                <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                    android:id="@+id/activity_edit_profile_body_type"
+                    style="@style/profile_field"
+                    android:hint="@string/edit_profile_label_body_type"
+                    android:inputType="phone"
+                    app:drawableCompatRight="@drawable/ic_arrow_drop_down_black_48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/activity_edit_profile_message_label"
+                style="@style/profile.bot"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_edit_profile_body_type_label"
+                android:paddingBottom="@dimen/spacing_1_8dp"
+                android:paddingTop="@dimen/spacing_1_8dp">
+
+                <TextView
+                    style="@style/profile_label"
+                    android:layout_gravity="top|left"
+                    android:gravity="top|left"
+                    android:text="@string/edit_profile_label_message" />
+
+                <EditText
+                    android:id="@+id/activity_edit_profile_message"
+                    style="@style/profile_field"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/edit_profile_label_message"
+                    android:inputType="textMultiLine" />
+            </LinearLayout>
+        </com.vn.ntsc.widget.views.ToggleEditModeRelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

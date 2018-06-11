@@ -1,0 +1,30 @@
+apply plugin: 'com.android.library'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["compileSdkVersion"]
+    defaultConfig {
+        minSdkVersion globalConfiguration["minSdkVersion"]
+        targetSdkVersion globalConfiguration["compileSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def d = rootProject.ext.libraryDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation d.appcompatV7
+    implementation d.rxjava2
+    implementation d.rxandroid2
+    implementation d.okhttp3
+    implementation "com.google.code.gson:gson:2.8.2"
+}

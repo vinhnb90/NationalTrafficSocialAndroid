@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_signup_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_title="@string/common_sign_up" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/scrim_white"
+            android:focusableInTouchMode="true">
+
+            <ImageView
+                android:id="@+id/activity_signup_img_user"
+                style="@style/sign_up_image"
+                android:layout_marginTop="@dimen/signup_margin_top"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_person_white_48dp" />
+
+            <TextView
+                android:id="@+id/activity_signup_date_of_birthday"
+                style="@style/sign_up_input"
+                android:layout_alignTop="@+id/activity_signup_img_user"
+                android:layout_toEndOf="@+id/activity_signup_img_user"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_date_of_birth" />
+
+            <RadioGroup
+                android:id="@+id/activity_signup_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_signup_img_user"
+                android:layout_marginLeft="@dimen/spacing_5_40dp"
+                android:layout_marginRight="@dimen/spacing_5_40dp"
+                android:layout_marginTop="@dimen/spacing_3_24dp"
+                android:background="@color/color_edittext_background"
+                android:orientation="horizontal"
+                android:padding="@dimen/spacing_1_8dp">
+
+                <RadioButton
+                    android:id="@+id/activity_signup_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/common_man"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+
+                <RadioButton
+                    android:id="@+id/activity_signup_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="@string/common_woman"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/activity_signup_email"
+                style="@style/sign_up_input"
+                android:layout_alignBottom="@+id/activity_signup_gender"
+                android:layout_alignTop="@+id/activity_signup_gender"
+                android:layout_toEndOf="@+id/activity_signup_gender"
+                android:layout_toRightOf="@+id/activity_signup_gender"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress" />
+
+            <ImageView
+                android:id="@+id/activity_signup_img_password"
+                style="@style/sign_up_image"
+                android:layout_below="@+id/activity_signup_gender"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_lock_white_48dp" />
+
+            <EditText
+                android:id="@+id/activity_signup_password"
+                style="@style/sign_up_input"
+                android:layout_alignTop="@+id/activity_signup_img_password"
+                android:layout_toEndOf="@+id/activity_signup_img_password"
+                android:hint="@string/hint_password"
+                android:inputType="text"
+                tools:ignore="TextFields" />
+
+            <ImageView
+                android:id="@+id/activity_signup_img_confirm_password"
+                style="@style/sign_up_image"
+                android:layout_below="@+id/activity_signup_img_password"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_lock_white_48dp" />
+
+            <EditText
+                android:id="@+id/activity_signup_confirm_password"
+                style="@style/sign_up_input"
+                android:layout_alignTop="@+id/activity_signup_img_confirm_password"
+                android:layout_toEndOf="@+id/activity_signup_img_confirm_password"
+                android:hint="@string/hint_confirm_password"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                tools:ignore="TextFields" />
+
+            <Button
+                android:id="@+id/activity_signup_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_signup_img_confirm_password"
+                android:layout_marginLeft="@dimen/spacing_5_40dp"
+                android:layout_marginRight="@dimen/spacing_5_40dp"
+                android:layout_marginTop="@dimen/spacing_3_24dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/common_sign_up"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <CheckBox
+                android:id="@+id/activity_signup_age_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/activity_signup_sign_up"
+                android:layout_alignLeft="@+id/activity_signup_sign_up"
+                android:layout_alignRight="@+id/activity_signup_sign_up"
+                android:layout_alignStart="@+id/activity_signup_sign_up"
+                android:layout_below="@+id/activity_signup_sign_up"
+                android:layout_marginTop="@dimen/dp_4"
+                android:checked="false"
+                android:text="@string/signup_age_confirm"
+                android:textColor="@color/white" />
+
+            <CheckBox
+                android:id="@+id/activity_signup_term_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/activity_signup_sign_up"
+                android:layout_alignLeft="@+id/activity_signup_sign_up"
+                android:layout_alignRight="@+id/activity_signup_sign_up"
+                android:layout_alignStart="@+id/activity_signup_sign_up"
+                android:layout_below="@+id/activity_signup_age_confirm"
+                android:layout_marginTop="@dimen/dp_4"
+                android:checked="false"
+                android:text="@string/signup_term_confirm"
+                android:textColor="@color/white" />
+
+
+            <TextView
+                android:id="@+id/activity_signup_other_login_option"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_signup_term_confirm"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/spacing_3_24dp"
+                android:paddingLeft="@dimen/spacing_1_8dp"
+                android:paddingRight="@dimen/spacing_1_8dp"
+                android:text="@string/other_signup_option"
+                android:textColor="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:layout_alignBottom="@id/activity_signup_other_login_option"
+                android:layout_marginLeft="@dimen/spacing_5_40dp"
+                android:layout_marginStart="@dimen/spacing_5_40dp"
+                android:layout_toLeftOf="@id/activity_signup_other_login_option"
+                android:layout_toStartOf="@id/activity_signup_other_login_option"
+                android:background="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:layout_alignBottom="@id/activity_signup_other_login_option"
+                android:layout_marginEnd="@dimen/spacing_5_40dp"
+                android:layout_marginRight="@dimen/spacing_5_40dp"
+                android:layout_toEndOf="@id/activity_signup_other_login_option"
+                android:layout_toRightOf="@id/activity_signup_other_login_option"
+                android:background="@color/white" />
+
+            <Button
+                android:id="@+id/activity_signup_login_with_fb"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_fb_height"
+                android:layout_below="@+id/activity_signup_other_login_option"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginLeft="@dimen/spacing_5_40dp"
+                android:layout_marginRight="@dimen/spacing_5_40dp"
+                android:layout_marginTop="@dimen/spacing_5_40dp"
+                android:background="@color/com_facebook_button_background_color"
+                android:text="@string/btn_facebook"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#ddd"
+    android:clickable="true"
+    android:orientation="vertical"
+    android:focusable="true">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_right="@string/common_save"
+        app:text_title="@string/title_fragment_area"
+        app:type_button_right="text" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_choose_area_recycler_view_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

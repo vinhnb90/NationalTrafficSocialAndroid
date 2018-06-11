@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="@dimen/spacing_1_6dp"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_1_6dp">
+
+    <LinearLayout
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_1_6dp"
+        android:layout_marginTop="@dimen/spacing_3_24dp"
+        android:background="@drawable/ic_bubble_me"
+        android:orientation="vertical"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_photo_send"
+            android:layout_width="@dimen/size_image_chat"
+            android:layout_height="@dimen/size_image_chat"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_img_send_default"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tv_time_photo_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_2_12sp"
+            android:layout_gravity="right" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_send_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/spacing_1_8dp"
+        android:text="@string/common_sending"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@+id/parent"
+        app:layout_constraintRight_toRightOf="@+id/parent"
+        app:layout_constraintTop_toBottomOf="@+id/parent" />
+
+    <ImageView
+        tools:visibility="visible"
+        android:id="@+id/image_chat_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_2_16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/parent"
+        app:layout_constraintRight_toLeftOf="@+id/parent"
+        app:layout_constraintTop_toTopOf="@+id/parent"
+        app:srcCompat="@drawable/ic_error_triangle" />
+
+
+    <TextView
+        tools:text="error"
+        android:id="@+id/tv_status_send_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_send_photo" />
+
+</android.support.constraint.ConstraintLayout>

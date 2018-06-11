@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_item_location"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+   >
+
+    <ImageView
+        android:layout_margin="@dimen/spacing_2_16dp"
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/fragment_explore_pets_height_sub_option"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_3_24dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_0_4dp"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:padding="@dimen/spacing_0_4dp"
+        android:text="@string/app_name"
+        android:textColor="@color/textColor" />
+
+    <View
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:background="@color/gray" />
+</RelativeLayout>

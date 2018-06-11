@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_1_6dp"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_1_6dp">
+
+    <ImageView
+        android:id="@+id/avatar_receive"
+        style="@style/AvatarChatStyle"
+        android:src="@drawable/ic_avatar_circle_male_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:background="@drawable/ic_bubble"
+        app:layout_constraintStart_toEndOf="@+id/avatar_receive"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="@dimen/size_image_chat"
+            android:layout_height="@dimen/size_image_chat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/inc_multi_image_more"
+                tools:background="@color/border_white_40" />
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="@dimen/text_2_12sp"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            tools:text="@string/time_hour_ago" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/image_chat_error"
+        app:layout_constraintStart_toStartOf="@+id/parent"
+        app:layout_constraintTop_toTopOf="@+id/image_chat_error"
+        tools:text="error" />
+
+    <ImageView
+        android:id="@+id/image_chat_error"
+        android:layout_width="@dimen/icon_post_status"
+        android:layout_height="@dimen/icon_post_status"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/chat_item_share_a_location"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_status"
+        app:layout_constraintTop_toBottomOf="@+id/parent"
+        app:srcCompat="@drawable/ic_error_triangle"
+        tools:visibility="visible" />
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_0_4dp"
+    android:orientation="vertical"
+    android:background="@drawable/bg_item_divider"
+    android:padding="@dimen/spacing_1_8dp">
+
+    <ImageView
+        android:id="@+id/item_avatar"
+        android:layout_width="@dimen/spacing_9_72dp"
+        android:layout_height="@dimen/spacing_9_72dp"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_1_8dp"/>
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/spacing_1_8dp"
+        android:layout_toRightOf="@+id/item_avatar"
+        android:text="Name"
+        android:textSize="@dimen/text_3_14sp"/>
+
+    <TextView
+        android:id="@+id/item_btn_action"
+        android:layout_width="@dimen/btn_red"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:background="@drawable/bg_button_red"
+        android:text="@string/online_notification_button_change"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

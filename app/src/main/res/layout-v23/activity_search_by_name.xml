@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|enterAlways|snap">
+
+            <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:text_title="@string/title_search_by_name" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_search_by_name_layout_search"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_below="@+id/toolbar"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:textColorHint="@color/hint_text_color"
+                android:textColor="@color/black"
+                android:id="@+id/activity_search_by_name_edt_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/spacing_1_8dp"
+                android:background="@drawable/bg_search_area_round_normal"
+                android:drawablePadding="@dimen/spacing_2_16dp"
+                android:drawableTint="@color/black"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:paddingStart="@dimen/spacing_1_8dp" />
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/layout_content_search" />
+
+</android.support.design.widget.CoordinatorLayout>
+
+

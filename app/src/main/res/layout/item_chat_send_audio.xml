@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_1_6dp"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_1_6dp"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/layout_send_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_3_24dp"
+        android:background="@drawable/ic_bubble_me"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/img_record_thumnail"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/timeline_play_video_size_3"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/spacing_0_4dp"
+                android:src="@drawable/ic_record_thumnail" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_toRightOf="@+id/img_record_thumnail">
+
+                <ImageView
+                    android:id="@+id/image_media_state"
+                    android:layout_width="@dimen/icon_post_status"
+                    android:layout_height="@dimen/icon_post_status"
+                    android:layout_marginRight="@dimen/spacing_0_4dp"
+                    app:srcCompat="@drawable/ic_record_pause" />
+
+                <ProgressBar
+                    android:id="@+id/progress_bar_audio"
+                    android:layout_width="@dimen/icon_post_status"
+                    android:layout_height="@dimen/icon_post_status"
+                    android:layout_marginRight="@dimen/spacing_0_4dp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+
+            <com.vn.ntsc.widget.views.textview.TimerTextView
+                android:id="@+id/tv_time_record_leng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/spacing_0_4dp"
+                android:textSize="@dimen/text_3_14sp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/tv_time_send_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        tools:text="Time"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintEnd_toStartOf="@+id/tv_status_send_record"
+        app:layout_constraintTop_toBottomOf="@+id/layout_send_record" />
+
+    <ImageView
+        android:id="@+id/image_chat_error"
+        android:layout_width="@dimen/icon_post_status"
+        android:layout_height="@dimen/icon_post_status"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_status_send_record"
+        app:layout_constraintEnd_toStartOf="@+id/tv_time_send_record"
+        app:srcCompat="@drawable/ic_error_triangle"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tv_status_send_record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_send_record"
+        tools:text="error" />
+
+</android.support.constraint.ConstraintLayout>

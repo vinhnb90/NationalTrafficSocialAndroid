@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="line">1px</dimen>
+    <dimen name="cancel_width">120.0dip</dimen>
+    <dimen name="stroke_width">1dp</dimen>
+    <dimen name="radius_button">@dimen/spacing_1_8dp</dimen>
+    <dimen name="button_width_signup">146dp</dimen>
+    <dimen name="button_width_facebook_login">280dp</dimen>
+    <dimen name="spacing_0_4dp">4.0dip</dimen>
+    <dimen name="spacing_1_6dp">6.0dip</dimen>
+    <dimen name="spacing_1_8dp">8.0dip</dimen>
+    <dimen name="spacing_2_16dp">16.0dip</dimen>
+    <dimen name="spacing_3_24dp">24.0dip</dimen>
+    <dimen name="spacing_3_30dp">30.0dip</dimen>
+    <dimen name="spacing_4_32dp">32.0dip</dimen>
+    <dimen name="spacing_5_40dp">40.0dip</dimen>
+    <dimen name="spacing_6_default_48dp">48.0dip</dimen>
+    <dimen name="spacing_7_56dp">56.0dip</dimen>
+    <dimen name="spacing_8_64dp">64.0dip</dimen>
+    <dimen name="spacing_9_72dp">72.0dip</dimen>
+    <dimen name="text_0_8sp">8.0sp</dimen>
+    <dimen name="text_1_10sp">10.0sp</dimen>
+    <dimen name="text_2_12sp">12.0sp</dimen>
+    <dimen name="text_3_14sp">14.0sp</dimen>
+    <dimen name="text_4_medium_16sp">16.0sp</dimen>
+    <dimen name="text_5_20sp">20.0sp</dimen>
+    <dimen name="text_6_24sp">24.0sp</dimen>
+    <dimen name="text_7_28sp">28.0sp</dimen>
+    <dimen name="text_8_32sp">32.0sp</dimen>
+    <dimen name="text_9_36sp">36.0sp</dimen>
+    <dimen name="spacing_0_2dp">2.0dip</dimen>
+    <dimen name="notification_padding_inactive">10dp</dimen>
+    <dimen name="notification_padding_active">12dp</dimen>
+
+    <dimen name="toolbar_avatar">36dp</dimen>
+    <dimen name="drawer_width">270dp</dimen>
+    <dimen name="btn_fb_height">35dp</dimen>
+    <dimen name="signup_input_height">40dp</dimen>
+    <dimen name="height_load_more">44dp</dimen>
+    <dimen name="item_event_home">20dp</dimen>
+    <dimen name="border_width_avatar">1px</dimen>
+    <dimen name="border_width_live_stream">1dp</dimen>
+    <!--Timeline-->
+    <dimen name="event_timeline_size">20dp</dimen>
+    <dimen name="timeline_avatar">50dp</dimen>
+    <dimen name="img_gift_item_list_buzz_size">90dp</dimen>
+    <dimen name="img_gift_item_list_chat_size">90dp</dimen>
+    <!--Timeline detail-->
+    <dimen name="timeline_detail_avatar">46dp</dimen>
+    <!-- Buffer -->
+    <dimen name="standard_main_layout_padding">12dp</dimen>
+    <dimen name="standard_horizontal_item_height">58dp</dimen>
+
+    <!--Profile-->
+    <dimen name="profile_avatar">170dp</dimen>
+    <dimen name="profile_avatar_small">100dp</dimen>
+
+    <!--back size-->
+    <dimen name="ic_back_size">24dp</dimen>
+    <dimen name="ic_back_size_width">30dp</dimen>
+    <dimen name="ic_favorite">20dp</dimen>
+    <dimen name="size_timeline_live_stream_icon">50dp</dimen>
+
+    <!--Friends Favorite Screen-->
+    <dimen name="image_avatar_size">72dp</dimen>
+
+    <dimen name="padding_ed_change_pwd">15dp</dimen>
+    <dimen name="message_item_padding_start">20dp</dimen>
+    <dimen name="message_item_avatar_size">56dp</dimen>
+    <dimen name="message_item_size">75dp</dimen>
+    <dimen name="bagde_size">20dp</dimen>
+    <dimen name="last_msg_time_text_size">10sp</dimen>
+    <dimen name="signup_margin_top">70dp</dimen>
+    <dimen name="max_width_message">270dp</dimen>
+
+    <!--Comment-->
+    <dimen name="comment_height">46dp</dimen>
+    <dimen name="chat_height">48dp</dimen>
+    <dimen name="edit_profile_avatar">65dp</dimen>
+    <dimen name="edit_profile_cover_photo">150dp</dimen>
+    <dimen name="edit_profile_field_margin">25dp</dimen>
+    <dimen name="edit_profile_field_top">-1dp</dimen>
+    <dimen name="edit_profile_dropdown">20dp</dimen>
+    <dimen name="avatar_sub_comment">28dp</dimen>
+    <dimen name="avatar_comment">34dp</dimen>
+
+    <!--post status-->
+    <dimen name="avatar_size_post_status">50dp</dimen>
+    <dimen name="item_list_push_media">@dimen/spacing_9_72dp</dimen>
+    <dimen name="icon_post_status">36dp</dimen>
+    <dimen name="status_layout_private_icon_size">18dp</dimen>
+    <dimen name="menu_left_icon_size">24dp</dimen>
+    <dimen name="image_list_public_size">80dp</dimen>
+    <dimen name="toolbar_layout_size">250dp</dimen>
+    <dimen name="activity_post_status_item_pick_feeling">30dp</dimen>
+    <dimen name="fragment_explore_pets_height_sub_option">40dp</dimen>
+
+    <dimen name="nav_header_height">180dp</dimen>
+    <dimen name="menu_more_icon_size">24dp</dimen>
+    <dimen name="chip_icon_size">36px</dimen>
+    <dimen name="common_size_96dp">96dp</dimen>
+
+    <!-- privacy option -->
+    <dimen name="circle_bg_option_size_32dp">32dp</dimen>
+    <dimen name="icon_option_size">30dp</dimen>
+    <dimen name="privacy_option_text_size">19sp</dimen>
+    <dimen name="privacy_checked_icon_size">5dp</dimen>
+
+    <!--CHAT-->
+    <dimen name="avatar_chat_size">46dp</dimen>
+    <dimen name="item_ticker_chat_size">80dp</dimen>
+    <dimen name="size_image_chat">150dp</dimen>
+    <dimen name="timeline_play_video_size">54dp</dimen>
+    <dimen name="timeline_play_video_size_2">48dp</dimen>
+    <dimen name="timeline_play_video_size_3">34dp</dimen>
+    <dimen name="size_item_message">200dp</dimen>
+    <dimen name="emoji_sticker_size">26dp</dimen>
+    <dimen name="emoji_stiker_icon_size">56dp</dimen>
+
+    <!--Gift-->
+    <dimen name="gift_margin_right">72dp</dimen>
+    <dimen name="btn_red">74dp</dimen>
+
+    <dimen name="icon_tag_friend_live_stream">24dp</dimen>
+    <dimen name="live_stream_button_margin">7dp</dimen>
+    <dimen name="live_stream_avatar_size">36dp</dimen>
+
+    <dimen name="height_item_layout_my_album">300dp</dimen>
+
+
+    <!-- Live Stream -->
+    <dimen name="padding_ed_comment_livestream">10dp</dimen>
+    <dimen name="margin_info_layout_livestream">6dp</dimen>
+    <dimen name="margin_layout_livestream">10dip</dimen>
+    <dimen name="livestream_comment_height">36dp</dimen>
+    <dimen name="comment_width_live_stream">200dp</dimen>
+    <dimen name="icon_live_stream_header">24dp</dimen>
+    <dimen name="live_bottom_size">24dp</dimen>
+</resources>

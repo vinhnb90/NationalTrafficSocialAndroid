@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ToolbarTitleCenter">
+        <attr name="type_button_right" format="enum">
+            <enum name="none" value="0" />
+            <enum name="text" value="1" />
+            <enum name="icon" value="2" />
+        </attr>
+        <attr name="text_left" format="string" />
+        <attr name="text_right" format="string" />
+        <attr name="icon_right" format="reference" />
+        <attr name="text_title" format="string" />
+        <attr name="background" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MyCheckboxButton">
+        <attr name="text" format="string" />
+        <attr name="isChecked" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SeeMoreViewTextView">
+        <attr name="defaultLineCount" format="integer" />
+        <attr name="defaultMoreHint" format="string" />
+        <attr name="moreHintColor" format="color" />
+        <attr name="isExpand" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SeeMoreView">
+        <attr name="labelStrokeColor" format="color" />
+        <attr name="labelStrokeWidth" format="dimension" />
+        <attr name="labelStrokeRadius" format="dimension" />
+        <attr name="labelTextSize" format="dimension" />
+        <attr name="labelTextColor" format="color" />
+        <attr name="labelText" format="string" />
+        <attr name="originalText" format="string" />
+        <attr name="labelPadding" format="dimension" />
+        <attr name="labelMargin" format="dimension" />
+        <attr name="labelPaddingHorizontal" format="dimension" />
+        <attr name="labelPaddingVertical" format="dimension" />
+        <attr name="labelFillColor" format="boolean" />
+        <attr name="labelDrawable" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="GlideImageView">
+        <attr name="show_progress" format="boolean" />
+        <attr name="error_res" format="reference" />
+        <attr name="placeholder_res" format="reference" />
+        <attr name="progress_bar_style" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="margin_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="border_overlay" format="boolean" />
+        <attr name="fill_color" format="color" />
+    </declare-styleable>
+    <attr name="progressBarTextSize" format="dimension" />
+
+    <declare-styleable name="AvatarImageBehavior">
+        <attr name="finalYPosition" format="dimension" />
+        <attr name="startXPosition" format="dimension" />
+        <attr name="startToolbarPosition" format="dimension" />
+        <attr name="startHeight" format="dimension" />
+        <attr name="finalHeight" format="dimension" />
+    </declare-styleable>
+
+    <!-- Declare custom theme attributes that allow changing which styles are
+         used for button bars depending on the API level.
+         ?android:attr/buttonBarStyle is new as of API 11 so this is
+         necessary to support previous API levels. -->
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TextViewVectorCompat">
+        <attr name="drawableCompatRight" format="reference" />
+        <attr name="drawableCompatLeft" format="reference" />
+        <attr name="drawableCompatTop" format="reference" />
+        <attr name="drawableCompatBottom" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ToggleEditModeRelativeLayout">
+        <attr name="isEnableEditMode" format="boolean" />
+    </declare-styleable>
+</resources>

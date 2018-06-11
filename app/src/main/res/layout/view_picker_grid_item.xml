@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/media_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/default_image_loading"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:matchHeightToWidth="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.vn.ntsc.widget.views.images.SquareImageView
+            android:id="@+id/iv_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:scaleType="centerCrop" />
+
+        <com.vn.ntsc.widget.views.images.RecyclingImageView
+            android:id="@+id/video_play_btn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/video_play_btn"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <com.nankai.designlayout.widget.CustomCheckBox
+        android:id="@+id/iv_check_box"
+        android:layout_width="@dimen/check_box_gird_item"
+        android:layout_height="@dimen/check_box_gird_item"
+        android:layout_margin="@dimen/spacing_1_8dp"
+        android:background="#464646"
+        android:clickable="false"
+        android:padding="@dimen/spacing_2_16dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/gray_light_transparent"
+        android:gravity="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

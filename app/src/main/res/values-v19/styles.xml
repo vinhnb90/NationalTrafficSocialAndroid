@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="gvnSplash" parent="AppTheme">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowBackground">@color/background_app</item>
+    </style>
+
+</resources>

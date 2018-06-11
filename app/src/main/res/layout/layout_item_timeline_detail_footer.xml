@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_timeline_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_0_2dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/layout_content">
+
+    <TextView
+        android:id="@+id/layout_item_timeline_view_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:text="@string/timeline_time_view"
+        android:textSize="@dimen/text_2_12sp"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/layout_item_timeline_like_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/timeline_like"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_timeline_view_number" />
+
+    <TextView
+        android:id="@+id/layout_item_timeline_comment_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:text="@string/timeline_comment"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/layout_item_timeline_like_number"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_timeline_view_number" />
+
+    <TextView
+        android:id="@+id/layout_item_timeline_share_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/timeline_share"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/layout_item_timeline_comment_number"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_timeline_view_number"
+        tools:ignore="RtlHardcoded" />
+
+</android.support.constraint.ConstraintLayout>

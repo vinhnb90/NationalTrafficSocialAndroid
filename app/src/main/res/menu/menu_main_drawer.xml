@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_main_drawer_home"
+            android:icon="@drawable/ic_menu_timeline"
+            android:title="@string/nv_home" />
+
+        <item
+            android:id="@+id/menu_main_drawer_online_alarm"
+            android:icon="@drawable/ic_nav_online_alarm"
+            android:title="@string/nv_online_alarm"
+            app:actionLayout="@layout/layout_badge_online_notification" />
+
+        <item
+            android:id="@+id/menu_main_drawer_account_setting"
+            android:icon="@drawable/ic_nav_user_setting"
+            android:title="@string/nv_setting_account" />
+        <item
+            android:id="@+id/menu_main_drawer_notify_setting"
+            android:icon="@drawable/ic_nav_noti_setting"
+            android:title="@string/nv_setting_notify" />
+
+        <item
+            android:id="@+id/menu_main_drawer_list_block"
+            android:icon="@drawable/ic_nav_list_block"
+            android:title="@string/nv_list_block" />
+
+        <item
+            android:id="@+id/menu_main_drawer_logout"
+            android:icon="@drawable/ic_nav_logout"
+            android:title="@string/nv_logout" />
+
+        <item
+            android:id="@+id/menu_main_drawer_version_app"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="@string/app_name" />
+
+    </group>
+</menu>

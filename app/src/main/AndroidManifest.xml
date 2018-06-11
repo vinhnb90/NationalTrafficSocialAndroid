@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.vn.ntsc">
+
+    <!-- Clear cache -->
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+
+    <!-- Device and app history -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />    <!-- Get phone call when device locked -->
+    <uses-permission android:name="android.permission.VIBRATE" />    <!-- Make vibrate when phone calling -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Contact -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Phone -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+
+    <!-- Permission to Camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front.autofocus"
+        android:required="false" />
+
+    <!-- Location -->
+    <uses-permission android:name="app.junglechat.com.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />     <!-- Auto region-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />    <!-- Auto region-->
+
+    <!-- Wifi connection information -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />    <!-- The same NETWORK_STATE but for wifi only -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />    <!-- The same NETWORK_STATE but for wifi only -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />    <!-- Used in Linphone -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />    <!-- Used in Linphone -->
+    <uses-permission android:name="android.permission.INTERNET" />    <!-- Connect to internet -->
+    <!-- Permission to Camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
+    <uses-permission android:name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT" />
+    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- Microphone -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />    <!-- Record audio -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />    <!-- Record sound and change volume -->
+    <!-- Access external storage permission -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- DeviceID and call information -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- Other -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="${applicationId}.permission.C2D_MESSAGE" />
+
+    <permission
+        android:name="${applicationId}.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <permission
+        android:name="${applicationId}.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />   <!-- Check boot done state. Used in Linphone -->
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />   <!-- Check bluetooth state. Used in Linphone -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />    <!-- Catch screen on event. Used in PortSipSdk -->
+    <uses-permission android:name="android.permission.RAISED_THREAD_PRIORITY" />    <!-- Used by Volley -->
+
+    <application
+        android:name=".app.AppController"
+        android:allowBackup="true"
+        android:extractNativeLibs="false"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:targetApi="m">
+
+        <!-- integrate facebook -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <meta-data
+            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+            android:value="GlideModule" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider${applicationId}"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/gvnSplash"
+            android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="post"
+                    android:scheme="ntsc" />
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.chat.meidiadetail.ChatMediaDetailActivity" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <!-- end -->
+        <activity
+            android:name=".ui.profile.detail.ProfileDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.profile.edit.EditProfileActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.signup.SignUpActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.login.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vn.ntsc.ui.main.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.vn.ntsc.ui.forgotpassword.ForgotPasswordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.vn.ntsc.ui.changepassword.ChangePasswordActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.comment.CommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.comment.subcomment.SubCommentActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.chat.generalibrary.GeneraLibraryActivity"
+            android:screenOrientation="portrait" />
+
+        <!-- Overlay keyboard on layout-->
+
+        <activity
+            android:name="com.vn.ntsc.ui.posts.PostStatusActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" /><!-- Overlay keyboard on layout-->
+
+        <activity
+            android:name=".ui.tagfriends.TagFriendActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.search.SearchSettingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.search.area.ChooseAreaActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.search.byname.SearchByNameActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysVisible" />
+        <activity
+            android:name="com.vn.ntsc.ui.profile.edit.job.JobActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.profile.edit.hobby.HobbyActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.profile.my.MyProfileActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.notices.online.NotificationOnlineActivity"
+            android:label="@string/title_activity_online_notification"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.livestream.LiveStreamActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan|adjustNothing" />
+
+        <activity
+            android:name=".ui.webview.WebViewActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.onlinealert.ManageOnlineAlertActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.blocklst.BlockListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.vn.ntsc.ui.posts.SharePrivacyActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".ui.setting.notification.NotificationSettingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.accountsetting.AccountSettingActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.search.area.ChooseEachAreaActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.gift.GiftActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.profile.media.myalbum.MyAlbumActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.profile.media.createAlbum.CreateAlbumActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.profile.media.albumDetail.MyAlbumDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name=".ui.mediadetail.album.AlbumDetailMediaActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity android:name=".ui.imagepreview.PreviewImageActivity" />
+
+        <activity
+            android:name=".ui.mediadetail.timeline.TimelineMediaActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name=".ui.chat.generalibrary.GeneraLibraryDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <activity
+            android:name=".ui.profile.media.videoaudio.VideoAudioActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".ui.profile.media.timeline.TimelineUserTabActivity" />
+        <activity android:name=".ui.profile.media.edit.description.album.EditAlbumDescriptionActivity" />
+
+        <!-- Firebase listening notification -->
+        <service
+            android:name=".services.fcm.MyFirebaseMessagingService"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".services.fcm.MyFirebaseInstanceIDService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+                <action android:name="com.google.firebase.INSTANCEID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".services.StickerAndGiftDownloadService"
+            android:enabled="true" />
+
+        <service android:name=".services.uploadFileChat.UploadFileService" />
+        <service android:name=".services.uploadFileChat.PostStatusService" />
+        <service android:name=".services.addImageAlbum.UpLoadImageToAlbumService" />
+
+        <receiver android:name=".widget.VolumeReceiver">
+            <intent-filter>
+                <action android:name="android.media.VOLUME_CHANGED_ACTION" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".ui.setting.notification.NotificationReceiveMessageActivity">
+        </activity>
+    </application>
+
+</manifest>

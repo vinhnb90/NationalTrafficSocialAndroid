@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/live_stream_constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <include layout="@layout/layout_live_stream_header" />
+
+    <ProgressBar
+        android:id="@+id/fragment_live_stream_viewer_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <include layout="@layout/layout_live_stream_comment" />
+
+    <LinearLayout
+        android:id="@+id/fragment_live_stream_layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/background_transparent_60"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:id="@+id/fragment_live_stream_viewer_live_stream_share"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/livestream_comment_height"
+            android:background="@drawable/bg_border_white"
+            android:gravity="center"
+            android:text="@string/common_share"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/fragment_live_stream_viewer_comment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_1_8dp"
+            android:layout_marginLeft="@dimen/spacing_1_8dp"
+            android:layout_marginRight="@dimen/spacing_1_8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_live_stream_editext_white"
+            android:hint="@string/comment_entry_hint"
+            android:inputType="textMultiLine"
+            android:maxLines="4"
+            android:textColor="@color/white"
+            android:textColorHint="@color/secondary_text_hint"
+            android:textSize="@dimen/text_2_12sp" />
+
+        <ImageView
+            android:id="@+id/fragment_live_stream_viewer_send_comment"
+            android:layout_width="@dimen/livestream_comment_height"
+            android:layout_height="@dimen/livestream_comment_height"
+            android:layout_margin="@dimen/spacing_1_8dp"
+            android:src="@drawable/ic_send_comment_live_stream" />
+
+    </LinearLayout>
+
+</RelativeLayout>

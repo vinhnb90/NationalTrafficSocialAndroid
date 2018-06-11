@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vn.ntsc.widget.views.images.CircleImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/avatar_live_stream"
+    android:layout_width="?actionBarSize"
+    android:layout_height="?actionBarSize"
+    android:layout_marginLeft="@dimen/spacing_1_8dp"
+    app:border_color="@color/default_app"
+    app:border_width="@dimen/border_width_live_stream" />

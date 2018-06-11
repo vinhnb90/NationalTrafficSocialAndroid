@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="SearchSortOder">
+        <item>Trình tự thời gian trực tuyến</item>
+        <item>Trình tự thời gian đăng kí</item>
+    </string-array>
+
+    <string-array name="SearchBodyMale">
+        <item>Tất cả</item>
+        <item>Mảnh khảnh</item>
+        <item>Hơi mảnh khảnh</item>
+        <item>Săn chắc</item>
+        <item>Bình thường</item>
+        <item>Cơ bắp</item>
+        <item>Dáng thể thao</item>
+        <item>Hơi béo</item>
+        <item>Béo </item>
+    </string-array>
+
+    <string-array name="SearchBodyFemale">
+        <item>Tất cả</item>
+        <item>Gầy</item>
+        <item>Hơi gầy</item>
+        <item>Thấp</item>
+        <item>Bình thường</item>
+        <item>Tự tin</item>
+        <item>Quyến rũ</item>
+        <item>Hơi béo</item>
+        <item>Béo </item>
+    </string-array>
+
+    <string-array name="SearchAvatar">
+        <item>Có</item>
+        <item>Không</item>
+        <item>Tất cả</item>
+    </string-array>
+
+    <string-array name="ReportArray">
+        <item>Không report</item>
+        <item>Nội dung bạo lực</item>
+        <item>Nội dung không phù hợp</item>
+        <item>Nội dung nguy hiểm</item>
+        <item>Vi phạm bản quyền</item>
+    </string-array>
+</resources>

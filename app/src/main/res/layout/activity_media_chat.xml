@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:icon_right="@drawable/ic_gallery"
+        app:text_title="@string/account_setting_toolbar_title"
+        app:type_button_right="icon" />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_media_chat_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar" />
+
+</RelativeLayout>

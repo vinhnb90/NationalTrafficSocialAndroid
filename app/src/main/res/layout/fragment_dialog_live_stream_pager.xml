@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_dialog_live_stream_pager_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent" />
+
+    <TextView
+        android:id="@+id/fragment_dialog_live_stream_pager_encoder_stat_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_1_8dp"
+        android:textColor="@color/green"
+        android:textSize="@dimen/text_2_12sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintRight_toRightOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

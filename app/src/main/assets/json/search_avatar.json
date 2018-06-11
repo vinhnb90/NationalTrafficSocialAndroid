@@ -1,0 +1,16 @@
+﻿{
+  "data": [
+    {
+      "value": 2,
+      "name": "Tất cả"
+    },
+    {
+      "value": 1,
+      "name": "Có"
+    },
+    {
+      "value": 0,
+      "name": "Không"
+    }
+  ]
+}

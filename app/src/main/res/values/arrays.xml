@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tab_colors">
+        <item name="tab_1">@color/white</item>
+        <item name="tab_2">@color/white</item>
+        <item name="tab_3">@color/white</item>
+        <item name="tab_4">@color/white</item>
+        <item name="tab_5">@color/white</item>
+    </array>
+
+    <array name="setting_notify">
+        <item name="yes">@string/common_yes</item>
+        <item name="no">@string/common_no</item>
+        <item name="all">@string/common_all</item>
+    </array>
+
+
+    <string-array name="job_male">
+        <item>Nhân viên công ty</item>
+        <item>Người quản lý</item>
+        <item>Giám đốc kinh doanh</item>
+        <item>Bán thời gian</item>
+        <item>Học sinh</item>
+        <item>Công nghiệp dịch vụ</item>
+        <item>Kỹ sư</item>
+        <item>Xây dựng</item>
+        <item>Vận tải</item>
+        <item>Tài chính</item>
+        <item>Bất động sản</item>
+        <item>Pháp luật</item>
+        <item>IT</item>
+        <item>Y tế</item>
+        <item>Giáo dục</item>
+        <item>Phúc lợi</item>
+        <item>Trang phục</item>
+        <item>Giải trí truyền thông</item>
+        <item>Nghệ thuật</item>
+        <item>Thất nghiệp</item>
+        <item>Khác</item>
+        <item>Bí mật</item>
+    </string-array>
+
+    <string-array name="job_female">
+        <item>Điều hành công ty</item>>
+        <item>Học sinh</item>
+        <item>OL</item>
+        <item>Bán thời gian</item>
+        <item>Y tá</item>
+        <item>Trông trẻ</item>
+        <item>Nhân viên bán hàng</item>
+        <item>Người mẫu</item>
+        <item>Giáo viên</item>
+        <item>Giúp việc</item>
+        <item>Nội trợ</item>
+        <item>Thực phẩm</item>
+        <item>Trang phục</item>
+        <item>Thẩm mỹ</item>
+        <item>Nữ tiếp viên</item>
+        <item>Bí mật</item>
+        <item>Khác</item>
+    </string-array>
+
+    <string-array name="hobby">
+        <item>Xem phim</item>
+        <item>Đọc sách</item>
+        <item>Nghệ thuật</item>
+        <item>Xem kịch</item>
+        <item>Âm nhạc</item>
+        <item>Thời trang</item>
+        <item>Truyện tranh/Phim hoạt hình</item>
+        <item>Thú cưng</item>
+        <item>Nấu ăn</item>
+        <item>Sành ăn/Đồ ngọt</item>
+        <item>Rượu</item>
+        <item>Làm vườn/Cây cảnh</item>
+        <item>Xem thể thao</item>
+        <item>Sức khỏe/Thể dục</item>
+        <item>Golf</item>
+        <item>Tennis</item>
+        <item>Trượt tuyết</item>
+        <item>Lướt ván</item>
+        <item>Lặn</item>
+        <item>Câu cá</item>
+        <item>Leo núi/Cắm trại</item>
+        <item>Môn thể thao khác</item>
+        <item>Thích biển</item>
+        <item>Du lịch/Suối nước nóng</item>
+        <item>Hoạt động ngoài trời</item>
+        <item>Hoạt động trong nhà</item>
+        <item>Bóng ném/Bi-a</item>
+        <item>Karaoke</item>
+        <item>Chụp ảnh/Máy ảnh</item>
+        <item>Mạng/PC</item>
+        <item>Phim hài</item>
+        <item>Điện tử</item>
+        <item>Xe máy/Ô tô</item>
+        <item>Xe đạp</item>
+        <item>Máy chơi bạc/Slot</item>
+        <item>Đua ngựa</item>
+    </string-array>
+
+    <string-array name="report_user_type">
+        <item>Không report user này</item>
+        <item>Nội dung bạo lực</item>
+        <item>Nội dung ko phù hợp</item>
+        <item>Nội dung nguy hiểm</item>
+        <item>Nội dung vi phạm quyền tác giả</item>
+    </string-array>
+
+    <string-array name="online_alert_array">
+        <item>@string/fragment_manage_online_alert_noti_every_time</item>
+        <item>@string/fragment_manage_online_alert_noti_max_ten</item>
+        <item>@string/fragment_manage_online_alert_noti_max_five</item>
+        <item>@string/fragment_manage_online_alert_noti_max_once_perday</item>
+    </string-array>
+
+    <string-array name="live_stream_option">
+        <item>LiveStream trực tiếp</item>
+        <item>LiveStream bằng video có sẵn</item>
+    </string-array>
+
+    <string-array name="evaluate_voice">
+        <item>@string/evaluate_gentle</item>
+        <item>@string/evaluate_funny</item>
+        <item>@string/evaluate_sweet</item>
+        <item>@string/evaluate_powerful</item>
+        <item>@string/evaluate_friendly</item>
+        <item>@string/evaluate_warm</item>
+        <item>@string/evaluate_tough</item>
+        <item>@string/evaluate_sexy</item>
+        <item>@string/evaluate_cool</item>
+        <item>@string/evaluate_soft</item>
+    </string-array>
+
+    <array name="evaluate_color">
+        <item>@color/color_gently</item>
+        <item>@color/color_funny</item>
+        <item>@color/color_sweet</item>
+        <item>@color/color_pơwerful</item>
+        <item>@color/color_friendly</item>
+        <item>@color/color_warm</item>
+        <item>@color/color_tough</item>
+        <item>@color/color_sexy</item>
+        <item>@color/color_cool</item>
+        <item>@color/color_soft</item>
+    </array>
+
+
+</resources>

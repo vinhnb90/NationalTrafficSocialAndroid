@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tag_friend_item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/spacing_1_8dp"
+        android:paddingTop="@dimen/spacing_1_8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="@dimen/message_item_avatar_size"
+            android:layout_height="@dimen/message_item_avatar_size"
+            android:layout_marginBottom="@dimen/spacing_1_8dp"
+            android:layout_marginLeft="@dimen/spacing_1_8dp"
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_avatar_circle_male_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_1_8dp"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_age"
+            app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+            app:layout_constraintTop_toTopOf="@+id/img_avatar"
+            app:layout_constraintVertical_bias=".25" />
+
+        <TextView
+            android:id="@+id/txt_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/spacing_1_8dp"
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:layout_marginTop="@dimen/dp_4"
+            android:text="21 age"
+            android:textColor="@color/secondary_text_color"
+            android:textColorHint="@color/secondary_text_color"
+            android:textSize="12sp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+            app:layout_constraintLeft_toRightOf="@+id/img_avatar"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name"
+            app:layout_constraintVertical_bias=".25" />
+
+        <TextView
+            android:id="@+id/txt_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_2_16dp"
+            android:layout_marginRight="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/dp_4"
+            android:drawablePadding="@dimen/spacing_0_4dp"
+            android:gravity="center"
+            android:text="Hồ Chí Minh"
+            android:textSize="@dimen/sp_12"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line"
+        android:layout_marginLeft="@dimen/message_item_avatar_size"
+        android:background="@color/hint_text_color"
+        app:layout_constraintBottom_toBottomOf="@+id/layout_content" />
+</android.support.constraint.ConstraintLayout>
+

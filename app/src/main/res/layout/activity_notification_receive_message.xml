@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.vn.ntsc.ui.setting.notification.NotificationReceiveMessageActivity">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:text_title="@string/notification_setting_title"
+        app:type_button_right="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/border_gray_no_padding"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <com.vn.ntsc.widget.views.textview.MyCheckboxButton
+            android:id="@+id/activity_notification_receive_message_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_4"
+            app:text="@string/notification_setting_all" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:background="@color/gray"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <com.vn.ntsc.widget.views.textview.MyCheckboxButton
+            android:id="@+id/activity_notification_receive_message_no_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_4"
+            app:text="@string/notification_setting_no_one" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:background="@color/gray"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <com.vn.ntsc.widget.views.textview.MyCheckboxButton
+            android:id="@+id/activity_notification_receive_message_only_favorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_4"
+            app:text="@string/notification_setting_only_favorite_2" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

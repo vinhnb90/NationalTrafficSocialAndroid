@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_1_6dp"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_1_6dp">
+
+    <ImageView
+        android:id="@+id/avatar"
+        style="@style/AvatarChatStyle"
+        android:src="@drawable/ic_avatar_circle_male_border" />
+
+    <LinearLayout
+        android:id="@+id/parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_1_6dp"
+        android:layout_marginRight="@dimen/spacing_3_24dp"
+        android:layout_marginTop="@dimen/spacing_3_24dp"
+        android:background="@drawable/ic_bubble"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toRightOf="@+id/avatar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_photo_receiver"
+            android:layout_width="@dimen/size_image_chat"
+            android:layout_height="@dimen/size_image_chat"
+            android:layout_above="@+id/tv_time_photo_send"
+            android:paddingBottom="@dimen/spacing_0_2dp"
+            android:paddingTop="@dimen/spacing_0_2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_img_send_default"
+            android:layout_gravity="center" />
+
+
+        <TextView
+            android:id="@+id/tv_time_photo_receiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/text_2_12sp"
+            android:text="hello" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

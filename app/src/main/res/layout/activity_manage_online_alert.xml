@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_right="@string/common_done"
+        app:text_title="@string/fragment_manage_online_alert_title"
+        app:type_button_right="text" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_2_16dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/activity_manage_online_alert_iv_avatar"
+            android:layout_width="@dimen/common_size_96dp"
+            android:layout_height="@dimen/common_size_96dp"
+            android:layout_marginBottom="@dimen/spacing_2_16dp"
+            android:contentDescription="@string/common_image"
+            android:src="@drawable/ic_avatar_circle_male_border" />
+
+        <TextView
+            android:id="@+id/activity_manage_online_alert_txtUserName"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_1_8dp"
+            android:gravity="center"
+            android:padding="@dimen/spacing_2_16dp"
+            android:text="@string/fragment_manage_online_alert_text_user"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_4_medium_16sp"
+            android:textStyle="normal"
+            android:typeface="sans" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border_edittext_no_padding"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/activity_manage_online_alert_cbx_is_alert_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="toogleCheckbox"
+                android:padding="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/spacing_1_8dp"
+                    android:onClick="toogleCheckbox"
+                    android:text="@string/fragment_manage_online_alert_check_box"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_2_12sp"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/activity_manage_online_alert_cbx_is_alert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="@dimen/spacing_1_8dp"
+                    android:button="@drawable/ic_checkbox_selector" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/color_red" />
+
+            <RelativeLayout
+                android:id="@+id/activity_manage_online_alert_rlt_when"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-1dp"
+                android:padding="@dimen/spacing_1_8dp">
+
+                <TextView
+                    android:id="@+id/activity_manage_online_alert_txt_when"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_1_8dp"
+                    android:drawablePadding="@dimen/spacing_1_8dp"
+                    android:text="@string/fragment_manage_online_alert_noti_never_alert_me"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_2_12sp" />
+
+                <TextView
+                    android:id="@+id/activity_manage_online_alert_txt_when_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginBottom="@dimen/spacing_1_8dp"
+                    android:layout_marginLeft="@dimen/spacing_1_8dp"
+                    android:layout_marginRight="@dimen/spacing_1_8dp"
+                    android:layout_marginTop="@dimen/spacing_1_8dp"
+                    android:layout_toStartOf="@id/activity_manage_online_alert_txt_when"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/fragment_manage_online_alert_text_title1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_2_12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_14"
+            android:text="@string/fragment_manage_online_alert_check_box_description"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_14" />
+    </LinearLayout>
+</LinearLayout>

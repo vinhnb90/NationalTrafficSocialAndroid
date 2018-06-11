@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:textSize="@dimen/text_4_medium_16sp"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/title_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_2_16dp"
+        android:text="@string/title_dialog_search_sort_oder"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:background="@color/colorAccent"/>
+</LinearLayout>

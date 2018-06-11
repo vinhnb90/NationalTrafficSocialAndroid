@@ -1,0 +1,74 @@
+
+    {
+        "hobby": [
+        {
+            "name": "Âm nhạc",
+                "value": 0
+        },
+        {
+            "name": "Thời trang",
+                "value": 1
+        },
+        {
+            "name": "Nấu ăn",
+                "value": 2
+        },
+        {
+            "name": "Tenis",
+                "value": 3
+        },
+        {
+            "name": "Golf",
+                "value": 4
+        },
+        {
+            "name": "Truyện tranh/Phim họat hình",
+                "value": 5
+        },
+        {
+            "name": "Thú cưng",
+                "value": 6
+        },
+        {
+            "name": "Xem phim",
+                "value": 7
+        },
+        {
+            "name": "Nghệ thuật",
+                "value": 8
+        },
+        {
+            "name": "Đọc sách",
+                "value": 9
+        },
+        {
+            "name": "Lặn",
+                "value": 10
+        },
+        {
+            "name": "Câu cá",
+                "value": 11
+        },
+        {
+            "name": "Rượu",
+                "value": 12
+        },
+        {
+            "name": "Du lịch",
+                "value": 13
+        },
+        {
+            "name": "Karaoke",
+                "value": 14
+        },
+        {
+            "name": "Chụp ảnh",
+                "value": 15
+        },
+        {
+            "name": "Làm vườn",
+                "value": 16
+        }
+  ]
+    }
+

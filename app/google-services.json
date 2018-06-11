@@ -1,0 +1,135 @@
+{
+  "project_info": {
+    "project_number": "842550913355",
+    "firebase_url": "https://ntsc-vietnam.firebaseio.com",
+    "project_id": "ntsc-vietnam",
+    "storage_bucket": "ntsc-vietnam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842550913355:android:995101224292495e",
+        "android_client_info": {
+          "package_name": "com.vn.ntsc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842550913355-v13v3tjdkdh5brlbbe2i8rmlon105ne3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtrHgZqJ8u1kjxJKoYX1S9i2bti2nYesE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842550913355:android:b14b264bb04124c1",
+        "android_client_info": {
+          "package_name": "com.vn.ntsc.product"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842550913355-v13v3tjdkdh5brlbbe2i8rmlon105ne3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtrHgZqJ8u1kjxJKoYX1S9i2bti2nYesE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842550913355:android:16c9750ff6bf4b03",
+        "android_client_info": {
+          "package_name": "com.vn.ntsc.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842550913355-v13v3tjdkdh5brlbbe2i8rmlon105ne3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtrHgZqJ8u1kjxJKoYX1S9i2bti2nYesE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:842550913355:android:c0822b0e0db7df33",
+        "android_client_info": {
+          "package_name": "com.vn.ntsc.develop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "842550913355-v13v3tjdkdh5brlbbe2i8rmlon105ne3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtrHgZqJ8u1kjxJKoYX1S9i2bti2nYesE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

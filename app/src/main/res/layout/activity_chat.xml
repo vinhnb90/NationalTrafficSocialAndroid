@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_chat_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="false"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_chat_swipe_refresh_history_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/activity_chat_tv_typing"
+        android:layout_below="@+id/toolbar">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_chat_rv_chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.nankai.designlayout.typing.LoadingDots
+        android:id="@+id/activity_chat_tv_typing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/activity_chat_bottom_layout"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_4_32dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:gravity="center"
+        android:visibility="gone"
+        app:LoadingDots_auto_play="true"
+        app:LoadingDots_dots_color="@color/black_overlay"
+        app:LoadingDots_dots_count="5"
+        app:LoadingDots_dots_size="5dp"
+        app:LoadingDots_dots_space="3dp"
+        app:LoadingDots_jump_duration="200"
+        app:LoadingDots_jump_height="5dp"
+        app:LoadingDots_loop_duration="900"
+        app:LoadingDots_loop_start_delay="200" />
+
+    <RelativeLayout
+        android:id="@+id/activity_chat_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/activity_chat_panel_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_border_chat_panel">
+
+            <ImageView
+                android:id="@+id/activity_chat_imv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/activity_chat_edt_msg"
+                android:layout_alignParentStart="true"
+                android:maxHeight="@dimen/spacing_9_72dp"
+                android:padding="@dimen/spacing_1_8dp"
+                android:tint="@color/disabled_text_color"
+                app:srcCompat="@drawable/ic_add_option_chat" />
+
+            <ImageView
+                android:id="@+id/activity_chat_imv_face"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/activity_chat_edt_msg"
+                android:layout_toEndOf="@+id/activity_chat_imv_add"
+                android:maxHeight="@dimen/spacing_9_72dp"
+                android:padding="@dimen/spacing_1_8dp"
+                android:tint="@color/disabled_text_color"
+                app:srcCompat="@drawable/ic_face_option_chat" />
+
+            <com.vn.ntsc.widget.views.edittext.EmoEditext
+                android:id="@+id/activity_chat_edt_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/activity_chat_imv_send"
+                android:layout_toEndOf="@+id/activity_chat_imv_face"
+                android:background="@color/transparent"
+                android:hint="@string/common_inpurt_text"
+                android:maxHeight="@dimen/spacing_9_72dp"
+                android:maxLines="3"
+                android:padding="@dimen/spacing_1_8dp" />
+
+            <requestFocus />
+
+            <ImageView
+                android:id="@+id/activity_chat_imv_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/activity_chat_edt_msg"
+                android:layout_alignParentEnd="true"
+                android:padding="@dimen/spacing_1_8dp"
+                app:srcCompat="@drawable/ic_send" />
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/activity_chat_container_bottom_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_chat_panel_bottom" />
+
+        <View
+            android:id="@+id/activity_chat_keyboard_virtual_frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/transparent"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/activity_chat_scrim_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:background="#9ceae9e9"
+        android:visibility="gone" />
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:icon_right="@drawable/ic_more_vert"
+        app:text_title="@string/act_block_title"
+        app:type_button_right="icon" />
+
+</RelativeLayout>

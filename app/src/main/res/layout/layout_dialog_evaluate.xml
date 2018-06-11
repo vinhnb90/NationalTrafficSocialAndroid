@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_title_evaluate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:gravity="center"
+        android:text="@string/evaluate"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_5_20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:orientation="vertical">
+
+        <include layout="@layout/layout_evaluate_header" />
+
+        <include layout="@layout/layout_evaluate_center" />
+
+        <include layout="@layout/layout_evaluate_bottom" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_load_more"
+        android:background="@color/color_red"
+        android:gravity="center"
+        android:text="@string/common_save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_4_medium_16sp"
+        android:textStyle="bold" />
+</LinearLayout>

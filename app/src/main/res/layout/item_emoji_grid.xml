@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_0_4dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imv_emoji"
+        android:layout_width="@dimen/toolbar_avatar"
+        android:layout_height="@dimen/toolbar_avatar"
+        android:paddingBottom="@dimen/spacing_0_4dp"
+        android:paddingTop="@dimen/spacing_0_4dp" />
+</LinearLayout>

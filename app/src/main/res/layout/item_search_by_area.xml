@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_1_8dp"
+    android:layout_marginRight="@dimen/spacing_1_8dp"
+    android:clickable="true">
+
+    <RelativeLayout
+        android:id="@+id/item_areas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <TextView
+            android:id="@+id/tv_areas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/spacing_2_16dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_3_14sp" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/rbtn_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/spacing_1_8dp"
+            android:layout_marginTop="@dimen/spacing_1_8dp"
+            android:button="@drawable/ic_custom_checkbox"
+            android:clickable="true"
+            android:padding="@dimen/spacing_1_8dp"
+            android:textColor="@color/primary_text_color" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/spacing_2_16dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_1_8dp"
+            android:layout_marginTop="@dimen/spacing_1_8dp"
+            android:paddingBottom="@dimen/spacing_1_8dp"
+            android:paddingTop="@dimen/spacing_1_8dp"
+            android:textSize="@dimen/text_4_medium_16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_choose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_button_selector"
+            android:paddingBottom="@dimen/spacing_1_8dp"
+            android:paddingLeft="@dimen/spacing_1_8dp"
+            android:paddingRight="@dimen/spacing_1_8dp"
+            android:paddingTop="@dimen/spacing_1_8dp"
+            android:text="@string/areas_select_all"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
+
+
+

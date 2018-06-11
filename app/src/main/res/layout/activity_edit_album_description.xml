@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:type_button_right="text"
+        app:text_right="@string/common_save"
+        app:text_title="@string/account_setting_toolbar_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:scrollbars="none">
+
+        <EditText
+            android:id="@+id/activity_edit_album_description_edt_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_1_8dp"
+            android:background="@color/transparent"
+            android:hint="@string/create_description"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/sp_16"
+            android:textCursorDrawable="@drawable/color_cursor_app"/>
+    </ScrollView>
+
+</RelativeLayout>

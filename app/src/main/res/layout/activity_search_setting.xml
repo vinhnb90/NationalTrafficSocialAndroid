@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_title="@string/title_activity_search_setting" />
+
+    <FrameLayout
+        android:id="@+id/activity_search_setting_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <ScrollView
+            android:id="@+id/activity_search_setting_scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/spacing_9_72dp">
+
+                <TextView
+                    android:id="@+id/activity_search_setting_txt_search_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_2_16dp"
+                    android:layout_marginTop="@dimen/spacing_2_16dp"
+                    android:text="@string/title_search_setting_layout"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/line"
+                    android:layout_marginLeft="@dimen/spacing_2_16dp"
+                    android:layout_marginRight="@dimen/spacing_2_16dp"
+                    android:layout_marginTop="@dimen/spacing_1_8dp"
+                    android:background="@color/black" />
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_age"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_age" />
+
+                    <ImageView
+                        android:id="@+id/activity_search_setting_img_arrow_age"
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/activity_search_setting_img_arrow_age" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_regions"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_area"
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_regions" />
+
+                    <ImageView
+                        android:id="@+id/activity_search_setting_img_arrow_regions"
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_regions"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/spacing_3_30dp"
+                        android:layout_marginEnd="@dimen/spacing_1_8dp"
+                        android:layout_toStartOf="@+id/activity_search_setting_img_arrow_regions"
+                        android:layout_toEndOf="@+id/activity_search_setting_txt_area"
+                        android:ellipsize="end"
+                        android:gravity="right|center_vertical"
+                        android:lines="2"
+                        android:textSize="@dimen/text_2_12sp" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_gender"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_gender"
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_gender" />
+
+                    <ImageView
+                        android:id="@+id/activity_search_setting_img_arrow_gender"
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_name_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/spacing_3_30dp"
+                        android:layout_marginEnd="@dimen/spacing_1_8dp"
+                        android:layout_toStartOf="@+id/activity_search_setting_img_arrow_gender"
+                        android:layout_toEndOf="@+id/activity_search_setting_txt_gender"
+                        android:ellipsize="end"
+                        android:gravity="right|center_vertical"
+                        android:lines="2"
+                        android:textSize="@dimen/text_2_12sp" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_login_within_24h"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_login_24" />
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/activity_search_setting_chkb_login_within_24h"
+                        style="@style/ItemArrowSearchSetting"
+                        android:button="@drawable/ic_custom_checkbox"
+                        android:paddingStart="@dimen/spacing_0_4dp"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_sort_order"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_sort_order" />
+
+                    <ImageView
+                        android:id="@+id/activity_search_setting_img_arrow_sort"
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/activity_search_setting_img_arrow_sort"
+                        android:gravity="right|center_vertical"
+                        android:textSize="@dimen/text_2_12sp" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_body"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_sort_body_type" />
+
+                    <ImageView
+                        android:id="@+id/activity_search_setting_img_arrow_body"
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_body"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/activity_search_setting_img_arrow_body"
+                        android:gravity="right|center_vertical"
+                        android:textSize="@dimen/text_2_12sp" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_avatar"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_setting_avatar" />
+
+                    <ImageView
+                        android:id="@+id/activity_search_setting_img_arrow_avatar"
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <TextView
+                        android:id="@+id/activity_search_setting_txt_avatar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/activity_search_setting_img_arrow_avatar"
+                        android:gravity="right|center_vertical"
+                        android:textSize="@dimen/text_2_12sp" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_not_interacted"
+                    style="@style/ItemSearchSetting">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="Người dùng chưa tương tác" />
+
+                    <android.support.v7.widget.AppCompatCheckBox
+                        android:id="@+id/activity_search_setting_chkb_not_interacted"
+                        style="@style/ItemArrowSearchSetting"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:button="@drawable/ic_custom_checkbox"
+                        android:paddingStart="@dimen/spacing_0_4dp"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/activity_search_setting_layout_search_by_name"
+                    style="@style/ItemSearchSetting"
+                    android:layout_marginTop="@dimen/spacing_3_24dp"
+                    android:background="@drawable/bg_search_setting_round">
+
+                    <TextView
+                        style="@style/ItemTextSearchSetting"
+                        android:text="@string/act_search_by_name" />
+
+                    <ImageView
+                        style="@style/ItemArrowSearchSetting"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+
+                    <View style="@style/ItemLineSearchSetting" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/activity_search_setting_btn_search"
+                    style="@style/ItemSearchSetting"
+                    android:layout_marginTop="@dimen/spacing_2_16dp"
+                    android:background="@drawable/bg_button_search_setting_round"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:tint="@color/white"
+                        app:srcCompat="@drawable/ic_search" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/act_search_button"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </FrameLayout>
+
+</RelativeLayout>

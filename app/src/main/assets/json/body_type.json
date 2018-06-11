@@ -1,0 +1,81 @@
+{
+  "male": [
+    {
+      "name": "Tất cả",
+      "value": -1
+    },
+    {
+      "name": "Mảnh khảnh",
+      "value": 8
+    },
+    {
+      "name": "Hơi mảnh khảnh",
+      "value": 9
+    },
+    {
+      "name": "Săn chắc",
+      "value": 10
+    },
+    {
+      "name": "Bình thường",
+      "value": 11
+    },
+    {
+      "name": "Cơ bắp",
+      "value": 12
+    },
+    {
+      "name": "Dáng thể thao",
+      "value": 13
+    },
+    {
+      "name": "Hơi béo",
+      "value": 14
+    },
+    {
+      "name": "Béo",
+      "value": 15
+    }
+  ],
+
+
+
+  "female": [
+    {
+      "name": "Tất cả",
+      "value": -1
+    },
+    {
+      "name": "Gầy",
+      "value": 0
+    },
+    {
+      "name": "Hơi gầy",
+      "value": 1
+    },
+    {
+      "name": "Thấp",
+      "value": 2
+    },
+    {
+      "name": "Bình thường",
+      "value": 3
+    },
+    {
+      "name": "Tự tin",
+      "value": 4
+    },
+    {
+      "name": "Quyến rũ",
+      "value": 5
+    },
+    {
+      "name": "Hơi béo",
+      "value": 6
+    },
+    {
+      "name": "Béo",
+      "value": 7
+    }
+  ]
+}

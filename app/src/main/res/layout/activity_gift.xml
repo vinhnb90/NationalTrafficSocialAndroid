@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_title="@string/gift_title" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/sp_16"
+        android:text="@string/gift_header"
+        android:textColor="@color/primary_text_color"
+        android:textSize="@dimen/sp_16" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/activity_gift_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_gift_grd_choose_gift"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/standard_main_layout_padding"
+            android:layout_marginLeft="@dimen/standard_main_layout_padding"
+            android:layout_marginRight="@dimen/standard_main_layout_padding"
+            android:layout_marginTop="@dimen/standard_main_layout_padding"
+            android:horizontalSpacing="10dp"
+            android:numColumns="3"
+            android:verticalSpacing="10dp" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<region_group name="Miền Bắc">
+<region alias="HaNoi" code="1">Hà Nội</region>
+<region alias="BacNinh" code="2">Bắc Ninh</region>
+<region alias="HaNam" code="3">Hà Nam</region>
+<region alias="HaiDuong" code="4">Hải Dương</region>
+<region alias="HaiPhong" code="5">Hải Phòng</region>
+<region alias="HungYen" code="6">Hưng Yên</region>
+<region alias="NamDinh" code="7">Nam Định</region>
+<region alias="NinhBinh" code="8">Ninh Bình</region>
+<region alias="ThaiBinh" code="9">Thái Bình</region>
+<region alias="VinhPhuc" code="10">Vĩnh Phúc</region>
+<region alias="HaGiang" code="11">Hà Giang</region>
+<region alias="CaoBang" code="12">Cao Bằng</region>
+<region alias="BacKan" code="13">Bắc Kạn</region>
+<region alias="LangSon" code="14">Lạng Sơn</region>
+<region alias="TuyenQuang" code="15">Tuyên Quang</region>
+<region alias="ThaiNguyen" code="16">Thái Nguyên</region>
+<region alias="PhuTho" code="17">Phú Thọ</region>
+<region alias="BacGiang" code="18">Bắc Giang</region>
+<region alias="QuangNinh" code="19">Quảng Ninh</region>
+<region alias="LaoCai" code="20">Lào Cai</region>
+<region alias="YenBai" code="21">Yên Bái</region>
+<region alias="DienBien" code="22">Điện Biên</region>
+<region alias="HoaBinh" code="23">Hoà Bình</region>
+<region alias="LaiChau" code="24">Lai Châu</region>
+<region alias="SonLa" code="25">Sơn La</region>
+</region_group>
+
+<region_group name="Miền Trung">
+<region alias="ThanhHoa" code="26">Thanh Hoá</region>
+<region alias="NgheAn" code="27">Nghệ An</region>
+<region alias="HaTinh" code="28">Hà Tĩnh</region>
+<region alias="QuangBinh" code="29">Quảng Bình</region>
+<region alias="QuangTri" code="30">Quảng Trị</region>
+<region alias="ThuaThienHue" code="31">Thừa Thiên-Huế</region>
+<region alias="DaNang" code="32">Đà Nẵng</region>
+<region alias="QuangNam" code="33">Quảng Nam</region>
+<region alias="QuangNgai" code="34">Quảng Ngãi</region>
+<region alias="BinhDinh" code="35">Bình Định</region>
+<region alias="PhuYen" code="36">Phú Yên</region>
+<region alias="KhanhHoa" code="37">Khánh Hoà</region>
+<region alias="NinhThuan" code="38">Ninh Thuận</region>
+<region alias="BinhThuan" code="39">Bình Thuận</region>
+<region alias="KonTum" code="40">Kon Tum</region>
+<region alias="GiaLai" code="41">Gia Lai</region>
+<region alias="DacLac" code="42">Đắc Lắc</region>
+<region alias="DacNong" code="43">Đắc Nông</region>
+<region alias="LamDong" code="44">Lâm Đồng</region>
+</region_group>
+
+<region_group name="Miền Nam">
+<region alias="HoChiMinh" code="45">Hồ Chí Minh</region>
+<region alias="CanTho" code="46">Cần Thơ</region>
+<region alias="BinhPhuoc" code="47">Bình Phước</region>
+<region alias="BinhDuong" code="48">Bình Dương</region>
+<region alias="DongNai" code="49">Đồng Nai</region>
+<region alias="TayNinh" code="50">Tây Ninh</region>
+<region alias="BaRiaVungTau" code="51">Bà Rịa-Vũng Tàu</region>
+<region alias="LongAn" code="52">Long An</region>
+<region alias="DongThap" code="53">Đồng Tháp</region>
+<region alias="TienGiang" code="54">Tiền Giang</region>
+<region alias="AnGiang" code="55">An Giang</region>
+<region alias="BenTre" code="56">Bến Tre</region>
+<region alias="VinhLong" code="57">Vĩnh Long</region>
+<region alias="TraVinh" code="58">Trà Vinh</region>
+<region alias="HauGiang" code="59">Hậu Giang</region>
+<region alias="KienGiang" code="60">Kiên Giang</region>
+<region alias="SocTrang" code="61">Sóc Trăng</region>
+<region alias="BacLieu" code="62">Bạc Liêu</region>
+<region alias="CaMau" code="63">Cà Mau</region>
+</region_group>

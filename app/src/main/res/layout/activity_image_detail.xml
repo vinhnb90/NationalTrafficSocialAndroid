@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_image_detail_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/activity_image_detail_scrim_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/activity_image_detail_image_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/activity_image_detail_panel_bottom"
+        android:layout_below="@+id/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/activity_image_detail_panel_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/activity_image_detail_txt_number_like"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="@dimen/spacing_1_8dp"
+            android:drawableEnd="@drawable/ic_list_buzz_item_favorited"
+            android:gravity="center"
+            android:padding="@dimen/spacing_2_16dp"
+            android:text="3"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/activity_image_detail_txt_number_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/activity_image_detail_txt_number_like"
+            android:drawableEnd="@drawable/ic_comment"
+            android:drawablePadding="@dimen/spacing_1_8dp"
+            android:gravity="center"
+            android:padding="@dimen/spacing_2_16dp"
+            android:text="3"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/activity_image_detail_txt_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/activity_image_detail_txt_number_comment"
+            android:drawablePadding="@dimen/spacing_1_8dp"
+            android:drawableStart="@drawable/ic_delete_24dp"
+            android:gravity="center"
+            android:padding="@dimen/spacing_2_16dp"
+            android:text="@string/common_remove"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/activity_image_detail_txt_report"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/activity_image_detail_txt_number_comment"
+            android:drawablePadding="@dimen/spacing_1_8dp"
+            android:drawableStart="@drawable/ic_report_24dp"
+            android:gravity="center"
+            android:padding="@dimen/spacing_2_16dp"
+            android:text="@string/common_report"
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/activity_image_detail_txt_save"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:drawableStart="@drawable/ic_save_24dp"
+            android:drawablePadding="@dimen/spacing_1_8dp"
+            android:gravity="center"
+            android:padding="@dimen/spacing_2_16dp"
+            android:text="@string/common_save"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:background="@color/transparent" />
+
+</RelativeLayout>

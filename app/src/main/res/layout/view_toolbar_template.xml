@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MyToolbarStyle">
+
+        <TextView
+            android:id="@+id/toolbar_left"
+            android:layout_width="?android:actionBarSize"
+            android:layout_height="?android:actionBarSize"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_4_medium_16sp"
+            android:textStyle="bold" />
+
+    </android.support.v7.widget.Toolbar>
+</merge>

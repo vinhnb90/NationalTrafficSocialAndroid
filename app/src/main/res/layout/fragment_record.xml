@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
+
+
+    <ImageView
+        android:id="@+id/fragment_record_imageView"
+        android:layout_width="@dimen/profile_avatar_small"
+        android:layout_height="@dimen/profile_avatar_small"
+        android:src="@drawable/ic_record"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28" />
+
+
+    <TextView
+        android:id="@+id/fragment_record_tv_time_recording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_3_24dp"
+        android:text="00:00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_record_imageView" />
+
+
+    <ImageView
+        android:id="@+id/fragment_record_img_record_delete"
+        android:layout_width="@dimen/emoji_sticker_size"
+        android:layout_height="@dimen/emoji_sticker_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_record_img_record_play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_record_tv_time_recording"
+        app:srcCompat="@drawable/ic_delete_record" />
+
+    <ImageView
+        android:id="@+id/fragment_record_img_record_play"
+        android:layout_width="@dimen/emoji_sticker_size"
+        android:layout_height="@dimen/emoji_sticker_size"
+        android:src="@drawable/ic_record_pause"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_record_tv_time_recording" />
+
+
+    <ImageView
+        android:id="@+id/fragment_record_img_record_save"
+        android:layout_width="@dimen/emoji_sticker_size"
+        android:layout_height="@dimen/emoji_sticker_size"
+        android:src="@drawable/ic_record_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fragment_record_img_record_play"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_record_tv_time_recording" />
+
+</android.support.constraint.ConstraintLayout>

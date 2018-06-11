@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/spacing_1_8dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_post_status">
+
+    <RelativeLayout
+        android:id="@+id/layout_post_status_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/layout_post_status_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/layout_post_status_avatar"
+                android:layout_width="@dimen/avatar_size_post_status"
+                android:layout_height="@dimen/avatar_size_post_status"
+                android:layout_marginStart="@dimen/spacing_2_16dp"
+                android:src="@drawable/ic_avatar_circle_male_border" />
+
+            <RelativeLayout
+                android:id="@+id/layout_post_status_flexbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_1_8dp"
+                android:layout_marginStart="@dimen/spacing_0_4dp"
+                android:layout_marginTop="@dimen/dp_4"
+                android:layout_toEndOf="@+id/layout_post_status_avatar"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/layout_post_status_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_0_4dp"
+                    android:text="@string/app_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_2_12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/layout_post_status_tag"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_post_status_user_name"
+                    android:text="@string/tag_friend_blank" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_post_status_private"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout_post_status_flexbox"
+                android:layout_margin="@dimen/spacing_0_4dp"
+                android:layout_toEndOf="@+id/layout_post_status_avatar"
+                android:background="@drawable/bg_border_gray"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/layout_post_status_private_icon"
+                    android:layout_width="@dimen/status_layout_private_icon_size"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_public" />
+
+                <TextView
+                    android:id="@+id/layout_post_status_private_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/layout_post_status_private_icon"
+                    android:text="@string/public_status"
+                    android:textSize="@dimen/text_2_12sp" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/layout_post_status_header_bottom_view"
+        android:layout_below="@+id/layout_post_status_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/layout_post_status_edt_your_mind"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/spacing_1_8dp"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="left|top"
+            android:hint="@string/what_are_you_thinking"
+            android:inputType="textNoSuggestions|textCapSentences|textMultiLine"
+            android:minHeight="?actionBarSize"
+            android:textSize="@dimen/text_3_14sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/layout_post_status_list_picker"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_list_push_media"
+            android:layout_marginBottom="@dimen/spacing_0_2dp"
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:background="@color/transparent"
+            android:orientation="horizontal"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/layout_post_status_header_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <View
+                android:id="@+id/layout_post_status_header_bottom_line_top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/line_color" />
+
+
+            <ImageView
+                android:id="@+id/layout_post_status_header_bottom_tag_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/icon_post_status"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/layout_post_status_header_bottom_line_top"
+                android:padding="@dimen/spacing_1_8dp"
+                android:src="@drawable/ic_tag_friends" />
+
+            <ImageView
+                android:id="@+id/layout_post_status_header_bottom_choose_file"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/icon_post_status"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/layout_post_status_header_bottom_line_top"
+                android:padding="@dimen/spacing_1_8dp"
+                android:src="@drawable/ic_update_status_video" />
+
+            <ImageView
+                android:id="@+id/layout_post_status_header_bottom_take_option"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/icon_post_status"
+                android:layout_below="@+id/layout_post_status_header_bottom_line_top"
+                android:padding="@dimen/spacing_1_8dp"
+                android:layout_toStartOf="@+id/layout_post_status_header_bottom_choose_file"
+                android:src="@drawable/ic_update_status_take_picture" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/layout_post_status_header_bottom_line_bot"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:background="@color/line_color"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/layout_post_status_header_bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent" />
+
+</RelativeLayout>

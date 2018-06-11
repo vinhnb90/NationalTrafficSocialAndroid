@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_2_16dp"
+    android:layout_marginRight="@dimen/spacing_2_16dp"
+    android:layout_marginTop="@dimen/spacing_0_4dp"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imv_sticker"
+        android:layout_width="@dimen/emoji_stiker_icon_size"
+        android:layout_height="@dimen/emoji_stiker_icon_size" />
+</LinearLayout>

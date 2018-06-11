@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:clickable="true"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/alpha_back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/fragment_media_btn_emojis_photo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_gallary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_0_4dp"
+                    android:text="@string/common_image"
+                    android:textColor="@color/emoji_txt"
+                    android:textSize="@dimen/text_3_14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="match_parent"
+                android:background="@color/emoji_icons" />
+
+
+            <LinearLayout
+                android:id="@+id/fragment_media_btn_emojis_camera"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_camera" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_0_4dp"
+                    android:text="@string/common_take_photo"
+                    android:textColor="@color/emoji_txt"
+                    android:textSize="@dimen/text_3_14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="match_parent"
+                android:background="@color/emoji_icons" />
+
+
+            <LinearLayout
+                android:id="@+id/fragment_media_btn_emoji_video"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_video" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_0_4dp"
+                    android:text="@string/common_video"
+                    android:textColor="@color/emoji_txt"
+                    android:textSize="@dimen/text_3_14sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:background="@color/emoji_icons" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                android:id="@+id/fragment_media_btn_emoji_record_video"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_recoder_video" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_0_4dp"
+                    android:text="@string/common_video_recording"
+                    android:textColor="@color/emoji_txt"
+                    android:textSize="@dimen/text_3_14sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="match_parent"
+                android:background="@color/emoji_icons" />
+
+
+            <LinearLayout
+                android:id="@+id/fragment_media_btn_record"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chat_recoder" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_0_4dp"
+                    android:text="@string/common_recording"
+                    android:textColor="@color/emoji_txt"
+                    android:textSize="@dimen/text_3_14sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="match_parent"
+                android:background="@color/emoji_icons" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

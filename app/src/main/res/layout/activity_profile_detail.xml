@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_left="@string/common_cancel"
+        app:text_title="@string/edit_profile_title" />
+
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_profile_detail_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:fillViewport="true"
+            android:focusable="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/activity_profile_detail_cover_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edit_profile_cover_photo"
+                    android:background="@color/default_image_loading"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/activity_profile_detail_parent_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop">
+
+                    </ImageView>
+
+                    <ImageView
+                        android:id="@+id/activity_profile_detail_avatar"
+                        android:layout_width="@dimen/edit_profile_avatar"
+                        android:layout_height="@dimen/edit_profile_avatar"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/app_name"
+                        android:src="@drawable/ic_avatar_circle_male_border" />
+
+                </FrameLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_2_16dp"
+                    android:background="@drawable/bg_profile_view_only"
+                    android:padding="@dimen/spacing_2_16dp">
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/activity_profile_detail_center_guide_line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.5" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/edit_profile_label_info"
+                        android:textSize="@dimen/sp_16"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_name"
+                        style="@style/my_profile.left"
+                        android:text="@string/edit_profile_name"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_label" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_name"
+                        style="@style/my_profile.right"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_detail_label_name"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_name" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_age"
+                        style="@style/my_profile.left"
+                        android:text="@string/edit_profile_birthday"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_label_name" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_age"
+                        style="@style/my_profile.right"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_detail_label_age"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_age" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_gender"
+                        style="@style/my_profile.left"
+                        android:text="@string/edit_profile_gender"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_label_age" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_gender"
+                        style="@style/my_profile.right"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_detail_label_gender"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_gender" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_job"
+                        style="@style/my_profile.left"
+                        android:text="@string/edit_profile_label_job"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_label_gender" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_job"
+                        style="@style/my_profile.right"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_detail_label_job"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_job" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_region"
+                        style="@style/my_profile.left"
+                        android:text="@string/edit_profile_zone"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_label_job" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_region"
+                        style="@style/my_profile.right"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_detail_label_region"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_region" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_body_type"
+                        style="@style/my_profile.left"
+                        android:text="@string/edit_profile_label_body_type"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_label_region" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_body_type"
+                        style="@style/my_profile.right"
+                        app:layout_constraintBottom_toBottomOf="@+id/activity_profile_detail_label_body_type"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_body_type" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_hobby"
+                        style="@style/my_profile.left"
+                        android:layout_marginTop="@dimen/spacing_2_16dp"
+                        android:text="@string/edit_profile_label_favourite"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_body_type" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_hobby"
+                        style="@style/my_profile.right"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_label_hobby" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_label_message"
+                        style="@style/my_profile.left"
+                        android:layout_marginTop="0dp"
+                        android:text="@string/edit_profile_label_message"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintTop_toTopOf="@+id/activity_profile_detail_message" />
+
+                    <TextView
+                        android:id="@+id/activity_profile_detail_message"
+                        style="@style/my_profile.right"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintLeft_toLeftOf="@+id/activity_profile_detail_center_guide_line"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/activity_profile_detail_hobby" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

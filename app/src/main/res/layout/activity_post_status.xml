@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.posts.PostStatusActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:type_button_right="text"
+            app:text_right="@string/common_post"
+            app:text_left="@string/common_cancel"
+            app:text_title="@string/title_post_status" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <!-- Main Content -->
+    <include layout="@layout/layout_post_status" />
+
+    <!-- Bottom Sheet Content -->
+    <include layout="@layout/layout_content_bottom_sheet" />
+
+</android.support.design.widget.CoordinatorLayout>

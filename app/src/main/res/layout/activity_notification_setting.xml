@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:text_title="@string/notification_setting_toolbar_title" />
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_2_16dp"
+        android:background="@drawable/bg_notification_setting">
+
+        <TextView
+            android:id="@+id/activity_notification_setting_txt_vibrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:text="@string/notification_setting_vibrate"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/activity_notification_setting_swt_vibrate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/spacing_2_16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/activity_notification_setting_txt_vibrate"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <View
+            android:id="@+id/activity_notification_setting_view1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_txt_vibrate"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+        <TextView
+            android:id="@+id/activity_notification_setting_txt_bell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:text="@string/notification_setting_bell"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_notification_setting_txt_vibrate"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_view1" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/activity_notification_setting_swt_sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@+id/activity_notification_setting_txt_bell"
+            app:layout_constraintRight_toRightOf="@+id/activity_notification_setting_swt_vibrate" />
+
+        <View
+            android:id="@+id/activity_notification_setting_view2"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_txt_bell"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/activity_notification_setting_txt_app_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:text="@string/notification_setting_notification_from_app"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_notification_setting_txt_bell"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_view2" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/activity_notification_setting_swt_app_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@+id/activity_notification_setting_txt_app_notify"
+            app:layout_constraintRight_toRightOf="@+id/activity_notification_setting_swt_sound" />
+
+        <View
+            android:id="@+id/activity_notification_setting_view3"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_txt_app_notify"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/activity_notification_setting_txt_fav_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:text="@string/notification_setting_notification_fav"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_notification_setting_txt_app_notify"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_view3" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/activity_notification_setting_swt_fav_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBaseline_toBaselineOf="@+id/activity_notification_setting_txt_fav_notify"
+            app:layout_constraintRight_toRightOf="@+id/activity_notification_setting_swt_app_notify" />
+
+        <View
+            android:id="@+id/activity_notification_setting_view4"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_txt_fav_notify"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/activity_notification_setting_txt_msg_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:text="@string/notification_setting_notification_msg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/activity_notification_setting_txt_fav_notify"
+            app:layout_constraintTop_toBottomOf="@+id/activity_notification_setting_view4" />
+
+        <TextView
+            android:id="@+id/activity_notification_setting_tv_msg_notify"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_14"
+            android:drawableEnd="@drawable/ic_arrow_right_grey"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:gravity="end"
+            android:text="@string/common_all"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_notification_setting_txt_msg_notify"
+            app:layout_constraintEnd_toEndOf="@+id/activity_notification_setting_swt_fav_notify"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintRight_toRightOf="@+id/activity_notification_setting_swt_fav_notify"
+            app:layout_constraintStart_toEndOf="@+id/activity_notification_setting_txt_msg_notify"
+            app:layout_constraintTop_toTopOf="@+id/activity_notification_setting_txt_msg_notify"
+            tools:text="@string/notification_setting_only_favorite" />
+
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

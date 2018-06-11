@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:type_button_right="text"
+        app:text_right="@string/common_save"
+        app:text_title="@string/account_setting_toolbar_title" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_2_16dp"
+        android:background="@drawable/bg_notification_setting"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/activity_account_edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_2_16dp"
+            android:layout_marginRight="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="@string/common_email"
+            android:lines="1"
+            android:textSize="@dimen/spacing_2_16dp" />
+
+        <View
+            android:id="@+id/activity_account_view1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_account_edt_email" />
+
+
+        <EditText
+            android:id="@+id/activity_account_edt_curent_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_2_16dp"
+            android:layout_marginRight="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/common_password_current"
+            android:inputType="text"
+            android:lines="1"
+            android:textSize="@dimen/spacing_2_16dp" />
+
+
+        <View
+            android:id="@+id/activity_account_view2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_account_edt_curent_password" />
+
+        <EditText
+            android:id="@+id/activity_account_edt_new_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_2_16dp"
+            android:layout_marginRight="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/common_email_new"
+            android:lines="1"
+            android:textSize="@dimen/spacing_2_16dp" />
+
+
+        <View
+            android:id="@+id/activity_account_view3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_account_edt_new_email" />
+
+        <EditText
+            android:id="@+id/activity_account_edt_new_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_2_16dp"
+            android:layout_marginRight="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/common_password_new"
+            android:inputType="text"
+            android:lines="1"
+            android:textSize="@dimen/spacing_2_16dp" />
+
+        <View
+            android:id="@+id/activity_account_view4"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/activity_account_edt_new_password" />
+
+        <EditText
+            android:id="@+id/activity_account_edt_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_2_16dp"
+            android:layout_marginLeft="@dimen/spacing_2_16dp"
+            android:layout_marginRight="@dimen/spacing_2_16dp"
+            android:layout_marginTop="@dimen/spacing_2_16dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/common_password_confirm"
+            android:inputType="text"
+            android:lines="1"
+            android:textSize="@dimen/spacing_2_16dp" />
+
+    </LinearLayout>
+</LinearLayout>

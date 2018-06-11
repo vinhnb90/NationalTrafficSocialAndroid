@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="tedbottompicker_title">Select Image</string>
+
+    <string name="loading">Đang tải dữ liệu…</string>
+    <string name="load_failed">Tải dữ liệu bị lỗi (Tải lại)</string>
+    <string name="load_empty">Không còn dữ liệu (Tải lại)</string>
+
+    <string name="dialog_set_number">OK</string>
+    <string name="dialog_cancel">Hủy</string>
+    <string name="apostrophes">\'</string>
+    <string name="apostrophes_double">\'\'</string>
+</resources>
