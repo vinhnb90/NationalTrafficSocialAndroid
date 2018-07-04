@@ -137,4 +137,20 @@
     <dimen name="comment_width_live_stream">200dp</dimen>
     <dimen name="icon_live_stream_header">24dp</dimen>
     <dimen name="live_bottom_size">24dp</dimen>
+
+    <!-- Album-->
+    <dimen name="height_item_image_grid_recycle">130dp</dimen>
+
+
+    <!-- Media controller -->
+    <dimen name="media_controller_text_size">14sp</dimen>
+    <dimen name="media_controller_seekbar_height">32dip</dimen>
+    <dimen name="media_controller_top_margin">80dip</dimen>
+    <dimen name="media_controller_bottom_margin">12dip</dimen>
+
+    <dimen name="media_controller_button_height">52dip</dimen>
+    <dimen name="media_controller_button_width">71dip</dimen>
+    <dimen name="padding_none">0dp</dimen>
+    <dimen name="padding_small">2dp</dimen>
+    <dimen name="padding_medium">4dp</dimen>
 </resources>

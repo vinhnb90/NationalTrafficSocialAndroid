@@ -38,7 +38,7 @@ public class SharePrivacyActivity extends BaseActivity implements ToolbarButtonL
     RadioGroup mPrivacyGroup;
     @BindView(R.id.activity_share_privacy_public_option)
     RadioButton mPublicPrivacyOption;
-    @BindView(R.id.activity_share_privacy_friend_option)
+    @BindView(R.id.activity_share_privacy_only_friends_option)
     RadioButton mFriendPrivacyOption;
     @BindView(R.id.activity_share_privacy_only_me_option)
     RadioButton mOnlyMePrivacyOption;
@@ -119,13 +119,13 @@ public class SharePrivacyActivity extends BaseActivity implements ToolbarButtonL
      * 2. When user click to ic_share privacy friend option to ic_share all everyone
      * 3. When user click to ic_share privacy only me option to ic_share all everyone
      */
-    @OnClick({R.id.activity_share_privacy_public_option, R.id.activity_share_privacy_friend_option, R.id.activity_share_privacy_only_me_option})
+    @OnClick({R.id.activity_share_privacy_public_option, R.id.activity_share_privacy_only_friends_option, R.id.activity_share_privacy_only_me_option})
     void onChangePrivacy(CompoundButton button) {
         switch (button.getId()) {
             case R.id.activity_share_privacy_public_option:
                 privacy = Constants.PRIVACY_PUBLIC;
                 break;
-            case R.id.activity_share_privacy_friend_option:
+            case R.id.activity_share_privacy_only_friends_option:
                 privacy = Constants.PRIVACY_FRIENDS;
                 break;
             case R.id.activity_share_privacy_only_me_option:

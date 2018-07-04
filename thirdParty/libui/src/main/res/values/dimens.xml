@@ -96,7 +96,7 @@
     <dimen name="bottom_navigation_notification_text_size">9sp</dimen>
 
     <!--Chekcbox-->
-    <dimen name="check_box_gird_item">22dp</dimen>
+    <dimen name="check_box_gird_item">24dp</dimen>
 
     <!-- margin -->
     <dimen name="margin_tiny">4dp</dimen>

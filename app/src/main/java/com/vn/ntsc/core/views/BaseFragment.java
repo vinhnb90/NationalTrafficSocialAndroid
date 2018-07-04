@@ -144,7 +144,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends BaseFragment
             onCreateView(rootView, container, savedInstanceState);
             isErrorView = false;
         } catch (Exception e) {
-            e.printStackTrace();
+            LogUtils.e(TAG, e.getMessage());
             isErrorView = true;
             rootView = new View(getActivity());
         }
@@ -194,11 +194,16 @@ public abstract class BaseFragment<T extends BasePresenter> extends BaseFragment
     @Override
     final public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
+        if (isErrorView)
+            LogUtils.w(TAG, "setUserVisibleHint can not work because viewRoot has errors ");
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        if (isErrorView)
+            LogUtils.w(TAG, "onResume can not work because viewRoot has errors ");
+
         LogUtils.i(TAG, "onResume");
         Glide.get(getContext()).trimMemory(ComponentCallbacks2.TRIM_MEMORY_MODERATE);
 //        Runtime.getRuntime().gc();
@@ -207,6 +212,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends BaseFragment
     @Override
     public void onPause() {
         super.onPause();
+        if (isErrorView)
+            LogUtils.w(TAG, "onPause can not work because viewRoot has errors ");
         LogUtils.i(TAG, "onPause");
         Glide.get(getContext()).trimMemory(ComponentCallbacks2.TRIM_MEMORY_UI_HIDDEN);
     }
@@ -214,6 +221,8 @@ public abstract class BaseFragment<T extends BasePresenter> extends BaseFragment
     @Override
     public void onStop() {
         super.onStop();
+        if (isErrorView)
+            LogUtils.w(TAG, "onPause can not work because viewRoot has errors ");
         LogUtils.i(TAG, "onStop");
     }
 

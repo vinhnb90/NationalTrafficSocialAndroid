@@ -110,11 +110,7 @@ public class BigCirclePageIndicator extends View implements PageIndicator {
 
         Drawable background = a.getDrawable(R.styleable.CirclePageIndicator_android_background);
         if (background != null) {
-        	if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN){
-        		setBackground(background);
-        	}else{
-        		setBackgroundDrawable(background);
-        	}
+            setBackground(background);
         }
 
         a.recycle();

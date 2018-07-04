@@ -16,10 +16,12 @@ import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.repository.publicfile.PublicFileRequest;
 import com.vn.ntsc.repository.publicfile.PublicFileResponse;
 import com.vn.ntsc.ui.mediadetail.timeline.TimelineMediaActivity;
+import com.vn.ntsc.utils.DimensionUtils;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
 import com.vn.ntsc.widget.eventbus.RxEventBus;
 import com.vn.ntsc.widget.eventbus.SubjectCode;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
+import com.vn.ntsc.widget.views.gallerybottom.GridSpacingItemDecoration;
 
 import java.util.List;
 
@@ -84,8 +86,7 @@ public class TimelineUserTabActivity extends BaseActivity<TimelineUserTabPresent
                 if (null != o) {
                     try {
                         List<ListBuzzChild> mData = (List<ListBuzzChild>) o;
-                        mAdapter.getData().clear();
-                        mAdapter.addData(mData);
+                        mAdapter.replaceData(mData);
                     } catch (ClassCastException e) {
                         e.printStackTrace();
                     }
@@ -111,6 +112,7 @@ public class TimelineUserTabActivity extends BaseActivity<TimelineUserTabPresent
         mAdapter.setEnableLoadMore(true);
         mAdapter.setOnLoadMoreListener(this, mRecyclerView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
+        mRecyclerView.addItemDecoration(new GridSpacingItemDecoration(4, DimensionUtils.convertDpToPx(4), true));
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -164,7 +166,7 @@ public class TimelineUserTabActivity extends BaseActivity<TimelineUserTabPresent
     public void onComplete() {
         mSwipeRefreshLayout.setRefreshing(false);
         if (mAdapter.getData().isEmpty()) {
-            mAdapter.setEmptyView(R.layout.layout_timeline_empty);
+            mAdapter.setEmptyView(R.layout.layout_empty_album_timeline);
         }
     }
 

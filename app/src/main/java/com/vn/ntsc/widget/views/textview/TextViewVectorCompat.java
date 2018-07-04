@@ -64,7 +64,7 @@ public class TextViewVectorCompat extends AppCompatTextView {
      * @param resVectorDrawable resource vector, if smaller than 0 -> set null
      */
     public void setVectorDrawableLeft(int resVectorDrawable) {
-        drawableLeft = VectorDrawableCompat.create(getResources(), resVectorDrawable, getContext().getTheme());
+        drawableLeft = resVectorDrawable > 0 ? VectorDrawableCompat.create(getResources(), resVectorDrawable, getContext().getTheme()) : null;
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 
@@ -84,7 +84,7 @@ public class TextViewVectorCompat extends AppCompatTextView {
      * @param resVectorDrawable resource vector, if smaller than 0 -> set null
      */
     public void setVectorDrawableTop(int resVectorDrawable) {
-        drawableTop = VectorDrawableCompat.create(getResources(), resVectorDrawable, getContext().getTheme());
+        drawableTop = resVectorDrawable > 0 ? VectorDrawableCompat.create(getResources(), resVectorDrawable, getContext().getTheme()) : null;
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 
@@ -94,7 +94,7 @@ public class TextViewVectorCompat extends AppCompatTextView {
      * @param resVectorDrawable resource vector, if smaller than 0 -> set null
      */
     public void setVectorDrawableBottom(int resVectorDrawable) {
-        drawableBottom = VectorDrawableCompat.create(getResources(), resVectorDrawable, getContext().getTheme());
+        drawableBottom = resVectorDrawable > 0 ? VectorDrawableCompat.create(getResources(), resVectorDrawable, getContext().getTheme()) : null;
         setCompoundDrawablesWithIntrinsicBounds(drawableLeft, drawableTop, drawableRight, drawableBottom);
     }
 }

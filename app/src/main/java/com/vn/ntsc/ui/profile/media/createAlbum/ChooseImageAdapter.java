@@ -1,14 +1,15 @@
 package com.vn.ntsc.ui.profile.media.createAlbum;
 
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.nankai.designlayout.widget.CustomCheckBox;
 import com.vn.ntsc.R;
+import com.vn.ntsc.app.AppController;
 import com.vn.ntsc.repository.model.mediafile.MediaFileBean;
 import com.vn.ntsc.repository.preferece.UploadSettingPreference;
 import com.vn.ntsc.utils.ImagesUtils;
@@ -31,7 +32,6 @@ public class ChooseImageAdapter extends MultifunctionAdapter<BaseViewHolder, Med
     private static final int TYPE_CAMERA = 1;
     private static final int TYPE_IMAGE_ITEM = 2;
 
-
     public interface ChooseImageEventListener extends BaseAdapterListener<MediaFileBean> {
         void onChoose(MediaFileBean bean, int position, View view);
 
@@ -49,7 +49,7 @@ public class ChooseImageAdapter extends MultifunctionAdapter<BaseViewHolder, Med
     private boolean isContinued = true;
 
 
-    public ChooseImageAdapter( ChooseImageEventListener listener) {
+    public ChooseImageAdapter(ChooseImageEventListener listener) {
         super(listener);
         mEventListener = listener;
     }
@@ -83,7 +83,6 @@ public class ChooseImageAdapter extends MultifunctionAdapter<BaseViewHolder, Med
                 return new ViewCameraHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_camera, parent, false));
             case TYPE_IMAGE_ITEM:
                 return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.view_picker_grid_item, parent, false));
-
             default:
                 return null;
         }
@@ -112,7 +111,7 @@ public class ChooseImageAdapter extends MultifunctionAdapter<BaseViewHolder, Med
             case TYPE_IMAGE_ITEM:
                 ViewHolder viewHolder = (ViewHolder) holder;
                 ImagesUtils.loadImageSimple(bean.mediaUri, viewHolder.mImageView);
-                viewHolder.mCheckBox.setStatus(bean.isCheck);
+                viewHolder.mCheckBox.setChecked(bean.isCheck);
                 viewHolder.mCheckBox.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -160,10 +159,10 @@ public class ChooseImageAdapter extends MultifunctionAdapter<BaseViewHolder, Med
     public class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.iv_check_box)
-        CustomCheckBox mCheckBox;
+        CheckBox mCheckBox;
 
         @BindView(R.id.video_play_btn)
-        ImageView mBtnPlay;
+        RecyclingImageView mBtnPlay;
 
         @BindView(R.id.iv_thumbnail)
         RecyclingImageView mImageView;
@@ -178,14 +177,21 @@ public class ChooseImageAdapter extends MultifunctionAdapter<BaseViewHolder, Med
             mBtnPlay.setVisibility(View.GONE);
             tvTime.setVisibility(View.GONE);
             mCheckBox.setClickable(true);
+
+            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+            layoutParams.height = AppController.SCREEN_WIDTH / 4;
+            layoutParams.width = AppController.SCREEN_WIDTH / 4;
         }
     }
 
 
     public class ViewCameraHolder extends BaseViewHolder {
+        @BindView(R.id.item_camera_iv_custom)
+        RecyclingImageView mTedRecyclingImageView;
 
         public ViewCameraHolder(View view) {
             super(view);
+            ButterKnife.bind(this, view);
         }
     }
 }

@@ -17,6 +17,7 @@ import com.vn.ntsc.utils.RegionUtils;
 import com.vn.ntsc.utils.Utils;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
+import com.vn.ntsc.widget.views.textview.TextViewVectorCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +53,7 @@ public class TagFriendAdapter extends MultifunctionAdapter<TagFriendAdapter.View
     protected void onViewReady(final ViewHolder holder, final ListTagFriendsBean item, final int position) {
 
         holder.mTxtName.setText(item.userName);
-        holder.mTxtAge.setText(String.format(holder.getViewRoot().getContext().getResources().getString(R.string.common_age_2),String.valueOf(item.age)));
+        holder.mTxtAge.setText(String.format(holder.itemView.getContext().getResources().getString(R.string.common_age_2),String.valueOf(item.age)));
         holder.mTxtLocation.setText(regionUtils.getRegionName(item.region));
 
         ImagesUtils.loadRoundedAvatar(item.avatar, item.gender, holder.mImgAvatar);
@@ -74,7 +75,7 @@ public class TagFriendAdapter extends MultifunctionAdapter<TagFriendAdapter.View
         @BindView(R.id.txt_age)
         TextView mTxtAge;
         @BindView(R.id.txt_location)
-        TextView mTxtLocation;
+        TextViewVectorCompat mTxtLocation;
         @BindView(R.id.tag_friend_item_layout)
         ConstraintLayout mTagFriendItemLayout;
 
@@ -82,9 +83,6 @@ public class TagFriendAdapter extends MultifunctionAdapter<TagFriendAdapter.View
             super(itemView);
             ButterKnife.bind(this, itemView);
             // Set drawable left for location TextView
-            if (null != mTxtLocation) {
-                Utils.setVectorDrawableLeft(R.drawable.ic_location_on_black_24dp, mTxtLocation);
-            }
         }
     }
 

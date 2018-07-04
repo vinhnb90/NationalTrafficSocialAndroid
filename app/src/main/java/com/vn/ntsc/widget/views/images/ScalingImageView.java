@@ -9,7 +9,7 @@ import android.widget.ImageView;
  * Created by nankai on 3/4/2017.
  */
 
-public class ScalingImageView extends ImageView {
+public class ScalingImageView extends RecyclingImageView {
 
     public ScalingImageView(Context context) {
         super(context);

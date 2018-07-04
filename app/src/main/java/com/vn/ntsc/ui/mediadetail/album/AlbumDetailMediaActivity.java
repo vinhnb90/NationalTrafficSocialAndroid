@@ -5,9 +5,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,13 +25,25 @@ import com.vn.ntsc.repository.model.myalbum.DeleteImageInAlbum.DelAlbumImageRequ
 import com.vn.ntsc.repository.model.myalbum.DeleteImageInAlbum.DelAlbumImageResponse;
 import com.vn.ntsc.repository.model.myalbum.ItemImageInAlbum;
 import com.vn.ntsc.repository.model.report.ReportRequest;
+import com.vn.ntsc.repository.model.timeline.DeleteBuzzResponse;
+import com.vn.ntsc.repository.model.timeline.datas.sub.ListBuzzChild;
 import com.vn.ntsc.repository.preferece.UserPreferences;
+import com.vn.ntsc.ui.mediadetail.base.AudioFragment;
 import com.vn.ntsc.ui.mediadetail.base.BaseMediaActivity;
+import com.vn.ntsc.ui.mediadetail.base.DetailMediaPresenter;
+import com.vn.ntsc.ui.mediadetail.base.IDetailMediaInteractor;
+import com.vn.ntsc.ui.mediadetail.base.MediaAdapter;
+import com.vn.ntsc.ui.mediadetail.base.VideoFragment;
+import com.vn.ntsc.ui.mediadetail.base.ViewPagerMedia;
+import com.vn.ntsc.ui.mediadetail.base.video.PlayerController;
 import com.vn.ntsc.utils.Constants;
+import com.vn.ntsc.utils.LogUtils;
 import com.vn.ntsc.widget.eventbus.RxEventBus;
 import com.vn.ntsc.widget.eventbus.SubjectCode;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
+import com.vn.ntsc.widget.views.images.mediadetail.image.ImageViewTouch;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +54,11 @@ import butterknife.BindView;
  * Created by ThoNh on 12/4/2017.
  */
 
-public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMediaPresenter> implements AlbumDetailMediaContract.View {
+public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMediaPresenter>
+        implements AlbumDetailMediaContract.View, IDetailMediaInteractor.ActivityView, ImageViewTouch.IteractorGestureListener,
+        PlayerController.VisibilityListener, ViewPagerMedia.IDoTaskWhenTouch {
+
+    /*----------------------------------------var----------------------------------------*/
 
     private static final String ELEMENT_MEDIA = "ALBUM_MEDIA_ELEMENT_MEDIA";
     private static final String EXTRA_FIRST_POSITION = "EXTRA_FIRST_POSITION";
@@ -49,9 +66,13 @@ public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMedia
     private static final String EXTRA_LIST_IMAGE = "EXTRA_LIST_IMAGE";
     private static final String EXTRA_ALBUM_ID = "EXTRA_ALBUM_ID";
     private static final String EXTRA_IS_OWN_ALBUM = "EXTRA_IS_OWN_ALBUM";
+    private static final String TAG = AlbumDetailMediaActivity.class.getName();
+
+    @BindView(R.id.activity_media_album_detail_container)
+    RelativeLayout mContainer;
 
     @BindView(R.id.activity_media_album_detail_image_pager)
-    ViewPager mViewPager;
+    ViewPagerMedia viewPager;
 
     @BindView(R.id.toolbar)
     ToolbarTitleCenter mToolbar;
@@ -76,7 +97,9 @@ public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMedia
     private int mFirstPosition;
     private String mAlbumId;
     private boolean mIsOwn;
+    private IDetailMediaInteractor.Presenter mPresenter;
 
+    /*----------------------------------------instance----------------------------------------*/
     public static void launch(Context context, List<MediaEntity> images, int positionIndexItem) {
         final Intent intent = new Intent(context, AlbumDetailMediaActivity.class);
         intent.putExtra(EXTRA_ALBUM_DATA, (ArrayList<? extends Parcelable>) images);
@@ -94,6 +117,212 @@ public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMedia
         activity.startActivity(intent, options.toBundle());
     }
 
+    /*----------------------------------------lifecycle----------------------------------------*/
+    @Override
+    public void onCreateView(View rootView) {
+        getModulesCommonComponent().inject(this);
+
+        ViewCompat.setTransitionName(viewPager, ELEMENT_MEDIA);
+
+        mListImage = new ArrayList<>();
+
+        getDataBundle();
+
+        //presenter
+        new DetailMediaPresenter.Builder(null, this).build();
+        ViewPagerBuilder builder = new ViewPagerBuilder(mData, viewPager, mFirstPosition);
+        builder
+                .setViewContainer(mContainer)
+                .setiDoTaskWhenTouch(this)
+                .build();
+
+        //save data
+        if (mPresenter != null)
+            mPresenter.saveListMediaPlaying(convertListMediaEntity(mListImage));
+
+        setBottomPanel();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
+
+    /*----------------------------------------override----------------------------------------*/
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_media_album_detail;
+    }
+
+    @Override
+    public void onViewReady() {
+        setSupportActionBar(mToolbar);
+        mToolbar.setActionbar(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void orientationChange(int orient) {
+        switch (orient) {
+            case Configuration.ORIENTATION_LANDSCAPE:
+                updateViewLandscape();
+                break;
+            case Configuration.ORIENTATION_PORTRAIT:
+                updateViewPortrait();
+                break;
+        }
+    }
+
+
+    //-----------------------------------------set up view pager custom media
+    @Override
+    public void setPresenter(@NonNull IDetailMediaInteractor.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void onFullScreen(boolean needFull) {
+        if (needFull) {
+            mBottomPanel.setVisibility(View.INVISIBLE);
+            mToolbar.setVisibility(View.INVISIBLE);
+        } else {
+            mBottomPanel.setVisibility(View.VISIBLE);
+            mToolbar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onDoubleTapZoom(boolean isZoomed) {
+        LogUtils.i(TAG, "View child is in state onDoubleTapZoom!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isZoomed);
+    }
+
+    @Override
+    public void onScrollZoom(boolean isZoomed) {
+        LogUtils.i(TAG, "View child is in state onScrollZoom!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isZoomed);
+    }
+
+    @Override
+    public void onFling(boolean isCanFlingHorizolltal) {
+        LogUtils.i(TAG, "View child is in state onFling!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isCanFlingHorizolltal);
+    }
+
+    @Override
+    public void onScaleZoom(boolean isZoomed) {
+        LogUtils.i(TAG, "View child is in state onScaleZoom!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isZoomed);
+    }
+
+    @Override
+    public boolean isAllowZoom() {
+        return viewPager.isCanAllowDoTaskIfself();
+    }
+
+    //-----------------------------------------end set up view pager custom media
+
+
+    @Override
+    public void deleteImagesInAlbumComplete() {
+
+    }
+
+    @Override
+    public void deleteImagesInAlbumFailure() {
+        Toast.makeText(this, R.string.common_error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void deleteImagesInAlbumSuccess(DelAlbumImageResponse response) {
+        if (mListImage != null && getCurrentPositionMedia() > -1) {
+            mListImage.remove(getCurrentPositionMedia());
+            removeItem(getCurrentPositionMedia());
+            Toast.makeText(this, R.string.delete_image_success, Toast.LENGTH_SHORT).show();
+            RxEventBus.publish(SubjectCode.SUBJECT_DELETE_IMAGE_IN_ALBUM, mListImage);
+        }
+    }
+
+    @Override
+    public void saveImageSuccess() {
+        Toast.makeText(this, R.string.save_image_success, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void saveImageFailure() {
+        Toast.makeText(this, R.string.save_image_failure, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void buzzNotFound() {
+
+    }
+
+    @Override
+    public void deleteBuzzSuccess(DeleteBuzzResponse response, ListBuzzChild child) {
+
+    }
+
+    @Override
+    public void onComplete() {
+
+    }
+
+    @Override
+    public void downloadComplete(File file) {
+
+    }
+
+    @Override
+    public void downloadError() {
+
+    }
+
+    @Override
+    public void shareMediaFailure() {
+
+    }
+
+    @Override
+    public void shareMediaSuccess() {
+
+    }
+
+    @Override
+    public void reportFailure() {
+        Toast.makeText(this, R.string.report_image_failure, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void likeMediaSuccess() {
+
+    }
+
+    @Override
+    public void likeMediaFailure() {
+
+    }
+
+    @Override
+    public void reportSuccess() {
+        new AlertDialog.Builder(this, R.style.AlertDialogApp)
+                .setTitle(R.string.title_dialog_report_success)
+                .setMessage(getString(R.string.content_dialog_report_success))
+                .setPositiveButton(R.string.common_ok_2, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).show();
+    }
+
+    /*----------------------------------------func----------------------------------------*/
+    /*----------------------------------------inner----------------------------------------*/
     private void getDataBundle() {
         if (getIntent() != null) {
             if (getIntent().hasExtra(EXTRA_ALBUM_DATA)) {
@@ -121,69 +350,6 @@ public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMedia
         }
 
         mBottomPanel.setVisibility(mAlbumId != null ? View.VISIBLE : View.GONE);
-    }
-
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_media_album_detail;
-    }
-
-    @Override
-    public void onCreateView(View rootView) {
-        getModulesCommonComponent().inject(this);
-
-        ViewCompat.setTransitionName(mViewPager, ELEMENT_MEDIA);
-
-        mListImage = new ArrayList<>();
-
-        getDataBundle();
-
-        setupViewPager(mViewPager, mData, mFirstPosition);
-
-        setBottomPanel();
-    }
-
-    @Override
-    public void onViewReady() {
-        setSupportActionBar(mToolbar);
-        mToolbar.setActionbar(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-    }
-
-    @Override
-    public void onBackPressed() {
-        finish();
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public void animateAlphaWhenSwipeImage(float percent) {
-        scrimView.animate().alpha(percent).setDuration(0).start();
-        mToolbar.animate().alpha(0f).setDuration(0).start();
-        mBottomPanel.animate().alpha(0f).setDuration(0).start();
-    }
-
-    @Override
-    public void animateAlphaFinish1F() {
-        scrimView.animate().alpha(1f).setDuration(0).start();
-        mToolbar.animate().alpha(1f).setDuration(0).start();
-        mBottomPanel.animate().alpha(1f).setDuration(0).start();
-    }
-
-    @Override
-    public void orientationChange(int orient) {
-        switch (orient) {
-            case Configuration.ORIENTATION_LANDSCAPE:
-                updateViewLandscape();
-                break;
-            case Configuration.ORIENTATION_PORTRAIT:
-                updateViewPortrait();
-                break;
-        }
     }
 
     public void setBottomPanel() {
@@ -271,54 +437,6 @@ public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMedia
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_VISIBLE;
         decorView.setSystemUiVisibility(uiOptions);
-    }
-
-    @Override
-    public void deleteImagesInAlbumComplete() {
-
-    }
-
-    @Override
-    public void deleteImagesInAlbumFailure() {
-        Toast.makeText(this, R.string.common_error, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void deleteImagesInAlbumSuccess(DelAlbumImageResponse response) {
-        if (mListImage != null && getCurrentPositionMedia() > -1) {
-            mListImage.remove(getCurrentPositionMedia());
-            removeItem(getCurrentPositionMedia());
-            Toast.makeText(this, R.string.delete_image_success, Toast.LENGTH_SHORT).show();
-            RxEventBus.publish(SubjectCode.SUBJECT_DELETE_IMAGE_IN_ALBUM, mListImage);
-        }
-    }
-
-    @Override
-    public void saveImageSuccess() {
-        Toast.makeText(this, R.string.save_image_success, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void saveImageFailure() {
-        Toast.makeText(this, R.string.save_image_failure, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void reportFailure() {
-        Toast.makeText(this, R.string.report_image_failure, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void reportSuccess() {
-        new AlertDialog.Builder(this, R.style.AlertDialogApp)
-                .setTitle(R.string.title_dialog_report_success)
-                .setMessage(getString(R.string.content_dialog_report_success))
-                .setPositiveButton(R.string.common_ok_2, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).show();
     }
 
     private List<MediaEntity> convertListMediaEntity(List<ItemImageInAlbum> srcData) {
@@ -427,5 +545,63 @@ public class AlbumDetailMediaActivity extends BaseMediaActivity<AlbumDetailMedia
             }
         });
         alertDialog.show();
+    }
+
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void doTaskWhenTouchDown() {
+
+    }
+
+    @Override
+    public void doTaskWhenTouchMove(boolean isInStateSwipeHorizontall, boolean isInStateSwipeVertical, boolean isViewChildIsDoTaskIfSelf) {
+        //get Fragment
+        try {
+            Fragment fragment = ((MediaAdapter) viewPager.getAdapter()).getFragmentHashMap().get(viewPager.getCurrentItem());
+            if (fragment instanceof AudioFragment) {
+                ((AudioFragment) fragment).onPause();
+            }
+
+            if (fragment instanceof VideoFragment) {
+                ((VideoFragment) fragment).onPause();
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error when switch Play pause video / audio!");
+            return;
+        }
+    }
+
+    @Override
+    public void doTaskWhenTouchUp(boolean isRestoreView) {
+        //get Fragment
+        try {
+            Fragment fragment = ((MediaAdapter) viewPager.getAdapter()).getFragmentHashMap().get(viewPager.getCurrentItem());
+            if (fragment instanceof AudioFragment) {
+                if (isRestoreView)
+                    ((AudioFragment) fragment).onResume();
+                else
+                    ((AudioFragment) fragment).onPause();
+            }
+
+            if (fragment instanceof VideoFragment) {
+                if (isRestoreView)
+                    ((VideoFragment) fragment).onResume();
+                else
+                    ((VideoFragment) fragment).onPause();
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error when switch Play pause video / audio!");
+            return;
+        }
     }
 }

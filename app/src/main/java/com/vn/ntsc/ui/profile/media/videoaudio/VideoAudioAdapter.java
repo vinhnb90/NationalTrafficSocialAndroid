@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.vn.ntsc.R;
+import com.vn.ntsc.app.AppController;
 import com.vn.ntsc.repository.TypeView;
 import com.vn.ntsc.repository.model.timeline.datas.sub.ListBuzzChild;
 import com.vn.ntsc.repository.preferece.UploadSettingPreference;
@@ -16,7 +17,7 @@ import com.vn.ntsc.utils.Utils;
 import com.vn.ntsc.widget.adapter.BaseAdapterListener;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
-import com.vn.ntsc.widget.views.images.SquareImageView;
+import com.vn.ntsc.widget.views.images.RecyclingImageView;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class VideoAudioAdapter extends MultifunctionAdapter<VideoAudioAdapter.Vi
 
     @Override
     protected VideoAudioAdapter.ViewHolder onInjectViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_video_audio, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_media_libary, parent, false));
     }
 
     @Override
@@ -80,14 +81,12 @@ public class VideoAudioAdapter extends MultifunctionAdapter<VideoAudioAdapter.Vi
     public static class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.imv_image)
-        SquareImageView mImageView;
+        RecyclingImageView mImageView;
 
         @BindView(R.id.imv_type_media)
-        ImageView  mTypeImage;
-
+        RecyclingImageView  mTypeImage;
         @BindView(R.id.tv_duration)
         TextView mDuration;
-
         @BindView(R.id.bottom_layout)
         RelativeLayout mBottomLayout;
 
@@ -95,6 +94,9 @@ public class VideoAudioAdapter extends MultifunctionAdapter<VideoAudioAdapter.Vi
             super(view);
             ButterKnife.bind(this, view);
             mBottomLayout.setVisibility(View.VISIBLE);
+            ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
+            layoutParams.height = AppController.SCREEN_WIDTH / 4;
+            layoutParams.width = AppController.SCREEN_WIDTH / 4;
         }
     }
 }

@@ -63,13 +63,7 @@ public class PhotoUtils {
 	public static Bitmap decodeSampledBitmapFromFile(Context context,
                                                      String pathFile) {
 		Bitmap bitmap;
-		if (Build.VERSION.SDK_INT < 11) {
-			int width = context.getResources().getDisplayMetrics().widthPixels;
-			bitmap = PhotoUtils.decodeSampledBitmapFromFile(pathFile, width,
-					width);
-		} else {
-			bitmap = BitmapFactory.decodeFile(pathFile);
-		}
+		bitmap = BitmapFactory.decodeFile(pathFile);
 		return bitmap;
 	}
 }

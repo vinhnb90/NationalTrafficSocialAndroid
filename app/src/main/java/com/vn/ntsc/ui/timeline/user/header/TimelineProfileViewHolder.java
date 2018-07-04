@@ -301,7 +301,9 @@ public class TimelineProfileViewHolder extends TimelineViewHolder<Image> impleme
                 tvEvaluate2.setVisibility(View.VISIBLE);
                 tvEvaluate1.setBackgroundColor(evaluateColor[this.userInfo.rateValue[0] - 1]);
                 tvEvaluate1.setText(evaluateVoice[this.userInfo.rateValue[0] - 1]);
+
                 tvEvaluate2.setBackgroundColor(evaluateColor[this.userInfo.rateValue[1] - 1]);
+                tvEvaluate2.setText(evaluateVoice[this.userInfo.rateValue[1] - 1]);
             }
         }
     }

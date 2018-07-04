@@ -59,7 +59,7 @@ import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.services.UserLiveStreamService;
 import com.vn.ntsc.services.fcm.MyFirebaseMessagingService;
 import com.vn.ntsc.ui.chat.ChatActivity;
-import com.vn.ntsc.ui.comment.CommentActivity;
+import com.vn.ntsc.ui.comments.CommentActivity;
 import com.vn.ntsc.ui.livestream.LiveStreamActivity;
 import com.vn.ntsc.ui.main.MainActivity;
 import com.vn.ntsc.ui.profile.my.MyProfileActivity;
@@ -137,9 +137,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
         TAG = BaseActivity.this.getClass().getSimpleName();
         LogUtils.i(TAG, "onCreate");
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        viewRoot = getLayoutInflater().inflate(getLayoutId(), null, false);
-        setContentView(viewRoot);
         try {
+            viewRoot = getLayoutInflater().inflate(getLayoutId(), null, false);
+            setContentView(viewRoot);
+
             context = this;
             ButterKnife.bind(this);
             rxPermissions = new RxPermissions(this);
@@ -147,12 +148,12 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
 
             onCreateView(viewRoot);
 
-            viewRoot.post(new Runnable() {
-                @Override
-                public void run() {
-                    onViewReady();
-                }
-            });
+//            viewRoot.post(new Runnable() {
+//                @Override
+//                public void run() {
+            onViewReady();
+//                }
+//            });
         } catch (final Exception e) {
             e.printStackTrace();
             if (viewRoot != null)
@@ -214,36 +215,36 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
     protected final void onStart() {
         super.onStart();
         if (viewRoot != null)
-            viewRoot.post(new Runnable() {
-                @Override
-                public void run() {
-                    onStart(viewRoot);
-                }
-            });
+//            viewRoot.post(new Runnable() {
+//                @Override
+//                public void run() {
+            onStart(viewRoot);
+//                }
+//            });
     }
 
     @Override
     protected final void onResume() {
         super.onResume();
         if (viewRoot != null)
-            viewRoot.post(new Runnable() {
-                @Override
-                public void run() {
-                    onResume(viewRoot);
-                }
-            });
+//            viewRoot.post(new Runnable() {
+//                @Override
+//                public void run() {
+            onResume(viewRoot);
+//                }
+//            });
     }
 
     @Override
     protected final void onPostResume() {
         super.onPostResume();
         if (viewRoot != null)
-            viewRoot.post(new Runnable() {
-                @Override
-                public void run() {
-                    onPostResume(viewRoot);
-                }
-            });
+//            viewRoot.post(new Runnable() {
+//                @Override
+//                public void run() {
+            onPostResume(viewRoot);
+//                }
+//            });
     }
 
     // </editor-fold>
@@ -347,11 +348,11 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
                 }
             }).show();
         } else {
-            int count = getFragmentManager().getBackStackEntryCount();
+            int count = getSupportFragmentManager().getBackStackEntryCount();
             if (count <= 1) {
                 super.onBackPressed();
             } else {
-                getFragmentManager().popBackStack();
+                getSupportFragmentManager().popBackStack();
             }
         }
     }
@@ -707,6 +708,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
      * Show live stream option:
      * - From video exists
      * - With direct record video via camera
+     *
      * @param mode {@link com.vn.ntsc.services.UserLiveStreamService.Mode}
      */
     final public void onLiveStreamOption(@UserLiveStreamService.Mode final int mode) {
@@ -717,9 +719,10 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
      * Show live stream option:
      * - From video exists
      * - With direct record video via camera
-     * @param mode {@link com.vn.ntsc.services.UserLiveStreamService.Mode}
-     * @param buzzId {@link com.vn.ntsc.repository.model.timeline.datas.BuzzBean}
-     * @param streamId Stream id
+     *
+     * @param mode         {@link com.vn.ntsc.services.UserLiveStreamService.Mode}
+     * @param buzzId       {@link com.vn.ntsc.repository.model.timeline.datas.BuzzBean}
+     * @param streamId     Stream id
      * @param thumbnailUrl using first load
      */
     final public void onLiveStreamOption(@UserLiveStreamService.Mode final int mode, @Nullable String buzzId, @Nullable String streamId, @Nullable String thumbnailUrl) {
@@ -740,7 +743,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
                             Manifest.permission.CAMERA,
                             Manifest.permission.WRITE_EXTERNAL_STORAGE,
                             Manifest.permission.RECORD_AUDIO);
-                }else {
+                } else {
                     LiveStreamActivity.launch(BaseActivity.this, mode, null, UserLiveStreamService.TypeView.STREAM_CAMERA);
                 }
 
@@ -829,7 +832,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends BaseActivity
      * Request permission access to read external storage use Observer
      * Created on 2017 Aug 28 by Robert
      */
-    final protected void requestAccessPermission(final int requestCode, @UserLiveStreamService.Mode final int mode,@NonNull final String... permissions) {
+    @SuppressLint("CheckResult")
+    final protected void requestAccessPermission(final int requestCode, @UserLiveStreamService.Mode final int mode, @NonNull final String... permissions) {
         getRxPermissions().requestEach(permissions)
                 .subscribe(new Consumer<Permission>() {
                     @Override

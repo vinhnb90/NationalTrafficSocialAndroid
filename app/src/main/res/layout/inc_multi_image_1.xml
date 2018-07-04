@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/item_multi_buzz_1"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.vn.ntsc.widget.views.images.RecyclingImageView
         android:id="@+id/item_timeline_image_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:adjustViewBounds="true"
+        android:adjustViewBounds="false"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
         android:src="@color/default_image_loading"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_timeline_header_more" />
 
 </merge>

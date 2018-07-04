@@ -55,7 +55,7 @@ import com.vn.ntsc.services.uploadFileChat.PostStatusService;
 import com.vn.ntsc.ui.accountsetting.AccountSettingActivity;
 import com.vn.ntsc.ui.blocklst.BlockListActivity;
 import com.vn.ntsc.ui.chat.ChatActivity;
-import com.vn.ntsc.ui.comment.CommentActivity;
+import com.vn.ntsc.ui.comments.CommentActivity;
 import com.vn.ntsc.ui.conversation.ConversationFragment;
 import com.vn.ntsc.ui.friends.favorite.FavoritePageFragment;
 import com.vn.ntsc.ui.livestream.LiveStreamActivity;
@@ -133,10 +133,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     DrawerLayout drawer;
     @BindView(R.id.activity_main_nav_view)
     NavigationView navigationView;
-
-    private boolean isViewReady;
-
-    private String buzzID;
 
     private CircleImageView nvAvatar;
     private ScalingImageView navBanner;
@@ -223,14 +219,13 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
 
     @Override
     public void onViewReady() {
-        isViewReady = true;
 
         initBottomNavigation();
         initBadgeOnlineNotification();
 
         if (BuildConfig.FLAVOR.equals("dev") || BuildConfig.FLAVOR.equals("preview")) {
             navigationView.getMenu().findItem(R.id.menu_main_drawer_version_app).setVisible(true);
-            navigationView.getMenu().findItem(R.id.menu_main_drawer_version_app).setTitle("Version Name: " + BuildConfig.VERSION_NAME + " \nVersion code: " + BuildConfig.VERSION_CODE);
+            navigationView.getMenu().findItem(R.id.menu_main_drawer_version_app).setTitle("Version : " + BuildConfig.VERSION_NAME + "-" + BuildConfig.VERSION_CODE);
         } else {
             navigationView.getMenu().findItem(R.id.menu_main_drawer_version_app).setVisible(false);
         }
@@ -257,7 +252,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
     @Override
     public void onResume(View viewRoot) {
         super.onResume(viewRoot);
-
         updateUserName();
         updateBadge();
     }
@@ -561,12 +555,10 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
                             NotificationSettingActivity.newInstance(MainActivity.this);
                         } else if (id == R.id.menu_main_drawer_logout) {
                             if (UserPreferences.getInstance().isLogin()) {
-
                                 UserPreferences userPreferences = UserPreferences.getInstance();
                                 String token = userPreferences.getToken();
                                 String notify_token = FirebaseInstanceId.getInstance().getToken();
                                 LogoutRequest logoutRequest = new LogoutRequest(token, notify_token);
-
                                 getPresenter().onLogout(logoutRequest);
                             }
                         }

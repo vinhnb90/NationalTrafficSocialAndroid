@@ -5,6 +5,7 @@ import android.content.Context;
 import com.vn.ntsc.core.callback.CallbackListener;
 import com.vn.ntsc.core.callback.PresenterListener;
 import com.vn.ntsc.repository.model.chat.ItemFileChat;
+import com.vn.ntsc.ui.mediadetail.base.IDetailMediaInteractor;
 
 import java.io.File;
 
@@ -13,7 +14,7 @@ import java.io.File;
  */
 
 public class ChatMediaDetailContract {
-    interface View extends CallbackListener {
+    interface View extends CallbackListener, IDetailMediaInteractor.ActivityView{
 
         void saveImageSuccess();
 

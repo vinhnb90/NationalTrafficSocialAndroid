@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
@@ -65,7 +64,7 @@ import com.vn.ntsc.repository.model.user.UserInfoResponse;
 import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.repository.publicfile.PublicFileResponse;
 import com.vn.ntsc.services.UserLiveStreamService;
-import com.vn.ntsc.ui.comment.CommentActivity;
+import com.vn.ntsc.ui.comments.CommentActivity;
 import com.vn.ntsc.ui.mediadetail.timeline.TimelineMediaActivity;
 import com.vn.ntsc.ui.profile.my.MyProfileActivity;
 import com.vn.ntsc.ui.tagfriends.TagFriendActivity;
@@ -76,6 +75,7 @@ import com.vn.ntsc.utils.LogUtils;
 import com.vn.ntsc.utils.SystemUtils;
 import com.vn.ntsc.utils.cache.CacheJson;
 import com.vn.ntsc.utils.cache.CacheType;
+import com.vn.ntsc.widget.adapter.IMultifunctionAdapter;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
 import com.vn.ntsc.widget.decoration.SpacesItemDecoration;
 import com.vn.ntsc.widget.eventbus.RxEventBus;
@@ -177,21 +177,20 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
             typeView = getArguments().getInt(BUNDLE_TYPE);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setHasFixedSize(true);
         recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
         //8dp as px, value might be obtained e.g. from dimen resources...
         int space = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
         recyclerView.addItemDecoration(new SpacesItemDecoration(space));
         //Cache
+        recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(1000);
-        recyclerView.setDrawingCacheEnabled(true);
-        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
+//        recyclerView.setDrawingCacheEnabled(true);
+//        recyclerView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
 
         adapter = new TimelineAdapter<>(glide, LayoutInflater.from(context), this);
+        adapter.isUseEmpty(true);
         adapter.setEnableLoadMore(true);
         adapter.setOnLoadMoreListener(this, recyclerView);
-        adapter.isUseEmpty(true);
-
         recyclerView.setAdapter(adapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -230,23 +229,10 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        glide.resumeRequests();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
-    @Override
     public void onDestroyView() {
         super.onDestroyView();
         if (mLikeView != null)
             mLikeView.reset();
-        if (glide != null)
-            glide.onDestroy();
         if (disposables != null)
             disposables.dispose();
     }
@@ -266,11 +252,7 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     @Override
     public void onChoiceShareSuccess(int position, int type) {
         if (type == PopupShare.TYPE_SHARE_WALL) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                Snackbar.make(Objects.requireNonNull(getView()), "Share wall", Snackbar.LENGTH_SHORT);
-            }else {
-                Snackbar.make(getView(), "Share wall", Snackbar.LENGTH_SHORT);
-            }
+            Snackbar.make(Objects.requireNonNull(getView()), "Share wall", Snackbar.LENGTH_SHORT);
         }
     }
 
@@ -281,12 +263,12 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     }
 
     @Override
-    public void onShowImageDetail(BuzzBean bean, int positionTimeLineAdapter, int positionIndexItem, View view) {
+    public void onDisplayImageDetailScreen(BuzzBean bean, int positionTimeLineAdapter, int positionIndexItem, View view) {
         TimelineMediaActivity.launch((AppCompatActivity) getActivity(), view, bean, positionIndexItem);
     }
 
     @Override
-    public void onShowLiveStream(BuzzBean item, int positionTimeLineAdapter, int positionIndexItem, View view) {
+    public void onDisplayLiveStreamScreen(BuzzBean item, int positionTimeLineAdapter, int positionIndexItem, View view) {
         if (activity instanceof BaseActivity) {
             ListBuzzChild buzzChild = item.listChildBuzzes.get(0);
             if (buzzChild.streamStatus.equals(Constants.LIVE_STREAM_ON))
@@ -294,6 +276,12 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
             else
                 TimelineMediaActivity.launch((AppCompatActivity) getActivity(), view, item, positionIndexItem);
         }
+    }
+
+    @Override
+    public void onDisplayCommentScreen(BuzzBean bean, int position, View view) {
+        LogUtils.e(TAG, bean.buzzId);
+        CommentActivity.launch((AppCompatActivity) getActivity(), view, bean.buzzId, bean.userId, bean.like.isLike, typeView, ActivityResultRequestCode.REQUEST_BUZZ_DETAILS);
     }
 
     @Override
@@ -307,18 +295,12 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     }
 
     @Override
-    public void onShowComment(BuzzBean bean, int position, View view) {
-        LogUtils.e(TAG, bean.buzzId);
-        CommentActivity.launch((AppCompatActivity) getActivity(), view, bean.buzzId, bean.userId, bean.like.isLike, typeView, ActivityResultRequestCode.REQUEST_BUZZ_DETAILS);
-    }
-
-    @Override
     public void onShare(BuzzBean bean, int position, View view) {
         shareFacebook(bean);
     }
 
     @Override
-    public void onDeleteStatus(final BuzzBean bean, int position, View view) {
+    public void onRemoveStatus(final BuzzBean bean, int position, View view) {
         new DialogMaterial.Builder(getActivity()).setStyle(Style.HEADER_WITH_NOT_HEADER)
                 .setContent(R.string.do_you_want_remove_buzz)
                 .onPositive(R.string.common_yes, new DialogInterface.OnClickListener() {
@@ -333,16 +315,6 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
                 dialogInterface.dismiss();
             }
         }).show();
-
-    }
-
-    @Override
-    public void onRemoveStatusTemplate(BuzzBean bean, int position, View view) {
-        adapter.removeTemplate(bean.buzzId);
-    }
-
-    @Override
-    public void onRetryBuzzDetailRequest(BuzzDetailRequest request, String templateId, int position, View view) {
 
     }
 
@@ -375,13 +347,13 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     }
 
     @Override
-    public void onPlayAudioShare(BuzzBean bean, int position, View view) {
+    public void onDisplayShareAudioPlayScreen(BuzzBean bean, int position, View view) {
         ShareDetailBean shareDetail = bean.shareDetailBean;
         TimelineMediaActivity.launch((AppCompatActivity) getActivity(), view, shareDetail.listChildBuzzes, 0);
     }
 
     @Override
-    public void onPlayLiveStreamShare(BuzzBean bean, int position, View view) {
+    public void onDisplayShareLiveStreamScreen(BuzzBean bean, int position, View view) {
         ShareDetailBean shareDetail = bean.shareDetailBean;
         if (shareDetail.listChildBuzzes.get(0).streamStatus.equals(Constants.LIVE_STREAM_ON)) {
             ((BaseActivity) activity).onLiveStreamOption(UserLiveStreamService.Mode.VIEW,
@@ -393,7 +365,7 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     }
 
     @Override
-    public void onShowProfile(BuzzBean bean, int position, View view) {
+    public void onDisplayProfileScreen(BuzzBean bean, int position, View view) {
         if (typeView == TypeView.TypeViewTimeline.TIMELINE_USER) { // You are in the profile of the current user can not move again
             LogUtils.w(TAG, "You are in the profile of the current user can not move again");
         } else {
@@ -402,13 +374,23 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     }
 
     @Override
-    public void onShowProfile(String userId, int position, View view) {
+    public void onDisplayProfileScreen(String userId, int position, View view) {
         MyProfileActivity.launch(activity, view, userId, TypeView.ProfileType.COME_FROM_TIMELINE_BY_ID);
     }
 
     @Override
-    public void onShowTagFriendsDetail(ArrayList<ListTagFriendsBean> listTagFriendsBeans, int position, View view) {
+    public void onDisplayTagFriendsScreen(ArrayList<ListTagFriendsBean> listTagFriendsBeans, int position, View view) {
         TagFriendActivity.launch(getActivity(), listTagFriendsBeans, false);
+    }
+
+    @Override
+    public void onRemoveStatusTemplate(BuzzBean bean, int position, View view) {
+        adapter.removeTemplate(bean.buzzId);
+    }
+
+    @Override
+    public void onRetryBuzzDetailRequest(BuzzDetailRequest request, String templateId, int position, View view) {
+        //TODO retry load item buzz
     }
     //End Adapter listener -----------------------------
 
@@ -440,7 +422,7 @@ public abstract class TimelineFragment extends BaseFragment<TimeLinePresenter> i
     /**
      * This method will not be super {@link com.vn.ntsc.ui.timeline.all.TimelineAllFragment}
      *
-     * @param response
+     * @param response {@link BuzzListResponse}
      */
     @Override
     public void onLoadMoreBuzzListResponse(BuzzListResponse response) {

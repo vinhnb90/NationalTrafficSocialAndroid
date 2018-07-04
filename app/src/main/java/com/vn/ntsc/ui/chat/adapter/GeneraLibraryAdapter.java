@@ -17,7 +17,7 @@ import com.vn.ntsc.utils.Utils;
 import com.vn.ntsc.widget.adapter.BaseAdapterListener;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
-import com.vn.ntsc.widget.views.images.SquareImageView;
+import com.vn.ntsc.widget.views.images.RecyclingImageView;
 
 import java.util.List;
 
@@ -39,21 +39,24 @@ public class GeneraLibraryAdapter extends MultifunctionAdapter<GeneraLibraryAdap
 
     @Override
     protected ViewHolder onInjectViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_genera_lib, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_media_libary, parent, false));
     }
 
     @Override
     protected void onViewReady(ViewHolder holder, ItemFileChat item, final int position) {
         final ItemFileChat itemFileChat = getData(position);
+
         if (itemFileChat != null) {
             switch (itemFileChat.type) {
                 case TypeView.MediaDetailType.IMAGE_TYPE:
                     ImagesUtils.loadImageSimple(itemFileChat.thumbnailUrl, holder.imvImage);
                     holder.bottomLayout.setVisibility(View.GONE);
+                    holder.btnPlay.setVisibility(View.GONE);
                     break;
 
                 case TypeView.MediaDetailType.VIDEO_TYPE:
                     holder.bottomLayout.setVisibility(View.VISIBLE);
+                    holder.btnPlay.setVisibility(View.VISIBLE);
                     ImagesUtils.loadImageSimple(itemFileChat.thumbnailUrl, holder.imvImage);
                     Glide.with(holder.itemView.getContext()).load(R.drawable.ic_video_play_btn).into(holder.imvTypeMedia);
                     holder.tvDuration.setText(Utils.convertSecondToTimeFormat(itemFileChat.fileDuration));
@@ -61,6 +64,7 @@ public class GeneraLibraryAdapter extends MultifunctionAdapter<GeneraLibraryAdap
 
                 case TypeView.MediaDetailType.AUDIO_TYPE:
                     holder.bottomLayout.setVisibility(View.VISIBLE);
+                    holder.btnPlay.setVisibility(View.VISIBLE);
                     ImagesUtils.loadImage(UploadSettingPreference.getInstance().getDefaultAudioImg(), holder.imvImage);
                     Glide.with(holder.itemView.getContext()).load(R.drawable.ic_mic).into(holder.imvTypeMedia);
                     holder.tvDuration.setText(Utils.convertSecondToTimeFormat(itemFileChat.fileDuration));
@@ -80,21 +84,21 @@ public class GeneraLibraryAdapter extends MultifunctionAdapter<GeneraLibraryAdap
 
     public class ViewHolder extends BaseViewHolder {
         @BindView(R.id.imv_image)
-        SquareImageView imvImage;
+        RecyclingImageView imvImage;
         @BindView(R.id.btn_play)
-        SquareImageView btnPlay;
+        RecyclingImageView btnPlay;
+
+        @BindView(R.id.bottom_layout)
+        RelativeLayout bottomLayout;
+
         @BindView(R.id.imv_type_media)
         ImageView imvTypeMedia;
         @BindView(R.id.tv_duration)
         TextView tvDuration;
-        @BindView(R.id.bottom_layout)
-        RelativeLayout bottomLayout;
-
 
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
-            bottomLayout.setVisibility(View.VISIBLE);
         }
     }
 

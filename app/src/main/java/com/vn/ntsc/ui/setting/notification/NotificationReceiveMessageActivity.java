@@ -1,17 +1,15 @@
 package com.vn.ntsc.ui.setting.notification;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.vn.ntsc.R;
 import com.vn.ntsc.core.views.BaseActivity;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
-import com.vn.ntsc.widget.views.textview.MyCheckboxButton;
+import com.vn.ntsc.widget.views.checkbox.MyCheckboxButton;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * http://10.64.100.201/issues/12039

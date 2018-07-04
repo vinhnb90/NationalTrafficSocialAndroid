@@ -8,13 +8,15 @@ import com.vn.ntsc.repository.model.myalbum.DeleteImageInAlbum.DelAlbumImageRequ
 import com.vn.ntsc.repository.model.myalbum.DeleteImageInAlbum.DelAlbumImageResponse;
 import com.vn.ntsc.repository.model.myalbum.ItemImageInAlbum;
 import com.vn.ntsc.repository.model.report.ReportRequest;
+import com.vn.ntsc.ui.mediadetail.base.IDetailMediaInteractor;
+import com.vn.ntsc.ui.mediadetail.timeline.MediaDetailContract;
 
 /**
  * Created by ThoNh on 1/9/2018.
  */
 
 public interface AlbumDetailMediaContract {
-    interface View extends CallbackListener {
+    interface View extends CallbackListener, MediaDetailContract.View  {
 
         public void deleteImagesInAlbumComplete();
 
@@ -31,7 +33,7 @@ public interface AlbumDetailMediaContract {
         public void reportSuccess();
     }
 
-    interface Presenter extends PresenterListener<AlbumDetailMediaContract.View> {
+    interface Presenter extends PresenterListener<AlbumDetailMediaContract.View>{
 
         void deleteImagesInAlbum(DelAlbumImageRequest request);
 

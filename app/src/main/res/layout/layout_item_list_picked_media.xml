@@ -11,23 +11,25 @@
         android:layout_margin="2dp"
         android:background="@color/transparent"
         android:orientation="vertical">
-        <ImageView
+
+        <com.vn.ntsc.widget.views.images.RecyclingImageView
             android:id="@+id/thumbnail_picked_media"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"/>
+            android:adjustViewBounds="false"
+            android:scaleType="centerCrop" />
 
-        <ImageView
+        <com.vn.ntsc.widget.views.images.RecyclingImageView
             android:id="@+id/iv_picked_media_remove"
             android:layout_width="@dimen/spacing_3_24dp"
             android:layout_height="@dimen/spacing_3_24dp"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:padding="@dimen/spacing_0_4dp"
             android:layout_margin="@dimen/spacing_0_4dp"
-            android:src="@drawable/ic_remove_media"/>
-        <ImageView
+            android:padding="@dimen/spacing_0_4dp"
+            android:src="@drawable/ic_remove_media" />
+
+        <com.vn.ntsc.widget.views.images.RecyclingImageView
             android:id="@+id/video_play_btn"
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -35,4 +37,5 @@
             android:src="@drawable/ic_video_play_btn"
             android:visibility="visible" />
     </RelativeLayout>
+
 </LinearLayout>

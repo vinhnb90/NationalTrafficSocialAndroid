@@ -266,19 +266,15 @@ public class MediaDetailPresenter extends BasePresenter<MediaDetailContract.View
                     fOut.getFD().sync();
                     fOut.close();
                     if (fileImage.exists()) {
-                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                            MediaScannerConnection.scanFile(context, new String[]{fileImage.toString()}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                                public void onScanCompleted(String path, Uri uri) {
-                                    Log.i("ExternalStorage", "Scanned " + path + ":");
-                                    Log.i("ExternalStorage", "-> uri=" + uri);
-                                }
-                            });
-                            Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-                            mediaScanIntent.setData(Uri.fromFile(fileImage));
-                            context.sendBroadcast(mediaScanIntent);
-                        } else {
-                            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-                        }
+                        MediaScannerConnection.scanFile(context, new String[]{fileImage.toString()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                            public void onScanCompleted(String path, Uri uri) {
+                                Log.i("ExternalStorage", "Scanned " + path + ":");
+                                Log.i("ExternalStorage", "-> uri=" + uri);
+                            }
+                        });
+                        Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+                        mediaScanIntent.setData(Uri.fromFile(fileImage));
+                        context.sendBroadcast(mediaScanIntent);
                         e.onNext(file.getAbsolutePath());
                     }
                 } catch (IOException ex) {
@@ -457,19 +453,15 @@ public class MediaDetailPresenter extends BasePresenter<MediaDetailContract.View
             outputStream.flush();
 
             if (fileToWrite.exists()) {
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    MediaScannerConnection.scanFile(context, new String[]{fileToWrite.toString()}, null, new MediaScannerConnection.OnScanCompletedListener() {
-                        public void onScanCompleted(String path, Uri uri) {
-                            Log.i("ExternalStorage", "Scanned " + path + ":");
-                            Log.i("ExternalStorage", "-> uri=" + uri);
-                        }
-                    });
-                    Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-                    mediaScanIntent.setData(Uri.fromFile(fileToWrite));
-                    context.sendBroadcast(mediaScanIntent);
-                } else {
-                    context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + Environment.getExternalStorageDirectory())));
-                }
+                MediaScannerConnection.scanFile(context, new String[]{fileToWrite.toString()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                    public void onScanCompleted(String path, Uri uri) {
+                        Log.i("ExternalStorage", "Scanned " + path + ":");
+                        Log.i("ExternalStorage", "-> uri=" + uri);
+                    }
+                });
+                Intent mediaScanIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+                mediaScanIntent.setData(Uri.fromFile(fileToWrite));
+                context.sendBroadcast(mediaScanIntent);
             }
 
             return true;

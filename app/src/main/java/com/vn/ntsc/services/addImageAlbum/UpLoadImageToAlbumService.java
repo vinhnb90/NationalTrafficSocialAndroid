@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
@@ -49,6 +50,8 @@ public class UpLoadImageToAlbumService extends BaseIntentService {
     public static final String EXTRA_TOKEN = "EXTRA_TOKEN";
     public static final String EXTRA_IMAGES = "EXTRA_IMAGES";
     public static final String EXTRA_ITEM_ALBUM = "EXTRA_ITEM_ALBUM";
+    public static final String EXTRA_KEY_ALBUM_ERROR = "EXTRA_KEY_ALBUM_ERROR";
+    public static final String EXTRA_KEY_IMAGE_UPLOAD_FAIL = "EXTRA_KEY_IMAGE_UPLOAD_FAIL";
 
     @Inject
     ApiService mApiService;
@@ -123,13 +126,12 @@ public class UpLoadImageToAlbumService extends BaseIntentService {
             mImages = intent.getParcelableArrayListExtra(EXTRA_IMAGES);
         }
 
-
         // AlbumID not exist --> create New Album & up images to it
         if (null == mQueue.get(0).albumId || mQueue.get(0).albumId.isEmpty()) {
 
             AddAlbumRequest request = new AddAlbumRequest(mToken, mQueue.get(0).albumName, mQueue.get(0).albumDes, mQueue.get(0).privacy);
 
-            notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText("Đang tải lên album: " + mQueue.get(0).albumName).build());
+            notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText(getResources().getString(R.string.upload_album_uploading) + mQueue.get(0).albumName).build());
 
             createNewAlbum(request);
 
@@ -158,10 +160,14 @@ public class UpLoadImageToAlbumService extends BaseIntentService {
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         notification.setContentTitle(getResources().getString(R.string.common_error));
-                        notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText("Có lỗi khi tạo album: " + mQueue.get(0).albumName).build());
+                        notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText(getResources().getString(R.string.upload_album_create_error) + mQueue.get(0).albumName).build());
 
-                        if (mQueue.get(0).isCreateNew){
-                            RxEventBus.publish(SubjectCode.SUBJECT_CREATE_NEW_ALBUM_ERROR,  mQueue.get(0).albumName);
+                        if (mQueue.get(0).isCreateNew) {
+                            //detect action fire of createNewAlbum error
+                            Bundle bundle = new Bundle();
+                            bundle.putParcelable(EXTRA_KEY_ALBUM_ERROR, mQueue.get(0));
+                            RxEventBus.publish(SubjectCode.SUBJECT_ALBUM_ERROR, bundle);
+
                             mQueue.remove(0);
                         }
                     }
@@ -176,7 +182,7 @@ public class UpLoadImageToAlbumService extends BaseIntentService {
 
 
     private void uploadImagesToAlbum(List<MediaFileBean> images, String albumId) {
-        notification.setContentTitle("Bắt đầu thêm ảnh vào album");
+        notification.setContentTitle(getResources().getString(R.string.upload_album_start_add_image));
         notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText("").build());
         final AddImageAlbumRequest request = new AddImageAlbumRequest(images, mToken, albumId);
 
@@ -203,24 +209,31 @@ public class UpLoadImageToAlbumService extends BaseIntentService {
 
                     @Override
                     public void onNext(AddImageAlbumResponse response) {
+
+
                         if (response.data != null) {
                             RxEventBus.publish(SubjectCode.SUBJECT_UPLOAD_IMAGE_SUCCESS, response.data);
-                            notification.setContentTitle("Tải ảnh lên album thành công!");
-                            notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText("Hoàn thành tải ảnh lên của album: " + mQueue.get(0).albumName).build());
-                        }else {
-                            notification.setContentTitle("Tải ảnh lên album thất bại!");
+                            notification.setContentTitle(getResources().getString(R.string.upload_album_upload_image_success));
+                            notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText(getResources().getString(R.string.upload_album_success_at) + mQueue.get(0).albumName).build());
+                        } else {
+                            notification.setContentTitle(getResources().getString(R.string.upload_album_upload_image_error));
                             notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText("").build());
                             RxEventBus.publish(SubjectCode.SUBJECT_UPLOAD_IMAGE_FAILURE, mQueue.get(0));
                         }
-
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        notification.setContentTitle("Tải ảnh lên thất bại!");
-                        notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText("Album: " + mQueue.get(0).albumName + " chưa được tạo. Chưa upload được ảnh!").build());
+                        notification.setContentTitle(getResources().getString(R.string.upload_album_upload_image_error));
+                        notificationMgr.notify(Constants.NOTI_STATUS_ID, notification.setContentText(getResources().getString(R.string.upload_album_noun) + mQueue.get(0).albumName + getResources().getString(R.string.upload_album_can_not_upload)).build());
+
+                        //detect action fire of upload image error
+                        Bundle bundle = new Bundle();
+                        bundle.putParcelable(EXTRA_KEY_IMAGE_UPLOAD_FAIL, mQueue.get(0));
+                        RxEventBus.publish(SubjectCode.SUBJECT_ALBUM_ERROR, bundle);
+
+                        mQueue.clear();
                     }
 
                     @Override

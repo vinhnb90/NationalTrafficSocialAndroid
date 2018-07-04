@@ -150,13 +150,8 @@ public class BottomNavigationBehavior<V extends View> extends VerticalScrollingB
         if (!behaviorTranslationEnabled && !forceAnimation) {
             return;
         }
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
-            ensureOrCancelObjectAnimation(child, offset, withAnimation);
-            translationObjectAnimator.start();
-        } else {
-            ensureOrCancelAnimator(child, withAnimation);
-            translationAnimator.translationY(offset).start();
-        }
+        ensureOrCancelAnimator(child, withAnimation);
+        translationAnimator.translationY(offset).start();
     }
 
     /**

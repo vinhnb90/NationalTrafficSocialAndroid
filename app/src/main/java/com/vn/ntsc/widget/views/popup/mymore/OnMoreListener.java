@@ -16,4 +16,6 @@ public interface OnMoreListener {
     void onReport(UserInfoResponse userProfileBean);
 
     void onAlertOnline(UserInfoResponse userProfileBean);
+
+    void onWarningNotLogin();
 }

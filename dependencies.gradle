@@ -1,8 +1,8 @@
 ext {
 
     applicationId = 'com.vn.ntsc'
-    minSdkVersion = 17
-    compileSdkVersion = 27
+    minSdkVersion = 21 /** @see <a href="https://developer.android.com/about/dashboards/>Android developer</a> */
+    compileSdkVersion = 28
 
     // -------- Flavors app -------------/
     appName = "Giao thông quốc gia"
@@ -12,7 +12,7 @@ ext {
     versionCode = 1
     versionName = '1.0'
 
-    versionCode_peview = 63
+    versionCode_peview = 65
     versionName_peview = '1.0'
 
     //------------- library -------------//
@@ -22,19 +22,19 @@ ext {
 
     //support
     SUPPORT_LIBRARY_VERSION = '27.1.1'
-    LIBRARY_CONSTRAINT_LAYOUT = '1.0.2'
+    LIBRARY_CONSTRAINT_LAYOUT = '1.1.2'
 
-    LIBRARY_MULTIDEX = '1.0.1'
+    LIBRARY_MULTIDEX = '1.0.3'
 
     //Dagger
     LIBRARY_DAGGER = '2.10'
     LIBRARY_BUTTER_KNIFE = '8.8.1'
 
     //retrofit & okHttp
-    LIBRARY_RETROFIT = '2.3.0'
-    LIBRARY_RETROFIT_ADAPTER = '2.3.0'
-    LIBRARY_OKHTTP = '3.9.0'
-    LIBRARY_OKHTTP_INTERCEPTOR = '3.9.0'
+    LIBRARY_RETROFIT = '2.4.0'
+    LIBRARY_RETROFIT_ADAPTER = '2.4.0'
+    LIBRARY_OKHTTP = '3.10.0'
+    LIBRARY_OKHTTP_INTERCEPTOR = '3.10.0'
 
     LIBRARY_RX_ANDROID = '2.0.1'
     LIBRARY_RX_JAVA = '2.1.3'
@@ -88,13 +88,17 @@ ext {
             glide                  : "com.github.bumptech.glide:glide:$LIBRARY_GLIDE",
             glideOkhttp3Integration: "com.github.bumptech.glide:okhttp3-integration:$LIBRARY_GLIDE",
             glideCompiler          : "com.github.bumptech.glide:glide:$LIBRARY_GLIDE",
+
             gpuimage               : 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1',
             // facebook SDK only login (reduce apk size)
             facebook               : 'com.facebook.android:facebook-login:4.27.0',
             // Shortcut Badge Count
             // https://github.com/leolin310148/ShortcutBadger
             shortcutBadger         : 'me.leolin:ShortcutBadger:1.1.19@aar',
-            multidex               : "com.android.support:multidex:$LIBRARY_MULTIDEX"
+            multidex               : "com.android.support:multidex:$LIBRARY_MULTIDEX",
+
+            //mutil screen
+            sdp                    : 'com.intuit.sdp:sdp-android:1.0.5'
     ]
 
     libraryTestDependencies = [

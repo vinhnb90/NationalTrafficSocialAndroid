@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -16,10 +15,13 @@
         app:text_title="@string/choose_privacy_title"
         app:type_button_right="text" />
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:layout_marginBottom="@dimen/spacing_2_16dp"
         android:id="@+id/activity_share_privacy_layout_privacy_selected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_below="@+id/toolbar"
         android:background="@color/privacy_bg_selected_color"
         android:gravity="center_vertical">
@@ -29,268 +31,101 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spacing_1_8dp"
+            android:layout_marginTop="@dimen/spacing_1_8dp"
             android:background="@color/privacy_bg_selected_color"
             android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <RadioButton
                 android:id="@+id/activity_share_privacy_public_option"
                 android:layout_width="@dimen/circle_bg_option_size_32dp"
                 android:layout_height="@dimen/circle_bg_option_size_32dp"
-                android:layout_margin="@dimen/spacing_2_16dp"
-                android:button="@drawable/bg_privacy_option"
+                android:layout_marginStart="@dimen/spacing_2_16dp"
+                android:button="@drawable/ic_privacy_option"
                 android:checked="true" />
 
             <RadioButton
-                android:id="@+id/activity_share_privacy_friend_option"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_2_16dp"
-                android:button="@drawable/bg_privacy_option"
+                android:id="@+id/activity_share_privacy_only_friends_option"
+                android:layout_width="@dimen/circle_bg_option_size_32dp"
+                android:layout_height="@dimen/circle_bg_option_size_32dp"
+                android:layout_marginStart="@dimen/spacing_2_16dp"
+                android:layout_marginTop="@dimen/spacing_3_24dp"
+                android:button="@drawable/ic_privacy_option"
+                android:checked="false"
                 android:visibility="gone" />
 
             <RadioButton
                 android:id="@+id/activity_share_privacy_only_me_option"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_2_16dp"
-                android:button="@drawable/bg_privacy_option" />
+                android:layout_width="@dimen/circle_bg_option_size_32dp"
+                android:layout_height="@dimen/circle_bg_option_size_32dp"
+                android:layout_marginStart="@dimen/spacing_2_16dp"
+                android:layout_marginTop="@dimen/spacing_3_24dp"
+                android:button="@drawable/ic_privacy_option" />
+
         </RadioGroup>
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
             android:id="@+id/layout_privacy_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/activity_share_privacy_group"
-            android:background="@color/privacy_bg_selected_color"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/spacing_1_8dp"
+            android:layout_marginTop="@dimen/spacing_1_8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_share_privacy_group"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <RelativeLayout
-                android:id="@+id/activity_share_privacy_public_option_layout"
-                android:layout_width="match_parent"
+            <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                android:id="@+id/activity_share_privacy_public"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_2_16dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginEnd="@dimen/spacing_2_16dp"
-                android:layout_marginTop="@dimen/spacing_2_16dp">
+                android:layout_marginTop="@dimen/spacing_0_4dp"
+                android:drawablePadding="@dimen/spacing_0_4dp"
+                android:text="@string/public_privacy"
+                android:textSize="@dimen/text_4_medium_16sp"
+                android:visibility="visible"
+                app:drawableCompatLeft="@drawable/ic_privacy_public_24dp_gray"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/activity_share_privacy_icon_public_option"
-                    android:layout_width="@dimen/icon_option_size"
-                    android:layout_height="@dimen/icon_option_size"
-                    android:layout_centerVertical="true"
 
-                    android:src="@drawable/ic_public"
-                    android:visibility="visible" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/activity_share_privacy_txt_public_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/spacing_1_8dp"
-                    android:layout_toEndOf="@+id/activity_share_privacy_icon_public_option"
-                    android:drawableTint="@color/black"
-                    android:gravity="left|center_vertical"
-                    android:text="@string/public_privacy"
-                    android:visibility="visible"
-                    tools:targetApi="m" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/activity_share_privacy_friend_option_layout"
-                android:layout_width="match_parent"
+            <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                android:id="@+id/activity_share_privacy_friends"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_2_16dp"
+                android:layout_alignParentTop="true"
                 android:layout_marginEnd="@dimen/spacing_2_16dp"
-                android:layout_marginTop="@dimen/spacing_2_16dp"
-                android:visibility="gone">
+                android:layout_marginTop="@dimen/spacing_0_4dp"
+                android:drawablePadding="@dimen/spacing_0_4dp"
+                android:text="@string/friend_privacy"
+                android:textSize="@dimen/text_4_medium_16sp"
+                android:visibility="gone"
+                app:drawableCompatLeft="@drawable/ic_privacy_only_friends_24dp_gray"
+                app:layout_constraintBottom_toBottomOf="@id/activity_share_privacy_only_me"
+                app:layout_constraintTop_toTopOf="@id/activity_share_privacy_public" />
 
-
-                <ImageView
-                    android:id="@+id/activity_share_privacy_icon_friend_option"
-                    android:layout_width="@dimen/icon_option_size"
-                    android:layout_height="@dimen/icon_option_size"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_status_friends"
-                    android:visibility="visible" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/activity_share_privacy_txt_friend_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/spacing_1_8dp"
-                    android:layout_toEndOf="@+id/activity_share_privacy_icon_friend_option"
-                    android:drawableTint="@color/black"
-                    android:gravity="left|center_vertical"
-                    android:text="@string/friend_privacy"
-                    android:visibility="visible"
-                    tools:targetApi="m" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/activity_share_privacy_only_me_option_layout"
-                android:layout_width="match_parent"
+            <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                android:id="@+id/activity_share_privacy_only_me"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_2_16dp"
-                android:layout_marginEnd="@dimen/spacing_2_16dp"
-                android:layout_marginTop="@dimen/spacing_2_16dp">
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="@dimen/spacing_0_4dp"
+                android:drawablePadding="@dimen/spacing_0_4dp"
+                android:text="@string/onlyme_privacy"
+                android:textSize="@dimen/text_4_medium_16sp"
+                app:drawableCompatLeft="@drawable/ic_privacy_only_me_24dp_gray"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
+        </android.support.constraint.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/activity_share_privacy_icon_only_me_option"
-                    android:layout_width="@dimen/icon_option_size"
-                    android:layout_height="@dimen/icon_option_size"
-                    android:layout_centerVertical="true"
-
-                    android:src="@drawable/ic_privacy_only_me"
-                    android:visibility="visible" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/activity_share_privacy_txt_only_me_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/spacing_1_8dp"
-                    android:layout_toEndOf="@+id/activity_share_privacy_icon_only_me_option"
-                    android:drawableTint="@color/black"
-                    android:gravity="left|center_vertical"
-                    android:text="@string/onlyme_privacy"
-                    android:visibility="visible"
-                    tools:targetApi="m" />
-            </RelativeLayout>
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/line"
-            android:layout_centerInParent="true"
-            android:background="@color/privacy_divider_color"
-            android:visibility="visible" />
-
-
-    </RelativeLayout>
+    </android.support.constraint.ConstraintLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/line"
         android:layout_below="@+id/activity_share_privacy_layout_privacy_selected"
         android:background="@color/privacy_divider_color" />
-
-    <!--<LinearLayout
-            android:id="@+id/layout_privacy_selected"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar"
-            android:background="@color/privacy_bg_selected_color"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:id="@+id/public_option_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_2_16dp">
-
-                <View
-                    android:id="@+id/circle_bg_public_option"
-                    android:layout_width="@dimen/circle_bg_option_size_32dp"
-                    android:layout_height="@dimen/circle_bg_option_size_32dp"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/bg_share_privacy_circle"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/icon_chk_public_option"
-                    android:layout_width="@dimen/circle_bg_option_size_32dp"
-                    android:layout_height="@dimen/circle_bg_option_size_32dp"
-                    android:layout_centerVertical="true"
-                    android:padding="@dimen/privacy_checked_icon_size"
-                    android:src="@drawable/ic_privacy_checked"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/icon_public_option"
-                    android:layout_width="@dimen/icon_option_size"
-                    android:layout_height="@dimen/icon_option_size"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/spacing_2_16dp"
-                    android:layout_toRightOf="@+id/circle_bg_public_option"
-                    android:src="@drawable/ic_public"
-                    android:visibility="visible" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/txt_public_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/spacing_1_8dp"
-                    android:layout_toRightOf="@+id/icon_public_option"
-                    android:drawableTint="@color/black"
-                    android:gravity="left|center_vertical"
-                    android:text="@string/public_privacy"
-                    android:visibility="visible" />
-
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
-                android:background="@color/privacy_divider_color"
-                app:layout_constraintBottom_toBottomOf="@+id/public_option_layout" />
-
-            <RelativeLayout
-                android:id="@+id/friend_option_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:layout_margin="@dimen/spacing_2_16dp">
-
-                <View
-                    android:id="@+id/circle_bg_friend_option"
-                    android:layout_width="@dimen/circle_bg_option_size_32dp"
-                    android:layout_height="@dimen/circle_bg_option_size_32dp"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/bg_share_privacy_circle"
-                    android:visibility="visible" />
-
-                <ImageView
-                    android:id="@+id/icon_chk_friend_option"
-                    android:layout_width="@dimen/circle_bg_option_size_32dp"
-                    android:layout_height="@dimen/circle_bg_option_size_32dp"
-                    android:layout_centerVertical="true"
-                    android:padding="@dimen/privacy_checked_icon_size"
-                    android:src="@drawable/ic_privacy_checked"
-                    android:visibility="gone" />
-
-                <ImageView
-                    android:id="@+id/icon_friend_option"
-                    android:layout_width="@dimen/icon_option_size"
-                    android:layout_height="@dimen/icon_option_size"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/spacing_2_16dp"
-                    android:layout_toRightOf="@+id/circle_bg_friend_option"
-                    android:src="@drawable/ic_status_friends"
-                    android:visibility="visible" />
-
-                <android.support.v7.widget.AppCompatTextView
-                    android:id="@+id/txt_friend_option"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_margin="@dimen/spacing_1_8dp"
-                    android:layout_toRightOf="@+id/icon_friend_option"
-                    android:drawableTint="@color/black"
-                    android:gravity="left|center_vertical"
-                    android:text="@string/friend_privacy"
-                    android:visibility="visible" />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/line"
-                    android:background="@color/privacy_divider_color"
-                    app:layout_constraintBottom_toBottomOf="@+id/friend_option_layout" />
-            </RelativeLayout>
-        </LinearLayout>-->
 </RelativeLayout>

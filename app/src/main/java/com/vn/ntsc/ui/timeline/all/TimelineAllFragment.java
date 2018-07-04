@@ -103,11 +103,6 @@ public class TimelineAllFragment extends TimelineLiveStreamFragment {
     //----------------------------------------------------------
 
     @Override
-    public void onItemTimelineClick(BuzzBean item, int position, View view) {
-
-    }
-
-    @Override
     public void onRetryBuzzDetailRequest(BuzzDetailRequest request, String templateId, int position, View view) {
         adapter.updateErrorRequestBuzzDetail(request, templateId, false);
         getPresenter().getBuzzDetail(request, templateId);

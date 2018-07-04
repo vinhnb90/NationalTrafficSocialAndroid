@@ -18,10 +18,12 @@ import com.vn.ntsc.repository.model.videoaudio.VideoAudioResponse;
 import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.repository.publicfile.PublicFileRequest;
 import com.vn.ntsc.ui.mediadetail.timeline.TimelineMediaActivity;
+import com.vn.ntsc.utils.DimensionUtils;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
 import com.vn.ntsc.widget.eventbus.RxEventBus;
 import com.vn.ntsc.widget.eventbus.SubjectCode;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
+import com.vn.ntsc.widget.views.gallerybottom.GridSpacingItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,8 +101,7 @@ public class VideoAudioActivity extends BaseActivity<VideoAudioPresenter> implem
                 if (null != o) {
                     try {
                         List<ListBuzzChild> mData = (List<ListBuzzChild>) o;
-                        mAdapter.getData().clear();
-                        mAdapter.addData(mData);
+                        mAdapter.replaceData(mData);
                     } catch (ClassCastException e) {
                         e.printStackTrace();
                     }
@@ -118,6 +119,7 @@ public class VideoAudioActivity extends BaseActivity<VideoAudioPresenter> implem
         mAdapter.setEnableLoadMore(true);
         mAdapter.setOnLoadMoreListener(this, mRecyclerViewVideoAdapter);
         mRecyclerViewVideoAdapter.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
+        mRecyclerViewVideoAdapter.addItemDecoration(new GridSpacingItemDecoration(4, DimensionUtils.convertDpToPx(4), true));
         mRecyclerViewVideoAdapter.setAdapter(mAdapter);
     }
 
@@ -174,7 +176,7 @@ public class VideoAudioActivity extends BaseActivity<VideoAudioPresenter> implem
     public void onComplete() {
 
         if (mAdapter.getData().isEmpty()) {
-            mAdapter.setEmptyView(R.layout.layout_audio_video_empty);
+            mAdapter.setEmptyView(R.layout.layout_empty_album_audio_video);
         }
 
         mSwipeRefreshLayout.setRefreshing(false);

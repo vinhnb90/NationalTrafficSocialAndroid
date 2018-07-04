@@ -15,6 +15,7 @@ import com.vn.ntsc.utils.Utils;
 import com.vn.ntsc.utils.time.TimeUtils;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
+import com.vn.ntsc.widget.views.textview.TextViewVectorCompat;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -71,7 +72,6 @@ public class FriendsFavoriteAdapter extends MultifunctionAdapter<FriendsFavorite
             }
         });
 
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,10 +93,10 @@ public class FriendsFavoriteAdapter extends MultifunctionAdapter<FriendsFavorite
         TextView mTxtAge;
         @Nullable
         @BindView(R.id.txt_time)
-        TextView mTxtTime;
+        TextViewVectorCompat mTxtTime;
         @Nullable
         @BindView(R.id.txt_location)
-        TextView mTxtLocation;
+        TextViewVectorCompat mTxtLocation;
         @Nullable
         @BindView(R.id.imv_menu_more)
         ImageView mImvMenuMore;
@@ -104,14 +104,6 @@ public class FriendsFavoriteAdapter extends MultifunctionAdapter<FriendsFavorite
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-
-            // set drawable left for TextView
-            // fix crash app because TextView cannot set drawable vector image below 21
-            if (null != mTxtTime)
-                Utils.setVectorDrawableLeft(R.drawable.ic_access_time, mTxtTime);
-            if (null != mTxtLocation)
-                Utils.setVectorDrawableLeft(R.drawable.ic_location_on_black_24dp, mTxtLocation);
-            itemView.setTag(this);
         }
     }
 

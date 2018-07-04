@@ -484,11 +484,7 @@ public class BorderView extends LinearLayout {
             states.addState(new int[]{}, defaultDrawable);
 
 
-            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                this.setBackgroundDrawable(states);
-            } else {
-                this.setBackground(states);
-            }
+            this.setBackground(states);
         }
     }
 

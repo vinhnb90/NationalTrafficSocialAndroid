@@ -1,7 +1,10 @@
 package com.vn.ntsc.ui.profile.media.myalbum;
 
+import android.util.Log;
+
 import com.vn.ntsc.core.BasePresenter;
 import com.vn.ntsc.core.callback.SubscriberCallback;
+import com.vn.ntsc.core.model.NetworkError;
 import com.vn.ntsc.repository.model.myalbum.LoadAlbum.LoadAlbumRequest;
 import com.vn.ntsc.repository.model.myalbum.LoadAlbum.LoadAlbumResponse;
 import com.vn.ntsc.repository.model.myalbum.UpdateAlbum.UpdateAlbumRequest;
@@ -37,7 +40,7 @@ public class MyAlbumPresenter extends BasePresenter<MyAlbumContract.View> implem
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-                        view.getAlbumFailure();
+                        view.getAlbumFailure(e);
                     }
 
                     @Override
@@ -59,9 +62,21 @@ public class MyAlbumPresenter extends BasePresenter<MyAlbumContract.View> implem
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        super.onError(e);
-                        view.updateAlbumFailure();
+                    public void onCompleted() {
+                        view.updateComplete();
+                    }
+                }));
+    }
+
+
+    public void getMoreMyAlbum(LoadAlbumRequest request) {
+        addSubscriber(apiService.getMyAlbum(request)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new SubscriberCallback<LoadAlbumResponse>(view) {
+                    @Override
+                    public void onSuccess(LoadAlbumResponse response) {
+                        view.getMoreAlbumSuccess(response);
                     }
 
                     @Override
@@ -70,6 +85,4 @@ public class MyAlbumPresenter extends BasePresenter<MyAlbumContract.View> implem
                     }
                 }));
     }
-
-
 }

@@ -70,7 +70,7 @@ public class AudioReceiverHolder extends BaseChatHolder<ChatMessage> {
         String currenTime = sdfDay.format(new Date(Utils.convertTimeToMilisecond(Utils.convertGMTtoLocale(message.mTimeStamp))));
         tvTime.setText(currenTime);
 
-        mProgressBar.getIndeterminateDrawable().setColorFilter(activity.getResources().getColor(R.color.colorGrayDark), PorterDuff.Mode.SRC_IN);
+        mProgressBar.getIndeterminateDrawable().setColorFilter(activity.getResources().getColor(R.color.grayDark), PorterDuff.Mode.SRC_IN);
 
         switch (message.audioType) {
             case ChatMessage.STATE_AUDIO_PREPARING:

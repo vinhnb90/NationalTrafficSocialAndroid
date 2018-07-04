@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
@@ -10,21 +9,20 @@
         android:id="@+id/layout_item_comment_adapter_avatar"
         android:layout_width="@dimen/timeline_detail_avatar"
         android:layout_height="@dimen/timeline_detail_avatar"
-        android:layout_marginStart="@dimen/spacing_0_4dp"
         android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:contentDescription="@string/common_image"
         android:src="@drawable/ic_avatar_circle_male_border"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/common_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:maxLines="1"
-        android:singleLine="false"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
         android:id="@+id/layout_item_comment_adapter_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_1_8dp"
         android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:maxLines="1"
+        android:singleLine="false"
         android:text="@string/app_name"
         android:textColor="@color/black"
         android:textSize="@dimen/text_3_14sp"
@@ -34,12 +32,12 @@
 
     <TextView
         android:id="@+id/layout_item_comment_adapter_time_post"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_item_comment_adapter_user_name"
-        android:layout_marginStart="@dimen/spacing_1_8dp"
         android:layout_marginTop="@dimen/spacing_1_8dp"
-        android:text="@string/_0"
+        android:text="@string/app_name"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
         android:textSize="@dimen/text_2_12sp"
         app:layout_constraintBottom_toBottomOf="@+id/layout_item_comment_adapter_user_name"
         app:layout_constraintLeft_toRightOf="@+id/layout_item_comment_adapter_user_name"
@@ -54,65 +52,41 @@
         android:padding="@dimen/spacing_1_8dp"
         android:src="@drawable/ic_buzz_delete"
         app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintLeft_toRightOf="@+id/layout_item_comment_adapter_time_post"
+        app:layout_constraintLeft_toRightOf="@id/layout_item_comment_adapter_time_post"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image_description" />
 
     <TextView
-        android:typeface="monospace"
-        android:id="@+id/layout_item_comment_adapter_comment"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:id="@+id/layout_item_comment_adapter_content"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_item_comment_adapter_user_name"
-        android:layout_marginStart="@dimen/spacing_1_8dp"
         android:text="@string/app_name"
         android:textColorLink="@color/link_color"
         android:textSize="@dimen/text_2_12sp"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/layout_item_comment_adapter_sub_comment"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toRightOf="@+id/layout_item_comment_adapter_avatar"
         app:layout_constraintRight_toLeftOf="@+id/layout_item_comment_adapter_remove"
         app:layout_constraintTop_toBottomOf="@+id/layout_item_comment_adapter_user_name" />
-
-    <TextView
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/spacing_1_8dp"
-        android:id="@+id/layout_item_comment_adapter_reply"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_item_comment_adapter_comment"
-        android:layout_marginStart="@dimen/spacing_1_8dp"
-        android:text="@string/common_reply"
-        android:textColor="@color/link_color"
-        android:textSize="@dimen/text_2_12sp"
-        app:layout_constraintLeft_toRightOf="@+id/layout_item_comment_adapter_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/layout_item_comment_adapter_comment" />
-
-    <TextView
-        android:id="@+id/layout_item_comment_adapter_sub_comment_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout_item_comment_adapter_comment"
-        android:layout_marginStart="@dimen/spacing_1_8dp"
-        android:text="@string/sub_comment_number"
-        android:textColor="@color/link_color"
-        android:textSize="@dimen/text_2_12sp"
-        app:layout_constraintLeft_toRightOf="@+id/layout_item_comment_adapter_avatar"
-        app:layout_constraintTop_toBottomOf="@+id/layout_item_comment_adapter_reply" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/layout_item_comment_adapter_sub_comment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/spacing_1_8dp"
-        android:layout_marginLeft="@dimen/spacing_1_8dp"
-        android:layout_marginRight="@dimen/spacing_1_8dp"
-        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:layout_marginEnd="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
         android:isScrollContainer="false"
-        android:nestedScrollingEnabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toRightOf="@+id/layout_item_comment_adapter_avatar"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_item_comment_adapter_sub_comment_number"
-        tools:targetApi="lollipop" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_comment_adapter_content" />
 
     <TextView
         android:id="@+id/comment_approval"
@@ -123,8 +97,8 @@
         android:gravity="center"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

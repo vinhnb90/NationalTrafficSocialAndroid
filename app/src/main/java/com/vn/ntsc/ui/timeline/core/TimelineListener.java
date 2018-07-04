@@ -13,35 +13,37 @@ import java.util.ArrayList;
  */
 
 public interface TimelineListener<E> extends BaseAdapterListener {
-    void onItemTimelineClick(E item, int position, View view);
 
-    void onShowImageDetail(E bean, int positionTimeLineAdapter, int positionIndexItem, View view);
+    //Normal
+    void onDisplayImageDetailScreen(E bean, int positionTimeLineAdapter, int positionIndexItem, View view);
 
-    void onShowLiveStream(E bean, int positionTimeLineAdapter, int positionIndexItem, View view);
+    void onDisplayLiveStreamScreen(E bean, int positionTimeLineAdapter, int positionIndexItem, View view);
+
+    void onDisplayCommentScreen(E bean, int position, View view);
 
     void onLike(E bean, int position, View view);
 
-    void onShowComment(E bean, int position, View view);
-
     void onShare(E bean, int position, View view);
-
-    void onDeleteStatus(E bean, int position, View view);
-
-    void onRemoveStatusTemplate(E bean, int position, View view);
-
-    void onRetryBuzzDetailRequest(BuzzDetailRequest request, String templateId, int position, View view);
 
     void onFavorite(E bean, int position, View view);
 
-    void onShowProfile(E bean, int position, View view);
+    void onRemoveStatus(E bean, int position, View view);
 
-    void onShowProfile(String userId, int position, View view);
+    void onDisplayProfileScreen(E bean, int position, View view);
 
-    void onShowTagFriendsDetail(ArrayList<ListTagFriendsBean> listTagFriendsBeans, int position, View view);
+    void onDisplayProfileScreen(String userId, int position, View view);
+
+    void onDisplayTagFriendsScreen(ArrayList<ListTagFriendsBean> listTagFriendsBeans, int position, View view);
 
     void onApproval(E bean, int position, View view);
 
-    void onPlayAudioShare(E bean, int position, View view);
+    //Share
+    void onDisplayShareAudioPlayScreen(E bean, int position, View view);
 
-    void onPlayLiveStreamShare(E bean, int position, View view);
+    void onDisplayShareLiveStreamScreen(E bean, int position, View view);
+
+    //Template
+    void onRemoveStatusTemplate(E bean, int position, View view);
+
+    void onRetryBuzzDetailRequest(BuzzDetailRequest request, String templateId, int position, View view);
 }

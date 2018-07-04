@@ -152,11 +152,7 @@ public class LikeView extends PopupWindow implements ILikeView {
         if (drawable == null) {
             throw new IllegalArgumentException("drawable cannot be null.");
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            mGood.setBackground(drawable);
-        } else {
-            mGood.setBackgroundDrawable(drawable);
-        }
+        mGood.setBackground(drawable);
         mGood.setText("");
         setWidth(drawable.getIntrinsicWidth());
         setHeight(mDistance + drawable.getIntrinsicHeight());

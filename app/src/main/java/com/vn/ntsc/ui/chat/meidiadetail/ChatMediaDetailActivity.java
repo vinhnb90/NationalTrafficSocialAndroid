@@ -4,11 +4,13 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Parcelable;
-import android.support.v4.view.ViewPager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.tux.socket.models.Media;
@@ -20,12 +22,20 @@ import com.vn.ntsc.repository.model.chat.ItemFileChat;
 import com.vn.ntsc.repository.model.media.MediaEntity;
 import com.vn.ntsc.ui.chat.ChatActivity;
 import com.vn.ntsc.ui.chat.generalibrary.GeneraLibraryActivity;
+import com.vn.ntsc.ui.mediadetail.base.AudioFragment;
 import com.vn.ntsc.ui.mediadetail.base.BaseMediaActivity;
+import com.vn.ntsc.ui.mediadetail.base.DetailMediaPresenter;
+import com.vn.ntsc.ui.mediadetail.base.IDetailMediaInteractor;
+import com.vn.ntsc.ui.mediadetail.base.MediaAdapter;
+import com.vn.ntsc.ui.mediadetail.base.VideoFragment;
+import com.vn.ntsc.ui.mediadetail.base.ViewPagerMedia;
+import com.vn.ntsc.ui.mediadetail.base.video.PlayerController;
 import com.vn.ntsc.utils.LogUtils;
 import com.vn.ntsc.widget.permissions.Permission;
 import com.vn.ntsc.widget.toolbar.ToolbarButtonRightClickListener;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
 import com.vn.ntsc.widget.views.dialog.ProgressAlertDialog;
+import com.vn.ntsc.widget.views.images.mediadetail.image.ImageViewTouch;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -38,8 +48,13 @@ import io.reactivex.functions.Consumer;
 /**
  * Created by dev22 on 3/2/18.
  */
-public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPresenter> implements ChatMediaDetailContract.View ,ToolbarButtonRightClickListener{
+public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPresenter>
+        implements ChatMediaDetailContract.View, ToolbarButtonRightClickListener,
+        ImageViewTouch.IteractorGestureListener,
+        PlayerController.VisibilityListener,
+        ViewPagerMedia.IDoTaskWhenTouch {
 
+    /*----------------------------------------var----------------------------------------*/
     public static final String TAG = ChatMediaDetailActivity.class.getSimpleName();
 
     private static final String CHAT_MESSAGE = "input_data";
@@ -50,8 +65,11 @@ public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPr
 
     private static final int REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE = 0x00;
 
+    @BindView(R.id.activity_media_chat_container)
+    RelativeLayout container;
+
     @BindView(R.id.activity_media_chat_view_pager)
-    ViewPager mViewPager;
+    ViewPagerMedia viewPager;
 
     @BindView(R.id.toolbar)
     ToolbarTitleCenter mToolbar;
@@ -60,8 +78,9 @@ public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPr
     private String type;
     private ProgressAlertDialog mAlertDialog;
     private int total;
+    private IDetailMediaInteractor.Presenter mPresenter;
 
-
+    /*----------------------------------------instance----------------------------------------*/
     public static void launch(AppCompatActivity activity, ChatMessage chatMessage, int index) {
         Intent intent = new Intent(activity, ChatMediaDetailActivity.class);
         intent.putExtra(CHAT_MESSAGE, chatMessage);
@@ -80,11 +99,7 @@ public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPr
         activity.startActivity(intent);
     }
 
-    @Override
-    public int getLayoutId() {
-        return R.layout.activity_media_chat;
-    }
-
+    /*----------------------------------------lifecycle----------------------------------------*/
     @Override
     public void onCreateView(View rootView) {
 //        setupToolbar(toolbar);
@@ -96,12 +111,44 @@ public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPr
         total = getIntent().getIntExtra(CHAT_TOTAL_FILE, 0);
         type = getIntent().getStringExtra(CHAT_TYPE);
         checkType(index, total, type);
+
+        //presenter
+        new DetailMediaPresenter.Builder(null, this).build();
+
+        List<MediaEntity> mediaData = new ArrayList<>();
         if (data != null) {
-            setupViewPager(mViewPager, convertData(data), index);
+            mediaData = convertData(data);
+            ViewPagerBuilder builder = new ViewPagerBuilder(mediaData, viewPager, index);
+            builder
+                    .setViewContainer(container)
+                    .setiDoTaskWhenTouch(this)
+                    .build();
+
+            //save data
+            if (mPresenter != null)
+                mPresenter.saveListMediaPlaying(mediaData);
         } else {
             mListFileChat = getIntent().getParcelableArrayListExtra(CHAT_MESSAGE_ALL);
-            setupViewPager(mViewPager, convertData1(mListFileChat), index);
+
+            mediaData = convertData1(mListFileChat);
+            ViewPagerBuilder builder = new ViewPagerBuilder(mediaData, viewPager, index);
+            builder
+                    .setViewContainer(container)
+                    .setiDoTaskWhenTouch(this)
+                    .build();
+
+            //save data
+            if (mPresenter != null)
+                mPresenter.saveListMediaPlaying(mediaData);
         }
+
+
+    }
+
+    /*----------------------------------------override----------------------------------------*/
+    @Override
+    public int getLayoutId() {
+        return R.layout.activity_media_chat;
     }
 
     @Override
@@ -110,6 +157,160 @@ public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPr
         setSupportActionBar(mToolbar);
         mToolbar.setActionbar(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        super.onPageSelected(position);
+        int pos = position + 1;
+        LogUtils.e(TAG, "onPageSelected:" + position + "type-->" + type);
+        if (type.equals(GeneraLibraryActivity.class.getSimpleName())) {
+            mToolbar.setTitleCenter(String.format("(%d/%d)", pos, total));
+        }
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
+    }
+
+
+    @Override
+    public void saveImageSuccess() {
+        Toast.makeText(this, R.string.save_image_success, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void saveImageFailure() {
+        Toast.makeText(this, R.string.save_image_failure, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void downloadComplete(File file) {
+        Toast.makeText(this, R.string.end_download, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void downloadError() {
+        Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onComplete() {
+        mAlertDialog.hide();
+    }
+
+    @Override
+    public void onToolbarButtonRightClick(View view) {
+        if (type.equals(ChatActivity.class.getSimpleName())) {
+            GeneraLibraryActivity.startActivity(this);
+        } else {
+            requestAccessPermission(REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+    }
+
+
+    //-----------------------------------------set up view pager custom media
+    @Override
+    public void setPresenter(@NonNull IDetailMediaInteractor.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void onFullScreen(boolean needFull) {
+        if (needFull) {
+            mToolbar.setVisibility(View.INVISIBLE);
+        } else {
+            mToolbar.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onDoubleTapZoom(boolean isZoomed) {
+        LogUtils.i(TAG, "View child is in state onDoubleTapZoom!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isZoomed);
+    }
+
+    @Override
+    public void onScrollZoom(boolean isZoomed) {
+        LogUtils.i(TAG, "View child is in state onScrollZoom!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isZoomed);
+    }
+
+    @Override
+    public void onFling(boolean isCanFlingHorizolltal) {
+        LogUtils.i(TAG, "View child is in state onFling!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isCanFlingHorizolltal);
+    }
+
+    @Override
+    public void onScaleZoom(boolean isZoomed) {
+        LogUtils.i(TAG, "View child is in state onScaleZoom!");
+        viewPager.updateStatusViewChildIsDoTaskIfself(isZoomed);
+    }
+
+    @Override
+    public boolean isAllowZoom() {
+        return viewPager.isCanAllowDoTaskIfself();
+    }
+
+    @Override
+    public void doTaskWhenTouchDown() {
+
+    }
+
+    @Override
+    public void doTaskWhenTouchMove(boolean isInStateSwipeHorizontall, boolean isInStateSwipeVertical, boolean isViewChildIsDoTaskIfSelf) {
+        //get Fragment
+        try {
+            Fragment fragment = ((MediaAdapter) viewPager.getAdapter()).getFragmentHashMap().get(viewPager.getCurrentItem());
+            if (fragment instanceof AudioFragment) {
+                ((AudioFragment) fragment).onPause();
+            }
+
+            if (fragment instanceof VideoFragment) {
+                ((VideoFragment) fragment).onPause();
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error when switch Play pause video / audio!");
+            return;
+        }
+    }
+
+    @Override
+    public void doTaskWhenTouchUp(boolean isRestoreView) {
+        //get Fragment
+        try {
+            Fragment fragment = ((MediaAdapter) viewPager.getAdapter()).getFragmentHashMap().get(viewPager.getCurrentItem());
+            if (fragment instanceof AudioFragment) {
+                if (isRestoreView)
+                    ((AudioFragment) fragment).onResume();
+                else
+                    ((AudioFragment) fragment).onPause();
+            }
+
+            if (fragment instanceof VideoFragment) {
+                if (isRestoreView)
+                    ((VideoFragment) fragment).onResume();
+                else
+                    ((VideoFragment) fragment).onPause();
+            }
+        } catch (Exception e) {
+            LogUtils.e(TAG, "Error when switch Play pause video / audio!");
+            return;
+        }
+    }
+
+    //-----------------------------------------end set up view pager custom media
+
+    /*----------------------------------------func----------------------------------------*/
+    /*----------------------------------------inner----------------------------------------*/
+
 
     private List<MediaEntity> convertData(ChatMessage data) {
         List<MediaEntity> mediaEntities = new ArrayList<>();
@@ -226,49 +427,5 @@ public class ChatMediaDetailActivity extends BaseMediaActivity<ChatMediaDetailPr
         return child;
     }
 
-    @Override
-    public void onPageSelected(int position) {
-        super.onPageSelected(position);
-        int pos = position + 1;
-        LogUtils.e(TAG, "onPageSelected:" + position + "type-->" + type);
-        if (type.equals(GeneraLibraryActivity.class.getSimpleName())) {
-            mToolbar.setTitleCenter(String.format("(%d/%d)", pos, total));
-        }
-
-    }
-
-    @Override
-    public void saveImageSuccess() {
-        Toast.makeText(this, R.string.save_image_success, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void saveImageFailure() {
-        Toast.makeText(this, R.string.save_image_failure, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void downloadComplete(File file) {
-        Toast.makeText(this, R.string.end_download, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void downloadError() {
-        Toast.makeText(this, R.string.download_error, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onComplete() {
-        mAlertDialog.hide();
-    }
-
-    @Override
-    public void onToolbarButtonRightClick(View view) {
-        if (type.equals(ChatActivity.class.getSimpleName())) {
-            GeneraLibraryActivity.startActivity(this);
-        } else {
-            requestAccessPermission(REQUEST_PERMISSION_WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        }
-    }
 }
 

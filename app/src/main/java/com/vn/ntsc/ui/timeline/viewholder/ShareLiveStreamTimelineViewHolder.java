@@ -58,7 +58,6 @@ public class ShareLiveStreamTimelineViewHolder extends ShareTimelineViewHolder {
                 titleTime.setText(String.format(itemView.getResources().getString(R.string.live_streamed_total_time), String.format("%02d:%02d", minutes, seconds)));
             }
 
-
         } else {
             layoutTimelineLiveStream.setVisibility(View.GONE);
         }

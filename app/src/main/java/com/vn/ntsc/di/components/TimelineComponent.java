@@ -4,7 +4,7 @@ import com.vn.ntsc.di.modules.AppModule;
 import com.vn.ntsc.di.modules.NetModule;
 import com.vn.ntsc.di.modules.SocketModule;
 import com.vn.ntsc.di.modules.TimelineModule;
-import com.vn.ntsc.ui.comment.CommentActivity;
+import com.vn.ntsc.ui.comments.CommentActivity;
 import com.vn.ntsc.ui.profile.my.MyProfileActivity;
 import com.vn.ntsc.ui.timeline.all.TimelineAllFragment;
 import com.vn.ntsc.ui.timeline.fravorite.TimelineFavoriteFragment;

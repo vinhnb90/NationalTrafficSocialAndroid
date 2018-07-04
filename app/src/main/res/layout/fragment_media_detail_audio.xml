@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundMedia">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/fragment_detail_media_audio_rl_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_32sdp">
+
+        <TextView
+            android:id="@+id/fragment_detail_media_audio_tv_audio_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Name Audio"
+            android:textColor="@color/color_text"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/fragment_detail_media_audio_tv_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fragment_detail_media_audio_tv_audio_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Author name"
+            android:textColor="@color/color_text" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_detail_media_audio_rl_progressbar_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_16sdp">
+
+        <TextView
+            android:id="@+id/fragment_detail_media_audio_tv_timebegin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="00:00"
+            android:textColor="@color/color_text" />
+
+
+        <SeekBar
+            android:id="@+id/fragment_detail_media_audio_sbar_process"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_toRightOf="@+id/fragment_detail_media_audio_tv_timebegin"
+            android:paddingBottom="@dimen/_1sdp"
+            android:paddingTop="@dimen/_1sdp"
+            android:progressBackgroundTintMode="@color/color_text"
+            />
+
+        <TextView
+            android:id="@+id/fragment_detail_media_audio_tv_timeend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/fragment_detail_media_audio_sbar_process"
+            android:text="00:00"
+            android:textColor="@color/color_text" />
+
+
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_detail_media_audio_rl_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/fragment_detail_media_audio_iv_thumb"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:background="@drawable/bg_media_circle"
+            android:src="@drawable/ic_media_audio" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_circle_more_transparent"
+            android:padding="@dimen/_5sdp">
+
+            <ImageButton
+                android:id="@+id/fragment_detail_media_audio_ib_playing"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_centerInParent="true"
+                android:background="@null"
+                android:duplicateParentState="true"
+                android:src="@drawable/ic_media_audio" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+
+</RelativeLayout>

@@ -138,4 +138,5 @@
     <string name="common_age">Tuổi</string>
     <string name="common_age_2">%1$s tuổi</string>
 
+    <string name="common_link_sign_in"><![CDATA[ Bạn cần <b><font color=#365899>đăng nhập</font></b> để sử dụng tính năng này]]></string>
 </resources>

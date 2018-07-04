@@ -37,21 +37,27 @@ public class MediaTimelineViewHolderFourBuzz extends MediaTimelineViewHolderThre
     @Override
     public void onBindView(final BuzzBean bean, final int position, final TimelineListener listener) {
         super.onBindView(bean, position, listener);
-
-        if (bean.listChildBuzzes.get(3).isApp == Constants.IS_APPROVED) {
-            loadImage(bean.listChildBuzzes.get(3).thumbnailUrl, imageView4);
-        } else {
-            loadImageBlur(bean.listChildBuzzes.get(3).thumbnailUrl, imageView4);
-        }
-
-        displayVideoPlayIcon(bean.listChildBuzzes.get(3).buzzType, imagePlayView4);
-
-
-        imageView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onShowImageDetail(bean, position, 3, v);
+        final int approved = bean.listChildBuzzes.get(3).isApp;
+        if (imageView4 != null) {
+            if (approved == Constants.IS_APPROVED) {
+                loadImage(bean.listChildBuzzes.get(3).thumbnailUrl, imageView4);
+            } else {
+                loadImageBlur(bean.listChildBuzzes.get(3).thumbnailUrl, imageView4);
             }
-        });
+
+            displayVideoPlayIcon(bean.listChildBuzzes.get(3).buzzType, imagePlayView4);
+
+
+            imageView4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bean.isApproved == Constants.IS_APPROVED && approved == Constants.IS_APPROVED) {
+                        listener.onDisplayImageDetailScreen(bean, position, 3, v);
+                    } else {
+                        listener.onApproval(bean, position, v);
+                    }
+                }
+            });
+        }
     }
 }

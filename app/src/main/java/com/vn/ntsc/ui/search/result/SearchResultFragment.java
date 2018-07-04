@@ -144,10 +144,8 @@ public class SearchResultFragment extends BaseFragment<SearchResultPresenter> im
         //1dp as px, value might be obtained e.g. from dimen resources...
         int space = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
         mRecyclerViewSearchResult.addItemDecoration(new SpacesItemDecoration(space));
-
         mRecyclerViewSearchResult.setAdapter(mResultAdapter);
         mResultAdapter.setMenuItemClick(mIOnItemMenuClickListener);
-
     }
 
     @Override

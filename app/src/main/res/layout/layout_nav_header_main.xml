@@ -12,7 +12,7 @@
         android:id="@+id/nv_header_main_banner"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:adjustViewBounds="true"
+        android:adjustViewBounds="false"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

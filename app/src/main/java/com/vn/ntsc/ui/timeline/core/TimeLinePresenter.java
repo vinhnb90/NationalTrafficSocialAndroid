@@ -145,6 +145,7 @@ public class TimeLinePresenter extends BasePresenter<TimeLineContract.View> impl
                     public void onSuccess(BuzzListResponse response) {
                         view.onBuzzListResponse(response);
                     }
+
                     @Override
                     public void onCompleted() {
                         view.onComplete();
@@ -486,7 +487,7 @@ public class TimeLinePresenter extends BasePresenter<TimeLineContract.View> impl
                 .subscribeWith(new SubscriberCallback<BuzzListResponse>(view) {
                     @Override
                     public void onSuccess(BuzzListResponse response) {
-                        if (null == response || response.data.isEmpty())
+                        if (null == response || response.data == null || response.data.isEmpty())
                             view.onTimelineLiveStreamEmptyView();
                         else
                             view.onGetRoomLiveStream(response);
@@ -509,6 +510,7 @@ public class TimeLinePresenter extends BasePresenter<TimeLineContract.View> impl
                 .subscribeWith(new SubscriberCallback<EvaluateUserProfileResponse>(view) {
                     @Override
                     public void onSuccess(EvaluateUserProfileResponse response) {
+                        view.onEvaluateUser(response);
                         LogUtils.d("getEvaluateUser", "11 " + response.code);
                     }
 

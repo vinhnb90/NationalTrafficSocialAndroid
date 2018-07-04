@@ -21,7 +21,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ import com.vn.ntsc.repository.model.timeline.datas.sub.ListTagFriendsBean;
 import com.vn.ntsc.repository.model.token.CheckTokenResponse;
 import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.services.UserLiveStreamService;
-import com.vn.ntsc.ui.comment.CommentActivity;
+import com.vn.ntsc.ui.comments.CommentActivity;
 import com.vn.ntsc.utils.AnimationUtils;
 import com.vn.ntsc.utils.Constants;
 import com.vn.ntsc.utils.LogUtils;
@@ -57,6 +56,7 @@ import com.vn.ntsc.widget.views.textview.TextViewVectorCompat;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
@@ -99,7 +99,6 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
 
     @BindView(R.id.layout_live_stream_header_navigation_bar)
     ConstraintLayout navigationBar;
-
     @BindView(R.id.layout_live_stream_header_layout_time_video)
     LinearLayout layoutTimeView;
     @BindView(R.id.layout_live_stream_header_time)
@@ -109,17 +108,15 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
     @BindView(R.id.layout_live_stream_header_view_number)
     TextViewVectorCompat mViewNumber;
 
-    @BindView(R.id.fragment_live_stream_viewer_send_comment)
-    ImageView sendComment;
-    @BindView(R.id.live_stream_comment)
-    EditText edtComment;
-
     @BindView(R.id.layout_live_stream_comment_refresh)
     SwipeRefreshLayout refreshLayout;
     @BindView(R.id.layout_live_stream_comment_list_comment)
     RecyclerView listComment;
-    @BindView(R.id.layout_live_stream_comment_layout_list_comment)
-    RelativeLayout layoutComment;
+
+    @BindView(R.id.fragment_live_stream_viewer_send_comment)
+    ImageView sendComment;
+    @BindView(R.id.fragment_live_stream_viewer_comment)
+    EditText edtComment;
 
     @BindView(R.id.fragment_live_stream_viewer_progress_bar)
     ProgressBar progressBar;
@@ -157,6 +154,14 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
     //----------------------------------------------------------------
     //------------------------ life cycle ----------------------------
     //----------------------------------------------------------------
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        listener = (LiveStreamActivity) context;
+    }
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_live_stream_viewer;
@@ -199,36 +204,26 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
     }
 
     @Override
-    protected void setUserVisibleHint() {
-        listener = (LiveStreamActivity) context;
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
-        refreshLayout.setRefreshing(true);
-
-        navigationBar.setVisibility(View.VISIBLE);
-        rootView.post(new Runnable() {
+        Objects.requireNonNull(rootView).post(new Runnable() {
+            @Override
             public void run() {
+                refreshLayout.setRefreshing(true);
+                navigationBar.setVisibility(View.VISIBLE);
                 mKeyboardHeightProvider.start();
+                activity = (LiveStreamActivity) context;
+                UserPreferences userPreference = new UserPreferences();
+                BuzzDetailRequest buzzDetailRequest = new BuzzDetailRequest(userPreference.getToken(), mUserLiveStreamService.buzzId);
+                getPresenter().getTimelineDetail(buzzDetailRequest);
+                loadListComment(TAKE_COMMENT);
+
+                SystemUtils.hideSoftKeyboard(getActivity());
+                if (mKeyboardHeightProvider != null)
+                    mKeyboardHeightProvider.setKeyboardHeightObserver(LiveStreamViewerFragment.this);
+                setObservers();
             }
         });
-        activity = (LiveStreamActivity) context;
-        setObservers();
-        UserPreferences userPreference = new UserPreferences();
-        BuzzDetailRequest buzzDetailRequest = new BuzzDetailRequest(userPreference.getToken(), this.mUserLiveStreamService.buzzId);
-        getPresenter().getTimelineDetail(buzzDetailRequest);
-        loadListComment(TAKE_COMMENT);
-
-        SystemUtils.hideSoftKeyboard(getActivity());
-        if (mKeyboardHeightProvider != null)
-            mKeyboardHeightProvider.setKeyboardHeightObserver(this);
     }
 
     @Override
@@ -306,6 +301,7 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
     //----------------------------------------------------------------
     //------------------------ Function ------------------------------
     //----------------------------------------------------------------
+    @SuppressLint("CheckResult")
     private void handleShare(List<ListTagFriendsBean> mTaggedFriend) {
 
         final List<String> listId = new ArrayList<>();
@@ -321,7 +317,7 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
     @Override
     public void onKeyboardHeightChanged(int height, int orientation) {
         if (height > 100) {
-            layoutComment.setVisibility(View.GONE);
+            refreshLayout.setVisibility(View.GONE);
             Animation animation = AnimationUtils.outToTopAnimation();
             animation.setAnimationListener(new Animation.AnimationListener() {
                 @Override
@@ -343,7 +339,7 @@ public class LiveStreamViewerFragment extends BaseFragment<LiveStreamPresenter> 
             if (!isOpen)
                 navigationBar.startAnimation(animation);
         } else {
-            layoutComment.setVisibility(View.VISIBLE);
+            refreshLayout.setVisibility(View.VISIBLE);
             navigationBar.setVisibility(View.VISIBLE);
             Animation animation = AnimationUtils.inFromTopAnimation();
             animation.setAnimationListener(new Animation.AnimationListener() {

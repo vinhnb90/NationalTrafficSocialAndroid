@@ -305,9 +305,15 @@ public class RecordFragment extends Fragment implements AudioSendListener, Media
      */
     private void stopRecording() {
         if (mRecorder != null) {
-            mRecorder.stop();
-            mRecorder.release();
-            mRecorder = null;
+            try {
+                mRecorder.stop();
+            } catch (RuntimeException e) {
+                //If the recorder is not in a recording state, then the stop could fail.
+                e.printStackTrace();
+            } finally {
+                mRecorder.release();
+                mRecorder = null;
+            }
         }
     }
 

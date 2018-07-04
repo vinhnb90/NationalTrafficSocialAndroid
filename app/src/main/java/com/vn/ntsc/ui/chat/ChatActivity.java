@@ -60,6 +60,7 @@ import com.tux.socket.models.Text;
 import com.tux.socket.models.Typing;
 import com.vn.ntsc.BuildConfig;
 import com.vn.ntsc.R;
+import com.vn.ntsc.core.model.ServerResponse;
 import com.vn.ntsc.core.views.BaseActivity;
 import com.vn.ntsc.repository.ActivityResultRequestCode;
 import com.vn.ntsc.repository.model.block.addblock.AddBlockUserRequest;
@@ -392,8 +393,8 @@ public class ChatActivity extends BaseActivity<ChatPresenter> implements ChatCon
 
         //Cache data
         mLstChat.setItemViewCacheSize(1000);
-        mLstChat.setDrawingCacheEnabled(true);
-        mLstChat.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
+//        mLstChat.setDrawingCacheEnabled(true);
+//        mLstChat.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
         mLstChat.setLayoutManager(mLayoutManager);
         mLstChat.setAdapter(mAdapter);
         mLstChat.setRecyclerListener(this);
@@ -1321,6 +1322,11 @@ public class ChatActivity extends BaseActivity<ChatPresenter> implements ChatCon
                         userProfileBean
                 );
             }
+        }
+
+        @Override
+        public void onWarningNotLogin() {
+            onShowDialogLogin(ServerResponse.DefinitionCode.SERVER_EXPIRED_TOKEN);
         }
     };
 

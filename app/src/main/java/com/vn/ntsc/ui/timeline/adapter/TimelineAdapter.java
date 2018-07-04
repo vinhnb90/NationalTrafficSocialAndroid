@@ -1,6 +1,5 @@
 package com.vn.ntsc.ui.timeline.adapter;
 
-import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -34,8 +33,6 @@ public class TimelineAdapter<E extends BuzzBean> extends MultifunctionAdapter<Ba
 
     private LayoutInflater inflater;
     private RequestManager glide;
-    private SpannableStringBuilder spanTxtTitle;
-    private SpannableStringBuilder spanTxtTitleShare;
 
     /**
      * @param listener Event item Click "listener extends BaseAdapterCallback"
@@ -44,9 +41,6 @@ public class TimelineAdapter<E extends BuzzBean> extends MultifunctionAdapter<Ba
         super(listener);
         this.inflater = inflater;
         this.glide = glide;
-        setHasStableIds(true);
-        spanTxtTitle = new SpannableStringBuilder();
-        spanTxtTitleShare = new SpannableStringBuilder();
     }
 
     public void removeTemplate(String templateId) {
@@ -98,12 +92,13 @@ public class TimelineAdapter<E extends BuzzBean> extends MultifunctionAdapter<Ba
         if (mData.get(position).isTemplate()) { //Layout template
             int childNumber = mData.get(position).childNumber;
             if (childNumber == 1) {
-                if (mData.get(position).listChildBuzzes.get(0).buzzType.equals(Constants.BUZZ_TYPE_FILE_VIDEO)) {
-                    return TimelineType.BUZZ_TYPE_MULTI_BUZZ_VIDEO_1_TEMPLATE;
-                } else if (mData.get(position).listChildBuzzes.get(0).buzzType.equals(Constants.BUZZ_TYPE_FILE_AUDIO)) {
-                    return TimelineType.BUZZ_TYPE_MULTI_BUZZ_AUDIO_TEMPLATE;
-                } else {
-                    return TimelineType.BUZZ_TYPE_MULTI_BUZZ_IMAGE_1_TEMPLATE;
+                switch (mData.get(position).listChildBuzzes.get(0).buzzType) {
+                    case Constants.BUZZ_TYPE_FILE_VIDEO:
+                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_VIDEO_1_TEMPLATE;
+                    case Constants.BUZZ_TYPE_FILE_AUDIO:
+                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_AUDIO_TEMPLATE;
+                    default:
+                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_IMAGE_1_TEMPLATE;
                 }
             } else if (childNumber == 2) {
                 return TimelineType.BUZZ_TYPE_MULTI_BUZZ_2_TEMPLATE;
@@ -126,14 +121,15 @@ public class TimelineAdapter<E extends BuzzBean> extends MultifunctionAdapter<Ba
             } else {
                 int childNumber = mData.get(position).childNumber;
                 if (childNumber == 1) {
-                    if (mData.get(position).listChildBuzzes.get(0).buzzType.equals(Constants.BUZZ_TYPE_FILE_VIDEO)) {
-                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_VIDEO_1;
-                    } else if (mData.get(position).listChildBuzzes.get(0).buzzType.equals(Constants.BUZZ_TYPE_FILE_LIVE_STREAM)) {
-                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_LIVE_STREAM;
-                    } else if (mData.get(position).listChildBuzzes.get(0).buzzType.equals(Constants.BUZZ_TYPE_FILE_AUDIO)) {
-                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_AUDIO;
-                    } else {
-                        return TimelineType.BUZZ_TYPE_MULTI_BUZZ_IMAGE_1;
+                    switch (mData.get(position).listChildBuzzes.get(0).buzzType) {
+                        case Constants.BUZZ_TYPE_FILE_VIDEO:
+                            return TimelineType.BUZZ_TYPE_MULTI_BUZZ_VIDEO_1;
+                        case Constants.BUZZ_TYPE_FILE_LIVE_STREAM:
+                            return TimelineType.BUZZ_TYPE_MULTI_BUZZ_LIVE_STREAM;
+                        case Constants.BUZZ_TYPE_FILE_AUDIO:
+                            return TimelineType.BUZZ_TYPE_MULTI_BUZZ_AUDIO;
+                        default:
+                            return TimelineType.BUZZ_TYPE_MULTI_BUZZ_IMAGE_1;
                     }
                 } else if (childNumber == 2) {
                     return TimelineType.BUZZ_TYPE_MULTI_BUZZ_2;
@@ -156,90 +152,70 @@ public class TimelineAdapter<E extends BuzzBean> extends MultifunctionAdapter<Ba
     @Override
     protected BaseTimelineViewHolder onInjectViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
+            //Buzz share
             case TimelineType.BUZZ_TYPE_SHARE_AUDIO:
                 return new ShareTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_share_audio, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
-                        .initSpanTitleShare(spanTxtTitleShare)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_SHARE_LIVE_STREAM:
                 return new ShareLiveStreamTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_share_live_stream, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
-                        .initSpanTitleShare(spanTxtTitleShare)
                         .initGlide(glide);
+            //Buzz normal
             case TimelineType.BUZZ_TYPE_STATUS:
                 return new StatusBaseTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_status, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_VIDEO_1:
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_AUDIO:
                 return new VideoAudioTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_video_1, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_LIVE_STREAM:
                 return new LiveStreamTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_live_stream_1, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_IMAGE_1:
                 return new MediaTimelineViewHolderOneBuzz(inflater.inflate(R.layout.layout_item_timeline_image_1, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_2:
                 return new MediaTimelineViewHolderTwoBuzz(inflater.inflate(R.layout.layout_item_timeline_image_2, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_3:
                 return new MediaTimelineViewHolderThreeBuzz(inflater.inflate(R.layout.layout_item_timeline_image_3, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_4:
                 return new MediaTimelineViewHolderFourBuzz(inflater.inflate(R.layout.layout_item_timeline_image_4, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_5:
                 return new MediaTimelineViewHolderFiveBuzz(inflater.inflate(R.layout.layout_item_timeline_image_5, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_MORE:
                 return new MediaTimelineViewHolderMoreBuzz(inflater.inflate(R.layout.layout_item_timeline_image_more, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
-            // Template ---------
+            // Buzz template
             case TimelineType.BUZZ_TYPE_STATUS_TEMPLATE:
                 return new StatusBaseTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_status_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_VIDEO_1_TEMPLATE:
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_AUDIO_TEMPLATE:
                 return new VideoAudioTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_video_1_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_IMAGE_1_TEMPLATE:
                 return new MediaTimelineViewHolderOneBuzz(inflater.inflate(R.layout.layout_item_timeline_image_1_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_2_TEMPLATE:
                 return new MediaTimelineViewHolderTwoBuzz(inflater.inflate(R.layout.layout_item_timeline_image_2_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_3_TEMPLATE:
                 return new MediaTimelineViewHolderThreeBuzz(inflater.inflate(R.layout.layout_item_timeline_image_3_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_4_TEMPLATE:
                 return new MediaTimelineViewHolderFourBuzz(inflater.inflate(R.layout.layout_item_timeline_image_4_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_5_TEMPLATE:
                 return new MediaTimelineViewHolderFiveBuzz(inflater.inflate(R.layout.layout_item_timeline_image_5_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             case TimelineType.BUZZ_TYPE_MULTI_BUZZ_MORE_TEMPLATE:
                 return new MediaTimelineViewHolderMoreBuzz(inflater.inflate(R.layout.layout_item_timeline_image_more_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
             default:
                 return new StatusBaseTimelineViewHolder(inflater.inflate(R.layout.layout_item_timeline_status_template, parent, false), viewType)
-                        .initSpanTitle(spanTxtTitle)
                         .initGlide(glide);
         }
     }

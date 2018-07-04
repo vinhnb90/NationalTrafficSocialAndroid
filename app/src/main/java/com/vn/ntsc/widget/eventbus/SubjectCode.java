@@ -46,7 +46,7 @@ public class SubjectCode {
 
     // UpLoadImageAlbum
     public static final int SUBJECT_CREATE_NEW_ALBUM = 27;
-    public static final int SUBJECT_CREATE_NEW_ALBUM_ERROR = 28;
+    public static final int SUBJECT_ALBUM_ERROR = 28;
     public static final int SUBJECT_REQUEST_CHECK_UP_LOAD_ALBUM = 29;
     public static final int SUBJECT_RESPONSE_CHECK_UP_LOAD_ALBUM = 30;
     public static final int SUBJECT_UPLOAD_IMAGE_SUCCESS = 31;

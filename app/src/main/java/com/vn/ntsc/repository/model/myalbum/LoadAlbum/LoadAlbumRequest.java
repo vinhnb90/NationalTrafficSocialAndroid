@@ -21,13 +21,14 @@ public class LoadAlbumRequest extends ServerRequest {
     @SerializedName("skip")
     public int skip = 0;
     @SerializedName("take")
-    public int take = 48;
+    public int take;
 
-    public LoadAlbumRequest(String token, String reqUserId, int skip) {
+    public LoadAlbumRequest(String token, String reqUserId, int skip, int take) {
         super("load_album");
         this.token = token;
         this.reqUserId = reqUserId;
         this.skip = skip;
+        this.take = take;
     }
 
 

@@ -4,13 +4,13 @@
 
     <View
         android:id="@+id/item_timeline_approve_buzz"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/approve"
-        app:layout_constraintBottom_toTopOf="@+id/item_timeline_action"
+        app:layout_constraintBottom_toTopOf="@id/item_timeline_footer"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_timeline_header" />
+        app:layout_constraintTop_toBottomOf="@id/item_timeline_header" />
 
 </merge>

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="LayoutEmpty">
+        <attr name="text_empty" format="string"/>
+        <attr name="check_login" format="boolean"/>
+    </declare-styleable>
+
     <declare-styleable name="ToolbarTitleCenter">
         <attr name="type_button_right" format="enum">
             <enum name="none" value="0" />
@@ -19,30 +24,6 @@
         <attr name="isChecked" format="boolean" />
     </declare-styleable>
 
-    <declare-styleable name="SeeMoreViewTextView">
-        <attr name="defaultLineCount" format="integer" />
-        <attr name="defaultMoreHint" format="string" />
-        <attr name="moreHintColor" format="color" />
-        <attr name="isExpand" format="boolean" />
-    </declare-styleable>
-
-    <declare-styleable name="SeeMoreView">
-        <attr name="labelStrokeColor" format="color" />
-        <attr name="labelStrokeWidth" format="dimension" />
-        <attr name="labelStrokeRadius" format="dimension" />
-        <attr name="labelTextSize" format="dimension" />
-        <attr name="labelTextColor" format="color" />
-        <attr name="labelText" format="string" />
-        <attr name="originalText" format="string" />
-        <attr name="labelPadding" format="dimension" />
-        <attr name="labelMargin" format="dimension" />
-        <attr name="labelPaddingHorizontal" format="dimension" />
-        <attr name="labelPaddingVertical" format="dimension" />
-        <attr name="labelFillColor" format="boolean" />
-        <attr name="labelDrawable" format="reference" />
-
-    </declare-styleable>
-
     <declare-styleable name="GlideImageView">
         <attr name="show_progress" format="boolean" />
         <attr name="error_res" format="reference" />
@@ -57,6 +38,7 @@
         <attr name="border_overlay" format="boolean" />
         <attr name="fill_color" format="color" />
     </declare-styleable>
+
     <attr name="progressBarTextSize" format="dimension" />
 
     <declare-styleable name="AvatarImageBehavior">

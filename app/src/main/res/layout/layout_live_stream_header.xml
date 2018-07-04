@@ -54,7 +54,7 @@
                 android:id="@+id/layout_live_stream_header_view_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/spacing_0_2dp"
+                android:layout_marginStart="@dimen/spacing_0_2dp"
                 android:background="@drawable/bg_gray_text_radius"
                 android:drawablePadding="@dimen/spacing_0_2dp"
                 android:text="0"

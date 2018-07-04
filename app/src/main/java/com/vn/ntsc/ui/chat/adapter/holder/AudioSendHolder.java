@@ -97,7 +97,7 @@ public class AudioSendHolder extends BaseChatHolder<ChatMessage> {
         }
         setMessageStatus(tvStatus, message);
 
-        mProgressBar.getIndeterminateDrawable().setColorFilter(activity.getResources().getColor(R.color.colorGrayDark), PorterDuff.Mode.SRC_IN);
+        mProgressBar.getIndeterminateDrawable().setColorFilter(activity.getResources().getColor(R.color.grayDark), PorterDuff.Mode.SRC_IN);
 
         switch (message.audioType) {
             case ChatMessage.STATE_AUDIO_PREPARING:

@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:id="@+id/activity_media_chat_container"
     android:layout_height="match_parent">
 
     <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
@@ -13,7 +14,7 @@
         app:type_button_right="icon" />
 
 
-    <android.support.v4.view.ViewPager
+    <com.vn.ntsc.ui.mediadetail.base.ViewPagerMedia
         android:id="@+id/activity_media_chat_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -4,10 +4,9 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.nankai.designlayout.widget.CustomCheckBox;
 import com.vn.ntsc.R;
 import com.vn.ntsc.repository.model.myalbum.ItemImageInAlbum;
 import com.vn.ntsc.utils.ImagesUtils;
@@ -160,7 +159,7 @@ public class MyAlbumDetailAdapter extends MultifunctionAdapter<BaseViewHolder, I
     private void setEventForCheckBox(ViewHolder holder, final ItemImageInAlbum image, final int position) {
         if (position == 0) holder.mCheckBox.setVisibility(View.GONE);
         holder.mCheckBox.setVisibility(isShowingPickerDelete ? View.VISIBLE : View.GONE);
-        holder.mCheckBox.setStatus(image.isSelected);
+        holder.mCheckBox.setChecked(image.isSelected);
         holder.mCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -254,7 +253,7 @@ public class MyAlbumDetailAdapter extends MultifunctionAdapter<BaseViewHolder, I
         TextView tvAddImage;
 
         @BindView(R.id.iv_check_box)
-        CustomCheckBox mCheckBox;
+        CheckBox mCheckBox;
 
         public ViewHolder(View view) {
             super(view);

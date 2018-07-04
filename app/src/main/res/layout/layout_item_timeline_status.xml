@@ -6,13 +6,43 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <include layout="@layout/layout_item_timeline_header" />
+    <com.vn.ntsc.widget.views.timeline.TimelineHeaderView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <include layout="@layout/layout_item_timeline_description" />
+    <android.support.v7.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/item_timeline_header_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_timeline_header" />
 
-    <include layout="@layout/item_multi_buzz_status" />
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/item_timeline_header_more"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:text="@string/see_more"
+        android:textColor="@color/link_color"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_timeline_header_description" />
 
-    <include layout="@layout/layout_item_timeline_footer" />
+    <com.vn.ntsc.widget.views.timeline.TimelineFooterView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_timeline_header_more" />
 
     <include layout="@layout/layout_item_timeline_approve_buzz" />
 

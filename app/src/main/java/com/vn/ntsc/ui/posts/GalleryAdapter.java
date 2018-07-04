@@ -5,18 +5,19 @@ import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nankai.designlayout.widget.CustomCheckBox;
 import com.vn.ntsc.R;
+import com.vn.ntsc.app.AppController;
 import com.vn.ntsc.core.model.BaseBean;
 import com.vn.ntsc.repository.model.mediafile.MediaFileBean;
 import com.vn.ntsc.repository.preferece.UploadSettingPreference;
 import com.vn.ntsc.utils.ImagesUtils;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
-import com.vn.ntsc.widget.views.images.SquareImageView;
+import com.vn.ntsc.widget.views.images.RecyclingImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,12 +30,18 @@ public class GalleryAdapter extends MultifunctionAdapter<GalleryAdapter.ViewHold
     private static final String TAG = GalleryAdapter.class.getSimpleName();
 
     public GalleryAdapter(PostStatusEventListener listener) {
-        super( listener);
+        super(listener);
     }
 
     @Override
     protected ViewHolder onInjectViewHolder(ViewGroup parent, int viewType) {
-        return new MediaViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.view_picker_grid_item, parent, false));
+
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_picker_grid_item, parent, false);
+        ViewGroup.LayoutParams layoutParams = itemView.getLayoutParams();
+        layoutParams.height = AppController.SCREEN_WIDTH / 3;
+        layoutParams.width = AppController.SCREEN_WIDTH / 3;
+
+        return new MediaViewHolder(itemView);
     }
 
     @Override
@@ -101,7 +108,6 @@ public class GalleryAdapter extends MultifunctionAdapter<GalleryAdapter.ViewHold
 
         public MediaViewHolder(View view) {
             super(view);
-            tvTime.setVisibility(View.GONE);
         }
 
         @Override
@@ -113,12 +119,10 @@ public class GalleryAdapter extends MultifunctionAdapter<GalleryAdapter.ViewHold
                 tvTime.setText(bean.duration);
                 mPlayVideoBtb.setVisibility(View.INVISIBLE);
                 ImagesUtils.loadImageForceFirstFrameGif(UploadSettingPreference.getInstance().getDefaultAudioImg(), mThumbnail);
-
             } else if (bean.mediaType == MediaFileBean.IMAGE) {
                 tvTime.setVisibility(View.INVISIBLE);
                 mPlayVideoBtb.setVisibility(View.INVISIBLE);
                 ImagesUtils.loadImageLocal(bean.mediaUri, mThumbnail);
-
             } else if (bean.mediaType == MediaFileBean.VIDEO) {
                 tvTime.setVisibility(View.VISIBLE);
                 tvTime.setText(bean.duration);
@@ -136,16 +140,15 @@ public class GalleryAdapter extends MultifunctionAdapter<GalleryAdapter.ViewHold
         @BindView(R.id.media_layout)
         ConstraintLayout mRootFrameLayout;
         @BindView(R.id.iv_thumbnail)
-        SquareImageView mThumbnail;
+        RecyclingImageView mThumbnail;
         @BindView(R.id.video_play_btn)
         ImageView mPlayVideoBtb;
         @BindView(R.id.iv_check_box)
-        CustomCheckBox mCheckBox;
+        CheckBox mCheckBox;
 
         private ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            mPlayVideoBtb.setVisibility(View.GONE);
         }
 
         protected void onBindView(final int position, final MediaFileBean bean, final PostStatusEventListener listener) {
@@ -168,9 +171,9 @@ public class GalleryAdapter extends MultifunctionAdapter<GalleryAdapter.ViewHold
             if (bean.mOrder > 0) {
                 mPlayVideoBtb.setVisibility(View.VISIBLE);
             } else {
-                mPlayVideoBtb.setVisibility(View.GONE);
+                mPlayVideoBtb.setVisibility(View.INVISIBLE);
             }
-            mCheckBox.setStatus(bean.isCheck);
+            mCheckBox.setChecked(bean.isCheck);
         }
     }
 

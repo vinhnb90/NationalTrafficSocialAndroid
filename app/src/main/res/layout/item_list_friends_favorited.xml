@@ -45,7 +45,7 @@
         app:layout_constraintLeft_toRightOf="@+id/img_avatar"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-    <TextView
+    <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
         android:id="@+id/txt_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,17 +54,19 @@
         android:drawablePadding="@dimen/spacing_0_4dp"
         android:gravity="center"
         android:text=""
+        app:drawableCompatLeft="@drawable/ic_location_on_black_24dp"
         android:textSize="@dimen/sp_12"
         app:layout_constraintRight_toLeftOf="@+id/imv_menu_more"
         app:layout_constraintRight_toRightOf="@+id/txt_age"
         app:layout_constraintTop_toBottomOf="@+id/txt_name" />
 
-    <TextView
+    <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
         android:id="@+id/txt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_1_8dp"
         android:layout_marginTop="@dimen/dp_4"
+        app:drawableCompatLeft="@drawable/ic_access_time"
         android:drawablePadding="@dimen/spacing_0_4dp"
         android:gravity="center"
         android:text=""

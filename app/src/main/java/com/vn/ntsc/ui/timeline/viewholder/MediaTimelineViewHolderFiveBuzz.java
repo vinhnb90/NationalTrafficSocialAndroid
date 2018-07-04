@@ -36,19 +36,27 @@ public class MediaTimelineViewHolderFiveBuzz extends MediaTimelineViewHolderFour
     public void onBindView(final BuzzBean bean, final int position, final TimelineListener listener) {
         super.onBindView(bean, position, listener);
 
-        if (bean.listChildBuzzes.get(4).isApp == Constants.IS_APPROVED) {
-            loadImage(bean.listChildBuzzes.get(4).thumbnailUrl, imageView5);
-        } else {
-            loadImageBlur(bean.listChildBuzzes.get(4).thumbnailUrl, imageView5);
-        }
+        final int approved = bean.listChildBuzzes.get(4).isApp;
 
-        displayVideoPlayIcon(bean.listChildBuzzes.get(4).buzzType, imagePlayView5);
-
-        imageView5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onShowImageDetail(bean, position, 4, v);
+        if (imageView5 != null) {
+            if (approved == Constants.IS_APPROVED) {
+                loadImage(bean.listChildBuzzes.get(4).thumbnailUrl, imageView5);
+            } else {
+                loadImageBlur(bean.listChildBuzzes.get(4).thumbnailUrl, imageView5);
             }
-        });
+
+            displayVideoPlayIcon(bean.listChildBuzzes.get(4).buzzType, imagePlayView5);
+
+            imageView5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bean.isApproved == Constants.IS_APPROVED && approved == Constants.IS_APPROVED) {
+                        listener.onDisplayImageDetailScreen(bean, position, 4, v);
+                    } else {
+                        listener.onApproval(bean, position, v);
+                    }
+                }
+            });
+        }
     }
 }

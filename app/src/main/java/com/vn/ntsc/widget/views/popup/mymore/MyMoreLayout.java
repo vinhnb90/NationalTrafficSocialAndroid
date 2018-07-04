@@ -10,7 +10,9 @@ import android.widget.PopupWindow;
 import com.vn.ntsc.R;
 import com.vn.ntsc.repository.TypeView;
 import com.vn.ntsc.repository.model.user.UserInfoResponse;
+import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.utils.Constants;
+import com.vn.ntsc.utils.Utils;
 
 /**
  * Created by nankai on 9/13/2017.
@@ -87,6 +89,10 @@ public class MyMoreLayout extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        if (Utils.isEmptyOrNull(UserPreferences.getInstance().getToken())) {
+            listener.onWarningNotLogin();
+            return;
+        }
         switch (view.getId()) {
             case R.id.menu_more_online_alert:
                 listener.onAlertOnline(mUserInfoResponse);

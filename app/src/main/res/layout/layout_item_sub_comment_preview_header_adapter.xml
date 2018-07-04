@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/layout_item_comment_adapter_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:text="@string/common_reply"
+        android:textColor="@color/link_color"
+        android:textSize="@dimen/text_2_12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/layout_item_comment_adapter_sub_comment_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_1_8dp"
+        android:text="@string/sub_comment_number"
+        android:textColor="@color/link_color"
+        android:textSize="@dimen/text_2_12sp"
+        app:layout_constraintTop_toBottomOf="@+id/layout_item_comment_adapter_reply" />
+
+</android.support.constraint.ConstraintLayout>

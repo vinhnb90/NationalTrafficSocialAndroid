@@ -10,10 +10,10 @@ import android.widget.TextView;
 import com.vn.ntsc.R;
 import com.vn.ntsc.repository.model.myalbum.LoadAlbum.LoadAlbumResponse;
 import com.vn.ntsc.utils.ImagesUtils;
-import com.vn.ntsc.utils.LogUtils;
 import com.vn.ntsc.widget.adapter.BaseAdapterListener;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
+import com.vn.ntsc.widget.views.textview.TextViewVectorCompat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -106,12 +106,9 @@ public class MyAlbumAdapter extends MultifunctionAdapter<BaseViewHolder, LoadAlb
                 }
             });
         } else if (itemViewType == TYPE_ALBUM_UPLOADING) {
-            LogUtils.e("ThoNH", "TYPE_ALBUM_UPLOADING");
             final ViewUpLoadingHolder viewHolder = (ViewUpLoadingHolder) holder;
             final LoadAlbumResponse.DataBean data = getData(position);
-
             viewHolder.mImageView.setAlpha(0.4f);
-
             if (data != null) {
                 viewHolder.mName.setText(data.albumName);
                 if (data.imageList != null)
@@ -123,18 +120,18 @@ public class MyAlbumAdapter extends MultifunctionAdapter<BaseViewHolder, LoadAlb
             // Show some more option
             if (mIsOwn) {
                 viewHolder.mImagePrivacy.setVisibility(View.VISIBLE);
-                viewHolder.arrow.setVisibility(View.VISIBLE);
+                viewHolder.mImagePrivacy.setVectorDrawableRight(R.drawable.ic_small_arrow_drop_down);
 
                 // Else hide
             } else {
                 viewHolder.mImagePrivacy.setVisibility(View.GONE);
-                viewHolder.arrow.setVisibility(View.GONE);
+                viewHolder.mImagePrivacy.setVectorDrawableRight(0);
             }
 
             if (data != null) {
                 viewHolder.mName.setText(data.albumName);
                 viewHolder.mNumberImage.setText(String.valueOf(data.numberImage));
-                viewHolder.mImagePrivacy.setImageResource(data.privacy == 0 ? R.drawable.ic_public : R.drawable.ic_privacy_only_me);
+                viewHolder.mImagePrivacy.setVectorDrawableLeft(data.privacy == 0 ? R.drawable.ic_small_privacy_public_24dp_gray : R.drawable.ic_small_privacy_only_me_24dp_gray);
 
                 if (data.imageList != null)
                     ImagesUtils.loadImage(data.imageList.thumbnailUrl, viewHolder.mImageView);
@@ -169,9 +166,7 @@ public class MyAlbumAdapter extends MultifunctionAdapter<BaseViewHolder, LoadAlb
         @BindView(R.id.tv_number_image)
         TextView mNumberImage;
         @BindView(R.id.imv_privacy)
-        ImageView mImagePrivacy;
-        @BindView(R.id.arrow_down)
-        ImageView arrow;
+        TextViewVectorCompat mImagePrivacy;
 
         public ViewHolder(View view) {
             super(view);

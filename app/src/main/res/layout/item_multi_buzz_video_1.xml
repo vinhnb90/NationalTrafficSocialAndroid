@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_content"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/spacing_1_8dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/item_timeline_header_more">
+    app:layout_constraintTop_toBottomOf="@id/item_timeline_header"
+    tools:layout_height="match_parent"
+    tools:layout_width="match_parent">
+
+    <include layout="@layout/layout_item_timeline_description" />
 
     <include layout="@layout/inc_multi_image_1" />
 
@@ -16,9 +21,9 @@
         android:layout_width="@dimen/timeline_play_video_size"
         android:layout_height="@dimen/timeline_play_video_size"
         android:src="@drawable/ic_video_play_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@id/item_timeline_image_view"
+        app:layout_constraintLeft_toLeftOf="@id/item_timeline_image_view"
+        app:layout_constraintRight_toRightOf="@id/item_timeline_image_view"
+        app:layout_constraintTop_toTopOf="@id/item_timeline_image_view" />
 
 </android.support.constraint.ConstraintLayout>

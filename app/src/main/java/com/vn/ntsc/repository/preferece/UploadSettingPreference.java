@@ -63,7 +63,7 @@ public class UploadSettingPreference extends BasePrefers {
     }
 
     public int getMaxAudioNumber() {
-        return getPreferences().getInt(KEY_MAX_AUDIO_NUMBER, 10);
+        return getPreferences().getInt(KEY_MAX_AUDIO_NUMBER, 20);
     }
 
     //-------------- total_file_size --------------------
@@ -81,7 +81,7 @@ public class UploadSettingPreference extends BasePrefers {
     }
 
     public int getMaxVideoNumber() {
-        return getPreferences().getInt(KEY_MAX_VIDEO_NUMBER, 10);
+        return getPreferences().getInt(KEY_MAX_VIDEO_NUMBER, 20);
     }
 
     //-------------- default_audio_img --------------------
@@ -108,7 +108,7 @@ public class UploadSettingPreference extends BasePrefers {
     }
 
     public int getMaxImageNumber() {
-        return getPreferences().getInt(KEY_MAX_IMAGE_NUMBER, 10);
+        return getPreferences().getInt(KEY_MAX_IMAGE_NUMBER, 20);
     }
 
     //-------------- max_length_buzz --------------------
@@ -135,6 +135,6 @@ public class UploadSettingPreference extends BasePrefers {
     }
 
     public int getMaxFilePerAlbum() {
-        return getPreferences().getInt(KEY_MAX_FILE_PER_ALBUM, 0);
+        return getPreferences().getInt(KEY_MAX_FILE_PER_ALBUM, 30);
     }
 }

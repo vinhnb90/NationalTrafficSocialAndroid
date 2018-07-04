@@ -81,9 +81,4 @@ public class TimelineFavoriteFragment extends TimelineLiveStreamFragment {
     //----------------------------------------------------------
     //---------------------- Update data -----------------------
     //----------------------------------------------------------
-
-    @Override
-    public void onItemTimelineClick(BuzzBean item, int position, View view) {
-
-    }
 }

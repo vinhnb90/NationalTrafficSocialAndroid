@@ -22,9 +22,6 @@ public class CleanBackgroundTransform extends BitmapTransformation {
 
     @Override
     protected Bitmap transform(@NonNull BitmapPool pool, @NonNull Bitmap toTransform, int outWidth, int outHeight) {
-        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
-            return eraseBG(toTransform, CLEAN_BLACK);
-        }
         return toTransform;
     }
 

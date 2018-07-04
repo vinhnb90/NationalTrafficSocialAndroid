@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,8 +8,8 @@
     <com.vn.ntsc.widget.toolbar.ToolbarTitleCenter
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        app:text_title="@string/activity_my_album_detail_toolbar_title"
-        android:layout_height="?actionBarSize" />
+        android:layout_height="?actionBarSize"
+        app:text_title="@string/activity_my_album_detail_toolbar_title" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/activity_my_album_detail_swipe_refresh_layout"
@@ -32,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:elevation="@dimen/spacing_1_8dp"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -57,13 +56,13 @@
                             android:maxLines="2"
                             android:padding="@dimen/spacing_0_4dp"
                             android:singleLine="true"
-                            android:textSize="@dimen/text_4_medium_16sp"/>
+                            android:textSize="@dimen/text_4_medium_16sp" />
 
                         <include
                             layout="@layout/view_line_divider"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/line"
-                            android:layout_marginTop="@dimen/spacing_0_4dp"/>
+                            android:layout_marginTop="@dimen/spacing_0_4dp" />
 
                         <TextView
                             android:id="@+id/activity_my_album_detail_edit_desc"
@@ -76,70 +75,43 @@
                             android:maxLength="512"
                             android:maxLines="2"
                             android:padding="@dimen/spacing_0_4dp"
-                            android:textSize="@dimen/text_4_medium_16sp"/>
+                            android:textSize="@dimen/text_4_medium_16sp" />
 
                         <include
                             layout="@layout/view_line_divider"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/line"
-                            android:layout_marginTop="@dimen/spacing_0_4dp"/>
+                            android:layout_marginTop="@dimen/spacing_0_4dp" />
 
-
-                        <RelativeLayout
-                            android:id="@+id/activity_my_album_detail_layout_privacy"
+                        <com.vn.ntsc.widget.views.textview.TextViewVectorCompat xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/activity_my_album_detail_privacy"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:id="@+id/activity_my_album_detail_imv_privacy"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/edt_privacy"
-                                android:layout_alignParentStart="true"
-                                android:layout_alignTop="@+id/edt_privacy"
-                                android:layout_marginStart="@dimen/spacing_0_4dp"
-                                android:padding="@dimen/spacing_0_2dp"
-                                android:src="@drawable/ic_public"/>
-
-                            <TextView
-                                android:ellipsize="end"
-                                android:id="@+id/activity_my_album_detail_edt_privacy"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/spacing_0_4dp"
-                                android:layout_toEndOf="@+id/activity_my_album_detail_imv_privacy"
-                                android:background="@color/transparent"
-                                android:padding="@dimen/spacing_0_4dp"
-                                android:text="@string/common_public"
-                                android:textSize="@dimen/text_4_medium_16sp"/>
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignBottom="@+id/activity_my_album_detail_edt_privacy"
-                                android:layout_alignParentEnd="true"
-                                android:layout_alignTop="@+id/activity_my_album_detail_edt_privacy"
-                                android:padding="@dimen/spacing_0_4dp"
-                                app:srcCompat="@drawable/ic_arrow_drop_down"/>
-                        </RelativeLayout>
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/spacing_0_4dp"
+                            android:drawablePadding="@dimen/spacing_0_4dp"
+                            android:padding="@dimen/spacing_0_2dp"
+                            android:text="@string/common_public"
+                            android:textSize="@dimen/text_4_medium_16sp"
+                            app:drawableCompatLeft="@drawable/ic_privacy_public_24dp_gray"
+                            app:drawableCompatRight="@drawable/ic_arrow_drop_down" />
 
                         <include
                             layout="@layout/view_line_divider"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/line"
-                            android:layout_marginTop="@dimen/spacing_0_4dp"/>
+                            android:layout_marginTop="@dimen/spacing_0_4dp" />
 
                         <TextView
-                            android:ellipsize="end"
                             android:id="@+id/activity_my_album_detail_tv_del_album"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:ellipsize="end"
                             android:gravity="center"
                             android:padding="@dimen/spacing_1_8dp"
                             android:text="@string/delete_album"
                             android:textColor="@color/red_error"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -160,7 +132,7 @@
                         android:ellipsize="end"
                         android:gravity="center"
                         android:maxLines="5"
-                        android:padding="@dimen/spacing_1_8dp"/>
+                        android:padding="@dimen/spacing_1_8dp" />
 
                 </android.support.v7.widget.CardView>
 
@@ -169,7 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:gravity="center"/>
+                    android:gravity="center" />
 
             </LinearLayout>
         </ScrollView>

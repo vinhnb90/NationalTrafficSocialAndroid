@@ -4,13 +4,10 @@
     package="com.vn.ntsc">
 
     <!-- Clear cache -->
-    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
-
     <!-- Device and app history -->
     <uses-permission android:name="android.permission.WAKE_LOCK" />    <!-- Get phone call when device locked -->
     <uses-permission android:name="android.permission.VIBRATE" />    <!-- Make vibrate when phone calling -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- Contact -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -18,9 +15,6 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
-
-    <!-- Permission to Camera -->
-    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -49,19 +43,12 @@
     <uses-permission android:name="android.permission.INTERNET" />    <!-- Connect to internet -->
     <!-- Permission to Camera -->
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CAPTURE_VIDEO_OUTPUT" />
-    <uses-permission android:name="android.permission.CAPTURE_SECURE_VIDEO_OUTPUT" />
-    <uses-permission android:name="android.permission.CAPTURE_AUDIO_OUTPUT" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <!-- Microphone -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />    <!-- Record audio -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />    <!-- Record sound and change volume -->
     <!-- Access external storage permission -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <!-- DeviceID and call information -->
-    <uses-permission android:name="android.permission.READ_LOGS" />
 
     <uses-permission android:name="android.permission.GET_TASKS" />
 
@@ -182,10 +169,10 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.vn.ntsc.ui.comment.CommentActivity"
+            android:name="com.vn.ntsc.ui.comments.CommentActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.comment.subcomment.SubCommentActivity"
+            android:name=".ui.comments.subcomment.SubCommentActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -296,6 +283,7 @@
 
         <activity
             android:name=".ui.mediadetail.timeline.TimelineMediaActivity"
+            android:theme="@style/Theme.Transparent"
             android:configChanges="orientation|screenSize|keyboardHidden" />
 
         <activity

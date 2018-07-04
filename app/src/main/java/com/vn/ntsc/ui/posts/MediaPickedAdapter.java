@@ -14,8 +14,7 @@ import com.vn.ntsc.utils.ImagesUtils;
 import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
 import com.vn.ntsc.widget.mediafile.MediaFilePickedEventListener;
-
-import java.util.List;
+import com.vn.ntsc.widget.views.images.RecyclingImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -56,8 +55,8 @@ public class MediaPickedAdapter extends MultifunctionAdapter<MediaPickedAdapter.
      *
      * @param mediaItemNeedRemove the MediaItem need remove in List
      */
-    public List<MediaFileBean> removeItem(MediaFileBean mediaItemNeedRemove) {
-        if (mData == null || mData.isEmpty() || mediaItemNeedRemove == null) return mData;
+    public void removeItem(MediaFileBean mediaItemNeedRemove) {
+        if (mData == null || mData.isEmpty() || mediaItemNeedRemove == null) return;
 
         //Traverse through all item of array
         for (int id = 0; id < mData.size(); id++) {
@@ -67,36 +66,36 @@ public class MediaPickedAdapter extends MultifunctionAdapter<MediaPickedAdapter.
                 break;
             }
         }
-        return mData;
     }
 
     /**
      * Class MediaPickedViewHolder for Media view type
      */
     static class MediaPickedViewHolder extends BaseViewHolder {
-
-        @BindView(R.id.layout_list_picked_media_layout) RelativeLayout  mMediaPickedLayout;
-        @BindView(R.id.thumbnail_picked_media)          ImageView       mThumbnail;
-        @BindView(R.id.iv_picked_media_remove)          ImageView       mBtbRemove;
-        @BindView(R.id.video_play_btn)                  ImageView       mPlayVideoBtb;
+        @BindView(R.id.thumbnail_picked_media)
+        RecyclingImageView mThumbnail;
+        @BindView(R.id.iv_picked_media_remove)
+        RecyclingImageView mBtbRemove;
+        @BindView(R.id.video_play_btn)
+        RecyclingImageView mPlayVideoBtb;
 
         public MediaPickedViewHolder(View view) {
             super(view);
 
             ButterKnife.bind(this, itemView);
-            mPlayVideoBtb.setVisibility(View.GONE);
+            mPlayVideoBtb.setVisibility(View.INVISIBLE);
         }
 
         protected void onBindView(final int position, final MediaFileBean pickerTile, final MediaFilePickedEventListener listener) {
 
             if (pickerTile.mediaType == MediaFileBean.AUDIO) {
 
-                mPlayVideoBtb.setVisibility(View.GONE);
+                mPlayVideoBtb.setVisibility(View.INVISIBLE);
                 ImagesUtils.loadImage(UploadSettingPreference.getInstance().getDefaultAudioImg(), mThumbnail);
 
             } else if (pickerTile.mediaType == MediaFileBean.IMAGE) {
 
-                mPlayVideoBtb.setVisibility(View.GONE);
+                mPlayVideoBtb.setVisibility(View.INVISIBLE);
                 ImagesUtils.loadImageLocal(pickerTile.mediaUri, mThumbnail);
 
             } else if (pickerTile.mediaType == MediaFileBean.VIDEO) {

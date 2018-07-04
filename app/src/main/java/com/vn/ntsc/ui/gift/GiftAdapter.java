@@ -35,7 +35,7 @@ public class GiftAdapter extends MultifunctionAdapter<GiftAdapter.ViewHolder, Gi
     @Override
     protected void onViewReady(ViewHolder holder, final Gift item, final int position) {
         Point size = new Point();
-        WindowManager windowManager = (WindowManager) holder.getViewRoot().getContext()
+        WindowManager windowManager = (WindowManager) holder.itemView.getContext()
                 .getSystemService(Context.WINDOW_SERVICE);
         if (windowManager != null) {
             Display display = windowManager.getDefaultDisplay();

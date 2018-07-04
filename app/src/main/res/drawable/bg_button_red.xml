@@ -7,5 +7,5 @@
         android:left="@dimen/spacing_1_8dp"
         android:right="@dimen/spacing_1_8dp"
         android:top="@dimen/spacing_1_8dp" />
-    <solid android:color="@color/color_red" />
+    <solid android:color="@color/red" />
 </shape>

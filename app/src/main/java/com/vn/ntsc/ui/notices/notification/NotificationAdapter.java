@@ -94,7 +94,7 @@ public class NotificationAdapter extends MultifunctionAdapter<NotificationAdapte
     }
 
     private void setData(ViewHolder holder, NotificationItem item) {
-        Context mContext = holder.getViewRoot().getContext();
+        Context mContext = holder.itemView.getContext();
 
         String msg = "";
         int iconRes = 0;

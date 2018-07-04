@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WizardSettings">
+    <option name="children">
+      <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState>
+              <option name="children">
+                <map>
+                  <entry key="imageAssetPanel">
+                    <value>
+                      <PersistentState>
+                        <option name="children">
+                          <map>
+<<<<<<< HEAD
+                            <entry key="actionbar">
+=======
+                            <entry key="launcher">
+>>>>>>> feature/develop
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+<<<<<<< HEAD
+                                      <entry key="clipArt">
+=======
+                                      <entry key="backgroundImage">
+>>>>>>> feature/develop
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+<<<<<<< HEAD
+                                                <entry key="paddingPercent" value="10" />
+=======
+                                                <entry key="trimmed" value="true" />
+>>>>>>> feature/develop
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+<<<<<<< HEAD
+                                      <entry key="clipartAsset">
+=======
+                                      <entry key="foregroundImage">
+>>>>>>> feature/develop
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+<<<<<<< HEAD
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/av/ic_volume_off_black_24dp.xml" />
+=======
+                                                <entry key="trimmed" value="true" />
+>>>>>>> feature/develop
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+<<<<<<< HEAD
+                                      <entry key="outputName" value="ic_mute" />
+                                      <entry key="theme" value="HOLO_DARK" />
+=======
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="foregroundImage" value="C:\Users\vnapn\Downloads\jetpack-promo.svg" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\vnapn\Downloads\jetpack-promo.svg" />
+>>>>>>> feature/develop
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+<<<<<<< HEAD
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
+=======
+>>>>>>> feature/develop
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState>
+              <option name="children">
+                <map>
+                  <entry key="vectorAssetStep">
+                    <value>
+                      <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="jar:file:/F:/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_photo_camera_black_24dp.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="height" value="42" />
+                            <entry key="outputName" value="ic_photo_camera_white_42dp" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\vnapn" />
+                            <entry key="width" value="42" />
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </PersistentState>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,14 +10,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        app:type_button_right="text"
         app:text_right="@string/common_done"
-        app:text_title="@string/create_new_album" />
+        app:text_title="@string/create_new_album"
+        app:type_button_right="text" />
 
     <LinearLayout
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
         android:orientation="vertical">
 
         <android.support.v7.widget.CardView
@@ -29,7 +28,6 @@
             android:paddingTop="@dimen/spacing_0_2dp">
 
             <EditText
-                android:maxLength="70"
                 android:id="@+id/activity_comment_edt_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,11 +35,12 @@
                 android:background="@color/transparent"
                 android:hint="@string/edit_enter_album_name"
                 android:imeOptions="actionDone"
+                android:inputType="textMultiLine"
+                android:maxLength="70"
+                android:maxLines="4"
                 android:padding="@dimen/spacing_0_4dp"
                 android:singleLine="true"
-                android:maxLines="2"
-                android:inputType="textMultiLine"
-                android:textSize="@dimen/text_4_medium_16sp"/>
+                android:textSize="@dimen/text_4_medium_16sp" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -52,19 +51,19 @@
             android:paddingTop="@dimen/spacing_0_2dp">
 
             <EditText
-                android:focusable="false"
-                android:inputType="textMultiLine"
-                android:maxLength="512"
                 android:id="@+id/activity_comment_edit_desc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_0_4dp"
                 android:background="@color/transparent"
+                android:focusable="false"
                 android:hint="@string/edit_enter_album_description"
                 android:imeOptions="actionDone"
-                android:maxLines="1"
+                android:inputType="textMultiLine"
+                android:maxLength="512"
+                android:maxLines="4"
                 android:padding="@dimen/spacing_0_4dp"
-                android:textSize="@dimen/text_4_medium_16sp"/>
+                android:textSize="@dimen/text_4_medium_16sp" />
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -75,44 +74,19 @@
             android:paddingBottom="@dimen/spacing_0_2dp"
             android:paddingTop="@dimen/spacing_0_2dp">
 
-            <RelativeLayout
+            <com.vn.ntsc.widget.views.textview.TextViewVectorCompat xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/activity_create_new_album_privacy"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/activity_comment_imv_privacy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/activity_comment_edt_privacy"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignTop="@+id/activity_comment_edt_privacy"
-                    android:layout_marginStart="@dimen/spacing_0_4dp"
-                    android:padding="@dimen/spacing_0_2dp"
-                    android:src="@drawable/ic_public"/>
-
-                <TextView
-                    android:id="@+id/activity_comment_edt_privacy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/spacing_0_4dp"
-                    android:layout_toEndOf="@+id/activity_comment_imv_privacy"
-                    android:background="@color/transparent"
-                    android:padding="@dimen/spacing_0_4dp"
-                    android:text="@string/common_public"
-                    android:textSize="@dimen/text_4_medium_16sp"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/activity_comment_edt_privacy"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignTop="@+id/activity_comment_edt_privacy"
-                    android:padding="@dimen/spacing_0_4dp"
-                    app:srcCompat="@drawable/ic_arrow_drop_down"/>
-
-            </RelativeLayout>
-
-
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/spacing_0_4dp"
+                android:drawablePadding="@dimen/spacing_0_4dp"
+                android:padding="@dimen/spacing_0_2dp"
+                android:text="@string/common_public"
+                android:textSize="@dimen/text_4_medium_16sp"
+                app:drawableCompatLeft="@drawable/ic_privacy_public_24dp_gray"
+                app:drawableCompatRight="@drawable/ic_arrow_drop_down" />
+            
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
@@ -126,7 +100,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
-                android:gravity="center_vertical"/>
+                android:gravity="center_vertical" />
 
         </android.support.v7.widget.CardView>
 
@@ -135,7 +109,7 @@
             android:id="@+id/activity_comment_rv_image_choose"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="@dimen/spacing_0_4dp"/>
+            android:padding="@dimen/spacing_0_4dp" />
 
 
     </LinearLayout>

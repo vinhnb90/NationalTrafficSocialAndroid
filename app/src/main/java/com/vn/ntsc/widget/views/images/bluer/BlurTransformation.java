@@ -60,13 +60,9 @@ public class BlurTransformation extends BitmapTransformation {
 
         canvas.drawBitmap(toTransform, 0, 0, paint);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            try {
-                bitmap = RSBlur.blur(context, bitmap, radius);
-            } catch (RSRuntimeException e) {
-                bitmap = FastBlur.blur(bitmap, radius, true);
-            }
-        } else {
+        try {
+            bitmap = RSBlur.blur(context, bitmap, radius);
+        } catch (RSRuntimeException e) {
             bitmap = FastBlur.blur(bitmap, radius, true);
         }
 

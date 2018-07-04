@@ -131,7 +131,7 @@ class Camera2 extends CameraViewImpl {
     private boolean mAutoFocus;
     private int mFlash;
     private int mDisplayOrientation;
-    PictureCaptureCallback mCaptureCallback = new PictureCaptureCallback() {
+    private PictureCaptureCallback mCaptureCallback = new PictureCaptureCallback() {
 
         @Override
         public void onPrecaptureRequired() {

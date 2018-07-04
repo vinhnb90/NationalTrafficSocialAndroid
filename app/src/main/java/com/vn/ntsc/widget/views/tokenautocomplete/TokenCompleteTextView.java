@@ -567,9 +567,7 @@ public abstract class TokenCompleteTextView<T> extends AppCompatMultiAutoComplet
     @Override
     public void invalidate() {
         //Need to force the TextView private mEditor variable to reset as well on API 16 and up
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            api16Invalidate();
-        }
+        api16Invalidate();
 
         super.invalidate();
     }

@@ -51,10 +51,7 @@ public class TimelineLiveStreamViewHolder extends TimelineViewHolder<BuzzBean> i
         liveStreamAdapter.openLoadAnimation(MultifunctionAdapter.SLIDEIN_RIGHT);
         liveStreamAdapter.isUseEmpty(true);
         liveStreamAdapter.bindToRecyclerView(liveStreamRecyclerView);
-
         adapter.addHeaderView(view);
-        liveStreamAdapter.setEmptyView(R.layout.layout_timeline_list_live_stream_empty, liveStreamRecyclerView);
-
         liveStream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,8 +63,7 @@ public class TimelineLiveStreamViewHolder extends TimelineViewHolder<BuzzBean> i
     @Override
     public void setData(List<BuzzBean> datas) {
         if (datas == null || datas.size() <= 0) {
-            liveStreamAdapter.setNewData(null);
-            liveStreamAdapter.setEmptyView(R.layout.layout_timeline_list_live_stream_empty, liveStreamRecyclerView);
+            liveStreamAdapter.setEmptyView(R.layout.layout_timeline_list_live_stream_empty);
         } else {
             liveStreamAdapter.setNewData(datas);
         }

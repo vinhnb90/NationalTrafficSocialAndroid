@@ -45,7 +45,7 @@ public class MyAlbumDetailPresenter extends BasePresenter<MyAlbumDetailContract.
                             @Override
                             public void onError(Throwable e) {
                                 super.onError(e);
-                                view.getImageAlbumFailure();
+                                view.getImageAlbumFailure(e);
                             }
 
                             @Override

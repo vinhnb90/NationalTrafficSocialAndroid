@@ -16,7 +16,7 @@ public interface MyAlbumContract {
 
         public void getAlbumSuccess(LoadAlbumResponse response);
 
-        public void getAlbumFailure();
+        public void getAlbumFailure(Throwable e);
 
         public void updateAlbumSuccess();
 
@@ -26,6 +26,8 @@ public interface MyAlbumContract {
         public void getAlbumComplete();
 
         public void updateComplete();
+
+        void getMoreAlbumSuccess(LoadAlbumResponse response);
     }
 
     interface Presenter extends PresenterListener<View> {

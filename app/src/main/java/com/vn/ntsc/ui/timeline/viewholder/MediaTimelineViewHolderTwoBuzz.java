@@ -38,20 +38,28 @@ public class MediaTimelineViewHolderTwoBuzz extends MediaTimelineViewHolderOneBu
     public void onBindView(final BuzzBean bean, final int position, final TimelineListener listener) {
         super.onBindView(bean, position, listener);
 
-        if (bean.listChildBuzzes.get(1).isApp == Constants.IS_APPROVED) {
-            loadImage(bean.listChildBuzzes.get(1).thumbnailUrl, imageView2);
-        } else {
-            loadImageBlur(bean.listChildBuzzes.get(1).thumbnailUrl, imageView2);
-        }
-
         displayVideoPlayIcon(bean.listChildBuzzes.get(0).buzzType, imagePlayView);
-        displayVideoPlayIcon(bean.listChildBuzzes.get(1).buzzType, imagePlayView2);
 
-        imageView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onShowImageDetail(bean, position, 1, v);
+        final int approved = bean.listChildBuzzes.get(1).isApp;
+        if (imageView2 != null) {
+            if (approved == Constants.IS_APPROVED) {
+                loadImage(bean.listChildBuzzes.get(1).thumbnailUrl, imageView2);
+            } else {
+                loadImageBlur(bean.listChildBuzzes.get(1).thumbnailUrl, imageView2);
             }
-        });
+            
+            displayVideoPlayIcon(bean.listChildBuzzes.get(1).buzzType, imagePlayView2);
+
+            imageView2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bean.isApproved == Constants.IS_APPROVED && approved == Constants.IS_APPROVED) {
+                        listener.onDisplayImageDetailScreen(bean, position, 1, v);
+                    } else {
+                        listener.onApproval(bean, position, v);
+                    }
+                }
+            });
+        }
     }
 }

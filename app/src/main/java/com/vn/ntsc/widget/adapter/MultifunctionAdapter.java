@@ -62,7 +62,7 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     protected static final String TAG = MultifunctionAdapter.class.getSimpleName();
 
     protected BaseAdapterListener listener;
-    protected LayoutInflater mLayoutInflater;
+    private LayoutInflater mLayoutInflater;
     protected List<E> mData;
     //load more
     private boolean isNextLoadEnable = false;
@@ -129,9 +129,9 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     private boolean isCheckRecyclerNotNull() {
         if (null == getRecyclerView()) {
             LogUtils.e(TAG, "please bind recyclerView first!");
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 
     //============================================================================================//
@@ -156,14 +156,13 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     @Override
     public void setOnLoadMoreListener(MultifunctionAdapter.RequestLoadMoreListener requestLoadMoreListener, RecyclerView recyclerView) {
         openLoadMore(requestLoadMoreListener);
-        if (getRecyclerView() == null) {
+        if (getRecyclerView() == null)
             setRecyclerView(recyclerView);
-        }
     }
 
     @Override
     public void disableLoadMoreIfNeed() {
-        if (!isCheckRecyclerNotNull())
+        if (isCheckRecyclerNotNull())
             return;
         disableLoadMoreIfNeed(getRecyclerView());
     }
@@ -255,15 +254,12 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     @Override
     public int getLoadMoreViewCount() {
         if (loadMoreListener == null || !isLoadMoreEnable) {
-            LogUtils.w(TAG, "loadMoreViewCount:\nloadMoreListener:" + loadMoreListener + "\nisLoadMoreEnable: " + !isLoadMoreEnable);
             return 0;
         }
         if (!isNextLoadEnable && mLoadMoreView.isLoadEndMoreGone()) {
-            LogUtils.w(TAG, "loadMoreViewCount:\nisNextLoadEnable:" + isNextLoadEnable + "\nmLoadMoreView.isLoadEndMoreGone(): " + mLoadMoreView.isLoadEndMoreGone());
             return 0;
         }
         if (mData.size() == 0) {
-            LogUtils.w(TAG, "loadMoreViewCount:\nmData.size():" + mData.size());
             return 0;
         }
         return 1;
@@ -369,6 +365,7 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     @Override
     public void setNewData(@Nullable List<E> data) {
         this.mData = null == data ? new ArrayList<E>() : data;
+
         if (null != loadMoreListener) {
             isNextLoadEnable = true;
             isLoadMoreEnable = true;
@@ -377,10 +374,9 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         }
 
         mLastPosition = -1;
+        if (mRecyclerView != null)
+            mRecyclerView.getRecycledViewPool().clear();
         notifyDataSetChanged();
-
-        if (null != getRecyclerView())
-            setEmptyView(R.layout.layout_empty);
     }
 
     @Override
@@ -404,6 +400,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     @Override
     public void addFirst(@NonNull E data) {
         mData.add(0, data);
+        if (mRecyclerView != null)
+            mRecyclerView.getRecycledViewPool().clear();
         notifyDataSetChanged();
     }
 
@@ -418,6 +416,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         if (null != mData && mData.size() > 0) {
             if (position <= mData.size() && position >= 0) {
                 mData.remove(position);
+                if (mRecyclerView != null)
+                    mRecyclerView.getRecycledViewPool().clear();
                 notifyDataSetChanged();
             }
         }
@@ -427,6 +427,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     public void removeByPositionAdapter(@IntRange(from = 0) int adapterItemPosition, @IntRange(from = 0) int dataPosition) {
         if (null != mData && mData.size() > 0) {
             mData.remove(dataPosition);
+            if (mRecyclerView != null)
+                mRecyclerView.getRecycledViewPool().clear();
             notifyDataSetChanged();
         }
     }
@@ -456,6 +458,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         if (mData != null && data != mData) {
             mData.clear();
             mData.addAll(data);
+            if (mRecyclerView != null)
+                mRecyclerView.getRecycledViewPool().clear();
             notifyDataSetChanged();
         }
     }
@@ -554,11 +558,9 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
                 count++;
             }
         } else {
-            /**
-             * java.lang.NullPointerException: Attempt to invoke interface method 'int java.util.List.size()' on a null object reference
-             * at com.vn.ntsc.base.views.adapter.MultifunctionAdapter.getItemCount(MultifunctionAdapter.java:515)
-             */
 
+//             java.lang.NullPointerException: Attempt to invoke interface method 'int java.util.List.size()' on a null object reference
+//             at com.vn.ntsc.base.views.adapter.MultifunctionAdapter.getItemCount(MultifunctionAdapter.java:515)
             count = getHeaderLayoutCount() + (mData != null ? mData.size() : 0) + getFooterLayoutCount() + getLoadMoreViewCount();
         }
         return count;
@@ -636,6 +638,7 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     public void onBindViewHolder(@NonNull VH holder, int position) {
         //Do not move position, need to change before LoadMoreView binding
         autoLoadMore(position);
+
         int viewType = holder.getItemViewType();
         switch (viewType) {
             case LOADING_VIEW:
@@ -743,15 +746,13 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
             }
         }
         final int childCount = mFooterLayout.getChildCount();
-        if (index < 0 || index > childCount) {
+        if (index < 0 || index > childCount)
             index = childCount;
-        }
         mFooterLayout.addView(footer, index);
         if (mFooterLayout.getChildCount() == 1) {
             int position = getFooterViewPosition();
-            if (position != -1) {
+            if (position != -1)
                 notifyItemInserted(position);
-            }
         }
         return index;
     }
@@ -768,13 +769,12 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
 
     @Override
     public int setFooterView(View header, int index, int orientation) {
-        if (mFooterLayout == null || mFooterLayout.getChildCount() <= index) {
+        if (mFooterLayout == null || mFooterLayout.getChildCount() <= index)
             return addFooterView(header, index, orientation);
-        } else {
-            mFooterLayout.removeViewAt(index);
-            mFooterLayout.addView(header, index);
-            return index;
-        }
+
+        mFooterLayout.removeViewAt(index);
+        mFooterLayout.addView(header, index);
+        return index;
     }
 
     @Override
@@ -784,9 +784,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         mHeaderLayout.removeView(header);
         if (mHeaderLayout.getChildCount() == 0) {
             int position = getHeaderViewPosition();
-            if (position != -1) {
+            if (position != -1)
                 notifyItemRemoved(position);
-            }
         }
     }
 
@@ -797,9 +796,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         mFooterLayout.removeView(footer);
         if (mFooterLayout.getChildCount() == 0) {
             int position = getFooterViewPosition();
-            if (position != -1) {
+            if (position != -1)
                 notifyItemRemoved(position);
-            }
         }
     }
 
@@ -809,9 +807,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
 
         mHeaderLayout.removeAllViews();
         int position = getHeaderViewPosition();
-        if (position != -1) {
+        if (position != -1)
             notifyItemRemoved(position);
-        }
     }
 
     @Override
@@ -833,7 +830,7 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
 
     @Override
     public void setEmptyView(int layoutResId) {
-        if (!isCheckRecyclerNotNull())
+        if (isCheckRecyclerNotNull())
             return;
         setEmptyView(layoutResId, getRecyclerView());
     }
@@ -881,6 +878,8 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
 
         if (insert) {
             if (getEmptyViewCount() == 1) {
+                if (mRecyclerView != null)
+                    mRecyclerView.getRecycledViewPool().clear();
                 notifyDataSetChanged();
             }
         }
@@ -981,8 +980,6 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
                                 position - getHeaderLayoutCount());
                     }
                 }
-
-
             });
         }
     }
@@ -1037,13 +1034,11 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
 
     private int getHeaderViewPosition() {
         //Return to header view notify position
-        if (getEmptyViewCount() == 1) {
-            if (isHeadAndEmptyEnable) {
+        if (getEmptyViewCount() == 1)
+            if (isHeadAndEmptyEnable)
                 return 0;
-            }
-        } else {
-            return 0;
-        }
+            else
+                return 0;
         return -1;
     }
 
@@ -1051,28 +1046,22 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         //Return to footer view notify position
         if (getEmptyViewCount() == 1) {
             int position = 1;
-            if (isHeadAndEmptyEnable && getHeaderLayoutCount() != 0) {
+            if (isHeadAndEmptyEnable && getHeaderLayoutCount() != 0)
                 position++;
-            }
-            if (isFootAndEmptyEnable) {
+            if (isFootAndEmptyEnable)
                 return position;
-            }
-        } else {
+        } else
             return getHeaderLayoutCount() + mData.size();
-        }
         return -1;
     }
 
     private int getTheBiggestNumber(int[] numbers) {
         int tmp = -1;
-        if (numbers == null || numbers.length == 0) {
+        if (numbers == null || numbers.length == 0)
             return tmp;
-        }
-        for (int num : numbers) {
-            if (num > tmp) {
+        for (int num : numbers)
+            if (num > tmp)
                 tmp = num;
-            }
-        }
         return tmp;
     }
 
@@ -1083,12 +1072,10 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mLoadMoreView.getLoadMoreStatus() == LoadMoreView.Status.STATUS_FAIL || mLoadMoreView.getLoadMoreStatus() == LoadMoreView.Status.STATUS_EMPTY) {
+                if (mLoadMoreView.getLoadMoreStatus() == LoadMoreView.Status.STATUS_FAIL || mLoadMoreView.getLoadMoreStatus() == LoadMoreView.Status.STATUS_EMPTY)
                     notifyLoadMoreToLoading();
-                }
-                if (isEnableLoadMoreEndClick && mLoadMoreView.getLoadMoreStatus() == LoadMoreView.Status.STATUS_END) {
+                if (isEnableLoadMoreEndClick && mLoadMoreView.getLoadMoreStatus() == LoadMoreView.Status.STATUS_END)
                     notifyLoadMoreToLoading();
-                }
             }
         });
         return (VH) holder;
@@ -1097,35 +1084,30 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     /**
      * add animation when you want to show time
      *
-     * @param holder
+     * @param holder {@link RecyclerView.ViewHolder}
      */
     private void addAnimation(RecyclerView.ViewHolder holder) {
-        if (isOpenAnimationEnable) {
+        if (isOpenAnimationEnable)
             if (!isFirstOnlyEnable || holder.getLayoutPosition() > mLastPosition) {
-                BaseAnimation animation = null;
-                if (mCustomAnimation != null) {
+                BaseAnimation animation;
+                if (mCustomAnimation != null)
                     animation = mCustomAnimation;
-                } else {
+                else
                     animation = mSelectAnimation;
-                }
-                for (Animator anim : animation.getAnimators(holder.itemView)) {
-                    startAnim(anim, holder.getLayoutPosition());
-                }
+                for (Animator anim : animation.getAnimators(holder.itemView))
+                    startAnim(anim);
                 mLastPosition = holder.getLayoutPosition();
             }
-        }
     }
 
     private void autoLoadMore(int position) {
-        if (getLoadMoreViewCount() == 0) {
+        if (getLoadMoreViewCount() == 0)
             return;
-        }
-        if (position < getItemCount() - mPreLoadNumber) {
+        if (position < (getItemCount() > 1 ? getItemCount() - mPreLoadNumber : getItemCount()))
             return;
-        }
-        if (mLoadMoreView.getLoadMoreStatus() != LoadMoreView.Status.STATUS_DEFAULT) {
+        if (mLoadMoreView.getLoadMoreStatus() != LoadMoreView.Status.STATUS_DEFAULT)
             return;
-        }
+
         mLoadMoreView.setLoadMoreStatus(LoadMoreView.Status.STATUS_LOADING);
         if (!isLoading) {
             isLoading = true;
@@ -1145,10 +1127,9 @@ public abstract class MultifunctionAdapter<VH extends BaseViewHolder, E extends 
     /**
      * set anim to start when layout_loading
      *
-     * @param anim
-     * @param index
+     * @param anim {@link Animator}
      */
-    private void startAnim(Animator anim, int index) {
+    private void startAnim(Animator anim) {
         anim.setDuration(mDuration).start();
         anim.setInterpolator(mInterpolator);
     }

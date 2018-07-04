@@ -24,8 +24,9 @@ import com.example.tux.mylab.MediaPickerBaseActivity;
 import com.example.tux.mylab.gallery.Gallery;
 import com.example.tux.mylab.gallery.data.MediaFile;
 import com.nankai.designlayout.dialog.DialogMaterial;
-import com.nankai.designlayout.gallerybottom.GridSpacingItemDecoration;
+import com.vn.ntsc.widget.views.gallerybottom.GridSpacingItemDecoration;
 import com.vn.ntsc.R;
+import com.vn.ntsc.core.model.NetworkError;
 import com.vn.ntsc.core.views.BaseActivity;
 import com.vn.ntsc.repository.model.mediafile.MediaFileBean;
 import com.vn.ntsc.repository.model.myalbum.AddImageToAlbum.AddImageAlbumResponse;
@@ -52,6 +53,7 @@ import com.vn.ntsc.widget.eventbus.RxEventBus;
 import com.vn.ntsc.widget.eventbus.SubjectCode;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
 import com.vn.ntsc.widget.views.dialog.ProgressAlertDialog;
+import com.vn.ntsc.widget.views.textview.TextViewVectorCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,11 +107,8 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
     @BindView(R.id.activity_my_album_detail_txt_description)
     TextView mTextDescription;
 
-    @BindView(R.id.activity_my_album_detail_imv_privacy)
-    ImageView mImvPrivacy;
-
-    @BindView(R.id.activity_my_album_detail_edt_privacy)
-    TextView mEdtPrivacy;
+    @BindView(R.id.activity_my_album_detail_privacy)
+    TextViewVectorCompat mImvPrivacy;
 
     @BindView(R.id.activity_my_album_detail_swipe_refresh_layout)
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -136,7 +135,7 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
             @Override
             public void onClick(View v) {
                 if (mAlbumDesc != null)
-                    EditAlbumDescriptionActivity.launch(MyAlbumDetailActivity.this, mAlbumDesc, mIsOwn, mAlbumDesc.getText().toString(), !mIsOwn);
+                    EditAlbumDescriptionActivity.launch(MyAlbumDetailActivity.this, mAlbumDesc, mIsOwn, mAlbumDesc.getText().toString(), !mIsOwn, false);
             }
         });
 
@@ -144,7 +143,7 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
             @Override
             public void onClick(View v) {
                 if (!mTextDescription.getText().toString().isEmpty())
-                    EditAlbumDescriptionActivity.launch(MyAlbumDetailActivity.this, mAlbumDesc, mIsOwn, mTextDescription.getText().toString(), true);
+                    EditAlbumDescriptionActivity.launch(MyAlbumDetailActivity.this, mAlbumDesc, mIsOwn, mTextDescription.getText().toString(), true, false);
             }
         });
 
@@ -213,12 +212,12 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
             mAlbumDesc.setText(album.albumDes);
             switch (album.privacy) {
                 case 0: // public
-                    mImvPrivacy.setImageResource(R.drawable.ic_public);
-                    mEdtPrivacy.setText(R.string.public_privacy);
+                    mImvPrivacy.setVectorDrawableLeft(R.drawable.ic_privacy_public_24dp_gray);
+                    mImvPrivacy.setText(R.string.public_privacy);
                     break;
                 case 2: // private
-                    mImvPrivacy.setImageResource(R.drawable.ic_privacy_only_me);
-                    mEdtPrivacy.setText(R.string.onlyme_privacy);
+                    mImvPrivacy.setVectorDrawableLeft(R.drawable.ic_privacy_only_me_24dp_gray);
+                    mImvPrivacy.setText(R.string.onlyme_privacy);
                     break;
             }
         }
@@ -243,11 +242,11 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
     }
 
 
-    @OnClick({R.id.activity_my_album_detail_tv_del_album, R.id.activity_my_album_detail_layout_privacy})
+    @OnClick({R.id.activity_my_album_detail_tv_del_album, R.id.activity_my_album_detail_privacy})
     public void onViewClicked(View view) {
 
         switch (view.getId()) {
-            case R.id.activity_my_album_detail_layout_privacy:
+            case R.id.activity_my_album_detail_privacy:
                 LogUtils.e(TAG, "layout_privacy");
                 SharePrivacyActivity.startActivityForResult(this, EDIT_ALBUM_PRIVACY, privacy, REQUEST_PRIVACY_EDIT_ALBUM);
                 break;
@@ -296,12 +295,12 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
                     this.privacy = privacy;
                     switch (privacy) {
                         case 0: // public
-                            mImvPrivacy.setImageResource(R.drawable.ic_public);
-                            mEdtPrivacy.setText(R.string.public_privacy);
+                            mImvPrivacy.setVectorDrawableLeft(R.drawable.ic_privacy_public_24dp_gray);
+                            mImvPrivacy.setText(R.string.public_privacy);
                             break;
                         case 2: // private
-                            mImvPrivacy.setImageResource(R.drawable.ic_privacy_only_me);
-                            mEdtPrivacy.setText(R.string.onlyme_privacy);
+                            mImvPrivacy.setVectorDrawableLeft(R.drawable.ic_privacy_only_me_24dp_gray);
+                            mImvPrivacy.setText(R.string.onlyme_privacy);
                             break;
                     }
 
@@ -558,8 +557,12 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
     /***************************************SERVER RESPONSE ***************************************/
     @Override
     public void getImageAlbumSuccess(LoadAlbumImageResponse response) {
+        //if success reset allow load more
+        mAdapter.setEnableLoadMore(true);
+
         if (response != null && response.data != null && response.data.listImage != null) {
             mAdapter.addData(response.data.listImage);
+            mAlbum.numberImage = response.data.listImage.size();
         }
 
         if (mAdapter.getData().isEmpty()) {
@@ -568,11 +571,18 @@ public class MyAlbumDetailActivity extends BaseActivity<MyAlbumDetailPresenter> 
             mAdapter.loadMoreComplete();
         }
         mAdapter.loadMoreEnd();
+
+
+        RxEventBus.publish(SubjectCode.SUBJECT_REFRESH_ALBUM, mAlbum);
     }
 
     @Override
-    public void getImageAlbumFailure() {
-        Toast.makeText(this, R.string.load_image_album_failure, Toast.LENGTH_SHORT).show();
+    public void getImageAlbumFailure(Throwable e) {
+        NetworkError error = new NetworkError();
+        error.ShowError(this, e);
+
+        //disable load more
+        mAdapter.setEnableLoadMore(false);
     }
 
     @Override

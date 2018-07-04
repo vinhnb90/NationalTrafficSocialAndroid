@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
@@ -15,6 +16,7 @@ import com.vn.ntsc.R;
 import com.vn.ntsc.repository.model.timeline.TimelineType;
 import com.vn.ntsc.repository.model.timeline.datas.BuzzBean;
 import com.vn.ntsc.repository.model.timeline.datas.ShareDetailBean;
+import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.ui.timeline.core.TimelineListener;
 import com.vn.ntsc.utils.Constants;
 import com.vn.ntsc.utils.RegionUtils;
@@ -40,12 +42,12 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
     RecyclingImageView imageViewShare;
     @Nullable
     @BindView(R.id.item_timeline_header_event_share)
-    RecyclingImageView favoriteShare;
+    RecyclingImageView eventShare;
     @Nullable
     @BindView(R.id.item_timeline_avatar_share)
     RecyclingImageView avatarShare;
     @Nullable
-    @BindView(R.id.item_timeline_username_share)
+    @BindView(R.id.item_timeline_title_share)
     TextView txtUserNameShare;
     @Nullable
     @BindView(R.id.item_timeline_date_post_share)
@@ -60,8 +62,12 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
     @BindView(R.id.item_timeline_share_view)
     TextView shareView;
 
+    private SpannableStringBuilder spanTxtTitleShare;
+
     public ShareTimelineViewHolder(View itemView, int viewType) {
         super(itemView, viewType);
+        if (spanTxtTitleShare == null)
+            spanTxtTitleShare = new SpannableStringBuilder();
         if (seeMoreShare != null) {
             seeMoreShare.setTypeface(null, Typeface.BOLD);
         }
@@ -88,21 +94,23 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
 
         loadImageRounded(bean.shareDetailBean.avatar, bean.shareDetailBean.gender, avatarShare);
 
-        spanTxtTitleShare.append(bean.shareDetailBean.userName);
+        if (bean.shareDetailBean.userName != null) {
+            spanTxtTitleShare.append(bean.shareDetailBean.userName);
 
-        spanTxtTitleShare.setSpan(new ClickableSpan() {
-            @Override
-            public void updateDrawState(TextPaint ds) {
-                ds.setColor(ds.linkColor);    // you can use custom color
-                ds.setUnderlineText(false);    // this remove the underline
-            }
+            spanTxtTitleShare.setSpan(new ClickableSpan() {
+                @Override
+                public void updateDrawState(TextPaint ds) {
+                    ds.setColor(ds.linkColor);    // you can use custom color
+                    ds.setUnderlineText(false);    // this remove the underline
+                }
 
-            @Override
-            public void onClick(View widget) {
-                listener.onShowProfile(bean.shareDetailBean.userId, position, widget);
-            }
+                @Override
+                public void onClick(View widget) {
+                    listener.onDisplayProfileScreen(bean.shareDetailBean.userId, position, widget);
+                }
 
-        }, 0, spanTxtTitleShare.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }, 0, spanTxtTitleShare.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
 
         if (viewType == TimelineType.BUZZ_TYPE_SHARE_LIVE_STREAM) {
             if (bean.shareDetailBean.listChildBuzzes.get(0).streamStatus.equals(Constants.LIVE_STREAM_ON)) {
@@ -110,6 +118,13 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
             } else {
                 spanTxtTitleShare.append(itemView.getResources().getString(R.string.timeline_time_live_stream_off));
             }
+        }
+
+        final boolean isOwn = bean.shareDetailBean.userId.equals(UserPreferences.getInstance().getUserId());
+        if (isOwn) {
+            eventShare.setImageResource(R.drawable.ic_buzz_delete);
+        } else {
+            eventShare.setImageResource(bean.isFavorite == Constants.BUZZ_TYPE_IS_FAVORITE ? R.drawable.ic_list_buzz_item_favorited : R.drawable.ic_list_buzz_item_favorite);
         }
 
         onClickTagFriends(bean.shareDetailBean, position, listener);
@@ -142,7 +157,7 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
                     if (descriptionShare.getLineCount() > 4) {
                         seeMoreShare.setVisibility(View.VISIBLE);
                     } else
-                        seeMoreShare.setVisibility(View.INVISIBLE);
+                        seeMoreShare.setVisibility(View.GONE);
                 }
             });
         } else {
@@ -153,9 +168,9 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
             @Override
             public void onClick(View v) {
                 if (viewType == TimelineType.BUZZ_TYPE_SHARE_AUDIO) {
-                    listener.onPlayAudioShare(bean, position, v);
+                    listener.onDisplayShareAudioPlayScreen(bean, position, v);
                 } else if (viewType == TimelineType.BUZZ_TYPE_SHARE_LIVE_STREAM) {
-                    listener.onPlayLiveStreamShare(bean, position, v);
+                    listener.onDisplayShareLiveStreamScreen(bean, position, v);
                 }
             }
         });
@@ -174,7 +189,7 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
 
                 @Override
                 public void onClick(View widget) {
-                    listener.onShowProfile(bean.tagList.get(0).userId, position, txtUserNameShare);
+                    listener.onDisplayProfileScreen(bean.tagList.get(0).userId, position, txtUserNameShare);
                 }
 
             }, spanTxtTitleShare.length() - bean.tagList.get(0).userName.length(), spanTxtTitleShare.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -194,7 +209,7 @@ public class ShareTimelineViewHolder extends BaseTimelineViewHolder {
 
                 @Override
                 public void onClick(View widget) {
-                    listener.onShowTagFriendsDetail(bean.tagList, position, txtUserNameShare);
+                    listener.onDisplayTagFriendsScreen(bean.tagList, position, txtUserNameShare);
                 }
 
             }, spanTxtTitleShare.length() - other.length(), spanTxtTitleShare.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

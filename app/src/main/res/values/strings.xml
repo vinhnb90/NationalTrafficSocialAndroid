@@ -628,6 +628,44 @@
 
     <string name="update_profile">Bạn chưa hoàn thành xong đăng ký, bạn có muốn tiếp tục hoàn thành việc đăng ký không?</string>
     <string name="_0">0</string>
+    <string name="upload_album_uploading">Đang tải lên album:</string>
+    <string name="upload_album_create_error">Có lỗi khi tạo album:</string>
+    <string name="upload_album_start_add_image">Bắt đầu thêm ảnh vào album</string>
+    <string name="upload_album_noun">Album:</string>
+    <string name="upload_album_can_not_upload">chưa được tạo. Chưa upload được ảnh!</string>
+    <string name="upload_album_upload_image_success">Tải ảnh lên album thành công!</string>
+    <string name="upload_album_success_at">Hoàn thành tải ảnh lên của album:</string>
+    <string name="upload_album_upload_image_error">Tải ảnh lên album thất bại!</string>
+    <string name="add_images">Thêm ảnh</string>
+
+    <!-- video, audio notify -->
+    <string name="init_view_error">Có lỗi đã xảy ra!</string>
+    <string name="load_image_error">Lỗi khi hiển thị ảnh!</string>
+    <string name="play_audio_error">Không thể chạy nhạc!</string>
+    <string name="play_video_error">Không thể chạy video!</string>
+    <string name="play_media_error_media_error_io">Nguồn cung cấp dữ liệu bị lỗi</string>
+    <string name="play_media_error_media_error_malformed">Thông số dữ liệu không tương thích với trình chạy!</string>
+    <string name="play_media_error_media_error_server_died">Server có tạm thời xảy ra vấn đề. Vui lòng thử lại sau</string>
+    <string name="play_media_error_media_error_time_out">Mất thời gian quá lâu!</string>
+    <string name="play_media_error_media_error_unknown">Gặp vấn đề khi tải dữ liệu!!</string>
+    <string name="play_media_error_media_error_unsupported">Không hỗ trợ dạng!</string>
+    <string name="play_media_progressive_error_message">Không thể xử lý thời gian!</string>
+    <string name="request_permission_result">Không có đủ quyền của ứng dụng!</string>
+    <string name="need_full_permission">Cần cung cấp đầy đủ quyền!</string>
+
+    <string name="media_index_out_range">position [&#8230;] out of range size [&#8230;] list media</string>
+    <string name="audio_media_info_unknow">Unspecified media player info.</string>
+    <string name="video_media_info_video_track_lagging">The video is too complex for the decoder. it can not decode frames fast enough. Possibly only the audio plays fine at this stage.</string>
+    <string name="video_rendering_start">The player just pushed the very first video frame for rendering.</string>
+    <string name="media_info_buffering_start">MediaPlayer is temporarily pausing playback internally in order to buffer more data.</string>
+    <string name="media_info_buffering_end">MediaPlayer is resuming playback after filling buffers.</string>
+    <string name="media_info_bad_interleaving">A media has been improperly interleaved or not interleaved at all.</string>
+    <string name="media_info_not_seekable">The media cannot be seeked (e.g live stream).</string>
+    <string name="media_info_meta_data_update">A new set of metadata is available.</string>
+    <string name="media_info_unsupported_title">Subtitle track was not supported by the media framework.</string>
+    <string name="media_info_subtitle_time_out">Reading the subtitle track takes too long.</string>
+    <string name="video_media_info_unknow">Unspecified media player info</string>
+    <string name="media_info_video_rending_start">The player just pushed the very first video frame for rendering.</string>
 
 </resources>
 

@@ -6,13 +6,21 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <include layout="@layout/layout_item_timeline_header" />
-
-    <include layout="@layout/layout_item_timeline_description" />
+    <com.vn.ntsc.widget.views.timeline.TimelineHeaderView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include layout="@layout/item_multi_buzz_4" />
 
-    <include layout="@layout/layout_item_timeline_footer" />
+    <com.vn.ntsc.widget.views.timeline.TimelineFooterView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_content" />
 
     <include layout="@layout/layout_item_timeline_approve_buzz" />
 

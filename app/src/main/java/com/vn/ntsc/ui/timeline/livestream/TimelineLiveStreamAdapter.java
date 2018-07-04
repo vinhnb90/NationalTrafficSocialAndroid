@@ -13,6 +13,8 @@ import com.vn.ntsc.widget.adapter.BaseViewHolder;
 import com.vn.ntsc.widget.adapter.MultifunctionAdapter;
 import com.vn.ntsc.widget.views.images.CircleImageView;
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,7 +24,7 @@ import butterknife.ButterKnife;
 
 public class TimelineLiveStreamAdapter extends MultifunctionAdapter<TimelineLiveStreamAdapter.ViewHolder, BuzzBean> {
 
-    public TimelineLiveStreamAdapter(LiveStreamListener listener) {
+    public TimelineLiveStreamAdapter(LiveStreamListener<BuzzBean> listener) {
         super(listener);
     }
 
@@ -35,7 +37,7 @@ public class TimelineLiveStreamAdapter extends MultifunctionAdapter<TimelineLive
     @Override
     protected void onViewReady(ViewHolder helper, BuzzBean item, int position) {
         if (mData.size() > 0)
-            helper.onBinView(item, position, (LiveStreamListener) listener);
+            helper.onBinView(item, position, (LiveStreamListener<BuzzBean>) listener);
     }
 
     static class ViewHolder extends BaseViewHolder {
@@ -49,15 +51,15 @@ public class TimelineLiveStreamAdapter extends MultifunctionAdapter<TimelineLive
             ButterKnife.bind(this, itemView);
         }
 
-        void onBinView(final BuzzBean bean, final int position, final LiveStreamListener listener) {
+        void onBinView(final BuzzBean bean, final int position, final LiveStreamListener<BuzzBean> listener) {
 
-            if (bean == null || bean.listChildBuzzes == null || bean.listChildBuzzes.isEmpty())
+            if (bean == null || bean.listChildBuzzes == null || bean.listChildBuzzes.isEmpty() || bean.listChildBuzzes.get(0).streamStatus == null)
                 return;
 
             if (bean.listChildBuzzes.get(0).streamStatus.equals(Constants.LIVE_STREAM_ON)) {
-                avatarView.setBorderColor(itemView.getContext().getResources().getColor(R.color.default_app));
+                Objects.requireNonNull(avatarView).setBorderColor(itemView.getContext().getResources().getColor(R.color.default_app));
             } else {
-                avatarView.setBorderColor(itemView.getContext().getResources().getColor(R.color.gray));
+                Objects.requireNonNull(avatarView).setBorderColor(itemView.getContext().getResources().getColor(R.color.gray));
             }
 
             ImagesUtils.loadRoundedAvatar(bean.avatar, bean.gender, false, avatarView);

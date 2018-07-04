@@ -860,22 +860,13 @@ public class BottomNavigation extends FrameLayout {
 				}
 
 				if (notificationBackgroundDrawable != null) {
-					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-						Drawable drawable = notificationBackgroundDrawable.getConstantState().newDrawable();
-						notification.setBackground(drawable);
-					} else {
-						notification.setBackgroundDrawable(notificationBackgroundDrawable);
-					}
+					Drawable drawable = notificationBackgroundDrawable.getConstantState().newDrawable();
+					notification.setBackground(drawable);
 
 				} else if (currentBackgroundColor != 0) {
 					Drawable defautlDrawable = ContextCompat.getDrawable(context, R.drawable.notification_background);
-					if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-						notification.setBackground(Helper.getTintDrawable(defautlDrawable,
-								currentBackgroundColor, forceTint));
-					} else {
-						notification.setBackgroundDrawable(Helper.getTintDrawable(defautlDrawable,
-								currentBackgroundColor, forceTint));
-					}
+					notification.setBackground(Helper.getTintDrawable(defautlDrawable,
+                            currentBackgroundColor, forceTint));
 				}
 			}
 

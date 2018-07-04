@@ -54,7 +54,7 @@ public class ConversationAdapter extends MultifunctionAdapter<ConversationAdapte
     @Override
     protected void onViewReady(final ConversationAdapter.ViewHolder holder, final ConversationItem message, final int position) {
 
-        final Context mContext = holder.getViewRoot().getContext();
+        final Context mContext = holder.itemView.getContext();
 
         Log.d(TAG, "onViewReady: position " + position + message.friendId);
         // toggle delete button

@@ -44,31 +44,32 @@ public class ImageViewTouch extends ImageViewTouchBase {
 
     @Override
     protected void init(Context context, AttributeSet attrs, int defStyle) {
-        super.init(context, attrs, defStyle);
-        mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-        mGestureListener = getGestureListener();
-        mScaleListener = getScaleListener();
 
-        mScaleDetector = new ScaleGestureDetector(getContext(), mScaleListener);
-        mGestureDetector = new GestureDetector(getContext(), mGestureListener, null, true);
-        mDoubleTapDirection = 1;
-        setQuickScaleEnabled(false);
+        if (context instanceof IteractorGestureListener) {
+            mTouchSlop = ViewConfiguration.get(getContext()).getScaledTouchSlop();
+
+            mGestureListener = getGestureListener((IteractorGestureListener) context);
+            mGestureDetector = new GestureDetector(getContext(), mGestureListener, null, true);
+
+            mScaleListener = getScaleListener();
+            mScaleDetector = new ScaleGestureDetector(getContext(), mScaleListener);
+            mDoubleTapDirection = 1;
+            setQuickScaleEnabled(false);
+        } else
+            throw new ClassCastException("context must to be implement ImageViewTouch.IteractorGestureListenerA.");
+
+        super.init(context, attrs, defStyle);
     }
 
     @TargetApi(19)
     public void setQuickScaleEnabled(boolean value) {
-        if (Build.VERSION.SDK_INT >= 19) {
-            mScaleDetector.setQuickScaleEnabled(value);
-        }
+        mScaleDetector.setQuickScaleEnabled(value);
     }
 
     @TargetApi(19)
     @SuppressWarnings("unused")
     public boolean getQuickScaleEnabled() {
-        if (Build.VERSION.SDK_INT >= 19) {
-            return mScaleDetector.isQuickScaleEnabled();
-        }
-        return false;
+        return mScaleDetector.isQuickScaleEnabled();
     }
 
     @SuppressWarnings("unused")
@@ -100,8 +101,8 @@ public class ImageViewTouch extends ImageViewTouchBase {
         return mDoubleTapEnabled;
     }
 
-    protected OnGestureListener getGestureListener() {
-        return new GestureListener();
+    protected OnGestureListener getGestureListener(IteractorGestureListener callback) {
+        return new GestureListener(callback);
     }
 
     protected OnScaleGestureListener getScaleListener() {
@@ -288,6 +289,12 @@ public class ImageViewTouch extends ImageViewTouchBase {
     }
 
     public class GestureListener extends GestureDetector.SimpleOnGestureListener {
+        private IteractorGestureListener mCallback;
+
+        public GestureListener(IteractorGestureListener callback) {
+            mCallback = callback;
+        }
+
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
 
@@ -300,28 +307,39 @@ public class ImageViewTouch extends ImageViewTouchBase {
 
         @Override
         public boolean onDoubleTap(MotionEvent e) {
-            if (DEBUG) {
-                Log.i(TAG, "onDoubleTap. double tap enabled? " + mDoubleTapEnabled);
-            }
-            if (mDoubleTapEnabled) {
-                if (Build.VERSION.SDK_INT >= 19) {
+            try {
+                if (DEBUG) {
+                    Log.i(TAG, "onDoubleTap. double tap enabled? " + mDoubleTapEnabled);
+                }
+
+                //if check view pager is in mode can not zoom
+                //then exit scale
+                if (!mCallback.isAllowZoom())
+                    return super.onDoubleTap(e);
+
+                if (mDoubleTapEnabled) {
                     if (mScaleDetector.isQuickScaleEnabled()) {
                         return true;
                     }
+
+                    mUserScaled = true;
+
+                    float scale = getScale();
+                    float targetScale;
+                    targetScale = onDoubleTapPost(scale, getMaxScale(), getMinScale());
+                    targetScale = Math.min(getMaxScale(), Math.max(targetScale, getMinScale()));
+                    zoomTo(targetScale, e.getX(), e.getY(), mDefaultAnimationDuration);
+
                 }
 
-                mUserScaled = true;
+                if (null != mDoubleTapListener) {
+                    mDoubleTapListener.onDoubleTap();
+                }
 
-                float scale = getScale();
-                float targetScale;
-                targetScale = onDoubleTapPost(scale, getMaxScale(), getMinScale());
-                targetScale = Math.min(getMaxScale(), Math.max(targetScale, getMinScale()));
-                zoomTo(targetScale, e.getX(), e.getY(), mDefaultAnimationDuration);
-
-            }
-
-            if (null != mDoubleTapListener) {
-                mDoubleTapListener.onDoubleTap();
+                //notify is zooming, mode double tap zoom
+                mCallback.onDoubleTapZoom(getScale() != 1);
+            } catch (Exception ee) {
+                ee.printStackTrace();
             }
 
             return super.onDoubleTap(e);
@@ -339,24 +357,48 @@ public class ImageViewTouch extends ImageViewTouchBase {
 
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-            if (!mScrollEnabled) {
-                return false;
+            try {
+                //if check view pager is in mode can not zoom
+                //then exit scale
+                if (!mCallback.isAllowZoom())
+                    return super.onScroll(e1, e2, distanceX, distanceY);
+
+
+                if (!mScrollEnabled) {
+                    return false;
+                }
+                if (e1 == null || e2 == null) {
+                    return false;
+                }
+                if (e1.getPointerCount() > 1 || e2.getPointerCount() > 1) {
+                    return false;
+                }
+                if (mScaleDetector.isInProgress()) {
+                    return false;
+                }
+
+                boolean onScroll = ImageViewTouch.this.onScroll(e1, e2, distanceX, distanceY);
+                //notify is zooming to parent view, mode scroll zoom
+                mCallback.onScrollZoom(getScale() != 1);
+
+                return onScroll;
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            if (e1 == null || e2 == null) {
-                return false;
-            }
-            if (e1.getPointerCount() > 1 || e2.getPointerCount() > 1) {
-                return false;
-            }
-            if (mScaleDetector.isInProgress()) {
-                return false;
-            }
-            return ImageViewTouch.this.onScroll(e1, e2, distanceX, distanceY);
+
+            return super.onScroll(e1, e2, distanceX, distanceY);
         }
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if (!mScrollEnabled) {
+            try {
+                //if check view pager is in mode can not zoom
+                //then exit scale
+                if (!mCallback.isAllowZoom())
+                    return super.onFling(e1, e2, velocityX, velocityY);
+
+
+                if (!mScrollEnabled) {
                 return false;
             }
             if (e1 == null || e2 == null) {
@@ -378,6 +420,11 @@ public class ImageViewTouch extends ImageViewTouchBase {
             } else {
                 return false;
             }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return super.onFling(e1, e2, velocityX, velocityY);
         }
 
         @Override
@@ -410,6 +457,9 @@ public class ImageViewTouch extends ImageViewTouchBase {
                     zoomTo(targetScale, detector.getFocusX(), detector.getFocusY());
                     mDoubleTapDirection = 1;
                     invalidate();
+
+                    //notify is scale zoom mode
+                    ((GestureListener)mGestureListener).mCallback.onScaleZoom(getScale() != 1);
                     return true;
                 }
 
@@ -430,5 +480,43 @@ public class ImageViewTouch extends ImageViewTouchBase {
 
     public interface OnImageViewTouchSingleTapListener {
         void onSingleTapConfirmed();
+    }
+
+    public interface IteractorGestureListener {
+
+        /**
+         * when double tap to zoom image
+         *
+         * @param isZoomed
+         */
+        void onDoubleTapZoom(boolean isZoomed);
+
+        /**
+         * when scroll to zoom image
+         *
+         * @param isZoomed
+         */
+        void onScrollZoom(boolean isZoomed);
+
+        /**
+         * when fling image to zoom image
+         *
+         * @param isCanFlingHorizolltal
+         */
+        void onFling(boolean isCanFlingHorizolltal);
+
+        /**
+         * when scale image
+         *
+         * @param isZoomed
+         */
+        void onScaleZoom(boolean isZoomed);
+
+        /**
+         * when image invoke zoom need check can zoom?
+         *
+         * @return
+         */
+        boolean isAllowZoom();
     }
 }

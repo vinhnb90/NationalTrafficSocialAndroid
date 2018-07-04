@@ -81,7 +81,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/line"
-                android:background="@color/color_red" />
+                android:background="@color/red" />
 
             <RelativeLayout
                 android:id="@+id/activity_manage_online_alert_rlt_when"

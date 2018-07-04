@@ -1,146 +1,91 @@
 package com.vn.ntsc.ui.mediadetail.base;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import com.vn.ntsc.R;
+import com.vn.ntsc.core.BasePresenter;
 import com.vn.ntsc.repository.TypeView;
 import com.vn.ntsc.repository.model.media.MediaEntity;
-import com.vn.ntsc.utils.ImagesUtils;
 import com.vn.ntsc.widget.views.images.ImageViewTouch;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by ThoNh on 11/21/2017.
- */
+public class MediaAdapter extends FragmentStatePagerAdapter {
 
-public class MediaAdapter extends PagerAdapter {
+    /*-----------------------------------var-----------------------------------*/
+    private List<MediaEntity> mData;
 
-    public interface OnImageTouchListener {
+    //use HashMap to save fragment more benefit than SpareArray Map with above 1000
+    private HashMap<Integer, Fragment> fragmentHashMap = new HashMap<>();
 
-        void onImageTouchDown(float originViewY, float eventRawY);
-
-        void onImageTouchUp(float getY, float rawY, ImageViewTouch imageView);
-
-        void onImageTouchMove(float rawY, ImageViewTouch imageView);
-    }
-
-    public interface OnPageChangeListener {
-
-        void onPageComing();
-
-        void onPageLeaving();
-    }
-
-    public void removeItem(AppCompatActivity activity, int position) {
-        if (mData.size() == 1) { // the last item -->  finish
-            mData.get(0).onActivityDestroy();
-            activity.finish();
-        }
-        mData.remove(position);
-        notifyDataSetChanged();
-    }
-
-    public List<MediaEntity> mData;
-    private OnImageTouchListener mListener;
-
-
-    public MediaAdapter(List<MediaEntity> data, OnImageTouchListener listener) {
+    /*-----------------------------------instance-----------------------------------*/
+    public MediaAdapter(FragmentManager fm, List<MediaEntity> data) {
+        super(fm);
         mData = new ArrayList<>();
         this.mData = data;
-        this.mListener = listener;
     }
 
-    /*Using the LayoutInflater, you can inflate any desired XML layout.*/
+    /*-----------------------------------lifecycle-----------------------------------*/
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        return instantiateItemLayout(container, position);
+    public Fragment getItem(int position) {
+        //return fragment
+        Fragment fragment = null;
+        switch (mData.get(position).mType) {
+
+            case TypeView.MediaDetailType.IMAGE_TYPE:
+                fragment = ImageFragment.newInstance(position, mData.get(position));
+                break;
+
+            case TypeView.MediaDetailType.VIDEO_TYPE:
+                fragment = VideoFragment.newInstance(position);
+                break;
+
+            case TypeView.MediaDetailType.STREAM_TYPE:
+                fragment = VideoFragment.newInstance(position);
+                break;
+
+            case TypeView.MediaDetailType.AUDIO_TYPE:
+                fragment = AudioFragment.newInstance(position);
+                break;
+            default:
+                fragment = null;
+        }
+
+
+        //save fragment to collection, use in outside
+        fragmentHashMap.put(position, fragment);
+        return fragment;
     }
 
-    /* This method removes a particular view from the collection of Views maintained by the PagerAdapter*/
-    @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, Object object) {
-        container.removeView((View) object);
-    }
-
-
-    /* return the number of views that will be maintained by the ViewPager.*/
     @Override
     public int getCount() {
         return mData.size();
     }
 
-
     @Override
-    public int getItemPosition(@NonNull Object object) {
-        return POSITION_NONE;
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        super.destroyItem(container, position, object);
+        fragmentHashMap.remove(position);
     }
 
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+
+    /*-----------------------------------func-----------------------------------*/
+    public HashMap<Integer, Fragment> getFragmentHashMap() {
+        return fragmentHashMap;
     }
 
-    private Object instantiateItemLayout(final ViewGroup container, final int position) {
-        View layout;
-        LayoutInflater mLayoutInflater = LayoutInflater.from(container.getContext());
-        switch (mData.get(position).mType) {
 
-            case TypeView.MediaDetailType.IMAGE_TYPE:
-                layout = mLayoutInflater.inflate(R.layout.item_media_detail_image, container, false);
-                final ImageViewTouch imageView = layout.findViewById(R.id.image_view);
-
-                imageView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ImagesUtils.loadImage(mData.get(position).mThumbnail, imageView);
-                    }
-                });
-
-                imageView.setOnTouchImageViewListener(new ImageViewTouch.OnTouchImageViewListener() {
-                    @Override
-                    public void onDown(float originViewY, float eventRawY) {
-                        mListener.onImageTouchDown(originViewY, eventRawY);
-                    }
-
-                    @Override
-                    public void onUp(float getY, float rawY) {
-                        mListener.onImageTouchUp(getY, rawY, imageView);
-                    }
-
-                    @Override
-                    public void onMove(float rawY) {
-                        mListener.onImageTouchMove(rawY, imageView);
-                    }
-                });
-                break;
-
-            case TypeView.MediaDetailType.VIDEO_TYPE:
-                layout = mLayoutInflater.inflate(R.layout.item_media_detail_video, container, false);
-                new Video(container.getContext(), mData.get(position), layout);
-                break;
-
-
-            case TypeView.MediaDetailType.STREAM_TYPE:
-                layout = mLayoutInflater.inflate(R.layout.item_media_detail_video, container, false);
-                new Video(container.getContext(), mData.get(position), layout);
-                break;
-
-            case TypeView.MediaDetailType.AUDIO_TYPE:
-                layout = mLayoutInflater.inflate(R.layout.item_media_detail_audio, container, false);
-                new Audio(container.getContext(), mData.get(position), layout);
-                break;
-            default:
-                layout = mLayoutInflater.inflate(R.layout.layout_null, container, false);
-        }
-        container.addView(layout);
-        return layout;
+    public void removeItem(int position) {
+        // Remove the corresponding item in the data set
+        fragmentHashMap.remove(mData.get(position));
+        mData.remove(position);
+        // Notify the adapter that the data set is changed
+        notifyDataSetChanged();
     }
 
+    /*-----------------------------------interface-----------------------------------*/
 }

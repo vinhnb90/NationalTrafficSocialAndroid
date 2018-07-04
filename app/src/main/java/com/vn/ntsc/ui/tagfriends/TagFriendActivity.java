@@ -56,7 +56,6 @@ public class TagFriendActivity extends BaseActivity<TagFriendPresenter> implemen
 
     private TagFriendAdapter mTagFriendAdapter;
 
-
     @BindView(R.id.toolbar)
     ToolbarTitleCenter mToolbar;
 
@@ -110,8 +109,8 @@ public class TagFriendActivity extends BaseActivity<TagFriendPresenter> implemen
         mRecyclerViewFriendsFavorite.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerViewFriendsFavorite.setHasFixedSize(true);
         mRecyclerViewFriendsFavorite.setOverScrollMode(View.OVER_SCROLL_NEVER);
-        mRecyclerViewFriendsFavorite.setDrawingCacheEnabled(true);
-        mRecyclerViewFriendsFavorite.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
+//        mRecyclerViewFriendsFavorite.setDrawingCacheEnabled(true);
+//        mRecyclerViewFriendsFavorite.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
 
         /*
          * When List friend favorites is empty crashes
@@ -126,27 +125,17 @@ public class TagFriendActivity extends BaseActivity<TagFriendPresenter> implemen
     public void onViewReady() {
         Utils.dumpIntent(getIntent());
 
-        if (mTaggedFriend != null && !hasEditTagFriends) {
-            mTagFriendAdapter.setNewData(mTaggedFriend);
-        } else {
-            getListFriendsMeFavorite();
-        }
-
         setSupportActionBar(mToolbar);
         mToolbar.setActionbar(getSupportActionBar())
                 .setDisplayHomeAsUpEnabled(true)
                 .setButtonRightListener(this)
                 .setButtonLeftListener(this);
 
-        //Get list friend were favorites by yourself
         if (hasEditTagFriends) {
+            mToolbar.setVisibilityButtonRight(true);
             mSwipeRefreshLayout.setRefreshing(true);
             getListFriendsMeFavorite();
-        } else {
-            mAutoCompleteTextView.setVisibility(View.GONE);
-        }
 
-        if (hasEditTagFriends) {
             mToolbar.setTitleCenter(R.string.tag_friend_title);
             //Hide soft keyboard if need
             mAutoCompleteTextView.setFocusable(true);
@@ -160,8 +149,11 @@ public class TagFriendActivity extends BaseActivity<TagFriendPresenter> implemen
                     ? TokenCompleteTextView.TokenClickStyle.Delete
                     : TokenCompleteTextView.TokenClickStyle.Select);
         } else {
+            mToolbar.setVisibilityButtonRight(false);
+            if (mTaggedFriend != null)
+                mTagFriendAdapter.setNewData(mTaggedFriend);
+            mAutoCompleteTextView.setVisibility(View.GONE);
             mToolbar.setTitleCenter(R.string.list_tag_friends);
-
             mSwipeRefreshLayout.setRefreshing(false);
             mSwipeRefreshLayout.setEnabled(false);
             mAutoCompleteTextView.setVisibility(View.GONE);

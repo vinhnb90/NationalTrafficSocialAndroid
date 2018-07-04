@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vn.ntsc.ui.mediadetail.base.video.VideoTouchRoot xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/black_overlay"
+    android:id="@+id/fragment_video_video_touch_root"
+    android:layout_height="match_parent"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.vn.ntsc.ui.mediadetail.base.video.TextureVideoView
+        android:id="@+id/fragment_video_texture_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:keepScreenOn="true" />
+
+    <com.vn.ntsc.ui.mediadetail.base.video.PlayerController
+        android:id="@+id/fragment_video_controller"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true" />
+
+</com.vn.ntsc.ui.mediadetail.base.video.VideoTouchRoot>

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.vn.ntsc.repository.model.timeline.BuzzListResponse;
 import com.vn.ntsc.ui.timeline.core.TimelineFragment;
 import com.vn.ntsc.ui.timeline.livestream.header.TimelineLiveStreamViewHolder;
+import com.vn.ntsc.utils.LogUtils;
 
 /**
  * Created by nankai on 12/14/2017.
@@ -47,12 +48,14 @@ public abstract class TimelineLiveStreamFragment extends TimelineFragment {
     //----------------------------------------------------------
     @Override
     public void onGetRoomLiveStream(BuzzListResponse response) {
+        LogUtils.i(TAG,"Get Room LiveStream success");
         liveStreamViewHolder.setData(response.data);
     }
 
     @Override
     public void onTimelineLiveStreamEmptyView() {
         super.onTimelineLiveStreamEmptyView();
+        LogUtils.i(TAG,"Timeline LiveStream is EmptyView");
         liveStreamViewHolder.setData(null);
     }
 }

@@ -1,7 +1,5 @@
 package com.vn.ntsc.ui.timeline.viewholder;
 
-import android.text.SpannableStringBuilder;
-
 import com.bumptech.glide.RequestManager;
 import com.vn.ntsc.repository.model.timeline.datas.BuzzBean;
 import com.vn.ntsc.ui.timeline.core.TimelineListener;
@@ -12,22 +10,6 @@ import com.vn.ntsc.ui.timeline.core.TimelineListener;
  */
 
 public interface ITimelineViewHolder {
-
-    /**
-     * create {@link SpannableStringBuilder} global
-     *
-     * @param spanTxtTitle {@link SpannableStringBuilder}
-     * @return {@link BaseTimelineViewHolder}
-     */
-    BaseTimelineViewHolder initSpanTitle(SpannableStringBuilder spanTxtTitle);
-
-    /**
-     * create {@link SpannableStringBuilder} global just for buzz share
-     *
-     * @param spanTxtTitleShare {@link SpannableStringBuilder}
-     * @return {@link BaseTimelineViewHolder}
-     */
-    BaseTimelineViewHolder initSpanTitleShare(SpannableStringBuilder spanTxtTitleShare);
 
     /**
      * Use {@link RequestManager} to manage the resume and pause image layout_loading

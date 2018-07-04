@@ -1,125 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_timeline_action"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/layout_content">
 
     <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/timeline_view_number"
+        android:id="@+id/layout_item_timeline_view_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/spacing_2_16dp"
         android:layout_marginTop="@dimen/spacing_1_8dp"
         android:textSize="@dimen/text_2_12sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <RelativeLayout
-        android:id="@+id/layout_item_timeline_like"
-        android:layout_width="0dp"
+    <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+        android:id="@+id/layout_item_timeline_like_number"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_2_16dp"
-        android:layout_marginLeft="@dimen/spacing_2_16dp"
-        android:layout_marginTop="@dimen/spacing_1_8dp"
-        android:gravity="center_vertical"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginStart="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:drawablePadding="@dimen/spacing_1_6dp"
+        android:text="@string/_0"
+        app:drawableCompatLeft="@drawable/ic_unlike"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeline_view_number"
-        tools:ignore="RtlHardcoded">
+        app:layout_constraintTop_toBottomOf="@id/layout_item_timeline_view_number" />
 
-        <com.vn.ntsc.widget.views.images.RecyclingImageView
-            android:id="@+id/layout_item_timeline_image_like"
-            android:layout_width="@dimen/event_timeline_size"
-            android:layout_height="@dimen/event_timeline_size"
-            android:layout_centerVertical="true"
-            tools:ignore="ContentDescription" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/layout_item_timeline_like_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/spacing_0_4dp"
-            android:layout_toRightOf="@+id/layout_item_timeline_image_like"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="@dimen/text_2_12sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_item_timeline_comment"
-        android:layout_width="0dp"
+    <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+        android:id="@+id/layout_item_timeline_comment_number"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_2_16dp"
-        android:layout_marginTop="@dimen/spacing_1_8dp"
-        android:layout_weight="1"
-        android:gravity="center"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginLeft="@dimen/spacing_1_8dp"
+        android:layout_marginRight="@dimen/spacing_1_8dp"
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:drawablePadding="@dimen/spacing_1_6dp"
+        android:text="@string/_0"
+        app:drawableCompatLeft="@drawable/ic_comment"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/layout_item_timeline_like"
-        app:layout_constraintRight_toLeftOf="@+id/layout_item_timeline_share"
-        app:layout_constraintTop_toBottomOf="@+id/timeline_view_number">
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toRightOf="@id/layout_item_timeline_like_number"
+        app:layout_constraintRight_toLeftOf="@id/layout_item_timeline_share_number"
+        app:layout_constraintTop_toBottomOf="@id/layout_item_timeline_view_number" />
 
-        <com.vn.ntsc.widget.views.images.RecyclingImageView
-            android:id="@+id/layout_item_timeline_image_comment"
-            android:layout_width="@dimen/event_timeline_size"
-            android:layout_height="@dimen/event_timeline_size"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/spacing_1_8dp"
-            android:src="@drawable/ic_comment"
-            tools:ignore="ContentDescription" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/layout_item_timeline_comment_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/spacing_1_8dp"
-            android:layout_toEndOf="@+id/layout_item_timeline_image_comment"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:textSize="@dimen/text_2_12sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_item_timeline_share"
-        android:layout_width="0dp"
+    <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+        android:id="@+id/layout_item_timeline_share_number"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_2_16dp"
-        android:layout_marginRight="@dimen/spacing_2_16dp"
-        android:layout_marginTop="@dimen/spacing_1_8dp"
+        android:layout_marginBottom="@dimen/spacing_1_8dp"
+        android:layout_marginEnd="@dimen/spacing_2_16dp"
+        android:layout_marginTop="@dimen/spacing_2_16dp"
+        android:drawablePadding="@dimen/spacing_1_6dp"
+        android:text="@string/_0"
+        app:drawableCompatLeft="@drawable/ic_share"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timeline_view_number"
-        tools:ignore="RtlHardcoded">
-
-        <com.vn.ntsc.widget.views.images.RecyclingImageView
-            android:id="@+id/layout_item_timeline_image_share"
-            android:layout_width="@dimen/event_timeline_size"
-            android:layout_height="@dimen/event_timeline_size"
-            android:layout_alignTop="@+id/layout_item_timeline_share_number"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_share"
-            tools:ignore="ContentDescription" />
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/layout_item_timeline_share_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_1_8dp"
-            android:layout_toRightOf="@+id/layout_item_timeline_image_share"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textSize="@dimen/text_2_12sp"
-            tools:ignore="RtlHardcoded" />
-
-    </RelativeLayout>
+        app:layout_constraintTop_toBottomOf="@id/layout_item_timeline_view_number" />
 
 </android.support.constraint.ConstraintLayout>

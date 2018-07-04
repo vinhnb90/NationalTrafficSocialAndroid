@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.vn.ntsc.R;
 import com.vn.ntsc.repository.model.timeline.datas.BuzzBean;
 import com.vn.ntsc.ui.timeline.core.TimelineListener;
+import com.vn.ntsc.utils.Constants;
 
 import butterknife.BindView;
 
@@ -32,12 +33,18 @@ public class MediaTimelineViewHolderMoreBuzz extends MediaTimelineViewHolderFive
     @Override
     public void onBindView(final BuzzBean bean, final int position, final TimelineListener listener) {
         super.onBindView(bean, position, listener);
-        imageViewMore.setText((bean.childNumber - 5) + "+");
-        imageViewMore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onShowImageDetail(bean, position, 4, imageView5);
-            }
-        });
+        if (imageViewMore != null) {
+            imageViewMore.setText((bean.childNumber - 5) + "+");
+            imageViewMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (bean.isApproved == Constants.IS_APPROVED) {
+                        listener.onDisplayImageDetailScreen(bean, position, 4, v);
+                    } else {
+                        listener.onApproval(bean, position, v);
+                    }
+                }
+            });
+        }
     }
 }

@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
-
     compileSdkVersion globalConfiguration["compileSdkVersion"]
     defaultConfig {
         multiDexEnabled true
@@ -22,7 +21,6 @@ android {
             }
         }
     }
-
     signingConfigs {
         release {
             storeFile file("../travisutils/release.jks")
@@ -38,9 +36,7 @@ android {
             keyPassword "gvn12345"
         }
     }
-
     flavorDimensions "default"
-
     productFlavors {
 
         pub {
@@ -64,8 +60,6 @@ android {
             signingConfig signingConfigs.dev
         }
     }
-
-
     buildTypes {
         release {
             debuggable false
@@ -74,47 +68,39 @@ android {
             //Be aware that code shrinking slows down the build time, so you should avoid using it on your debug build if possible. However, it's important that you do enable code shrinking on your final APK used for testing, because it might introduce bugs if you do not sufficiently
             shrinkResources true
             zipAlignEnabled true
-
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "boolean", "reportCrashlytics", "true"
-
             //App
             resValue "string", "app_name", globalConfiguration["appName"]
+            signingConfig signingConfigs.release
         }
-
         staging {
             debuggable true
             applicationIdSuffix ".staging"
             buildConfigField "boolean", "reportCrashlytics", "true"
-
             //App
             resValue "string", "app_name", globalConfiguration["appNamePreview"]
-
             matchingFallbacks = ['release', 'debug']
+            signingConfig signingConfigs.dev
         }
-
         debug {
             debuggable true
             applicationIdSuffix ".develop"
             buildConfigField "boolean", "reportCrashlytics", "true"
             //App
             resValue "string", "app_name", globalConfiguration["appNameDebug"]
+            signingConfig signingConfigs.dev
         }
-
         applicationVariants.all { variant ->
             defaultConfiguringTimeOut(variant)
-
             def hasVersionPreview = false  /* If the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview */
             def hasReplaceApkNameUseFormatDatetime = 0 /* If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty */
-
             if (variant.productFlavors[0].name.equals("dev")) {
                 hasVersionPreview = true
                 hasReplaceApkNameUseFormatDatetime = 1
             } else if (variant.productFlavors[0].name.equals("preview")) {
                 hasVersionPreview = true
-                hasReplaceApkNameUseFormatDatetime = 2
             }
-
             if (variant.buildType.name.equals("release")) {
                 productDomain(variant)
                 renameApkFile(variant,
@@ -138,11 +124,9 @@ android {
             path "CMakeLists.txt"
         }
     }
-
     aaptOptions {
         additionalParameters "--no-version-vectors"
     }
-
     //Repackaging
     packagingOptions {
         // removed because of conflict in creating package
@@ -162,7 +146,6 @@ android {
         exclude 'org/apache/http/version.properties'
         exclude 'templates/release-notes.vm'
     }
-
     lintOptions {
         // set to true to have all release builds run lint on issues with severity=fatal
         // and abort the build (controlled by abortOnError above) if fatal issues are found
@@ -177,7 +160,6 @@ android {
         //disable logging tag can be at most 23 characters
         disable 'LongLogTag', 'MissingTranslation', 'ExtraTranslation', 'RestrictedApi'
     }
-
     dexOptions {
         //javaMaxHeapSize "1536M" Sets the -JXmx* value when calling dx. Format should follow the 1536M pattern.
         javaMaxHeapSize "4g"
@@ -191,19 +173,15 @@ android {
 dependencies {
     def d = rootProject.ext.libraryDependencies
     def td = rootProject.ext.libraryTestDependencies
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation(name: 'libwebrtc', ext: 'aar')
-
     implementation project(':library_ui')
-    api project(':library_mediapicker')
-    api project(':library_socket')
-
+    implementation project(':library_mediapicker')
+    implementation project(':library_socket')
     //leak canary
     releaseImplementation d.leakcanaryNoOp
     stagingImplementation d.leakcanaryNoOp
     debugImplementation d.leakcanary
-
     //noinspection GradleCompatible
     implementation d.appcompatV4
     implementation d.appcompatV7
@@ -212,86 +190,51 @@ dependencies {
     implementation d.design
     implementation d.constraint
     implementation d.vector
-
     // butter knife
     implementation d.butterknife
     annotationProcessor d.butterknifeCompiler
-
     // dagger
     implementation d.dagger
     annotationProcessor d.daggerCompiler
-
     //Network
     implementation d.retrofit2
     implementation d.converterGson
-
     //OkHTTP
     implementation d.okhttp3
     implementation d.loggingInterceptor
-
     //Rx
     implementation d.adapterRxjava2
     implementation d.rxjava2
     implementation d.rxandroid2
-
     //Google
     implementation d.firebaseMessaging
     implementation d.firebaseCore
     implementation d.firebaseCrash
     implementation d.exoplayer
     implementation d.servicesVision
-
     //Images
     implementation d.glide
     implementation d.glideOkhttp3Integration
     annotationProcessor d.glideCompiler
-
     implementation d.gpuimage
-
     // facebook SDK only login (reduce apk size)
     implementation d.facebook
-
     // Shortcut Badge Count
     // https://github.com/leolin310148/ShortcutBadger
     implementation d.shortcutBadger
-
     //Multi dex
     implementation d.multidex
-
     // ui test
     testImplementation td.junit
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    //multi screen
+    implementation d.sdp
 }
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-/**
- *
- * @param hasReplaceApkNameUseFormatDatetime If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty
- * @return String
- */
-static def getTime(hasReplaceApkNameUseFormatDatetime) {
-    if (hasReplaceApkNameUseFormatDatetime == 0) {
-        return new Date().format("ddMMMMyyyy-HH'h'mm'm'ss's'", TimeZone.getTimeZone("Asia/Ho_Chi_Minh"))
-    } else if (hasReplaceApkNameUseFormatDatetime == 1) {
-        return new Date().format("ddMMMMyyyy", TimeZone.getTimeZone("Asia/Ho_Chi_Minh"))
-    } else {
-        return ""
-    }
-}
-
-/**
- * @param isPreview if the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview
- * @return String
- */
-def getProjectDetail(isPreview) {
-    if (isPreview) {
-        return "Ver_${rootProject.ext.versionName_peview}_Build${rootProject.ext.versionCode_peview}"
-    } else {
-        return "Ver_${rootProject.ext.versionName}_Build${rootProject.ext.versionCode}"
-    }
-}
 
 /**
  *
@@ -311,6 +254,31 @@ def renameApkFile(variant, isPreview, hasReplaceApkNameUseFormatDatetime) {
         } else {
             outputFileName = "${project}_${getProjectDetail(isPreview)}_${time}_${buildType}.apk"
         }
+    }
+}
+
+/**
+ *
+ * @param hasReplaceApkNameUseFormatDatetime If the value 0 replace apk name to use format datetime ddMMMMyyyy-HH'h'mm'm'ss's' else if 1 ddMMMMyyyy then not empty
+ * @return String
+ */
+static def getTime(hasReplaceApkNameUseFormatDatetime) {
+    if (hasReplaceApkNameUseFormatDatetime == 0) {
+        return new Date().format("ddMMMMyyyy-HH'h'mm'm'ss's'", TimeZone.getTimeZone("Asia/Ho_Chi_Minh"))
+    } else {
+        return ""
+    }
+}
+
+/**
+ * @param isPreview if the value false replace apk name to use #rootProject.ext.versionCode then not  #rootProject.ext.versionCode_peview
+ * @return String
+ */
+def getProjectDetail(isPreview) {
+    if (isPreview) {
+        return "Ver_${rootProject.ext.versionName_peview}_Build${rootProject.ext.versionCode_peview}"
+    } else {
+        return "Ver_${rootProject.ext.versionName}_Build${rootProject.ext.versionCode}"
     }
 }
 

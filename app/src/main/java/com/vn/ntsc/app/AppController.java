@@ -11,8 +11,10 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.bumptech.glide.request.target.ViewTarget;
 import com.squareup.leakcanary.LeakCanary;
 import com.vn.ntsc.BuildConfig;
+import com.vn.ntsc.R;
 import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.utils.LogUtils;
 
@@ -67,6 +69,8 @@ public class AppController extends Application implements Application.ActivityLi
     public void onCreate() {
         super.onCreate();
         instance = this;
+
+        ViewTarget.setTagId(R.id.glide_view_target_tag);
 
         builder = ComponentBuilder.install(instance);
         registerActivityLifecycleCallbacks(this);

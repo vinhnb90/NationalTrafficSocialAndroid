@@ -20,6 +20,7 @@ import android.widget.PopupWindow;
 import com.nankai.designlayout.dialog.DialogMaterial;
 import com.nankai.designlayout.dialog.enums.Style;
 import com.vn.ntsc.R;
+import com.vn.ntsc.core.model.ServerResponse;
 import com.vn.ntsc.core.views.BaseActivity;
 import com.vn.ntsc.repository.ActivityResultRequestCode;
 import com.vn.ntsc.repository.TypeView;
@@ -263,6 +264,11 @@ public class MyProfileActivity extends BaseActivity<MyProfilePresenter> implemen
                             .getHeaderProfile()
                             .getAvatarView(), userProfileBean
             );
+        }
+
+        @Override
+        public void onWarningNotLogin() {
+            onShowDialogLogin(ServerResponse.DefinitionCode.SERVER_EXPIRED_TOKEN);
         }
     };
 

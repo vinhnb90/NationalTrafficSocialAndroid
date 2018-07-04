@@ -16,7 +16,7 @@
             android:id="@+id/thumbnail_picked_media"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
+            android:adjustViewBounds="false"
             android:scaleType="centerCrop"/>
 
         <TextView
@@ -24,14 +24,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Thêm ảnh"/>
+            android:text="@string/add_images"/>
 
 
-        <com.nankai.designlayout.widget.CustomCheckBox
+        <CheckBox
             android:id="@+id/iv_check_box"
             android:layout_width="@dimen/check_box_gird_item"
             android:layout_height="@dimen/check_box_gird_item"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
             android:background="#000000"
             android:padding="@dimen/spacing_2_16dp"/>

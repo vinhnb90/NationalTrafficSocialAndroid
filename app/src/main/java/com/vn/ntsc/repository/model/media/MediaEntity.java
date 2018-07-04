@@ -5,9 +5,6 @@ import android.os.Parcelable;
 
 import com.vn.ntsc.core.model.BaseBean;
 import com.vn.ntsc.repository.TypeView;
-import com.vn.ntsc.ui.mediadetail.base.ActivityLifeCycleListener;
-import com.vn.ntsc.ui.mediadetail.base.MediaAdapter;
-import com.vn.ntsc.utils.LogUtils;
 
 /**
  * Created by ThoNh on 11/21/2017.
@@ -40,15 +37,7 @@ public class MediaEntity extends BaseBean {
      */
     public String mThumbnail;
 
-
-    /**
-     * If Media is Audio, Video, use mPlayImmediately for play immediately after load buffer
-     */
-    private boolean mPlayImmediately;
-
-    private ActivityLifeCycleListener mListener;
-
-    private MediaAdapter.OnPageChangeListener mOnPageChangeListener;
+    private int mCurrentPauseTime;
 
     public MediaEntity(int position, String url, @TypeView.MediaDetailType String type, String thumbnail) {
         mPosition = position;
@@ -57,56 +46,13 @@ public class MediaEntity extends BaseBean {
         mThumbnail = thumbnail;
     }
 
-    public void setPlayImmediately(boolean playImmediately) {
-        mPlayImmediately = playImmediately;
+
+    public int getCurrentPauseTime() {
+        return mCurrentPauseTime;
     }
 
-    public boolean isPlayImmediately() {
-        return mPlayImmediately;
-    }
-
-    public void setActivityListener(ActivityLifeCycleListener listener) {
-        this.mListener = listener;
-    }
-
-
-    public void setOnPageChangeListener(MediaAdapter.OnPageChangeListener onPageChangeListener) {
-        this.mOnPageChangeListener = onPageChangeListener;
-    }
-
-
-    public void onActivityResume() {
-        if (mListener != null)
-            mListener.onActivityResume();
-        LogUtils.e(TAG, "onActivityResume ------->");
-    }
-
-
-    public void onActivityPause() {
-        if (mListener != null)
-            mListener.onActivityPause();
-        LogUtils.e(TAG, "onActivityPause ------->");
-    }
-
-
-    public void onActivityDestroy() {
-        if (mListener != null)
-            mListener.onActivityDestroy();
-        LogUtils.e(TAG, "onActivityDestroy ------->");
-    }
-
-
-    public void onActivityStop() {
-        if (mListener != null)
-            mListener.onActivityStop();
-        LogUtils.e(TAG, "onActivityStop ------->");
-    }
-
-
-    public void onActivityConfigChange(int mOrientation, boolean isOrientationSettingOn) {
-        if (mListener != null)
-            mListener.onActivityConfigChange(mOrientation, isOrientationSettingOn);
-        LogUtils.e(TAG, "onActivityConfigChange ------->");
+    public void setCurrentPauseTime(int currentPauseTime) {
+        mCurrentPauseTime = currentPauseTime;
     }
 
 
@@ -116,23 +62,10 @@ public class MediaEntity extends BaseBean {
                 "mPosition=" + mPosition +
                 ", mUrl='" + mUrl + '\'' +
                 ", mType='" + mType + '\'' +
-                ", mListener=" + mListener +
-                ", mOnPageChangeListener=" + mOnPageChangeListener +
+                ", mCurrentPauseTime='" + mCurrentPauseTime + '\'' +
                 '}';
     }
 
-
-    public void onPageComing(int position) {
-        LogUtils.e(TAG, "onPageComing -------> Origin position: " + mPosition + " -----> fucking position:" + position);
-        if (mOnPageChangeListener != null)
-            mOnPageChangeListener.onPageComing();
-    }
-
-    public void onPageLeaving(int position) {
-        LogUtils.e(TAG, "onPageLeaving -------> Origin position: " + mPosition + " -----> fucking position:" + position);
-        if (mOnPageChangeListener != null)
-            mOnPageChangeListener.onPageLeaving();
-    }
 
     @Override
     public int describeContents() {
@@ -143,17 +76,17 @@ public class MediaEntity extends BaseBean {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.mPosition);
         dest.writeString(this.mUrl);
+        dest.writeInt(this.mCurrentPauseTime);
         dest.writeString(this.mType);
         dest.writeString(this.mThumbnail);
-        dest.writeByte(this.mPlayImmediately ? (byte) 1 : (byte) 0);
     }
 
     protected MediaEntity(Parcel in) {
         this.mPosition = in.readInt();
         this.mUrl = in.readString();
+        this.mCurrentPauseTime = in.readInt();
         this.mType = in.readString();
         this.mThumbnail = in.readString();
-        this.mPlayImmediately = in.readByte() != 0;
     }
 
     public static final Parcelable.Creator<MediaEntity> CREATOR = new Parcelable.Creator<MediaEntity>() {

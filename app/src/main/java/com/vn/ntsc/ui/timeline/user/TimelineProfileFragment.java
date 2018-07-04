@@ -194,9 +194,4 @@ public class TimelineProfileFragment extends TimelineFragment implements Timelin
         userInfoSubject.onNext(userInfo);
         return this;
     }
-
-    @Override
-    public void onItemTimelineClick(BuzzBean item, int position, View view) {
-
-    }
 }

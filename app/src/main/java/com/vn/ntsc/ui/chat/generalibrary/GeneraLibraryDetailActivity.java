@@ -2,12 +2,12 @@ package com.vn.ntsc.ui.chat.generalibrary;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.vn.ntsc.R;
 import com.vn.ntsc.ui.mediadetail.base.BaseMediaActivity;
+import com.vn.ntsc.ui.mediadetail.base.ViewPagerMedia;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
 
 import butterknife.BindView;
@@ -22,7 +22,7 @@ public class GeneraLibraryDetailActivity extends BaseMediaActivity {
     View scrimView;
 
     @BindView(R.id.activity_genera_lib_detail_image_pager)
-    ViewPager mViewPager;
+    ViewPagerMedia viewPager;
 
     @BindView(R.id.toolbar)
     ToolbarTitleCenter mToolbar;
@@ -52,5 +52,15 @@ public class GeneraLibraryDetailActivity extends BaseMediaActivity {
     public void onViewReady() {
         setSupportActionBar(mToolbar);
         mToolbar.setActionbar(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }

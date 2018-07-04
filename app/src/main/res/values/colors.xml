@@ -66,17 +66,17 @@
     <color name="dividers_text_color">#26000000</color>
 
     <color name="colorWhiteTransparent">#8dffffff</color>
-    <color name="colorGray">#aeaeae</color>
-    <color name="colorGrayDark">#979292</color>
-    <color name="colorGrayDark_50">#80979292</color>
-    <color name="colorGrayLight">#EBF2F2</color>
+
+    <color name="grayDark_50">#80979292</color>
+    <color name="grayLight">#EBF2F2</color>
     <color name="green">#5eed37</color>
     <color name="orange">#ff9216</color>
     <color name="black">#000000</color>
     <color name="gray">#A5A2A0</color>
+    <color name="grayDark">#979292</color>
     <color name="gray_80">#80A5A2A0</color>
     <color name="default_image_loading">#80aeaeae</color>
-    <color name="color_red">#e02730</color>
+    <color name="red">#e02730</color>
     <color name="color_red_80">#CCe02730</color>
 
     <color name="line_color">#26000000</color>
@@ -103,7 +103,7 @@
     <color name="color_friendly">#2bbeef</color>
     <color name="color_warm">@color/orange</color>
     <color name="color_tough">#231f20</color>
-    <color name="color_sexy">@color/color_red</color>
+    <color name="color_sexy">@color/red</color>
     <color name="color_cool">@color/com_facebook_blue</color>
     <color name="color_soft">@color/green</color>
 
@@ -122,4 +122,11 @@
     <color name="background_transparent_70">#B3000000</color>
     <color name="privacy_mode_live_stream_white_color">#EFEAEA</color>
     <color name="config_info_live_stream_white_color">#404040</color>
+
+    <!--media timeline-->
+    <color name="color_text">@android:color/white</color>
+    <color name="colorLightAccentTransparent">#80000000</color>
+    <color name="colorLightAccent">@android:color/darker_gray</color>
+    <color name="colorBackgroundMedia">#1d1e20</color>
+    <color name="video_background_pause">#40000000</color>
 </resources>

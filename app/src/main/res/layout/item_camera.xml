@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.vn.ntsc.widget.views.images.RecyclingImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/item_camera_iv_custom"
+    android:layout_height="wrap_content"
+    android:background="@color/gray_light_transparent"
+    android:contentDescription="@string/common_image"
+    android:src="@drawable/ic_photo_camera_white_24dp" />

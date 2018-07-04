@@ -20,7 +20,7 @@
         android:layout_alignBottom="@+id/notification_image"
         android:layout_alignParentEnd="true"
         android:layout_margin="@dimen/spacing_1_8dp"
-        android:src="@mipmap/ic_launcher_foreground"
+        android:src="@mipmap/ic_launcher_round"
         android:contentDescription="@string/common_image" />
 
     <LinearLayout

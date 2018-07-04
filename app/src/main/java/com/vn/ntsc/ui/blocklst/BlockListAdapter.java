@@ -39,7 +39,7 @@ public class BlockListAdapter extends MultifunctionAdapter<BlockListAdapter.View
 
     @Override
     protected void onViewReady(final ViewHolder holder, final BlockLstItem item, final int position) {
-        Context mContext = holder.getViewRoot().getContext();
+        Context mContext = holder.itemView.getContext();
 
         final BlockLstItem response = mData.get(position);
 

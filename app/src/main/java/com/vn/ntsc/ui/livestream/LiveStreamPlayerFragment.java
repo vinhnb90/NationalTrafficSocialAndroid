@@ -120,8 +120,6 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
     @BindView(R.id.layout_live_stream_header_font_back_camera)
     ImageView liveStreamFontBackCamera;
 
-    @BindView(R.id.layout_live_stream_comment_layout_list_comment)
-    RelativeLayout layoutListComment;
     @BindView(R.id.layout_live_stream_comment_list_comment)
     RecyclerView listComment;
     @BindView(R.id.layout_live_stream_comment_refresh)
@@ -142,10 +140,8 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
     EditText edtDescription;
     @BindView(R.id.fragment_live_stream_player_txt_username)
     TextView mTxtUsername;
-    @BindView(R.id.fragment_live_stream_player_private_text)
-    TextView mTxtPrivacy;
-    @BindView(R.id.fragment_live_stream_player_private_icon)
-    ImageView mPrivacyIcon;
+    @BindView(R.id.fragment_live_stream_player_private)
+    TextViewVectorCompat mPrivacyIcon;
     @BindView(R.id.fragment_live_stream_player_img_avatar)
     ImageView mMyAvatar;
     @BindView(R.id.fragment_live_stream_player_layout_create_description)
@@ -218,7 +214,7 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
         int space = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, getResources().getDisplayMetrics());
         listComment.addItemDecoration(new SpacesItemDecoration(space));
 
-        liveStreamAdapter = new LiveStreamAdapter( null);
+        liveStreamAdapter = new LiveStreamAdapter(null);
         liveStreamAdapter.openLoadAnimation(MultifunctionAdapter.SLIDEIN_LEFT);
         liveStreamAdapter.disableLoadMoreIfNeed();
 
@@ -232,14 +228,14 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
         });
 
         uiState = UIState.NEW;
-        if (mUserLiveStreamService.typeView == UserLiveStreamService.TypeView.STREAM_FILE){
+        if (mUserLiveStreamService.typeView == UserLiveStreamService.TypeView.STREAM_FILE) {
             liveStreamFontBackCamera.setVisibility(View.GONE);
-        }else {
+        } else {
             liveStreamFontBackCamera.setVisibility(View.VISIBLE);
         }
 
         layoutCreate.setVisibility(View.VISIBLE);
-        layoutListComment.setVisibility(View.GONE);
+        refreshLayout.setVisibility(View.GONE);
         layoutCommentAction.setVisibility(View.GONE);
     }
 
@@ -314,7 +310,7 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
         startTagFriendActivity();
     }
 
-    @OnClick(R.id.fragment_live_stream_player_layout_share_privacy)
+    @OnClick(R.id.fragment_live_stream_player_private)
     void onSelectPrivacy() {
         //Hide soft keyboard if need
         KeyboardUtils.hideSoftKeyboard(activity);
@@ -516,8 +512,8 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                layoutListComment.setVisibility(View.VISIBLE);
-                layoutListComment.startAnimation(AnimationUtils.inFromLeftAnimation());
+                refreshLayout.setVisibility(View.VISIBLE);
+                refreshLayout.startAnimation(AnimationUtils.inFromLeftAnimation());
             }
 
             @Override
@@ -563,7 +559,7 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
 
     private void bindUserInfo() {
         //Lazy load avatar bind to view
-        ImagesUtils.loadRoundedAvatar(UserPreferences.getInstance().getAva(),UserPreferences.getInstance().getGender(), mMyAvatar);
+        ImagesUtils.loadRoundedAvatar(UserPreferences.getInstance().getAva(), UserPreferences.getInstance().getGender(), mMyAvatar);
         //Fill username to view
         if (!Utils.isEmptyOrNull(UserPreferences.getInstance().getUserName())) {
             mTxtUsername.setText(UserPreferences.getInstance().getUserName());
@@ -572,14 +568,14 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
 
     private void setPrivacyContent() {
         if (privacy == 0) {
-            mPrivacyIcon.setImageResource(R.drawable.ic_live_stream_public);
-            mTxtPrivacy.setText(getString(R.string.public_privacy));
+            mPrivacyIcon.setVectorDrawableLeft(R.drawable.ic_small_privacy_public_24dp_white);
+            mPrivacyIcon.setText(getString(R.string.public_privacy));
         } else if (privacy == 1) {
-            mPrivacyIcon.setImageResource(R.drawable.ic_live_stream_tag);
-            mTxtPrivacy.setText(getString(R.string.friend_privacy));
+            mPrivacyIcon.setVectorDrawableLeft(R.drawable.ic_small_privacy_only_friends_24dp_white);
+            mPrivacyIcon.setText(getString(R.string.friend_privacy));
         } else if (privacy == 2) {
-            mPrivacyIcon.setImageResource(R.drawable.ic_privacy_only_me);
-            mTxtPrivacy.setText(getString(R.string.onlyme_privacy));
+            mPrivacyIcon.setVectorDrawableLeft(R.drawable.ic_small_privacy_only_me_24dp_white);
+            mPrivacyIcon.setText(getString(R.string.onlyme_privacy));
         }
     }
 
@@ -596,7 +592,7 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
             if (uiState != UIState.JOINED) {
                 layoutDescriptionAction.setVisibility(View.GONE);
             } else {
-                layoutListComment.setVisibility(View.GONE);
+                refreshLayout.setVisibility(View.GONE);
                 layoutComment.setVisibility(View.VISIBLE);
 
                 Animation animation = AnimationUtils.outToTopAnimation();
@@ -624,7 +620,7 @@ public class LiveStreamPlayerFragment extends BaseFragment<LiveStreamPresenter> 
             if (uiState != UIState.JOINED) {
                 layoutDescriptionAction.setVisibility(View.VISIBLE);
             } else {
-                layoutListComment.setVisibility(View.VISIBLE);
+                refreshLayout.setVisibility(View.VISIBLE);
                 layoutCommentAction.setVisibility(View.VISIBLE);
                 layoutComment.setVisibility(View.GONE);
                 navigationBar.setVisibility(View.VISIBLE);

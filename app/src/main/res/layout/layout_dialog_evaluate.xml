@@ -36,7 +36,7 @@
         android:id="@+id/dialog_button"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_load_more"
-        android:background="@color/color_red"
+        android:background="@color/red"
         android:gravity="center"
         android:text="@string/common_save"
         android:textColor="@color/white"

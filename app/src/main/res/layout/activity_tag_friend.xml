@@ -49,17 +49,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+
             android:id="@+id/activity_tag_friend_search"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/spacing_1_8dp"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/spacing_1_8dp"
-            android:layout_marginTop="@dimen/spacing_1_8dp"
             android:background="@drawable/bg_search_area_round_normal_left"
             android:padding="@dimen/spacing_1_8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/activity_tag_friend_edt_search_autocomplete"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/activity_tag_friend_edt_search_autocomplete"
             app:srcCompat="@drawable/ic_search_black" />
 
     </android.support.constraint.ConstraintLayout>

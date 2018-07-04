@@ -38,7 +38,7 @@ import static java.lang.annotation.RetentionPolicy.SOURCE;
         SubjectCode.SUBJECT_POST_STATUS_SUCCESS,
         SubjectCode.SUBJECT_DOWLOAD_EMOJI,
         SubjectCode.SUBJECT_CREATE_NEW_ALBUM,
-        SubjectCode.SUBJECT_CREATE_NEW_ALBUM_ERROR,
+        SubjectCode.SUBJECT_ALBUM_ERROR,
         SubjectCode.SUBJECT_REQUEST_CHECK_UP_LOAD_ALBUM,
         SubjectCode.SUBJECT_RESPONSE_CHECK_UP_LOAD_ALBUM,
         SubjectCode.SUBJECT_UPLOAD_IMAGE_SUCCESS,

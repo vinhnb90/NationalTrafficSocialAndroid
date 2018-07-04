@@ -65,18 +65,6 @@
         <attr name="translucentNavigationEnabled" format="boolean" />
     </declare-styleable>
 
-
-    <declare-styleable name="TedBottomPickerImageView">
-        <attr name="foreground" format="reference" />
-        <attr name="fit_mode" format="string" />
-    </declare-styleable>
-
-    <declare-styleable name="TedBottomPickerSquareView">
-        <attr name="matchHeightToWidth" format="boolean" />
-        <attr name="matchWidthToHeight" format="boolean" />
-    </declare-styleable>
-
-
     <declare-styleable name="SlidingUpPanelLayout">
         <attr name="umanoPanelHeight" format="dimension" />
         <attr name="umanoShadowHeight" format="dimension" />

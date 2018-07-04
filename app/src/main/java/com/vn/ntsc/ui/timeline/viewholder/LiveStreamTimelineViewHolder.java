@@ -69,7 +69,7 @@ public class LiveStreamTimelineViewHolder extends BaseMediaTimelineViewHolder {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onShowLiveStream(bean, position, 0, imageView);
+                listener.onDisplayLiveStreamScreen(bean, position, 0, imageView);
             }
         });
     }

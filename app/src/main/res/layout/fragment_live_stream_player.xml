@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/transparent"
     android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:background="@color/transparent">
+    android:focusableInTouchMode="true">
 
     <include layout="@layout/layout_live_stream_header" />
 
@@ -92,34 +92,20 @@
                         app:layout_constraintLeft_toRightOf="@+id/fragment_live_stream_player_img_avatar"
                         app:layout_constraintTop_toTopOf="@+id/fragment_live_stream_player_img_avatar" />
 
-                    <RelativeLayout
-                        android:id="@+id/fragment_live_stream_player_layout_share_privacy"
-                        android:layout_width="0dp"
+                    <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
+                        android:id="@+id/fragment_live_stream_player_private"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_info_layout_livestream"
-                        android:visibility="visible"
+                        android:contentDescription="@string/app_name"
+                        android:drawablePadding="@dimen/spacing_0_4dp"
+                        android:text="@string/public_status"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_1_10sp"
+                        app:drawableCompatLeft="@drawable/ic_small_privacy_public_24dp_white"
                         app:layout_constraintLeft_toRightOf="@+id/fragment_live_stream_player_img_avatar"
-                        app:layout_constraintTop_toBottomOf="@+id/fragment_live_stream_player_txt_username">
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_live_stream_player_txt_username" />
 
-                        <ImageView
-                            android:id="@+id/fragment_live_stream_player_private_icon"
-                            android:layout_width="@dimen/status_layout_private_icon_size"
-                            android:layout_height="@dimen/status_layout_private_icon_size"
-                            android:contentDescription="@string/app_name"
-                            android:src="@drawable/ic_public" />
-
-                        <TextView
-                            android:id="@+id/fragment_live_stream_player_private_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="@dimen/margin_info_layout_livestream"
-                            android:layout_toEndOf="@+id/fragment_live_stream_player_private_icon"
-                            android:text="@string/public_status"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/text_2_12sp" />
-
-                    </RelativeLayout>
                 </android.support.constraint.ConstraintLayout>
 
                 <EditText
@@ -218,9 +204,9 @@
         android:layout_marginStart="5dp"
         android:includeFontPadding="false"
         android:text=""
-        android:visibility="gone"
         android:textColor="@color/white"
         android:textSize="@dimen/spacing_4_32dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

@@ -32,16 +32,16 @@ import io.reactivex.schedulers.Schedulers;
  * Created by nankai on 11/22/2016.
  */
 
-public abstract class BasePresenter<T extends CallbackListener> implements PresenterListener<T> {
+public abstract class BasePresenter<Listener extends CallbackListener> implements PresenterListener<Listener> {
 
     @Inject
     protected ApiService apiService;
 
-    protected T view;
+    protected Listener view;
     private CompositeDisposable disposables = null;
 
     @Override
-    final public void attachView(T view) {
+    final public void attachView(Listener view) {
         this.view = view;
         if (disposables == null
                 || disposables.isDisposed())

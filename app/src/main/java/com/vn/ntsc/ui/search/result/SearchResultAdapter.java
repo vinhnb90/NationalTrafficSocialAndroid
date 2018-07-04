@@ -41,7 +41,7 @@ public class SearchResultAdapter extends MultifunctionAdapter<SearchResultAdapte
     @Override
     protected void onViewReady(final ViewHolder holder, final MeetPeopleBean item, final int position) {
 
-        Context mContext = holder.getViewRoot().getContext();
+        Context mContext = holder.itemView.getContext();
 
         String time = mContext.getResources().getString(R.string.common_now);
         try {

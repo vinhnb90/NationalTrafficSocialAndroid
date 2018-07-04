@@ -222,7 +222,7 @@ public class Camera3Session implements CameraSession {
             public void onPreviewFrame(byte[] data, Camera callbackCamera) {
                 checkIsOnCameraThread();
                 if (callbackCamera != camera) {
-                    Logging.e("Camera3Session", "Callback from a different camera. This should never happen.");
+                    Logging.e("Camera3Session", "IteractionVideo from a different camera. This should never happen.");
                 } else if (state != Camera3Session.SessionState.RUNNING) {
                     Logging.d("Camera3Session", "Bytebuffer frame captured but camera is no longer running.");
                 } else {

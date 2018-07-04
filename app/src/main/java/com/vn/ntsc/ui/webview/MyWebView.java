@@ -173,7 +173,7 @@ public class MyWebView extends WebView {
     protected void setGeolocationDatabasePath() {
         final Activity activity;
 
-        if (mFragment != null && mFragment.get() != null && Build.VERSION.SDK_INT >= 11 && mFragment.get().getActivity() != null) {
+        if (mFragment != null && mFragment.get() != null && mFragment.get().getActivity() != null) {
             activity = mFragment.get().getActivity();
         } else if (mActivity != null && mActivity.get() != null) {
             activity = mActivity.get();
@@ -191,9 +191,7 @@ public class MyWebView extends WebView {
     @SuppressLint("NewApi")
     @SuppressWarnings("all")
     public void onResume() {
-        if (Build.VERSION.SDK_INT >= 11) {
-            super.onResume();
-        }
+        super.onResume();
         resumeTimers();
     }
 
@@ -201,9 +199,7 @@ public class MyWebView extends WebView {
     @SuppressWarnings("all")
     public void onPause() {
         pauseTimers();
-        if (Build.VERSION.SDK_INT >= 11) {
-            super.onPause();
-        }
+        super.onPause();
     }
 
     public void onDestroy() {
@@ -314,10 +310,8 @@ public class MyWebView extends WebView {
 
     @SuppressLint("NewApi")
     protected static void setAllowAccessFromFileUrls(final WebSettings webSettings, final boolean allowed) {
-        if (Build.VERSION.SDK_INT >= 16) {
-            webSettings.setAllowFileAccessFromFileURLs(allowed);
-            webSettings.setAllowUniversalAccessFromFileURLs(allowed);
-        }
+        webSettings.setAllowFileAccessFromFileURLs(allowed);
+        webSettings.setAllowUniversalAccessFromFileURLs(allowed);
     }
 
     @SuppressWarnings("static-method")
@@ -379,17 +373,11 @@ public class MyWebView extends WebView {
 
         final WebSettings webSettings = getSettings();
         webSettings.setAllowFileAccess(false);
-        setAllowAccessFromFileUrls(webSettings, false) ;
+        setAllowAccessFromFileUrls(webSettings, false);
         webSettings.setBuiltInZoomControls(false);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
-        if (Build.VERSION.SDK_INT < 18) {
-            webSettings.setRenderPriority(WebSettings.RenderPriority.HIGH);
-        }
         webSettings.setDatabaseEnabled(true);
-        if (Build.VERSION.SDK_INT < 19) {
-            webSettings.setDatabasePath(databaseDir);
-        }
         setMixedContentAllowed(webSettings, true);
 
         setThirdPartyCookiesEnabled(true);
@@ -481,14 +469,10 @@ public class MyWebView extends WebView {
             @SuppressLint("NewApi")
             @SuppressWarnings("all")
             public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-                if (Build.VERSION.SDK_INT >= 11) {
-                    if (mCustomWebViewClient != null) {
-                        return mCustomWebViewClient.shouldInterceptRequest(view, url);
-                    } else {
-                        return super.shouldInterceptRequest(view, url);
-                    }
+                if (mCustomWebViewClient != null) {
+                    return mCustomWebViewClient.shouldInterceptRequest(view, url);
                 } else {
-                    return null;
+                    return super.shouldInterceptRequest(view, url);
                 }
             }
 
@@ -596,12 +580,10 @@ public class MyWebView extends WebView {
             @SuppressLint("NewApi")
             @SuppressWarnings("all")
             public void onReceivedLoginRequest(WebView view, String realm, String account, String args) {
-                if (Build.VERSION.SDK_INT >= 12) {
-                    if (mCustomWebViewClient != null) {
-                        mCustomWebViewClient.onReceivedLoginRequest(view, realm, account, args);
-                    } else {
-                        super.onReceivedLoginRequest(view, realm, account, args);
-                    }
+                if (mCustomWebViewClient != null) {
+                    mCustomWebViewClient.onReceivedLoginRequest(view, realm, account, args);
+                } else {
+                    super.onReceivedLoginRequest(view, realm, account, args);
                 }
             }
 
@@ -681,12 +663,10 @@ public class MyWebView extends WebView {
             @SuppressLint("NewApi")
             @SuppressWarnings("all")
             public void onShowCustomView(View view, int requestedOrientation, CustomViewCallback callback) {
-                if (Build.VERSION.SDK_INT >= 14) {
-                    if (mCustomWebChromeClient != null) {
-                        mCustomWebChromeClient.onShowCustomView(view, requestedOrientation, callback);
-                    } else {
-                        super.onShowCustomView(view, requestedOrientation, callback);
-                    }
+                if (mCustomWebChromeClient != null) {
+                    mCustomWebChromeClient.onShowCustomView(view, requestedOrientation, callback);
+                } else {
+                    super.onShowCustomView(view, requestedOrientation, callback);
                 }
             }
 
@@ -1062,7 +1042,7 @@ public class MyWebView extends WebView {
         i.addCategory(Intent.CATEGORY_OPENABLE);
         i.setType(mUploadableFileTypes);
 
-        if (mFragment != null && mFragment.get() != null && Build.VERSION.SDK_INT >= 11) {
+        if (mFragment != null && mFragment.get() != null) {
             mFragment.get().startActivityForResult(Intent.createChooser(i, getFileUploadPromptLabel()), mRequestCodeFilePicker);
         } else if (mActivity != null && mActivity.get() != null) {
             mActivity.get().startActivityForResult(Intent.createChooser(i, getFileUploadPromptLabel()), mRequestCodeFilePicker);
@@ -1087,13 +1067,7 @@ public class MyWebView extends WebView {
      * @return whether file uploads can be used
      */
     public static boolean isFileUploadAvailable(final boolean needsCorrectMimeType) {
-        if (Build.VERSION.SDK_INT == 19) {
-            final String platformVersion = (Build.VERSION.RELEASE == null) ? "" : Build.VERSION.RELEASE;
-
-            return !needsCorrectMimeType && (platformVersion.startsWith("4.4.3") || platformVersion.startsWith("4.4.4"));
-        } else {
-            return true;
-        }
+        return true;
     }
 
     /**
@@ -1110,15 +1084,10 @@ public class MyWebView extends WebView {
      */
     @SuppressLint("NewApi")
     public static boolean handleDownload(final Context context, final String fromUrl, final String toFilename) {
-        if (Build.VERSION.SDK_INT < 9) {
-            throw new RuntimeException("Method requires API level 9 or above");
-        }
 
         final Request request = new Request(Uri.parse(fromUrl));
-        if (Build.VERSION.SDK_INT >= 11) {
-            request.allowScanningByMediaScanner();
-            request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-        }
+        request.allowScanningByMediaScanner();
+        request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, toFilename);
 
         final DownloadManager dm = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -1126,9 +1095,7 @@ public class MyWebView extends WebView {
             try {
                 dm.enqueue(request);
             } catch (SecurityException e) {
-                if (Build.VERSION.SDK_INT >= 11) {
-                    request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
-                }
+                request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
                 dm.enqueue(request);
             }
 
@@ -1145,9 +1112,6 @@ public class MyWebView extends WebView {
 
     @SuppressLint("NewApi")
     private static boolean openAppSettings(final Context context, final String packageName) {
-        if (Build.VERSION.SDK_INT < 9) {
-            throw new RuntimeException("Method requires API level 9 or above");
-        }
 
         try {
             final Intent intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);

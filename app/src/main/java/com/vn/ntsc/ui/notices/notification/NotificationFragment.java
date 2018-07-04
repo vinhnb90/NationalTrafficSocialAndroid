@@ -29,7 +29,7 @@ import com.vn.ntsc.repository.model.user.UserInfoResponse;
 import com.vn.ntsc.repository.model.webview.WebViewBean;
 import com.vn.ntsc.repository.preferece.UserPreferences;
 import com.vn.ntsc.services.UserLiveStreamService;
-import com.vn.ntsc.ui.comment.CommentActivity;
+import com.vn.ntsc.ui.comments.CommentActivity;
 import com.vn.ntsc.ui.profile.detail.ProfileDetailActivity;
 import com.vn.ntsc.ui.profile.my.MyProfileActivity;
 import com.vn.ntsc.ui.webview.WebViewActivity;

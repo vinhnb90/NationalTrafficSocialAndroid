@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.widget.ImageView;
 
@@ -13,15 +14,20 @@ import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.NotificationTarget;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.target.ViewTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.vn.ntsc.R;
 import com.vn.ntsc.app.AppController;
 import com.vn.ntsc.ui.tagfriends.ChipListener;
 import com.vn.ntsc.widget.views.images.CleanBackgroundTransform;
 import com.vn.ntsc.widget.views.images.bluer.BlurTransformation;
+import com.vn.ntsc.widget.views.images.mediadetail.image.ImageViewTouch;
 
 /**
  * What will be effect of this on performance of application and memory?
@@ -47,151 +53,172 @@ public class ImagesUtils {
 
     public static float THUMBNAIL = 0.7f;
 
-    public static final RequestOptions OPTIONS_IMG_CHAT_DEFAULT = new RequestOptions()
-            .format(DecodeFormat.PREFER_RGB_565)
-            .encodeFormat(Bitmap.CompressFormat.JPEG)
-            .priority(Priority.HIGH)
-            .placeholder(R.drawable.ic_img_send_default)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
-
     public static final RequestOptions OPTION_ROUNDED_AVATAR_WOMAN_BORDER = RequestOptions
             .circleCropTransform()
             .format(DecodeFormat.PREFER_RGB_565)
             .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .priority(Priority.HIGH)
             .placeholder(R.drawable.ic_avatar_circle_female_border)
             .error(R.drawable.ic_avatar_circle_female_border)
-            .fallback(R.drawable.ic_avatar_circle_female_border)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
+            .fallback(R.drawable.ic_avatar_circle_female_border);
 
     public static final RequestOptions OPTION_ROUNDED_AVATAR_MAN_BORDER = RequestOptions
             .circleCropTransform()
             .format(DecodeFormat.PREFER_RGB_565)
             .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .priority(Priority.HIGH)
             .placeholder(R.drawable.ic_avatar_circle_male_border)
             .error(R.drawable.ic_avatar_circle_male_border)
-            .fallback(R.drawable.ic_avatar_circle_male_border)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
+            .fallback(R.drawable.ic_avatar_circle_male_border);
 
     public static final RequestOptions OPTION_ROUNDED_AVATAR_WOMAN = RequestOptions
             .circleCropTransform()
             .format(DecodeFormat.PREFER_RGB_565)
             .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .priority(Priority.HIGH)
             .placeholder(R.drawable.ic_avatar_circle_female)
             .error(R.drawable.ic_avatar_circle_female)
-            .fallback(R.drawable.ic_avatar_circle_female)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
+            .fallback(R.drawable.ic_avatar_circle_female);
 
     public static final RequestOptions OPTION_ROUNDED_AVATAR_MAN = RequestOptions
             .circleCropTransform()
             .format(DecodeFormat.PREFER_RGB_565)
             .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .priority(Priority.HIGH)
             .placeholder(R.drawable.ic_avatar_circle_male)
             .error(R.drawable.ic_avatar_circle_male)
-            .fallback(R.drawable.ic_avatar_circle_male)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
+            .fallback(R.drawable.ic_avatar_circle_male);
 
     public static final RequestOptions OPTION_ROUNDED = RequestOptions
             .circleCropTransform()
             .format(DecodeFormat.PREFER_RGB_565)
             .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .priority(Priority.HIGH)
             .placeholder(R.color.default_image_loading)
             .error(R.color.default_image_loading)
-            .fallback(R.color.default_image_loading)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
+            .fallback(R.color.default_image_loading);
 
-    public static final RequestOptions OPTION_DEFAULT = new RequestOptions()
+    public static final RequestOptions OPTIONS_IMG_CHAT_DEFAULT = new RequestOptions()
+            .dontTransform()
             .format(DecodeFormat.PREFER_RGB_565)
             .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
+            .placeholder(R.drawable.ic_img_send_default);
+
+    public static final RequestOptions OPTION_DEFAULT = new RequestOptions()
+            .dontTransform()
+            .format(DecodeFormat.PREFER_RGB_565)
+            .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .placeholder(R.color.default_image_loading)
             .error(R.color.default_image_loading)
-            .fallback(R.color.default_image_loading)
-            .diskCacheStrategy(DiskCacheStrategy.DATA);
+            .fallback(R.color.default_image_loading);
 
     public static final RequestOptions CLEAN_BLACK_OPTION = new RequestOptions()
+            .dontTransform()
             .format(DecodeFormat.PREFER_RGB_565)
+            .encodeFormat(Bitmap.CompressFormat.WEBP)
+            .encodeQuality(30)
+            .dontAnimate()
             .transform(new CleanBackgroundTransform())
             .placeholder(R.color.default_image_loading)
             .error(R.color.default_image_loading)
-            .fallback(R.color.default_image_loading)
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+            .fallback(R.color.default_image_loading);
 
     public static final RequestOptions OPTION_BLUR = new RequestOptions()
+            .dontTransform()
             .transform(new BlurTransformation());
 
     public static final RequestOptions DOWNLOAD_ONLY_OPTIONS_FULL_SCREEN = new RequestOptions().diskCacheStrategy(DiskCacheStrategy.DATA)
+            .dontTransform()
             .override(AppController.SCREEN_WIDTH, AppController.SCREEN_WIDTH);
 
     //------------------------------------------------------------------//
     //--------------------- Load url from server -----------------------//
     //------------------------------------------------------------------//
 
-    public static void loadImageSend(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImageSend(String url, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTIONS_IMG_CHAT_DEFAULT)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadSticker(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadSticker(String url, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
-                    .into(imageView);
+//                    .thumbnail(THUMBNAIL)
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadImage(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImage(String url, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTION_DEFAULT)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadImageForceFirstFrameGif(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImageForceFirstFrameGif(String url, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .asBitmap()
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTION_DEFAULT)
-                    .into(imageView);
+                    .into(view);
     }
 
-    public static void loadImageSimple(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImageSimple(String url, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
-            Glide.with(imageView.getContext())
+            Glide.with(view.getContext())
                     .load(url)
                     .apply(OPTION_DEFAULT)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
     /**
@@ -202,7 +229,7 @@ public class ImagesUtils {
         Glide.with(context)
                 .asBitmap()
                 .load(url)
-                .thumbnail(THUMBNAIL)
+//                .thumbnail(THUMBNAIL)
                 .apply(gender == Constants.GENDER_TYPE_MAN ? OPTION_ROUNDED_AVATAR_MAN : OPTION_ROUNDED_AVATAR_WOMAN)
                 .into(view);
     }
@@ -230,8 +257,10 @@ public class ImagesUtils {
                     : (gender == Constants.GENDER_TYPE_MAN ? OPTION_ROUNDED_AVATAR_MAN : OPTION_ROUNDED_AVATAR_WOMAN);
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(requestOptions)
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
                     .into(view);
         }
     }
@@ -239,21 +268,23 @@ public class ImagesUtils {
     /**
      * @param url
      * @param gender
-     * @param imageView
+     * @param view
      */
-    public static void loadRoundedAvatar(String url, int gender, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadRoundedAvatar(String url, int gender, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(gender == Constants.GENDER_TYPE_MAN
+            Glide.with(context).clear(view);
+            view.setImageResource(gender == Constants.GENDER_TYPE_MAN
                     ? R.drawable.ic_avatar_circle_male_border
                     : R.drawable.ic_avatar_circle_female_border);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(gender == Constants.GENDER_TYPE_MAN ? OPTION_ROUNDED_AVATAR_MAN_BORDER : OPTION_ROUNDED_AVATAR_WOMAN_BORDER)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
     /**
@@ -262,32 +293,34 @@ public class ImagesUtils {
      * @param url           path or url to load
      * @param mChipListener ChipListener
      */
-    public static void loadRoundedAvatar(String url, final ImageView imageView, int gender, final ChipListener mChipListener) {
-        Context context = imageView.getContext();
+    public static void loadRoundedAvatar(String url, final ImageView view, int gender, final ChipListener mChipListener) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(gender == Constants.GENDER_TYPE_MAN
+            Glide.with(context).clear(view);
+            view.setImageResource(gender == Constants.GENDER_TYPE_MAN
                     ? R.drawable.ic_avatar_circle_male_border
                     : R.drawable.ic_avatar_circle_female_border);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(gender == Constants.GENDER_TYPE_MAN ? OPTION_ROUNDED_AVATAR_MAN_BORDER : OPTION_ROUNDED_AVATAR_WOMAN_BORDER)
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            mChipListener.onLoadFailed(imageView);
+                            mChipListener.onLoadFailed(view);
+                            (e != null ? e : new NullPointerException()).printStackTrace();
                             return false;
                         }
 
                         @Override
                         public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                            mChipListener.onResourceReady(resource, imageView);
+                            mChipListener.onResourceReady(resource, view);
+                            ViewUtils.fadeIn(view);
                             return false;
                         }
                     })
-                    .into(imageView);
+                    .into(view);
     }
 
     public static void loadImageProfile(String url, final ImageView imageView) {
@@ -302,97 +335,112 @@ public class ImagesUtils {
         loadImageBlur(url, ImagesUtils.DOWNLOAD_ONLY_OPTIONS_FULL_SCREEN, imageView);
     }
 
-    public static void loadImageBlur(String url, RequestOptions options, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImageBlur(String url, RequestOptions options, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
-            Glide.with(imageView.getContext())
+            Glide.with(view.getContext())
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTION_BLUR)
                     .apply(OPTION_DEFAULT)
                     .apply(options)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadImageBlur(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImageBlur(String url, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTION_BLUR)
                     .apply(OPTION_DEFAULT)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadImage(String url, RequestOptions options, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImage(String url, RequestOptions options, ImageView view) {
+        Context context = view.getContext();
         if (url == null) {
-            Glide.with(context).clear(imageView);
-            imageView.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
-            Glide.with(imageView.getContext())
+            Glide.with(view.getContext())
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTION_DEFAULT)
                     .apply(options)
-                    .into(imageView);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadBlurImageBanner(final Context context, int width, int height, String url, final ImageView banner) {
+    public static void loadBlurImageBanner(final Context context, int width, int height, String url, final ImageView view) {
         if (url == null) {
-            Glide.with(context).clear(banner);
-            banner.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .asDrawable()
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(OPTION_DEFAULT)
                     .apply(new RequestOptions().override(width, height).transform(new BlurTransformation()))
-                    .into(banner);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
-    public static void loadCoverImage(final Context context, String url, final ImageView cover) {
+    public static void loadCoverImage(final Context context, String url, final ImageView view) {
         if (url == null) {
-            Glide.with(context).clear(cover);
-            cover.setImageResource(R.color.default_image_loading);
+            Glide.with(context).clear(view);
+            view.setImageResource(R.color.default_image_loading);
         } else
             Glide.with(context)
                     .load(url)
-                    .thumbnail(THUMBNAIL)
+//                    .thumbnail(THUMBNAIL)
                     .apply(ImagesUtils.OPTION_DEFAULT)
                     .apply(ImagesUtils.OPTION_BLUR)
-                    .into(cover);
+                    .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                            view)))
+                    .into(view);
     }
 
     //------------------------------------------------------------------------------//
     //------------------------------- Load url local -------------------------------//
     //------------------------------------------------------------------------------//
 
-    public static void loadImageLocal(String url, ImageView imageView) {
-        Context context = imageView.getContext();
+    public static void loadImageLocal(String url, ImageView view) {
+        Context context = view.getContext();
         Glide.with(context)
+                .asBitmap()
                 .load(url)
-                .thumbnail(THUMBNAIL)
                 .apply(OPTION_DEFAULT)
-                .into(imageView);
+                .apply(new RequestOptions()
+                        .skipMemoryCache(true)
+                        .diskCacheStrategy(DiskCacheStrategy.NONE))
+                .into(view);
     }
 
-    public static void loadImage(int idResource, ImageView imageView) {
-        Context context = imageView.getContext();
-        Glide.with(context).clear(imageView);
+    public static void loadImage(int idResource, ImageView view) {
+        Context context = view.getContext();
+        Glide.with(context).clear(view);
         Glide.with(context)
                 .load(idResource)
-                .thumbnail(THUMBNAIL)
+//                .thumbnail(THUMBNAIL)
                 .apply(OPTION_DEFAULT)
-                .into(imageView);
+                .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                        view)))
+                .into(view);
     }
 
     //------------------------------------------------------------------------------//
@@ -407,25 +455,29 @@ public class ImagesUtils {
         loadImageLiveStream(url, ImagesUtils.DOWNLOAD_ONLY_OPTIONS_FULL_SCREEN, imageView);
     }
 
-    public static void loadImageLiveStream(String url, RequestOptions options, ImageView imageView) {
-        Context context = imageView.getContext();
-        Glide.with(context).clear(imageView);
-        Glide.with(imageView.getContext())
+    public static void loadImageLiveStream(String url, RequestOptions options, ImageView view) {
+        Context context = view.getContext();
+        Glide.with(context).clear(view);
+        Glide.with(view.getContext())
                 .load(url)
-                .thumbnail(THUMBNAIL)
+//                .thumbnail(THUMBNAIL)
                 .apply(OPTION_DEFAULT)
                 .apply(options)
-                .into(imageView);
+                .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                        view)))
+                .into(view);
     }
 
-    public static void loadImageLiveStream(String url, ImageView imageView) {
-        Context context = imageView.getContext();
-        Glide.with(context).clear(imageView);
+    public static void loadImageLiveStream(String url, ImageView view) {
+        Context context = view.getContext();
+        Glide.with(context).clear(view);
         Glide.with(context)
                 .load(url)
-                .thumbnail(THUMBNAIL)
+//                .thumbnail(THUMBNAIL)
                 .apply(OPTION_DEFAULT)
-                .into(imageView);
+                .transition(DrawableTransitionOptions.withCrossFade(ViewUtils.getShortAnimTime(
+                        view)))
+                .into(view);
     }
 
     //------------------------------------------------------------------------------//
@@ -460,5 +512,14 @@ public class ImagesUtils {
                 .apply(CLEAN_BLACK_OPTION)
                 .into(img);
 
+    }
+
+    public static void loadRounded(Context context, String thumbUrl, ImageView ivThumb) {
+        Glide
+                .with(context)
+                .asBitmap()
+                .load(thumbUrl)
+                .apply(OPTION_ROUNDED)
+                .into(ivThumb);
     }
 }

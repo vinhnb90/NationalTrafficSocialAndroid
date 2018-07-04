@@ -15,7 +15,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +30,8 @@ import com.example.tux.mylab.camera.cameraview.CameraView;
 import com.example.tux.mylab.gallery.Gallery;
 import com.example.tux.mylab.gallery.data.MediaFile;
 import com.example.tux.mylab.utils.MediaSanUtils;
-import com.nankai.designlayout.gallerybottom.GridSpacingItemDecoration;
+import com.vn.ntsc.utils.DimensionUtils;
+import com.vn.ntsc.widget.views.gallerybottom.GridSpacingItemDecoration;
 import com.vn.ntsc.R;
 import com.vn.ntsc.core.model.BaseBean;
 import com.vn.ntsc.core.views.BaseActivity;
@@ -66,6 +66,7 @@ import com.vn.ntsc.widget.permissions.Permission;
 import com.vn.ntsc.widget.toolbar.ToolbarButtonLeftClickListener;
 import com.vn.ntsc.widget.toolbar.ToolbarButtonRightClickListener;
 import com.vn.ntsc.widget.toolbar.ToolbarTitleCenter;
+import com.vn.ntsc.widget.views.textview.TextViewVectorCompat;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -150,10 +151,8 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
     TextView mTxtUsername;
     @BindView(R.id.layout_post_status_tag)
     TextView txtTag;
-    @BindView(R.id.layout_post_status_private_icon)
-    ImageView mPrivacyIcon;
-    @BindView(R.id.layout_post_status_private_text)
-    TextView mTxtPrivacy;
+    @BindView(R.id.layout_post_status_private)
+    TextViewVectorCompat mPrivacyIcon;
     @BindView(R.id.layout_post_status_edt_your_mind)
     EditText mYourMind;
     @BindView(R.id.layout_post_status_list_picker)
@@ -210,10 +209,14 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
         bottomSheetBehavior.setPeekHeight(getResources().getDimensionPixelSize(R.dimen.keyboard_height));
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
 
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(getApplicationContext(), SPAN_COUNT);
-        mRecyclerViewGallery.setLayoutManager(mGridLayoutManager);
-        GridSpacingItemDecoration mDecorationSpacing = new GridSpacingItemDecoration(mGridLayoutManager.getSpanCount(), SPACING, false);
-        mRecyclerViewGallery.addItemDecoration(mDecorationSpacing);
+        mRecyclerViewGallery.setLayoutManager(new GridLayoutManager(this, SPAN_COUNT));
+        mRecyclerViewGallery.addItemDecoration(new GridSpacingItemDecoration(4, DimensionUtils.convertDpToPx(4), true));
+
+        //Cache
+        mRecyclerViewGallery.setItemViewCacheSize(1000);
+//        mRecyclerViewGallery.setDrawingCacheEnabled(true);
+//        mRecyclerViewGallery.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
+        mRecyclerViewGallery.setHasFixedSize(true);
 
         //Initialize media adapter
         mGalleryAdapter = new GalleryAdapter(this);
@@ -228,7 +231,6 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
         mRecyclerViewMediaPicked.setAdapter(mMediaPickedAdapter);
 
         displayMediaPicked(false);
-
 
 //        ViewCompat.setTransitionName(mAvatar, ELEMENT_POST_STATUS);
     }
@@ -318,7 +320,11 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
 
     @Override
     public void onDestroy() {
+        release();
         super.onDestroy();
+    }
+
+    private void release() {
         if (mMediaFilePresenter != null)
             mMediaFilePresenter.destroy();
         if (mKeyboardHeightProvider != null)
@@ -640,6 +646,7 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
         // Updated by Robert on 2017 Nov 09 - Allow post status with ic_comment is empty
         if (isValidParams()) {
             if (mMediaPickedAdapter.getData().size() > 0 || !mYourMind.getText().toString().trim().isEmpty()) {
+
                 Intent intents = new Intent();
                 intents.putParcelableArrayListExtra(PostStatusService.INPUT_TAG_FRIENDS, mTaggedFriend);
                 intents.putParcelableArrayListExtra(PostStatusService.INPUT_FILE, (ArrayList<MediaFileBean>) mMediaPickedAdapter.getData());
@@ -647,8 +654,9 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
                 intents.putExtra(PostStatusService.INPUT_PRIVACY, privacy);
                 intents.putExtra(PostStatusService.INPUT_STREAM, "streamUrl");
                 intents.putExtra(PostStatusService.INPUT_TOKEN, UserPreferences.getInstance().getToken());
-
                 setResult(RESULT_OK, intents);
+
+                release();
                 finish();
             }
         }
@@ -721,14 +729,14 @@ public class PostStatusActivity extends BaseActivity<PostStatusPresenter> implem
 
     private void setPrivacyContent() {
         if (privacy == Constants.PRIVACY_PUBLIC) {
-            mPrivacyIcon.setImageResource(R.drawable.ic_public);
-            mTxtPrivacy.setText(getString(R.string.public_privacy));
+            mPrivacyIcon.setVectorDrawableLeft(R.drawable.ic_small_privacy_public_24dp_gray);
+            mPrivacyIcon.setText(getString(R.string.public_privacy));
         } else if (privacy == Constants.PRIVACY_FRIENDS) {
-            mPrivacyIcon.setImageResource(R.drawable.ic_status_friends);
-            mTxtPrivacy.setText(getString(R.string.friend_privacy));
+            mPrivacyIcon.setVectorDrawableLeft(R.drawable.ic_small_privacy_only_friends_24dp_gray);
+            mPrivacyIcon.setText(getString(R.string.friend_privacy));
         } else if (privacy == Constants.PRIVACY_PRIVATE) {
-            mPrivacyIcon.setImageResource(R.drawable.ic_privacy_only_me);
-            mTxtPrivacy.setText(getString(R.string.onlyme_privacy));
+            mPrivacyIcon.setVectorDrawableLeft(R.drawable.ic_small_privacy_only_me_24dp_gray);
+            mPrivacyIcon.setText(getString(R.string.onlyme_privacy));
         }
     }
 

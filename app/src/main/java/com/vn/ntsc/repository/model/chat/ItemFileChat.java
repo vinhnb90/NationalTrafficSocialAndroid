@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 import com.vn.ntsc.core.model.BaseBean;
+import com.vn.ntsc.repository.TypeView;
 
 /**
  * Created by Doremon on 2/28/2018.
@@ -32,7 +33,8 @@ public class ItemFileChat extends BaseBean {
     @SerializedName("file_duration")
     public int fileDuration;
     @SerializedName("type")
-    public String type;
+    public @TypeView.MediaDetailType
+    String type;
     @SerializedName("file_url")
     public String fileUrl;
 

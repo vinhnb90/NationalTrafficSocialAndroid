@@ -228,19 +228,16 @@ public class Helper {
 	 * @return
 	 */
 	public static int getSoftButtonsBarSizePort(Context context) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-			DisplayMetrics metrics = new DisplayMetrics();
-			Window window = unwrap(context).getWindow();
-			window.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-			int usableHeight = metrics.heightPixels;
-			window.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-			int realHeight = metrics.heightPixels;
-			if (realHeight > usableHeight)
-				return realHeight - usableHeight;
-			else
-				return 0;
-		}
-		return 0;
+		DisplayMetrics metrics = new DisplayMetrics();
+		Window window = unwrap(context).getWindow();
+		window.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		int usableHeight = metrics.heightPixels;
+		window.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+		int realHeight = metrics.heightPixels;
+		if (realHeight > usableHeight)
+            return realHeight - usableHeight;
+        else
+            return 0;
 	}
 
 	/**

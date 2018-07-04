@@ -8,7 +8,7 @@ import com.vn.ntsc.ui.blocklst.BlockListActivity;
 import com.vn.ntsc.ui.changepassword.ChangePasswordActivity;
 import com.vn.ntsc.ui.chat.ChatActivity;
 import com.vn.ntsc.ui.chat.generalibrary.GeneraLibraryActivity;
-import com.vn.ntsc.ui.comment.subcomment.SubCommentActivity;
+import com.vn.ntsc.ui.comments.subcomment.SubCommentActivity;
 import com.vn.ntsc.ui.conversation.ConversationFragment;
 import com.vn.ntsc.ui.forgotpassword.ForgotPasswordActivity;
 import com.vn.ntsc.ui.friends.favorite.FriendsFavoriteFragment;

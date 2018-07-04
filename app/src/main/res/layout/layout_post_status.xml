@@ -56,32 +56,19 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
+            <com.vn.ntsc.widget.views.textview.TextViewVectorCompat
                 android:id="@+id/layout_post_status_private"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/layout_post_status_flexbox"
                 android:layout_margin="@dimen/spacing_0_4dp"
                 android:layout_toEndOf="@+id/layout_post_status_avatar"
-                android:background="@drawable/bg_border_gray"
-                android:gravity="center">
+                android:drawablePadding="@dimen/spacing_0_4dp"
+                android:gravity="center"
+                android:text="@string/public_privacy"
+                android:textSize="@dimen/text_1_10sp"
+                app:drawableCompatLeft="@drawable/ic_small_privacy_public_24dp_gray" />
 
-                <ImageView
-                    android:id="@+id/layout_post_status_private_icon"
-                    android:layout_width="@dimen/status_layout_private_icon_size"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_public" />
-
-                <TextView
-                    android:id="@+id/layout_post_status_private_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/layout_post_status_private_icon"
-                    android:text="@string/public_status"
-                    android:textSize="@dimen/text_2_12sp" />
-
-            </RelativeLayout>
         </RelativeLayout>
 
     </RelativeLayout>
@@ -155,8 +142,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/icon_post_status"
                 android:layout_below="@+id/layout_post_status_header_bottom_line_top"
-                android:padding="@dimen/spacing_1_8dp"
                 android:layout_toStartOf="@+id/layout_post_status_header_bottom_choose_file"
+                android:padding="@dimen/spacing_1_8dp"
                 android:src="@drawable/ic_update_status_take_picture" />
 
         </RelativeLayout>

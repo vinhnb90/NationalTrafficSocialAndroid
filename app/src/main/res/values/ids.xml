@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="glide_view_target_tag" type="id" />
+
     <item name="tag_adapter_helper" type="id" />
-    <item name="glide_tag_id" type="id"/>
-    <item type="id" name="hierarchy" />
-    <item type="id" name="isexpand" />
+    <item name="glide_tag_id" type="id" />
+    <item name="hierarchy" type="id" />
+    <item name="isexpand" type="id" />
 
     <item name="pager_id" type="id" />
     <item name="tab_id" type="id" />
     <item name="start_live_stream" type="id" />
+
+    <!--Timeline view-->
+    <item name="item_timeline_header" type="id" />
+    <item name="item_timeline_footer" type="id" />
+
 </resources>

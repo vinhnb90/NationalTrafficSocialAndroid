@@ -31,7 +31,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
     public interface OnDrawableChangeListener {
         /**
-         * Callback invoked when a new drawable has been
+         * IteractionVideo invoked when a new drawable has been
          * assigned to the view
          *
          * @param drawable
@@ -41,7 +41,7 @@ public abstract class ImageViewTouchBase extends ImageView implements IDisposabl
 
     public interface OnLayoutChangeListener {
         /**
-         * Callback invoked when the layout bounds changed
+         * IteractionVideo invoked when the layout bounds changed
          */
         void onLayoutChanged(boolean changed, int left, int top, int right, int bottom);
     }

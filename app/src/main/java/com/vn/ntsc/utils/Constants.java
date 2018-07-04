@@ -205,7 +205,7 @@ public interface Constants {
     float APPROVED_ALPHA = 1.0f;
 
     int MAX_LENGTH_COMMENT = 512;
-    int MAX_LINE_COMMENT = 5;
+    int MAX_LINE_COMMENT = 4;
 
 
 }

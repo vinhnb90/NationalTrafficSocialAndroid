@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.example.tux.mylab.gallery.SquareImageView
+    <com.example.tux.mylab.gallery.RecyclingImageView
         android:id="@+id/thumb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

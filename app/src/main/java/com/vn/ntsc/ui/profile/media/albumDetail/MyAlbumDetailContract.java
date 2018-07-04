@@ -29,7 +29,7 @@ public interface MyAlbumDetailContract {
 
         public void getImageAlbumSuccess(LoadAlbumImageResponse response);
 
-        public void getImageAlbumFailure();
+        public void getImageAlbumFailure(Throwable e);
 
         public void getImageAlbumComplete();
 
